@@ -6,4 +6,16 @@ public class Administrador {
 	public Administrador(){
 		
 	}
+	
+	public Administrador(String carnet){
+		this.carnet=carnet;
+	}
+
+	public String getCarnet() {
+		return carnet;
+	}
+
+	public void setCarnet(String carnet) {
+		this.carnet = carnet;
+	}
 }

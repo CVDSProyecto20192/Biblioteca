@@ -15,13 +15,13 @@ public class Usuario {
 	}
 	
 	public Usuario(String carnet, String documento, String correo, String nombres, String apellidos, String contraseña, boolean bloqueado ) {   
-      this.carnet=carnet;
-	  this.documento=documento;
-	  this.correo=correo;
-	  this.nombres=nombres;
-	  this.apellidos=apellidos;
-	  this.contraseña=contraseña;
-	  this.bloqueado=bloqueado;
+		this.carnet=carnet;
+		this.documento=documento;
+		this.correo=correo;
+		this.nombres=nombres;
+		this.apellidos=apellidos;
+		this.contraseña=contraseña;
+		this.bloqueado=bloqueado;
     }
 	
 	public String getCarnet(){

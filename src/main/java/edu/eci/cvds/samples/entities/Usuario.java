@@ -7,20 +7,20 @@ public class Usuario {
 	private String correo;
 	private String nombres;
 	private String apellidos;
-	private String contraseña;
+	private String password;
 	private Date ultimoIngreso;
 	private boolean bloqueado;
 	
 	public Usuario(){	
 	}
 	
-	public Usuario(String carnet, String documento, String correo, String nombres, String apellidos, String contraseña, boolean bloqueado ) {   
+	public Usuario(String carnet, String documento, String correo, String nombres, String apellidos, String password, boolean bloqueado ) {   
 		this.carnet=carnet;
 		this.documento=documento;
 		this.correo=correo;
 		this.nombres=nombres;
 		this.apellidos=apellidos;
-		this.contraseña=contraseña;
+		this.password=password;
 		this.bloqueado=bloqueado;
     }
 	
@@ -59,11 +59,11 @@ public class Usuario {
 		this.apellidos=apellidos;
 	}
 	
-	public String getContraseña(){
-		return contraseña;
+	public String getPassword(){
+		return password;
 	}
-	public void setContraseña(String contraseña){
-		this.contraseña=contraseña;
+	public void setPassword(String password){
+		this.password=password;
 	}
 	
 	public Date getUltimoIngreso(){

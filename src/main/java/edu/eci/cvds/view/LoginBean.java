@@ -1,4 +1,4 @@
-package edu.eci.cvds.beans;
+package edu.eci.cvds.view;
 
 import java.io.Serializable;
 

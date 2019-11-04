@@ -7,18 +7,21 @@ public class Recurso{
 	private String tipo;
 	private int capacidad;
 	private boolean disponible;
+	private int tiempo;
 	
 	public Recurso(){
 		
 	}
 	
-	public Recurso(long identificador, String nombre, String ubicacion, String tipo, int capacidad, boolean disponible){
+	public Recurso(long identificador, String nombre, String ubicacion, String tipo, 
+			int capacidad, boolean disponible, int tiempo){
 		this.identificador=identificador;
 		this.nombre=nombre;
 		this.setUbicacion(ubicacion);
 		this.setTipo(tipo);
 		this.setCapacidad(capacidad);
 		this.setDisponible(disponible);
+		this.tiempo=tiempo;
 	}
 	
 	public long getIdentificador(){
@@ -65,5 +68,13 @@ public class Recurso{
 
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
+	}
+	
+	public int getTiempo() {
+		return this.tiempo;
+	}
+
+	public void setTiempo(int tiempo) {
+		this.tiempo=tiempo;
 	}
 }

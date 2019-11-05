@@ -28,20 +28,20 @@
 	                
 	                <div class="form-group">
 	    				<span class="label correo">Correo </span>
-	    				<p:inputText id ="correo" value="#{InicioSesionBean.correo}" placeholder="Introduce tu correo" class="form-control"/>
+	    				<p:inputText id ="correo" value="#{LoginBean.userName}" placeholder="Introduce tu correo" class="form-control"/>
 					</div> 
 	            
 	            	<br/>
 	            	
 		            <div >
 		            	<span class="label password">Contrase&#241;a </span>
-		    			<p:inputText id ="password" value="#{InicioSesionBean.password}" placeholder="Introduce tu contraseña" class="form-control"/>
+		    			<p:inputText id ="password" value="#{LoginBean.password}" placeholder="Introduce tu contraseña" class="form-control"/>
 					</div>
 					
 					<br/>
 					
 					<div>
-    					<p:commandButton value="Acceder" />
+    					<p:commandButton value="Acceder" action="#{LoginBean.login}" update="iniciosesion_form"/>
 						<br/>
 						
 					</div>

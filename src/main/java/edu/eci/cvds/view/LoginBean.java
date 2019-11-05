@@ -35,16 +35,15 @@ public class LoginBean implements Serializable{
     public void login(){
         Factory<SecurityManager> factory = new IniSecurityManagerFactory("src/main/webapp/WEB-INF/shiro.ini");          
         SecurityManager securityManager = factory.getInstance();      
-        SecurityUtils.setSecurityManager(securityManager);        
-
-        Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
-
-        token.setRememberMe(true);
-        currentUser.login(token);
+        SecurityUtils.setSecurityManager(securityManager);    
 
         try{
+            Subject currentUser = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
+
             currentUser.login(token);
+            currentUser.getSession().setAttribute("Correo",userName);
+            token.setRememberMe(true);
         } catch(UnknownAccountException e){
             FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } catch (IncorrectCredentialsException e) {

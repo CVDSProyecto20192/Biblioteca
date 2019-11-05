@@ -14,9 +14,9 @@ public interface UsuarioDAO {
 	
 	public List<Usuario> loadAll() throws PersistenceException;
 
-	public void addUsuario(Usuario user) throws PersistenceException;
+	/*public void addUsuario(Usuario user) throws PersistenceException;
 	
 	@Transactional
-	public void setPassword(String carnet, String password) throws PersistenceException;
+	public void setPassword(String carnet, String password) throws PersistenceException;*/
 	
 }

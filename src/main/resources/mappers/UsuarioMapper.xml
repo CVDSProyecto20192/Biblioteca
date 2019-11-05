@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
+
+	<select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
+			SELECT 
+    		
+    		u.carnet as carnet_usuario,
+  			u.documento as doc_usuario,
+  			u.correo as correo_usuario,
+  			u.nombres as nombres_usuario,
+  			u.apellidos as apellidos_usuario,
+  			u.passwd as password,
+  			u.ultimoingreso,
+  			u.bloqueado,
+    		
+    		FROM BR_USUARIO as u 
+    		left join BR_CARGO as c on u.id_cargo=c.id
+    		
+    		WHERE u.carnet=#{carnet_usuario}
+ 			
+	</select>
+
+	<select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
+			SELECT 
+    		
+    		u.carnet as carnet_usuario,
+  			u.documento as doc_usuario,
+  			u.correo as correo_usuario,
+  			u.nombres as nombres_usuario,
+  			u.apellidos as apellidos_usuario,
+  			u.passwd as password,
+  			u.ultimoingreso,
+  			u.bloqueado,
+    		
+    		FROM BR_USUARIO as u 
+    		left join BR_CARGO as c on u.id_cargo=c.id
+ 			
+	</select>
+
+	
+	<resultMap id="UsuarioResult" type="Usuario">
+			
+			<id property="carnet" column="id_usuario"/>
+			<result property="documento" column="doc_usuario"/>
+			<result property="correo" column="correo_usuario"/>
+    		<result property="nombres" column="nombres_usuario"/>
+			<result property="apellidos" column="apellidos_usuario"/>
+    		<result property="password" column="password"/>
+			<result property="ultimoIngreso" column="ultimoIngreso"/>
+			<result property="bloqueado" column="bloqueado"/>
+      		<association property="cargo" javaType="Cargo" column="id_cargo" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper.CargoResult"/>   			
+   
+    </resultMap>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

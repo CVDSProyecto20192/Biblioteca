@@ -15,20 +15,20 @@ public interface UsuarioMapper {
     public List<Usuario> consultarUsuarios();
     
  
-    public void insertarUsuario(@Param("usuario")Usuario user);
+    //public void insertarUsuario(@Param("usuario")Usuario user);
     
     /**
      * Actualiza el estado de Bloqueado del Usuario
      * @param docu
      * @param estado
      */
-	public void actualizarUsuarioBloqueado(@Param("carnet_usuario")String carnet, 
+	/*public void actualizarUsuarioBloqueado(@Param("carnet_usuario")String carnet, 
 			@Param("bloqueado")boolean bloqueado);
 	
 	
 	public void actualizarPasswordUsuario(@Param("carnet_usuario")String carnet, 
 			@Param("password") String password);
-
+	*/
 	
 
 }

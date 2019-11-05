@@ -1,3 +1,4 @@
+
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class MyBatisUsuarioDAO implements UsuarioDAO{
 		}  
 	}
 
-	@Override
+	/*@Override
 	public void addUsuario(Usuario user) throws PersistenceException {
 		try {
 			usuarioMapper.insertarUsuario(user);
@@ -52,7 +53,7 @@ public class MyBatisUsuarioDAO implements UsuarioDAO{
 			throw new PersistenceException("No fue actualizar la contraseña del usuario");
 		}
 		
-	}
+	}*/
 	
 	
 

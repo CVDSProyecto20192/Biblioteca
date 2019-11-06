@@ -1,24 +1,22 @@
 package edu.eci.cvds.view;
 
-import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
+
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.util.Factory;
-import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.subject.Subject;
 
+import java.io.Serializable;
 
-@ManagedBean(name = "LoginBean")
+
+@SuppressWarnings("deprecation")
+@ManagedBean(name="LoginBean")
 @ViewScoped
 
 public class LoginBean implements Serializable{
@@ -32,10 +30,7 @@ public class LoginBean implements Serializable{
     private boolean rememberMe;
 
 
-    public void login(){
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("src/main/webapp/WEB-INF/shiro.ini");          
-        SecurityManager securityManager = factory.getInstance();      
-        SecurityUtils.setSecurityManager(securityManager);    
+    public void login(){   
 
         try{
             Subject currentUser = SecurityUtils.getSubject();

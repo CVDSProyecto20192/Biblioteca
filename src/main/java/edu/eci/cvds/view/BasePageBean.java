@@ -12,7 +12,10 @@ import com.google.inject.Injector;
 import edu.eci.cvds.sampleprj.dao.*;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
-
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.subject.Subject;
 
 @ManagedBean(name="ReservaBean")
 @SessionScoped
@@ -64,6 +67,13 @@ public class BasePageBean implements Serializable {
 		return "reservas?faces-redirect=true";
 	}
     
+	public String bloquear(){
+		return "bloquear?faces-redirect=true";
+	}
+	
+	public String registrar(){
+		return "registrar?faces-redirect=true";
+	}
     /*public long getDocAlq() {
 		return this.docAlq;
 	}

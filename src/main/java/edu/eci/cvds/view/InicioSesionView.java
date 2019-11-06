@@ -25,7 +25,6 @@ public class InicioSesionView {
 	@PostConstruct
 	public void init() {
 		serviciosReserva=baseBean.getServiciosReserva();
-
 	}
 	
 	public String getCorreo() {

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<link rel="stylesheet" type="text/css" href="css/iniciosesion.css" />
+		
+    </h:head>
+    
+    <h:body>
+
+		<h1>Biblioteca</h1>
+		<h2>Sistema de reservas</h2>
+		
+        <h:form id="opciones">
+            <section>
+            	<div style="text-align: center">
+            		            		
+						<div>
+	    					<p:commandButton value="Registrar recurso" action="#{ReservaBean.registrar}" update="opciones"/>
+							<br/>
+						</div>
+						
+						<div>
+	    					<p:commandButton value="Bloquear recurso" action="#{ReservaBean.bloquear}" update="opciones"/>
+							<br/>
+						</div>
+						
+				
+				</div>
+			
+			</section>
+
+        </h:form>
+
+    </h:body>
+    
+</html>

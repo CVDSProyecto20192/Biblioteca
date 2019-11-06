@@ -30,20 +30,22 @@ public class LoginBean implements Serializable{
     private boolean rememberMe;
 
 
-    public void login(){   
-
+    public String login(){   
+	    String s = "iniciosesion?faces-redirect=true";
         try{
             Subject currentUser = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
-
             currentUser.login(token);
             currentUser.getSession().setAttribute("Correo",userName);
             token.setRememberMe(true);
+			System.out.println(currentUser);
+			s = "admin?faces-redirect=true";
         } catch(UnknownAccountException e){
             FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } catch (IncorrectCredentialsException e) {
             FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }
+		return s;
     }
 
     public String getUserName() {
@@ -69,5 +71,4 @@ public class LoginBean implements Serializable{
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    
 }

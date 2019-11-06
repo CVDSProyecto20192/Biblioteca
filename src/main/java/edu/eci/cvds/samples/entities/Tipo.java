@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.entities;
 
 public class Tipo {
+	private int id;
 	private String tipo;
 	private String descripcion;
 	
@@ -8,13 +9,22 @@ public class Tipo {
 		
 	}
 
-	public Tipo(String tipo, String descripcion){
+	public Tipo(int id, String tipo, String descripcion){
+		this.id=id;
 		this.tipo=tipo;
 		this.descripcion=descripcion;
 	}
 	
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id=id;
+	}
+	
 	public String getTipo() {
-		return tipo;
+		return this.tipo;
 	}
 
 	public void setTipo(String tipo) {
@@ -22,7 +32,7 @@ public class Tipo {
 	}
 
 	public String getDescripcion() {
-		return descripcion;
+		return this.descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {

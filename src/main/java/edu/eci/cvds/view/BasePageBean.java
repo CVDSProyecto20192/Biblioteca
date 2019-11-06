@@ -56,15 +56,15 @@ public class BasePageBean implements Serializable {
     	return getInjector().getInstance(ServiciosReserva.class);
     }
     
-   /* public String page1(){
-		return "registrocliente?faces-redirect=true";
+    public String page1(){
+		return "iniciosesion?faces-redirect=true";
 	}
 	
 	public String page2(){
-		return "registroalquiler?faces-redirect=true";
+		return "reservas?faces-redirect=true";
 	}
     
-    public long getDocAlq() {
+    /*public long getDocAlq() {
 		return this.docAlq;
 	}
     

@@ -13,11 +13,15 @@
   			u.correo as correo_usuario,
   			u.nombres as nombres_usuario,
   			u.apellidos as apellidos_usuario,
-  			u.passwd as password,
+  			u.passwd,
   			u.ultimoingreso,
   			u.bloqueado,
     		
-    		FROM BR_USUARIO as u 
+    		c.id as id_cargo,
+			c.nombre as nombre_cargo,
+			c.descipcion as des_cargo
+			
+			FROM BR_USUARIO as u 
     		left join BR_CARGO as c on u.id_cargo=c.id
     		
     		WHERE u.carnet=#{carnet_usuario}
@@ -32,9 +36,9 @@
   			u.correo as correo_usuario,
   			u.nombres as nombres_usuario,
   			u.apellidos as apellidos_usuario,
-  			u.passwd as password,
+  			u.passwd,
   			u.ultimoingreso,
-  			u.bloqueado,
+  			u.bloqueado
     		
     		FROM BR_USUARIO as u 
     		left join BR_CARGO as c on u.id_cargo=c.id
@@ -49,8 +53,8 @@
 			<result property="correo" column="correo_usuario"/>
     		<result property="nombres" column="nombres_usuario"/>
 			<result property="apellidos" column="apellidos_usuario"/>
-    		<result property="password" column="password"/>
-			<result property="ultimoIngreso" column="ultimoIngreso"/>
+    		<result property="password" column="passwd"/>
+			<result property="ultimoIngreso" column="ultimoingreso"/>
 			<result property="bloqueado" column="bloqueado"/>
       		<association property="cargo" javaType="Cargo" column="id_cargo" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper.CargoResult"/>   			
    

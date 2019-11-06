@@ -1,34 +1,35 @@
 package edu.eci.cvds.samples.entities;
 
 public class Recurso{
-	private long identificador;
+	private long id;
 	private String nombre;
 	private String ubicacion;
-	private String tipo;
 	private int capacidad;
 	private boolean disponible;
 	private int tiempo;
+	private Tipo tipo;
 	
 	public Recurso(){
 		
 	}
 	
-	public Recurso(long identificador, String nombre, String ubicacion, String tipo, 
-			int capacidad, boolean disponible, int tiempo){
-		this.identificador=identificador;
+	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible, int tiempo, 
+			Tipo tipo){
+		
+		this.id=id;
 		this.nombre=nombre;
-		this.setUbicacion(ubicacion);
-		this.setTipo(tipo);
-		this.setCapacidad(capacidad);
-		this.setDisponible(disponible);
+		this.ubicacion=ubicacion;
+		this.capacidad=capacidad;
+		this.disponible=disponible;
 		this.tiempo=tiempo;
+		this.tipo=tipo;
 	}
 	
-	public long getIdentificador(){
-		return identificador;
+	public long getId(){
+		return id;
 	}
-	public void setIdentificador(long identificador){
-		this.identificador=identificador;
+	public void setId(long id){
+		this.id=id;
 	}
 	
 	public String getNombre(){
@@ -44,14 +45,6 @@ public class Recurso{
 
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public int getCapacidad() {
@@ -76,5 +69,13 @@ public class Recurso{
 
 	public void setTiempo(int tiempo) {
 		this.tiempo=tiempo;
+	}
+	
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 }

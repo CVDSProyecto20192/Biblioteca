@@ -4,7 +4,63 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RecursoMapper">
+
+	<select parameterType="map" id="consultarRecurso" resultMap="RecursoResult">
+			SELECT 
+    		
+    		r.id as id_recurso,
+    		r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso,
+    		r.capacidad as cap_recurso,
+			r.disponible as disp_recurso,
+    		r.tiempo as tiempo_rec
+    			
+			t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo
+			
+			FROM BR_RECURSO as r
+    		left join BR_TIPO as t on r.id_tipo=t.id
+    		
+    		WHERE r.id=#{id_recurso}
+ 			
+	</select>
 	
+	<select parameterType="map" id="consultarRecursos" resultMap="RecursoResult">
+			SELECT 
+    		
+    		r.id as id_recurso,
+    		r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso,
+    		r.capacidad as cap_recurso,
+			r.disponible as disp_recurso,
+    		r.tiempo as tiempo_rec
+    			
+			t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo
+			
+			FROM BR_RECURSO as r
+    		left join BR_TIPO as t on r.id_tipo=t.id
+    		
+	</select>
 	
+	<insert id ="insertarRecurso">
+    	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, disponble, tiempo, id_tipo) 
+    	VALUES (#{recurso.id},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}recurso, #{recurso.tiempo}, #{recurso.tipo.id})
+    </insert>
+
+
+	<resultMap id="RecursoResult" type="Recurso">
+			
+			<id property="id" column="id_recurso"/>
+			<result property="nombre" column="nombre_recurso"/>
+			<result property="ubicacion" column="ubi_recurso"/>
+    		<result property="capacidad" column="cap_recurso"/>
+			<result property="disponible" column="disp_recurso"/>
+    		<result property="tiempo" column="tiempo_rec"/>
+      		<association property="tipo" javaType="Tipo" column="id_tipo" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoMapper.TipoResult"/>   			
+   
+    </resultMap>
 
 </mapper>

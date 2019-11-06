@@ -9,7 +9,7 @@
 			
 			<id property="id" column="id_cargo"/>
 			<result property="nombre" column="nombre_cargo"/>
-			<result property="descripcion" column="desc_cargo"/>
+			<result property="descripcion" column="des_cargo"/>
    			
     </resultMap>
 

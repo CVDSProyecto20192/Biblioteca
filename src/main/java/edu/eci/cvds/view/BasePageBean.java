@@ -17,6 +17,8 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.subject.Subject;
 
+
+
 @ManagedBean(name="ReservaBean")
 @SessionScoped
 public class BasePageBean implements Serializable {

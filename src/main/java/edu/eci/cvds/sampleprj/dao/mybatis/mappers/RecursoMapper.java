@@ -14,6 +14,10 @@ public interface RecursoMapper {
      * @return 
      */
     public List<Recurso> consultarRecursos();
+	
+	public List<Recurso> consultarRecursosDisponibles();
 
     public void insertarRecurso(@Param("recurso")Recurso r);
+	
+	public void bloquearRecurso(@Param("recurso")Recurso r);
 }

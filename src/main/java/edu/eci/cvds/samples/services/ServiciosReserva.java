@@ -15,6 +15,10 @@ public interface ServiciosReserva {
 	
 	public List<Recurso> consultarRecursos();
 	
+	public List<Recurso> consultarRecursosDisponibles();
+	
+	public void bloquearRecurso(Recurso r);
+	
 	public void agregarRecurso(Recurso r);
 
 }

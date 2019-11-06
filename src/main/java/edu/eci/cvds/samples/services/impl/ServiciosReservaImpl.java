@@ -67,11 +67,36 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return r;
 	}
+	
+	@Override
+	public List<Recurso> consultarRecursosDisponibles() {
+		List<Recurso> r=null;
+		try {
+			System.out.println("servicios");
+			r=recursoDAO.loadDisponibles();
+			System.out.println(r);
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return r;
+	}
 
 	@Override
 	public void agregarRecurso(Recurso r) {
 		try {
 			recursoDAO.addRecurso(r);
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public void bloquearRecurso(Recurso r) {
+		try {
+			recursoDAO.bloquearRecurso(r);
 		} catch (PersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

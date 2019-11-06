@@ -33,7 +33,7 @@ public class MyBatisUsuarioDAO implements UsuarioDAO{
 		}  
 	}
 
-	/*@Override
+	@Override
 	public void addUsuario(Usuario user) throws PersistenceException {
 		try {
 			usuarioMapper.insertarUsuario(user);
@@ -44,7 +44,7 @@ public class MyBatisUsuarioDAO implements UsuarioDAO{
 		
 	}
 
-	@Override
+	/*@Override
 	public void setPassword(String carnet, String password) throws PersistenceException {
 		try {
 			usuarioMapper.actualizarPasswordUsuario(carnet, password);

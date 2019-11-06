@@ -45,6 +45,10 @@
  			
 	</select>
 
+	<insert id ="insertarUsuario">
+    	insert into BR_USUARIO (carnet, documento, correo, nombres, apellidos, passwd, ultimoingreso, bloqueado, id_cargo) 
+    	VALUES (#{usuario.carnet},#{usuario.documento},#{usuario.correo},#{usuario.nombres},#{usuario.apellidos}, #{usuario.password}, #{usuario.ultimoIngreso}, #{usuario.bloquedo}, #{recurso.cargo.id})                     
+    </insert>
 	
 	<resultMap id="UsuarioResult" type="Usuario">
 			

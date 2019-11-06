@@ -15,7 +15,7 @@ public interface UsuarioMapper {
     public List<Usuario> consultarUsuarios();
     
  
-    //public void insertarUsuario(@Param("usuario")Usuario user);
+    public void insertarUsuario(@Param("usuario")Usuario user);
     
     /**
      * Actualiza el estado de Bloqueado del Usuario

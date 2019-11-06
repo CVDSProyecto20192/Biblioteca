@@ -4,6 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper">
+
+	<insert id ="insertarCargo">
+    	insert into BR_CARGO (id, nombre, descripcion) 
+    	VALUES (#{cargo.id},#{cargo.nombre},#{cargo.descripcion})                     
+    </insert>
+	
 	
 	<resultMap id="CargoResult" type="Cargo">
 			

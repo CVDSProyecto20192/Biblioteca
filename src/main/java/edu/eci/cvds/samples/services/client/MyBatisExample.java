@@ -33,6 +33,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper;
+import edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.cvds.samples.entities.Cargo;
+
 
 
 /**
@@ -73,7 +77,14 @@ public class MyBatisExample {
     public static void main(String args[]) throws SQLException {
     	SqlSessionFactory sessionfact = getSqlSessionFactory();
     	SqlSession sqlss = sessionfact.openSession();
-    
+    	
+    	UsuarioMapper um=sqlss.getMapper(UsuarioMapper.class);
+    	CargoMapper cm=sqlss.getMapper(CargoMapper.class);
+    	
+    	Cargo c=new Cargo(1,"estudiante", "Integrante de la escuela");
+    	cm.insertarCargo(c);
+    	
+    	
     	
     	sqlss.commit();
         sqlss.close();

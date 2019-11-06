@@ -47,7 +47,7 @@
 	
 	<insert id ="insertarRecurso">
     	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, disponble, tiempo, id_tipo) 
-    	VALUES (#{recurso.id},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}recurso, #{recurso.tiempo}, #{recurso.tipo.id})
+    	VALUES (#{recurso.id},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}, #{recurso.tiempo}, #{recurso.tipo.id})
     </insert>
 
 

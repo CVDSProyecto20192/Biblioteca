@@ -1,11 +1,13 @@
 package edu.eci.cvds.samples.entities;
 
-public class Tipo {
+import java.io.Serializable;
+
+public class Tipo implements Serializable{
 	private int id;
 	private String tipo;
 	private String descripcion;
 	
-	public Tipo(){
+	public Tipo() {
 		
 	}
 
@@ -38,4 +40,9 @@ public class Tipo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	@Override
+    public String toString() {
+        return "Tipo{" + "id=" + this.id + "tipo=" + this.tipo + ", descripcion=" + this.descripcion + '}';
+    }
 }

@@ -4,11 +4,12 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
 @ManagedBean(name = "InicioSesionBean")
-@RequestScoped
+@SessionScoped
 public class InicioSesionView {
 	
 	private ServiciosReserva serviciosReserva;
@@ -25,6 +26,12 @@ public class InicioSesionView {
 	@PostConstruct
 	public void init() {
 		serviciosReserva=baseBean.getServiciosReserva();
+
+	}
+	
+	public void actionPrueba() {
+		System.out.println(correo);
+		System.out.println(password);
 	}
 	
 	public String getCorreo() {

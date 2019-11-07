@@ -19,7 +19,7 @@
     		
     		c.id as id_cargo,
 			c.nombre as nombre_cargo,
-			c.descipcion as des_cargo
+			c.descripcion as des_cargo
 			
 			FROM BR_USUARIO as u 
     		left join BR_CARGO as c on u.id_cargo=c.id
@@ -38,9 +38,13 @@
   			u.apellidos as apellidos_usuario,
   			u.passwd,
   			u.ultimoingreso,
-  			u.bloqueado
+  			u.bloqueado,
     		
-    		FROM BR_USUARIO as u 
+    		c.id as id_cargo,
+			c.nombre as nombre_cargo,
+			c.descripcion as des_cargo
+			
+			FROM BR_USUARIO as u 
     		left join BR_CARGO as c on u.id_cargo=c.id
  			
 	</select>

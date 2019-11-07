@@ -39,7 +39,7 @@ public class LoginBean implements Serializable{
             currentUser.getSession().setAttribute("Correo",userName);
             token.setRememberMe(true);
 			System.out.println(currentUser);
-			s = "admin?faces-redirect=true";
+			s = "recursos?faces-redirect=true";
         } catch(UnknownAccountException e){
             FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } catch (IncorrectCredentialsException e) {

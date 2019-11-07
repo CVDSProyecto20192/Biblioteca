@@ -13,7 +13,7 @@
 			r.ubicacion as ubi_recurso,
     		r.capacidad as cap_recurso,
 			r.disponible as disp_recurso,
-    		r.tiempo as tiempo_rec
+    		r.tiempo as tiempo_rec,
     			
 			t.id as id_tipo,
 			t.tipo as nom_tipo,
@@ -34,7 +34,7 @@
 			r.ubicacion as ubi_recurso,
     		r.capacidad as cap_recurso,
 			r.disponible as disp_recurso,
-    		r.tiempo as tiempo_rec
+    		r.tiempo as tiempo_rec,
     			
 			t.id as id_tipo,
 			t.tipo as nom_tipo,
@@ -42,39 +42,13 @@
 			
 			FROM BR_RECURSO as r
     		left join BR_TIPO as t on r.id_tipo=t.id
-    		
-	</select>
-	
-	<select parameterType="map" id="consultarRecursosDisponibles" resultMap="RecursoResult">
-			SELECT 
-    		
-    		r.id as id_recurso,
-    		r.nombre as nombre_recurso,
-			r.ubicacion as ubi_recurso,
-    		r.capacidad as cap_recurso,
-			r.disponible as disp_recurso,
-    		r.tiempo as tiempo_rec
-    			
-			t.id as id_tipo,
-			t.tipo as nom_tipo,
-			t.descripcion as des_tipo
-			
-			FROM BR_RECURSO as r
-    		left join BR_TIPO as t on r.id_tipo=t.id
-			
-			WHERE 
-			    r.disponible=true
     		
 	</select>
 	
 	<insert id ="insertarRecurso">
-    	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, disponble, tiempo, id_tipo) 
+    	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, disponible, tiempo, id_tipo) 
     	VALUES (#{recurso.id},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}, #{recurso.tiempo}, #{recurso.tipo.id})
     </insert>
-	
-	<update id ="bloquearRecurso">
-    	UPDATE BR_RECURSO set disponible=false WHERE id = #{recurso.id}
-    </update>
 
 
 	<resultMap id="RecursoResult" type="Recurso">

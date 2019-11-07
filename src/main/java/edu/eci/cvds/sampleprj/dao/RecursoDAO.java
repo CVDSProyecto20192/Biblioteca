@@ -11,10 +11,6 @@ public interface RecursoDAO {
 	
 	public List<Recurso> loadAll() throws PersistenceException;
 	
-	public List<Recurso> loadDisponibles() throws PersistenceException;
-	
 	public void addRecurso(Recurso r) throws PersistenceException;
-	
-	public void bloquearRecurso(Recurso r) throws PersistenceException;
 	
 }

@@ -1,6 +1,8 @@
 package edu.eci.cvds.samples.entities;
 
-public class Recurso{
+import java.io.Serializable;
+
+public class Recurso implements Serializable{
 	private long id;
 	private String nombre;
 	private String ubicacion;
@@ -24,6 +26,17 @@ public class Recurso{
 		this.tiempo=tiempo;
 		this.tipo=tipo;
 	}
+	
+	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible, int tiempo){
+		
+		this.id=id;
+		this.nombre=nombre;
+		this.ubicacion=ubicacion;
+		this.capacidad=capacidad;
+		this.disponible=disponible;
+		this.tiempo=tiempo;
+	}
+	
 	
 	public long getId(){
 		return id;
@@ -78,4 +91,11 @@ public class Recurso{
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+
+	@Override
+    public String toString() {
+        return "Recurso{" + "id=" + this.id + ", nombre=" + this.nombre + ", ubicacion=" + this.ubicacion + ", capacidad=" + this.capacidad + ", tiempo=" + this.tiempo + ", tipo=" + this.tipo +  '}';                                
+    }
+	
 }
+

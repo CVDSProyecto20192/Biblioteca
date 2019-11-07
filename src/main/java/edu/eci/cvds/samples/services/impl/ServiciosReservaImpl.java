@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.exceptions.PersistenceException;
+import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
@@ -23,102 +24,105 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Inject
 	private TipoDAO tipoDAO;
-
 	 
 	@Override
-	public Usuario consultarUsuario(String carnet) {
+	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException{
 		Usuario u=null;
 		try {
 			u = userDAO.load(carnet);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el usuario "+carnet, e);
 		}
 		return u;
 	}
 
 	@Override
-	public List<Usuario> consultarUsuarios() {
-		List<Usuario> users=null
-				;
+	public List<Usuario> consultarUsuarios() throws ServiciosReservaException{
+		List<Usuario> users;
 		try {
 			users = userDAO.loadAll();
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar a los usuarios", e);
 		}
 		return users;
 	}
 	
 	@Override
-	public Recurso consultarRecurso(long id) {
+	public Recurso consultarRecurso(long id) throws ServiciosReservaException{
 		Recurso r=null;
 		try {
 			r=recursoDAO.load(id);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el recurso "+id, e);
 		}
 		return r;
 	}
 
 	@Override
-	public List<Recurso> consultarRecursos() {
+	public List<Recurso> consultarRecursos() throws ServiciosReservaException{
 		List<Recurso> r=null;
 		try {
 			r=recursoDAO.loadAll();
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return r;
-	}
-	
-	@Override
-	public List<Recurso> consultarRecursosDisponibles() {
-		List<Recurso> r=null;
-		try {
-			System.out.println("servicios");
-			r=recursoDAO.loadDisponibles();
-			System.out.println(r);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar los recursos", e);
 		}
 		return r;
 	}
 
 	@Override
-	public void agregarRecurso(Recurso r) {
+	public void agregarRecurso(Recurso r) throws ServiciosReservaException{
 		try {
 			recursoDAO.addRecurso(r);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al agregrar el recurso", e);
 		}
 		
 	}
-	
+
 	@Override
-	public void bloquearRecurso(Recurso r) {
-		try {
-			recursoDAO.bloquearRecurso(r);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	@Override
-	public Tipo consultarTipo(int tipoId) {
-		Tipo tipo=null;
-		try {
-			tipo = tipoDAO.load(tipoId);
-		} catch (PersistenceException e) {
-			e.printStackTrace();
-		}
-		return tipo;
+	public Tipo consultarTipoRecurso(long id) throws ServiciosReservaException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	@Override
+	public Tipo consultarTipo(int id) throws ServiciosReservaException {
+		Tipo t;
+		try {
+			t=tipoDAO.load(id);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el tipo", e);
+		}
+		return t;
+	}
+
+	@Override
+	public List<Tipo> consultarTipos() throws ServiciosReservaException {
+		List<Tipo> tl;
+		try {
+			tl=tipoDAO.loadAll();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar los tipos", e);
+		}
+		return tl;
+	}
+
+	@Override
+	public void agregarTipo(Tipo t) throws ServiciosReservaException {
+		try {
+			tipoDAO.addTipo(t);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al agregar el tipo", e);
+		}
+		
+	}
 
 }

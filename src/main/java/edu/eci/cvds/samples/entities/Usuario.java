@@ -1,7 +1,8 @@
 package edu.eci.cvds.samples.entities;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Serializable{
 	private String carnet;
 	private String documento;
 	private String correo;
@@ -86,8 +87,14 @@ public class Usuario {
 	public Cargo getCargo(){
 		return this.cargo;
 	}
+	
 	public void setCargo(Cargo cargo){
 		this.cargo=cargo;
 	}
 	
+	@Override
+    public String toString() {
+        return "Usuario{" + "carnet=" + this.carnet + ", documento=" + this.documento + ", correo=" + this.correo + ", nombres=" + this.nombres + ", apellidos=" + this.apellidos + ", cargo=" + this.cargo +  '}';                                
+    }
+
 }

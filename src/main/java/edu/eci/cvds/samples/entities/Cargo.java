@@ -1,8 +1,9 @@
 package edu.eci.cvds.samples.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Cargo {
+public class Cargo implements Serializable{
 	
 	private long id;
 	private String nombre;
@@ -43,5 +44,10 @@ public class Cargo {
 	public void setDescripcion(String descripcion){
 		this.descripcion=descripcion;
 	}
+	
+	@Override
+    public String toString() {
+        return "Cargo{" + "id=" + this.id + "nombre=" + this.nombre + ", descripcion=" +this. descripcion + '}';
+    }
 }
 

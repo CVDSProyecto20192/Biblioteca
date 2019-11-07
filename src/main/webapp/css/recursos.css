@@ -1,0 +1,94 @@
+body {
+  background-color:#CAF992;
+}
+
+h1{
+  color: white;
+  text-align: center;
+  font-size:2.5vw;
+  font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+}
+
+h2{
+  color: white;
+  font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+  font-size:1.5vw;
+  text-align:center;
+  padding: -2vw;
+}
+
+
+p{
+  color: black;
+  font-size:1.2vw;
+  font-family: "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+}
+
+.label {
+  color: white;
+  padding: 1vw;
+  font-family: Arial;
+  display: inline-block;
+  width: 6vw;
+}
+
+.idRec {
+	background-color: #A6C087;
+}
+ 
+.nombre {
+	background-color: #DEFCD2;
+	color: black;
+} 
+
+.ubicacion {
+	background-color: #A6C087;
+}
+ 
+.capacidad {
+	background-color: #DEFCD2;
+	color: black;
+} 
+
+.tiempo {
+	background-color: #A6C087;
+}
+ 
+.idTipo {
+	background-color: #DEFCD2;
+	color: black;
+} 
+
+.form-control{
+	font-family: Arial; 
+	font-size:1.2vw;
+	height:1.5vw;
+	width: 22vw;
+	padding: 0.7vw;
+}
+
+
+.ui-button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	background-color:white;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	
+	/*Borde del botón*/
+	border:1px solid light-gray;
+	display:inline-block;
+	
+	/*texto del botón*/
+	color:#182b64;
+	font-family:sans-serif;
+	font-size:15px;
+	font-weight:bold;
+
+	/*Tamaño*/
+	padding:0.3vw 0.6vw;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #fae9ed;	
+}

@@ -5,6 +5,24 @@
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoMapper">
 	
+	<select parameterType="map" id="consultarTipo" resultMap="TipoResult">
+			SELECT 
+    			
+			t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo
+			
+			FROM BR_TIPO as t
+    		
+    		WHERE t.id=#{id_tipo}
+ 			
+	</select>
+	
+	<insert id ="insertarTipo">
+    	INSERT INTO BR_TIPO (id, tipo, descripcion) 
+    	VALUES (#{tipoR.id},#{tipoR.tipo},#{tipoR.descripcion})
+    </insert>
+	
 	<resultMap id="TipoResult" type="Tipo">
 			
 			<id property="id" column="id_tipo"/>

@@ -7,8 +7,10 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
+import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
 import edu.eci.cvds.samples.entities.Recurso;
+import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
@@ -18,6 +20,10 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Inject
 	private RecursoDAO recursoDAO;
+	
+	@Inject
+	private TipoDAO tipoDAO;
+
 	 
 	@Override
 	public Usuario consultarUsuario(String carnet) {
@@ -101,7 +107,18 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	
+	@Override
+	public Tipo consultarTipo(int tipoId) {
+		Tipo tipo=null;
+		try {
+			tipo = tipoDAO.load(tipoId);
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		return tipo;
+	}
+
 
 }

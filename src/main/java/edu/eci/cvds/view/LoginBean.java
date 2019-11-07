@@ -38,11 +38,14 @@ public class LoginBean implements Serializable{
             currentUser.login(token);
             currentUser.getSession().setAttribute("Correo",userName);
             token.setRememberMe(true);
-			System.out.println(currentUser);
+            System.out.println(currentUser);
+            
 			s = "recursos?faces-redirect=true";
         } catch(UnknownAccountException e){
+            System.out.println("Ricardo estuvo aqui");
             FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } catch (IncorrectCredentialsException e) {
+            System.out.println("Nata estuvo aqui");
             FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }
 		return s;

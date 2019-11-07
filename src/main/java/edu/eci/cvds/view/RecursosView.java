@@ -48,6 +48,9 @@ public class RecursosView {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			actionReiniciar();
+		}
 		
 	}
 	
@@ -56,6 +59,18 @@ public class RecursosView {
 		if(this.capacidad>0) this.disponible=true;
 	}
 	
+	
+	public void actionReiniciar() {
+		this.id=0;
+		this.nombre=null;
+		this.ubicacion=null;
+		this.capacidad=0;
+		this.disponible=false;
+		this.tiempo=0;
+		this.tipo=null;
+		this.idTipo=0;
+		
+	}
 	
 	public long getId() {
 		return this.id;

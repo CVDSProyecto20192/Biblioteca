@@ -12,43 +12,43 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.subject.Subject;
 
+import java.io.IOException;
 import java.io.Serializable;
 
-
 @SuppressWarnings("deprecation")
-@ManagedBean(name="LoginBean")
+@ManagedBean(name = "LoginBean")
 @ViewScoped
 
-public class LoginBean implements Serializable{
+public class LoginBean implements Serializable {
     /**
      *
      */
     private static final long serialVersionUID = 1L;
-    
+
     private String userName;
     private String password;
     private boolean rememberMe;
 
-
-    public String login(){   
-	    String s = "iniciosesion?faces-redirect=true";
-        try{
+    public void login() {
+        try {
             Subject currentUser = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
+
             currentUser.login(token);
-            currentUser.getSession().setAttribute("Correo",userName);
+            currentUser.getSession().setAttribute("Correo", userName);
             token.setRememberMe(true);
-            System.out.println(currentUser);
+
+            FacesContext.getCurrentInstance().getExternalContext().redirect("recursos.xhtml");
             
-			s = "recursos?faces-redirect=true";
-        } catch(UnknownAccountException e){
-            System.out.println("Ricardo estuvo aqui");
-            FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+        } catch (UnknownAccountException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } catch (IncorrectCredentialsException e) {
-            System.out.println("Nata estuvo aqui");
-            FacesContext.getCurrentInstance().addMessage("login", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
+        } catch (IOException e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo en servidor", "Error"));
         }
-		return s;
     }
 
     public String getUserName() {

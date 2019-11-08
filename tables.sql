@@ -29,30 +29,35 @@ CREATE TABLE public.br_reserva (
 	CONSTRAINT reserva_usuario FOREIGN KEY (usuario) REFERENCES br_usuario(carnet)
 );
 
-CREATE TABLE public.tipos (
+CREATE TABLE public.br_tipo (
 	tipo varchar(50) NOT NULL,
 	descripcion varchar(100) NOT NULL,
-	CONSTRAINT tipos_pkey PRIMARY KEY (tipo)
+	id int4 NOT NULL,
+	CONSTRAINT br_tipo_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.recursos (
-	identificador serial NOT NULL,
+
+CREATE TABLE public.br_recurso (
+	id serial NOT NULL,
 	nombre varchar(200) NOT NULL,
 	ubicacion varchar(50) NOT NULL,
-	tipo varchar(50) NOT NULL,
 	capacidad int4 NOT NULL,
 	disponible bool NULL DEFAULT true,
-	CONSTRAINT recursos_pkey PRIMARY KEY (identificador),
-	CONSTRAINT recursos_tipos FOREIGN KEY (tipo) REFERENCES tipos(tipo)
+	id_tipo int4 NULL,
+	tiempo int4 NULL,
+	CONSTRAINT recursos_pkey PRIMARY KEY (id),
+	CONSTRAINT fk_recurso_tipo FOREIGN KEY (id_tipo) REFERENCES br_tipo(id) ON DELETE CASCADE
 );
+
 
 CREATE TABLE public.reserva_recurso (
 	reserva int4 NOT NULL,
 	recurso int4 NOT NULL,
 	fecha_entrega date NULL,
 	CONSTRAINT reserva_recurso_pkey PRIMARY KEY (reserva, recurso),
-	CONSTRAINT reserva_recurso_recurso FOREIGN KEY (recurso) REFERENCES recursos(identificador),
+	CONSTRAINT reserva_recurso_recurso FOREIGN KEY (recurso) REFERENCES br_recurso(id),
 	CONSTRAINT reserva_recurso_reserva FOREIGN KEY (reserva) REFERENCES br_reserva(codigo)
 );
+
 
 

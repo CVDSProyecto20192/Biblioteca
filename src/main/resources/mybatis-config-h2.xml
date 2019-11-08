@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+   <typeAliases>
+        <typeAlias type="edu.eci.cvds.samples.entities.Cargo" alias="Cargo"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.Recurso" alias="Recurso"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.Reserva" alias="Reserva"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.Usuario" alias="Usuario"/> 
+		<typeAlias type="edu.eci.cvds.samples.entities.Tipo" alias="Tipo"/> 
+    </typeAliases>
+
+   <environments default="test">
+       <environment id="test">
+           <transactionManager type="JDBC" />
+           <dataSource type="POOLED">
+               <property name="driver" value="org.h2.Driver" />
+               <property name="url" value="jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL"/>
+               <property name="username" value="sa" />
+               <property name="password" value="" />
+           </dataSource>
+       </environment>
+   </environments>
+
+   <mappers>
+        <mapper resource="mappers/CargoMapper.xml"></mapper>
+        <mapper resource="mappers/RecursoMapper.xml"></mapper>
+        <mapper resource="mappers/ReservaMapper.xml"></mapper>        
+        <mapper resource="mappers/UsuarioMapper.xml"></mapper> 
+		<mapper resource="mappers/TipoMapper.xml"></mapper> 
+    </mappers>  
+
+</configuration>

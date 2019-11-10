@@ -26,6 +26,10 @@ public interface ServiciosReserva {
 	public List<Tipo> consultarTipos() throws ServiciosReservaException;
 	
 	public void agregarTipo(Tipo r) throws ServiciosReservaException;
+	
+	public long  consultarIdRecurso(String nombre, Tipo tipo, String ubicacion) throws ServiciosReservaException;
 
-
+	public boolean consultarDisponibilidadRecurso(long id) throws ServiciosReservaException;
+	
+	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException;
 }

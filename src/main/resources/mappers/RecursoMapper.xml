@@ -43,13 +43,46 @@
 			FROM BR_RECURSO as r
     		left join BR_TIPO as t on r.id_tipo=t.id
     		
+    		ORDER by r.id
+    		
 	</select>
 	
 	<insert id ="insertarRecurso">
+		<selectKey keyProperty="id_recurso" resultType="int" order="BEFORE">
+			select MAX(id)+1 from BR_RECURSO
+		</selectKey>
     	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, disponible, tiempo, id_tipo) 
-    	VALUES (#{recurso.id},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}, #{recurso.tiempo}, #{recurso.tipo.id})
+    	VALUES (#{id_recurso},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}, #{recurso.tiempo}, #{recurso.tipo.id})
     </insert>
+    
+    <select id="consultarIdRecurso" resultType="long">
+			SELECT 
+    		
+    		r.id as id_recurso
+		
+			FROM BR_RECURSO as r
 
+			WHERE r.nombre=#{nom_rec} and r.id_tipo=#{tipo.id} and r.ubicacion=#{ubi_rec}
+	</select>
+	
+	<select id="consultarDisponibilidadRecurso" resultType="boolean">
+			SELECT 
+    		
+    		r.disponible as disp_recurso
+		
+			FROM BR_RECURSO as r
+
+			WHERE r.id=#{id_rec} 
+	</select>
+
+	<update id="actDisponibilidadRecurso">
+			UPDATE BR_RECURSO
+		
+			SET disponible=#{disp}
+
+			WHERE id=#{id_rec} 
+	</update>
+	
 
 	<resultMap id="RecursoResult" type="Recurso">
 			

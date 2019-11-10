@@ -28,7 +28,7 @@ public class ServiciosReservaFactory {
 
    private static Optional<Injector> optInjector;
 
-   private static Injector myBatisInjector(final String env, final String pathResource) {
+   private Injector myBatisInjector(final String env, final String pathResource) {
        return createInjector(new XMLMyBatisModule() {
            @Override
            protected void initialize() {
@@ -48,7 +48,7 @@ public class ServiciosReservaFactory {
        optInjector = Optional.empty();
    }
 
-   public static ServiciosReserva getServiciosAlquiler(){
+   public ServiciosReserva getServiciosReserva(){
        if (!optInjector.isPresent()) {
            optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
        }
@@ -56,7 +56,7 @@ public class ServiciosReservaFactory {
    }
 
 
-   public static ServiciosReserva getServiciosReservaTesting(){
+   public ServiciosReserva getServiciosReservaTesting(){
        if (!optInjector.isPresent()) {
            optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
        }

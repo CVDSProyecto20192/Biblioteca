@@ -3,6 +3,7 @@ package edu.eci.cvds.view;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
@@ -15,9 +16,8 @@ import org.apache.shiro.subject.Subject;
 import java.io.IOException;
 import java.io.Serializable;
 
-@SuppressWarnings("deprecation")
 @ManagedBean(name = "LoginBean")
-@ViewScoped
+@SessionScoped
 
 public class LoginBean implements Serializable {
     /**

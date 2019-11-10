@@ -1,30 +1,98 @@
 body {
-  background-color: #e1cbf8;
+  background-color:#CAF992;
 }
 
 h1{
   color: white;
   text-align: center;
-  font-size: 2.5vw;
+  font-size:2.5vw;
   font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 }
 
 h2{
   color: white;
   font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
-  font-size: 2vw;
-  text-align: center;
+  font-size:1.5vw;
+  text-align:center;
+  padding: -2vw;
 }
 
 
 p{
   color: black;
-  font-size: 1.2vw;
+  font-size:1.2vw;
   font-family: "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 }
 
+#contenedor{
+	width: 100%;
+	height: 90%;
+}
 
-.recursos {
+#registro{
+	float:left;
+	margin-top:0vw;
+	padding-left:15vw;
+	width:35vw;
+	text-align:justify;
+}
+
+#tabla_tipos{
+	padding-top:4vw;
+	margin-left:53%;
+	padding-rigth:4vw;
+	text-align:justify;
+}
+
+#botones{
+	margin-top:10%;	
+}
+
+
+.label {
+  color: white;
+  padding: 1vw;
+  font-family: Arial;
+  display: inline-block;
+  width: 6vw;
+}
+
+.idRec {
+	background-color: #A6C087;
+}
+ 
+.nombre {
+	background-color: #DEFCD2;
+	color: black;
+} 
+
+.ubicacion {
+	background-color: #A6C087;
+}
+ 
+.capacidad {
+	background-color: #DEFCD2;
+	color: black;
+} 
+
+.tiempo {
+	background-color: #A6C087;
+}
+ 
+.idTipo {
+	background-color: #DEFCD2;
+	color: black;
+} 
+
+.form-control{
+	font-family: Arial; 
+	font-size:1.2vw;
+	height:1.5vw;
+	width: 22vw;
+	padding: 0.7vw;
+}
+
+.tipos {
   font-size:1.2vw;
   border: 0.2vw solid rgba(255,255,255,10);
   border-collapse: collapse;
@@ -33,31 +101,26 @@ p{
  
 }
 
-.recursos tr:nth-child(even){
+.tipos tr:nth-child(even){
 	background-color: #f9f256;
-	color: white;
+	color:white;
 }
 
-.recursos tr:nth-child(odd){
+.tipos tr:nth-child(odd){
 	background-color: #fcf8a5;
-	color: black;
+	color:black;
 }
 
-.recursos tr:hover {
+.tipos tr:hover {
 	background-color: #f04c65;
 }
 
-.recursos th {
+.tipos th {
   padding-top: 25px;
   padding-bottom: 12px;
   text-align: left;
   background-color:#ececec;
   color: black;
-}
-
- 
-.recursos th:nth-child(8) {
-	width: 15%;
 }
 
 
@@ -75,13 +138,13 @@ p{
 	display:inline-block;
 	
 	/*texto del botón*/
-	color:182b64;
+	color:#182b64;
 	font-family:sans-serif;
 	font-size:15px;
 	font-weight:bold;
 
 	/*Tamaño*/
-	padding:0.1vw 0.5vw;
+	padding:0.3vw 0.6vw;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #fae9ed;	
 }

@@ -1,57 +1,50 @@
 package edu.eci.cvds.view;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
+import edu.eci.cvds.exceptions.ServiciosReservaException;
+import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
-@ManagedBean(name = "InicioSesionBean")
+@ManagedBean(name = "TiposBean")
 @SessionScoped
-public class InicioSesionView {
+public class TipoView {
 	
 	private ServiciosReserva serviciosReserva;
 
 	@ManagedProperty(value = "#{ReservaBean}")
 	private BasePageBean baseBean;
 	
-	private String correo;
-	private String password;
+	private List<Tipo> listaTipos;
 	
-	public InicioSesionView() {
+	public TipoView() {
 	}
 
 	@PostConstruct
 	public void init() {
 		serviciosReserva=baseBean.getServiciosRecurso();
-
+		actionSetListaTipos();
 	}
 	
-	public void actionPrueba() {
-		System.out.println(correo);
-		System.out.println(password);
+	
+	private void actionSetListaTipos() {
+		try {
+			this.listaTipos=serviciosReserva.consultarTipos();
+		} 
+		catch (ServiciosReservaException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public String getCorreo() {
-		return this.correo;
+	public List<Tipo> getListaTipos(){
+		return this.listaTipos;
 	}
 	
-	public void setCorreo(String correo) {
-		this.correo=correo;
-		
-	}
-	
-	public String getPassword() {
-		return this.password;
-		
-	}
-	
-	public void setPassword(String pass) {
-		this.password=pass;
-	}
-
 	public BasePageBean getUsuario() {
 		return this.baseBean;
 	}

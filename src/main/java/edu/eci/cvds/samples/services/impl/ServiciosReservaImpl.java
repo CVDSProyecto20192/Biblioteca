@@ -51,14 +51,12 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Override
 	public Recurso consultarRecurso(long id) throws ServiciosReservaException{
-		Recurso r=null;
 		try {
-			r=recursoDAO.load(id);
+			return recursoDAO.load(id);
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar el recurso "+id, e);
 		}
-		return r;
 	}
 
 	@Override
@@ -121,6 +119,37 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al agregar el tipo", e);
+		}
+		
+	}
+
+	@Override
+	public long consultarIdRecurso(String nombre, Tipo t, String ubicacion) throws ServiciosReservaException {
+		try {
+			return recursoDAO.loadIdRecurso(nombre, t, ubicacion);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el id del recurso", e);
+		}
+	}
+
+	@Override
+	public boolean consultarDisponibilidadRecurso(long id) throws ServiciosReservaException {
+		try {
+			return recursoDAO.loadDispRecurso(id);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar disponibilidad del recurso "+id, e);
+		}
+	}
+
+	@Override
+	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException {
+		try {
+			recursoDAO.updateDispRecurso(id, b);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al actualizar disponibilidad del recurso "+id, e);
 		}
 		
 	}

@@ -51,19 +51,39 @@ public class BasePageBean implements Serializable {
     	return getInjector().getInstance(ReservaDAO.class);
     }
     
-    protected ServiciosReserva getServiciosReserva() {
+    protected ServiciosReserva getServiciosRecurso() {
     	return getInjector().getInstance(ServiciosReserva.class);
     }
+    
+    public String page01(){
+		return "menuAdmin?faces-redirect=true";
+	}
+    
+    public String page02(){
+		return "menuCom?faces-redirect=true";
+	}
     
     public String page1(){
 		return "iniciosesion?faces-redirect=true";
 	}
-	
+    
 	public String page2(){
-		return "recursos?faces-redirect=true";
+		return "registroRecursos?faces-redirect=true";
 	}
     
-    /*public long getDocAlq() {
+	public String page3(){
+		return "recursos?faces-redirect=true";
+	}
+	
+	public String page4(){
+		return "reservas?faces-redirect=true";
+	}
+    
+	public String page5(){
+		return "registroUsuarios?faces-redirect=true";
+	}
+	
+	/*public long getDocAlq() {
 		return this.docAlq;
 	}
     

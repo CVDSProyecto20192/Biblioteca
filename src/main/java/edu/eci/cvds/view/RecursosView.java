@@ -1,5 +1,8 @@
 package edu.eci.cvds.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -27,14 +30,16 @@ public class RecursosView {
 	private int tiempo;
 	private Tipo tipo;
 	private int idTipo;
-	
+	private List<Recurso> listaRecursos;
 	
 	public RecursosView() {
 	}
 
 	@PostConstruct
 	public void init() {
-		serviciosReserva=baseBean.getServiciosReserva();
+		serviciosReserva=baseBean.getServiciosRecurso();
+		actionReiniciar();
+		actionSetListaRecursos();
 	}
 	
 	public void actionRegistrarRecurso() {
@@ -44,14 +49,36 @@ public class RecursosView {
 			actionDisponible();
 			Recurso r=new Recurso(this.id,this.nombre,this.ubicacion,this.capacidad,this.disponible,this.tiempo,this.tipo);
 			serviciosReserva.agregarRecurso(r);
+			actionBuscarId();
 		} catch (ServiciosReservaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally {
-			actionReiniciar();
+		catch (Exception e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
+	}
+	
+	private void actionBuscarId() {
+		try {
+			this.id=serviciosReserva.consultarIdRecurso(this.nombre,this.tipo,this.ubicacion);
+		} 
+		catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void actionSetListaRecursos() {
+		try {
+			this.listaRecursos=serviciosReserva.consultarRecursos();
+		} 
+		catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void actionDisponible() {
@@ -59,9 +86,26 @@ public class RecursosView {
 		if(this.capacidad>0) this.disponible=true;
 	}
 	
+	public void actionBloquear(long id) {
+		boolean b;
+		try {
+			b = serviciosReserva.consultarDisponibilidadRecurso(id);
+			serviciosReserva.cambiarDisponibilidadRecurso(id,!b);
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public String actionEstado(boolean b, int capacidad) {
+		String s="bloqueo";
+		if(b==false && capacidad>0) s="desbloqueo";
+		return s;
+	}
 	
 	public void actionReiniciar() {
-		this.id=0;
+		this.id=-1;
 		this.nombre=null;
 		this.ubicacion=null;
 		this.capacidad=0;
@@ -142,6 +186,11 @@ public class RecursosView {
 	public void setIdTipo(int idT) {
 		this.idTipo=idT;
 		
+	}
+	
+	public List<Recurso> getListaRecursos(){
+		actionSetListaRecursos();
+		return this.listaRecursos;
 	}
 	
 	public BasePageBean getUsuario() {

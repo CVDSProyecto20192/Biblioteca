@@ -9,72 +9,72 @@
 	
 	<h:head>
 		<link rel="stylesheet" type="text/css" href="css/recursos.css" />
+		<title>Recursos</title>
     </h:head>
     
     <h:body>
 
 		<h1>Biblioteca</h1>
-		<h2>Registro de Recursos</h2>
+		<h2>Recursos</h2>
 		<br/>
-		
-        <h:form id="registroRecurso_form">
+        <h:form id="recursos_form">
             <section>
-            	<div style="text-align: center">
-            		            		
-    				<div class="form-group">
-	            		<span class="label idRec"><b>Recurso </b></span>
-	    				<p:inputText id ="idRec" value="#{RecursosBean.id}" placeholder="Introduce el id del recurso" class="form-control"/>
-					</div>
+                <div style="text-align: center" class='table'>
+                
+                    <p:dataTable class="recursos" value="#{RecursosBean.listaRecursos}" var = "recurso" style="margin: 0 auto;"
+                    rows="8" paginator="true" 
+    				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
+    				rowsPerPageTemplate="8, 16, 24">
+    				
+    					<p:column headerText="Id Recurso" filterBy="#{recurso.id}">
+                        	<h:outputText value="#{recurso.id}"></h:outputText>
+                        </p:column>            
 						
-					<br/>
-					
-					<div class="form-group">
-    					<span class="label nombre"><b>Nombre </b></span>
-    					<p:inputText id ="nombre" value="#{RecursosBean.nombre}" placeholder="Introduce el nombre del recurso" class="form-control"/>
-					</div>
-					
-					<br/>
-					
-					<div class="form-group">
-    					<span class="label ubicacion"><b>Ubicaci&#243;n </b></span>
-    					<p:inputText id ="ubicacion" value="#{RecursosBean.ubicacion}" placeholder="Introduce la ubicación del recurso" class="form-control"/>
-					</div>
-					
-					<br/>
-            		
-            		<div class="form-group">
-    					<span class="label capacidad"><b>Capacidad </b></span>
-    					<p:inputText id ="capacidad" value="#{RecursosBean.capacidad}" placeholder="Introduce cuantos recursos hay" class="form-control"/>
-					</div>
-	                
-	                <br/>
-            		
-            		<div class="form-group">
-    					<span class="label tiempo"><b>Tiempo </b></span>
-    					<p:inputText id ="tiempo" value="#{RecursosBean.tiempo}" placeholder="Introduce las horas a prestar el recurso" class="form-control"/>
-					</div>
-											
-					<br/>
-            		
-            		<div class="form-group">
-    					<span class="label idTipo"><b>Tipo </b></span>
-    					<p:inputText id ="idTipo" value="#{RecursosBean.idTipo}" placeholder="Introduce el número de tipo" class="form-control"/>
-					</div>	
-					
-					<br/>
-					
-					<div>
-    					<p:commandButton value="Registrar" action="#{RecursosBean.actionRegistrarRecurso}" update="registroRecurso_form"/>
-						<br/>
+                        <p:column headerText="Nombre" filterBy="#{recurso.nombre}">
+                        	<h:outputText value="#{recurso.nombre}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Ubicacion" filterBy="#{recurso.ubicacion}">
+                        	<h:outputText value="#{recurso.ubicacion}"></h:outputText>
+                        </p:column>       
+                        
+                        <p:column headerText="Capacidad" filterBy="#{recurso.capacidad}">
+                        	<h:outputText value="#{recurso.capacidad}"></h:outputText>
+                        </p:column>            
 						
-					</div>
-				
-				</div>
+                        <p:column headerText="Disponible" filterBy="#{recurso.disponible}">
+                        	<h:outputText value="#{recurso.disponible}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Tiempo" filterBy="#{recurso.tiempo}">
+                        	<h:outputText value="#{recurso.tiempo}"></h:outputText>
+                        </p:column> 
+                        
+                        <p:column headerText="Tipo" filterBy="#{recurso.tipo.tipo}">
+                        	<h:outputText value="#{recurso.tipo.tipo}"></h:outputText>
+                        </p:column>  
+
+						<p:column headerText="Estado">
+      						<p:commandButton actionListener="#{RecursosBean.actionBloquear(recurso.id)}" value="#{RecursosBean.actionEstado(recurso.disponible, recurso.capacidad)}" update="recursos_form" />            
+      				    </p:column>  
+
+					
+                    </p:dataTable>
+                </div>  
+              
+            </section>
 			
+			<br/>
+
+			<section>
+		
+				<div style="text-align: center">
+					<p:commandButton id= "back" value="Back" action="#{ReservaBean.page01}" update="recursos_form"></p:commandButton>
+				
+                </div> 
+
 			</section>
-
         </h:form>
-
     </h:body>
     
 </html>

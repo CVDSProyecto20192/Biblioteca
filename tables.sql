@@ -60,4 +60,6 @@ CREATE TABLE public.reserva_recurso (
 );
 
 
+/*CREATE UNIQUE INDEX recurso_index ON br_recurso (nombre, id_tipo);*/
+
 

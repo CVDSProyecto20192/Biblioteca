@@ -30,8 +30,8 @@
 	</select>
 	
 	<insert id ="insertarTipo">
-    	insert into BR_TIPO (id,tipo,descripcion) 
-    	VALUES (#{tipo.id},#{tipo.tipo},#{tipo.descripcion});                   
+    	insert into BR_TIPO (id, tipo, descripcion) 
+    	VALUES (#{tipo.id},#{tipo.tipo}, #{tipo.descripcion})                    
     </insert>
 	
 	<resultMap id="TipoResult" type="Tipo">

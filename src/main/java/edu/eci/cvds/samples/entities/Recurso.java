@@ -3,6 +3,10 @@ package edu.eci.cvds.samples.entities;
 import java.io.Serializable;
 
 public class Recurso implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long id;
 	private String nombre;
 	private String ubicacion;

@@ -1,0 +1,72 @@
+body{
+ background-color: #eee4fc;
+}
+
+section{
+width: 100%;
+height: auto;
+}
+
+.contenedor{
+ width: 100%;
+ height: auto;
+ margin-top: 10vw;
+ display: text-align:center;
+ margin-rigth: 10%;
+ margin-left: 10%;
+}
+
+.elemento{
+ float: left;
+ width: 18vw;
+ height: 18vw;
+ opacity: 0.85;
+ margin: 1vw;
+ border-radius: 100%;
+
+ -webkit-transition: all .05s ease-in-out;
+ -moz-transition: all .05s ease-in-out;
+ -o-transition: all .05s ease-in-out;
+ transition: all .05s ease-in-out;
+}
+.elemento:hover{
+ border: solid 1vw rgba(255,255,255,.0);
+ margin: 2vw;
+ opacity: 0.50;
+ background-color: rgba(255,255,255,.0);
+}
+
+.icon{
+	display: text-align:center;
+	margin:2.1vw auto;
+	background-color: rgba(255,255,255,.40);
+	width:8vw;
+	padding:3vw;
+	margin-left: 11%;
+	-webkit-border-radius: 50%;
+	-webkit-box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
+	-webkit-transition:box-shadow .4s;
+}
+
+.contenedor:hover .icon{
+	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.0);
+}
+
+#uno{
+	background-color:#f2655e;
+}
+
+#dos{
+	background-color:#f2e75e;
+}
+
+#tres{
+	background-color:#92f1cd;
+}
+
+#cuatro{
+	background-color:#898eff;
+}
+
+
+

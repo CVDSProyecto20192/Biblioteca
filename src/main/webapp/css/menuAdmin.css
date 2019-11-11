@@ -1,6 +1,13 @@
-body {
-  background-color:#f0f5ef;
+*{
+    margin: 0px;
+    padding: 0px;
 }
+
+body {
+  background-color:BLACK;
+}
+
+
 
 #header{
 	text-align: center;
@@ -10,9 +17,9 @@ body {
 
 
 section{
-	margin:100px auto;
+	margin:5vw auto;
 	width:90vw;
-	height:30vw;
+	height:100%;
 	background-color: black;
 }
 
@@ -80,4 +87,7 @@ section{
 .contenedor:hover .icon{
 	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);
 }
+
+
+<!-- Fondo -->
 

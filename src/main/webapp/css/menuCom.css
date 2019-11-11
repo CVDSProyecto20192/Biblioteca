@@ -1,9 +1,9 @@
 body{
- background-color: #eee4fc;
+ background-image: url("img/nube1.jpg");
 }
 
 section{
-width: 100%;
+width: 90%;
 height: auto;
 }
 
@@ -67,6 +67,3 @@ height: auto;
 #cuatro{
 	background-color:#898eff;
 }
-
-
-

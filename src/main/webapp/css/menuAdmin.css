@@ -1,0 +1,83 @@
+body {
+  background-color:#f0f5ef;
+}
+
+#header{
+	text-align: center;
+	font-size: 2.5em;
+	color:#9a9a9a;
+}
+
+
+section{
+	margin:100px auto;
+	width:90vw;
+	height:30vw;
+	background-color: black;
+}
+
+.contenedor{
+	width: 15vw;
+	height:30vw;
+	float:left;
+	-webkit-transition: height .4s;
+}
+
+#uno{
+	background-color:#f5b35a;
+}
+
+#dos{
+	background-color:#fae97d;
+}
+
+#tres{
+	background-color:#48edb7;
+}
+
+#cuatro{
+	background-color:#9df4d7;
+}
+
+#cinco{
+	background-color:#e672fc;
+}
+
+#seis{
+	background-color:#f3b9fe;
+}
+
+.icon{
+	display: block;
+	margin:50px auto;
+	background-color: rgba(255,255,255,.40);
+	width:10vw;
+	padding:20px;
+	-webkit-border-radius: 50%;
+	-webkit-box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
+	-webkit-transition:box-shadow .4s;
+}
+
+.texto{
+  	font-family: "Calibri", "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+	font-size: 1.2em;
+	color:white;
+	text-align: center;
+	padding-top:2vw;
+	opacity:0.6;
+	-webkit-transition: padding-top .4s;
+}
+
+.contenedor:hover{
+	height:35vw;
+}
+
+.contenedor:hover .texto{
+	padding-top: 10vw;
+	opacity: 1;
+}
+
+.contenedor:hover .icon{
+	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);
+}
+

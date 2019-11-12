@@ -93,36 +93,6 @@ public class ServiciosReservaTest{
 		Assert.assertTrue(r);
     }
 	
-	/**@Test
-    public void noAgregarDosRecursosConElMismoId(){
-		boolean r = false;
-		Tipo t = new Tipo(4, "prueba", "prueba");
-		Recurso rec = new Recurso((long) 2, "prueba", "prueba", 1, true, 5, t);
-        try{
-			serviciosReserva.agregarTipo(t);
-			serviciosReserva.agregarRecurso(rec);
-			rec = serviciosReserva.consultarRecurso(rec.getId());
-			System.out.println(rec);
-			if ( rec != null){
-				r = true;
-			}
-        }
-        catch (ServiciosReservaException e){
-            r = false;
-        }
-		Assert.assertTrue(r);
-		r = false;
-        try{
-			rec = new Recurso((long) 2, "prueba2", "prueba2", 3, true, 2, t);
-			serviciosReserva.agregarRecurso(rec);
-			rec = serviciosReserva.consultarRecurso(rec.getId());
-			System.out.println(rec);
-        }
-        catch (ServiciosReservaException e){
-            r = true;
-        }
-		Assert.assertTrue(r);
-    }*/
 
 
 	@Test
@@ -139,5 +109,53 @@ public class ServiciosReservaTest{
 		Assert.assertTrue(r);
     }
 
-    
+	@Test
+    public void deberiaEstarDisponibleUnRecursoRecienIngresado(){
+		boolean r = false;
+		try{
+			Tipo t = new Tipo(6, "prueba", "prueba");
+			Recurso rec = new Recurso((long) 1, "prueba", "prueba", 1, true, 5, t);
+			serviciosReserva.agregarTipo(t);
+			serviciosReserva.agregarRecurso(rec);
+			r = serviciosReserva.consultarDisponibilidadRecurso((long) 1);
+		}
+		catch (ServiciosReservaException e){
+            r = false;
+        }
+		Assert.assertTrue(r);	
+	}
+	
+	@Test
+    public void deberiaCambiarElEstadoDisponibleDeUnRecurso(){
+		boolean r = true;
+		try{
+			Tipo t = new Tipo(7, "prueba", "prueba");
+			Recurso rec = new Recurso((long) 3, "prueba", "prueba", 1, true, 5, t);
+			serviciosReserva.agregarTipo(t);
+			serviciosReserva.agregarRecurso(rec);
+			serviciosReserva.cambiarDisponibilidadRecurso((long) 3, false);
+			r = serviciosReserva.consultarDisponibilidadRecurso((long) 3);
+		}
+		
+		catch (ServiciosReservaException e){
+            r = true;
+        }
+		
+		Assert.assertFalse(r);	
+	}
+	
+	@Test
+    public void noDeberiaCambiarElEstadoDisponibleDeUnRecursoQueNoExiste(){
+		boolean r = false;
+		try{
+			serviciosReserva.cambiarDisponibilidadRecurso((long) 10000, false);
+		}
+		
+		catch (ServiciosReservaException e){
+            r = true;
+        }
+		
+		Assert.assertTrue(r);	
+	}
+	
 }

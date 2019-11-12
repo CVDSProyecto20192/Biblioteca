@@ -19,7 +19,7 @@ import org.junit.Assert;
 
 public class ServiciosReservaTest{
     
-	/*@Inject
+	@Inject
     ServiciosReserva serviciosReserva;
     public ServiciosReservaTest(){
         
@@ -27,7 +27,7 @@ public class ServiciosReservaTest{
 
     @Before
     public void setUp(){
-        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReserva();        
+        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReservaTesting();        
     }
 
     @Test
@@ -58,7 +58,6 @@ public class ServiciosReservaTest{
             serviciosReserva.agregarTipo(t);
         }
         catch (ServiciosReservaException e){
-			System.out.println("entroTest");
             r = false;
         }
 		boolean f = false;
@@ -94,7 +93,7 @@ public class ServiciosReservaTest{
 		Assert.assertTrue(r);
     }
 	
-	@Test
+	/**@Test
     public void noAgregarDosRecursosConElMismoId(){
 		boolean r = false;
 		Tipo t = new Tipo(4, "prueba", "prueba");
@@ -103,6 +102,7 @@ public class ServiciosReservaTest{
 			serviciosReserva.agregarTipo(t);
 			serviciosReserva.agregarRecurso(rec);
 			rec = serviciosReserva.consultarRecurso(rec.getId());
+			System.out.println(rec);
 			if ( rec != null){
 				r = true;
 			}
@@ -115,12 +115,14 @@ public class ServiciosReservaTest{
         try{
 			rec = new Recurso((long) 2, "prueba2", "prueba2", 3, true, 2, t);
 			serviciosReserva.agregarRecurso(rec);
+			rec = serviciosReserva.consultarRecurso(rec.getId());
+			System.out.println(rec);
         }
         catch (ServiciosReservaException e){
             r = true;
         }
 		Assert.assertTrue(r);
-    }
+    }*/
 
 
 	@Test
@@ -135,7 +137,7 @@ public class ServiciosReservaTest{
             r = true;
         }
 		Assert.assertTrue(r);
-    }*/
+    }
 
     
 }

@@ -28,17 +28,19 @@ public class LoginBean implements Serializable {
     private String userName;
     private String password;
     private boolean rememberMe;
+    private Subject currentUser;
 
     public void login() {
         try {
-            Subject currentUser = SecurityUtils.getSubject();
+            this.currentUser = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
 
             currentUser.login(token);
             currentUser.getSession().setAttribute("Correo", userName);
             token.setRememberMe(true);
-
+            
             FacesContext.getCurrentInstance().getExternalContext().redirect("recursos.xhtml");
+            
             
         } catch (UnknownAccountException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -49,11 +51,14 @@ public class LoginBean implements Serializable {
         } catch (IOException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo en servidor", "Error"));
         }
+
     }
 
-    public String getUserName() {
-        return userName;
-    }
+   public void logout() {
+	   if(this.currentUser.isAuthenticated()) {
+		   currentUser.logout();
+	   }
+   }
 
     public boolean isRememberMe() {
         return rememberMe;
@@ -69,6 +74,10 @@ public class LoginBean implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getUserName() {
+        return this.userName;
     }
 
     public void setUserName(String userName) {

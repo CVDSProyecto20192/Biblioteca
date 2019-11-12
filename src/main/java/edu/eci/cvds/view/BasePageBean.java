@@ -83,6 +83,10 @@ public class BasePageBean implements Serializable {
 		return "registroUsuarios?faces-redirect=true";
 	}
 	
+	public String page6(){
+		return "cerrarsesion?faces-redirect=true";
+	}
+	
 	/*public long getDocAlq() {
 		return this.docAlq;
 	}

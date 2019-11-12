@@ -27,8 +27,8 @@ public class GuiceContextListener implements ServletContextListener {
             @Override
             protected void initialize() {
                 install(JdbcHelper.PostgreSQL);
-                setEnvironmentId("test");
-                setClassPathResource("mybatis-config-h2.xml");
+                setEnvironmentId("development");
+                setClassPathResource("mybatis-config.xml");
 
                 // TODO Add service class associated to Stub implementation
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);

@@ -1,10 +1,20 @@
-body{
- background-image: url("img/nube1.jpg");
+html {
+	height:100%;
+	width:100%;
+}
+
+*{
+	margin:0;
+}
+
+body {
+  background-image: url(/img/fon3.gif);
+  background-size: 100% 100%;
 }
 
 section{
-width: 90%;
-height: auto;
+	width: 90%;
+	height: auto;	
 }
 
 .contenedor{

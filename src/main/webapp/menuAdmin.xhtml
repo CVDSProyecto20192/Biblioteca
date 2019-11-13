@@ -27,54 +27,59 @@
       </h:head>
       
       <h:body>
-      	<div class="area">
-			<section>
+		  <h:form>
+			<div class="area">
+					<section>
+						
+						<div class="contenedor" id="uno">
+							<img class="icon" src="img/users.svg"/>
+							<b><p class="texto">Usuarios</p></b>
+						</div>
+						
+						<div class="contenedor" id="dos">
+							<img class="icon" src="img/reserva.svg"/>
+							<b><p class="texto">Reservas</p></b>
+						</div>
+						
+						<div class="contenedor" id="tres">
+							<img class="icon" src="img/recurso.svg"/>
+							<b><p class="texto">Recursos</p></b>
+						</div>
+						
+						<div class="contenedor" id="cuatro">
+							<img class="icon" src="img/tipo.svg"/>
+							<b><p class="texto">Tipos</p></b>
+						</div>
 				
-				<div class="contenedor" id="uno">
-					<img class="icon" src="img/users.svg"/>
-					<b><p class="texto">Usuarios</p></b>
-				</div>
-				
-				<div class="contenedor" id="dos">
-					<img class="icon" src="img/reserva.svg"/>
-					<b><p class="texto">Reservas</p></b>
-				</div>
-				
-				<div class="contenedor" id="tres">
-					<img class="icon" src="img/recurso.svg"/>
-					<b><p class="texto">Recursos</p></b>
-				</div>
-				
-				<div class="contenedor" id="cuatro">
-					<img class="icon" src="img/tipo.svg"/>
-					<b><p class="texto">Tipos</p></b>
-				</div>
-		
-				<div class="contenedor" id="cinco">
-					<img class="icon" src="img/logout.svg"/>
-					<b><p class="texto">Logout</p></b>
-				</div>
-				
-				<div class="contenedor" id="seis">
-					<img class="icon" src="img/help.svg"/>
-					<b><p class="texto">Help</p></b>
-				</div>
+						<div class="contenedor" id="cinco">
+							<p:commandLink action="#{LoginBean.logout}" update="@form">
+								<img class="icon" src="img/logout.svg"/>
+							</p:commandLink>
+							
+							<b><p class="texto">Logout</p></b>
+						</div>
+						
+						<div class="contenedor" id="seis">
+							<img class="icon" src="img/help.svg"/>
+							<b><p class="texto">Help</p></b>
+						</div>
+					
+						<ul class="circles">
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+							</ul>
 			
-				<ul class="circles">
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		                    <li></li>
-		         </ul>
-	
-			</section>   
-		</div>
+					</section>   
+				</div>
+		  </h:form>
       </h:body>
       
 </html>

@@ -15,7 +15,14 @@
     <h:body>
 
 		<h1>Biblioteca</h1>
-		<h2>Se ha cerrado tu sesión</h2>
+    <h2>Se ha cerrado tu sesión</h2>
+    
+    <h:form>
+      <p:commandLink id="prueba" action="#{LoginBean.redirectTo('recursos.xhtml')}" update="@form">
+        <p:graphicImage id="image" value="img/logo2.png"></p:graphicImage>
+      </p:commandLink>
+    </h:form>
+    
 		
       
 

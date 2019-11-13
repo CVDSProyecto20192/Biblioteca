@@ -53,7 +53,8 @@ public class LoginBean implements Serializable {
 
    public void logout() {
 	   if(this.currentUser.isAuthenticated()) {
-		   currentUser.logout();
+           currentUser.logout();
+           redirectTo("iniciosesion.xhtml");
 	   }
    }
 
@@ -76,14 +77,17 @@ public class LoginBean implements Serializable {
 	public void isLogged(){
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.getSession().getAttribute("Correo") != null){
-			try{
-				FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
-			}catch (IOException e){
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error al redireccionar","Ocurrio un error en el servidor"));
-			}
-            
+            redirectToMenu();
 		}
-	}
+    }
+    
+    public void redirectTo(String path){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public boolean isRememberMe() {
         return rememberMe;

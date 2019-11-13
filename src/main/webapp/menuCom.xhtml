@@ -25,27 +25,32 @@
       </h:head>
       
       <h:body>
-		<section>
-			
-			<div class="contenedor">
-			
-				<div class="elemento" id="uno">
-					<img class="icon" src="img/reserva.svg"/>
-				</div>
-				
-				<div class="elemento" id="dos">
-					<img class="icon" src="img/infoUser.svg"/>
-				</div>
+		  <h:form>
+			<section>
 		
-				<div class="elemento" id="tres">
-					<img class="icon" src="img/logout.svg"/>
-				</div>
+				<div class="contenedor">
 				
-				<div class="elemento" id="cuatro">
-					<img class="icon" src="img/help.svg"/>
+					<div class="elemento" id="uno">
+						<img class="icon" src="img/reserva.svg"/>
+					</div>
+					
+					<div class="elemento" id="dos">
+						<img class="icon" src="img/infoUser.svg"/>
+					</div>
+			
+					<div class="elemento" id="tres">
+						<p:commandLink action="#{LoginBean.logout}" update="@form">
+							<img class="icon" src="img/logout.svg"/>
+						</p:commandLink>
+					</div>
+					
+					<div class="elemento" id="cuatro">
+						<img class="icon" src="img/help.svg"/>
+					</div>
 				</div>
-			</div>
-		</section>            
+			</section>
+		  </h:form>
+		            
       </h:body>
       
 	

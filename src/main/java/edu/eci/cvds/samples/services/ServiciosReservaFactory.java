@@ -3,11 +3,13 @@ package edu.eci.cvds.samples.services;
 import com.google.inject.Injector;
 
 import edu.eci.cvds.sampleprj.dao.CargoDAO;
+import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
 import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisCargoDAO;
+import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisHorarioDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisRecursoDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisReservaDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisTipoDAO;
@@ -39,6 +41,7 @@ public class ServiciosReservaFactory {
                bind(TipoDAO.class).to(MyBatisTipoDAO.class);
                bind(RecursoDAO.class).to(MyBatisRecursoDAO.class);
                bind(ReservaDAO.class).to(MyBatisReservaDAO.class);
+               bind(HorarioDAO.class).to(MyBatisHorarioDAO.class);
                bind(ServiciosReserva.class).to(ServiciosReservaImpl.class);
            }
        });

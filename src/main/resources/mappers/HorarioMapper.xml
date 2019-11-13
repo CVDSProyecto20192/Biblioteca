@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper">
+
+	<select parameterType="map" id="consultarHorarioDia" resultMap="HorarioResult">
+			SELECT 
+    		
+    		h.id as id_horario,
+			h.dia as dia_horario,
+			h.horas
+			
+			FROM BR_HORARIO as h
+    		
+    		WHERE h.id=#{id_horario} and h.dia=#{dia_horario}
+ 			
+	</select>
+	
+	<select parameterType="map" id="consultarHorarioDias" resultMap="HorarioResult">
+			SELECT
+			
+			h.id as id_horario,
+			h.dia as dia_horario,
+			h.horas
+			
+			FROM BR_HORARIO as h
+    		
+    		WHERE h.id=#{id_horario}
+    		
+	</select>
+	
+	<select parameterType="map" id="consultarHorarios" resultMap="HorarioResult">
+			SELECT
+			
+			h.id as id_horario,
+			h.dia as dia_horario,
+			h.horas
+			
+			FROM BR_HORARIO as h
+    		
+    		ORDER by h.id
+    		
+	</select>
+	
+	<select id="consultarUltimoId" resultType="long">
+			SELECT 
+    		MAX(id) 
+
+			FROM
+			BR_HORARIO
+			
+	</select>
+	
+	<insert id ="insertarHorario">
+    	insert into BR_HORARIO (id, dia, horas) 
+    	VALUES (#{horario.id},#{horario.dia},#{horario.horas})
+    </insert>
+
+	<resultMap id="HorarioResult" type="Horario">
+			
+			<id property="id" column="id_horario"/>
+			<result property="dia" column="dia_horario"/>
+			<result property="horas" column="horas"/>
+    	
+    </resultMap>
+
+
+</mapper>

@@ -19,7 +19,7 @@ import org.junit.Assert;
 
 public class ServiciosReservaTest{
     
-	@Inject
+	/*@Inject
     ServiciosReserva serviciosReserva;
     public ServiciosReservaTest(){
         
@@ -156,6 +156,6 @@ public class ServiciosReservaTest{
         }
 		
 		Assert.assertTrue(r);	
-	}
+	}*/
 	
 }

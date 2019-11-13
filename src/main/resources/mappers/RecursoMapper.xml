@@ -13,7 +13,6 @@
 			r.ubicacion as ubi_recurso,
     		r.capacidad as cap_recurso,
 			r.disponible as disp_recurso,
-    		r.tiempo as tiempo_rec,
     			
 			t.id as id_tipo,
 			t.tipo as nom_tipo,
@@ -34,7 +33,6 @@
 			r.ubicacion as ubi_recurso,
     		r.capacidad as cap_recurso,
 			r.disponible as disp_recurso,
-    		r.tiempo as tiempo_rec,
     			
 			t.id as id_tipo,
 			t.tipo as nom_tipo,
@@ -49,12 +47,32 @@
 	
 	<insert id ="insertarRecurso">
 		<selectKey keyProperty="id_recurso" resultType="int" order="BEFORE">
-			select MAX(id)+1 from BR_RECURSO
+			select COUNT(id)+1 from BR_RECURSO
 		</selectKey>
-    	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, disponible, tiempo, id_tipo) 
-    	VALUES (#{id_recurso},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad},#{recurso.disponible}, #{recurso.tiempo}, #{recurso.tipo.id})
+    	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, id_tipo, disponible) 
+    	VALUES (#{id_recurso},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad}, #{recurso.tipo.id}, #{recurso.disponible}) 
     </insert>
     
+	<update parameterType="Horario" id="actualizarIdHorario">
+	
+		update BR_RECURSO
+    		   
+    	set	id_horario = #{id_horario}
+    		   
+    	where id = #{id_recurso}
+
+	</update>
+
+	<select id="consultarIdHorario" resultType="long">
+			SELECT 
+    		
+    		r.id_horario 
+		
+			FROM BR_RECURSO as r
+
+			WHERE r.id=#{id_rec}
+	</select>
+	
     <select id="consultarIdRecurso" resultType="long">
 			SELECT 
     		
@@ -83,6 +101,14 @@
 			WHERE id=#{id_rec} 
 	</update>
 	
+	<select id="consultarUltimoId" resultType="long">
+			SELECT 
+    		MAX(id) 
+
+			FROM
+			BR_RECURSO
+			
+	</select>
 
 	<resultMap id="RecursoResult" type="Recurso">
 			
@@ -91,9 +117,8 @@
 			<result property="ubicacion" column="ubi_recurso"/>
     		<result property="capacidad" column="cap_recurso"/>
 			<result property="disponible" column="disp_recurso"/>
-    		<result property="tiempo" column="tiempo_rec"/>
       		<association property="tipo" javaType="Tipo" column="id_tipo" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoMapper.TipoResult"/>   			
-   
+			<collection property="tiempo" ofType="Horario" column="id_horario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper.HorarioResult"/>      
     </resultMap>
 
 </mapper>

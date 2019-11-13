@@ -7,9 +7,11 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
+import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
+import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
@@ -24,6 +26,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Inject
 	private TipoDAO tipoDAO;
+	
+	@Inject
+	private HorarioDAO horarioDAO;
 	 
 	@Override
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException{
@@ -155,4 +160,92 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		
 	}
 
+	@Override
+	public Horario consultarHorario(long idHorario, String dia) throws ServiciosReservaException {
+		try {
+			return horarioDAO.load(idHorario, dia);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar horario: "+idHorario+" "+dia, e);
+		}
+	}
+
+	@Override
+	public List<Horario> consultarHorarioDia(long idHorario) throws ServiciosReservaException {
+		try {
+			return horarioDAO.loadAllDia(idHorario);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar horarios: "+idHorario, e);
+		}
+	}
+
+	@Override
+	public List<Horario> consultarHorarios() throws ServiciosReservaException {
+		try {
+			return horarioDAO.loadAll();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar horarios", e);
+		}
+	}
+
+	@Override
+	public void agregarHorario(Horario h) throws ServiciosReservaException {
+		try {
+			horarioDAO.addHorario(h);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al agregar el horario", e);
+		}
+	}
+	
+	@Override
+	public void actualizarHorario(Recurso r,Horario h) throws ServiciosReservaException {
+		try {
+			long idRec=r.getId();
+			long idHor=h.getId();
+			recursoDAO.updateIdHorario(idRec, idHor);
+			List<Horario>tiempo=horarioDAO.loadAllDia(idHor);
+			r.setTiempo(tiempo);
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al actualizar el horario", e);
+		}
+	}
+	
+	@Override
+	public long consultarIdHorario(Recurso r) throws ServiciosReservaException {
+		try {
+			long idRec=r.getId();
+			long idTiempo=recursoDAO.loadIdHorario(idRec);
+			return idTiempo;
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar id del horario", e);
+		}
+	}
+	
+	@Override
+	public long consultarIdUltimoRecurso() throws ServiciosReservaException {
+		try {
+			long idRec=recursoDAO.loadLastId();
+			return idRec;
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar id del ultimo recurso", e);
+		}
+	}
+
+	@Override
+	public long consultarIdUltimoHorario() throws ServiciosReservaException {
+		try {
+			long idHor=horarioDAO.loadLastId();
+			return idHor;
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar id del ultimo horario", e);
+		}
+	}
 }

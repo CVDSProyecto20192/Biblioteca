@@ -3,6 +3,7 @@ package edu.eci.cvds.samples.services;
 import java.util.List;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
+import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
@@ -32,4 +33,25 @@ public interface ServiciosReserva {
 	public boolean consultarDisponibilidadRecurso(long id) throws ServiciosReservaException;
 	
 	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException;
+
+	public Horario consultarHorario(long id, String dia) throws ServiciosReservaException;
+
+	public List<Horario> consultarHorarioDia(long id) throws ServiciosReservaException;
+
+	public List<Horario> consultarHorarios() throws ServiciosReservaException;
+
+	public void agregarHorario(Horario h) throws ServiciosReservaException;
+	
+	public void actualizarHorario(Recurso r,Horario h) throws ServiciosReservaException;
+	
+	public long consultarIdHorario(Recurso r) throws ServiciosReservaException;
+
+	long consultarIdUltimoRecurso() throws ServiciosReservaException;
+
+	long consultarIdUltimoHorario() throws ServiciosReservaException;
+
 }
+
+
+
+

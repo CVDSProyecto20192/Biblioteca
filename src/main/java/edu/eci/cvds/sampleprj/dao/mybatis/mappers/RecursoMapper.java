@@ -18,9 +18,15 @@ public interface RecursoMapper {
 
     public void insertarRecurso(@Param("recurso")Recurso r);
     
+    public void actualizarIdHorario(@Param("id_recurso") long id_recurso,@Param("id_horario") long id_horario);
+   
+    public long consultarIdHorario(@Param("id_rec")long id_recurso);            
+
     public long consultarIdRecurso(@Param("nom_rec")String nombre,@Param("tipo") Tipo tipo,@Param("ubi_rec")String ubicacion);            
 
     public boolean consultarDisponibilidadRecurso(@Param("id_rec")long id);
     
     public void actDisponibilidadRecurso(@Param("id_rec")long id, @Param("disp")boolean b);
+
+	public long consultarUltimoId();
 }

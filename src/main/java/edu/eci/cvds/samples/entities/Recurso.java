@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Recurso implements Serializable{
 	/**
@@ -12,15 +13,15 @@ public class Recurso implements Serializable{
 	private String ubicacion;
 	private int capacidad;
 	private boolean disponible;
-	private int tiempo;
+	private List<Horario> tiempo;
 	private Tipo tipo;
 	
 	public Recurso(){
 		
 	}
 	
-	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible, int tiempo, 
-			Tipo tipo){
+	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible, 
+			List<Horario>tiempo, Tipo tipo){
 		
 		this.id=id;
 		this.nombre=nombre;
@@ -31,7 +32,8 @@ public class Recurso implements Serializable{
 		this.tipo=tipo;
 	}
 	
-	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible, int tiempo){
+	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible,
+			List<Horario>tiempo){
 		
 		this.id=id;
 		this.nombre=nombre;
@@ -80,11 +82,11 @@ public class Recurso implements Serializable{
 		this.disponible = disponible;
 	}
 	
-	public int getTiempo() {
+	public List<Horario> getTiempo() {
 		return this.tiempo;
 	}
 
-	public void setTiempo(int tiempo) {
+	public void setTiempo(List<Horario> tiempo) {
 		this.tiempo=tiempo;
 	}
 	
@@ -98,8 +100,8 @@ public class Recurso implements Serializable{
 
 	@Override
     public String toString() {
-        return "Recurso{" + "id=" + this.id + ", nombre=" + this.nombre + ", ubicacion=" + this.ubicacion + ", capacidad=" + this.capacidad + ", tiempo=" + this.tiempo + ", tipo=" + this.tipo +  '}';                                
+        return "Recurso{" + "id=" + this.id + ", nombre=" + this.nombre + ", ubicacion=" +
+        this.ubicacion + ", capacidad=" + this.capacidad + ", tiempo=\n\t" + this.tiempo + ", tipo=" + this.tipo +  '}';                                
     }
-	
 }
 

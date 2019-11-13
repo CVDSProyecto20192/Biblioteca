@@ -17,7 +17,8 @@
 		<typeAlias type='edu.eci.cvds.samples.entities.Tipo' alias='Tipo'/>	
     	<typeAlias type='edu.eci.cvds.samples.entities.Recurso' alias='Recurso'/>
 		<typeAlias type='edu.eci.cvds.samples.entities.Reserva' alias='Reserva'/>
-    	
+    	<typeAlias type='edu.eci.cvds.samples.entities.Reserva' alias='Horario'/>
+
 	</typeAliases>
     
 
@@ -42,7 +43,8 @@
         <mapper resource="mappers/CargoMapper.xml"></mapper>
         <mapper resource="mappers/TipoMapper.xml"></mapper>
         <mapper resource="mappers/RecursoMapper.xml"></mapper>  
-		<mapper resource="mappers/ReservaMapper.xml"></mapper>       
+		<mapper resource="mappers/ReservaMapper.xml"></mapper> 
+		<mapper resource="mappers/HorarioMapper.xml"></mapper>       
     </mappers> 
         
         

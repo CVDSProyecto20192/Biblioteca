@@ -40,7 +40,7 @@ public class LoginBean implements Serializable {
             currentUser.getSession().setAttribute("Correo", userName);
             token.setRememberMe(true);
             
-            redirect(); 
+            redirectToMenu(); 
             
         } catch (UnknownAccountException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -57,7 +57,7 @@ public class LoginBean implements Serializable {
 	   }
    }
 
-    public void redirect(){
+    public void redirectToMenu(){
         if (currentUser.hasRole("administrador")){
                 try {
                     FacesContext.getCurrentInstance().getExternalContext().redirect("menuAdmin.xhtml");
@@ -72,6 +72,18 @@ public class LoginBean implements Serializable {
             }
         }
     }
+
+	public void isLogged(){
+		Subject subject = SecurityUtils.getSubject();
+		if (subject.getSession().getAttribute("Correo") != null){
+			try{
+				FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
+			}catch (IOException e){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error al redireccionar","Ocurrio un error en el servidor"));
+			}
+            
+		}
+	}
 
     public boolean isRememberMe() {
         return rememberMe;

@@ -16,6 +16,7 @@ import org.apache.shiro.subject.Subject;
 import java.io.IOException;
 import java.io.Serializable;
 
+@Deprecated
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 
@@ -39,8 +40,7 @@ public class LoginBean implements Serializable {
             currentUser.getSession().setAttribute("Correo", userName);
             token.setRememberMe(true);
             
-            FacesContext.getCurrentInstance().getExternalContext().redirect("recursos.xhtml");
-            
+            redirect(); 
             
         } catch (UnknownAccountException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -48,10 +48,7 @@ public class LoginBean implements Serializable {
         } catch (IncorrectCredentialsException e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
-        } catch (IOException e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Fallo en servidor", "Error"));
         }
-
     }
 
    public void logout() {
@@ -59,6 +56,22 @@ public class LoginBean implements Serializable {
 		   currentUser.logout();
 	   }
    }
+
+    public void redirect(){
+        if (currentUser.hasRole("administrador")){
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("menuAdmin.xhtml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }else{
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public boolean isRememberMe() {
         return rememberMe;

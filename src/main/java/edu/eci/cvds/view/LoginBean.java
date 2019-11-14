@@ -51,10 +51,10 @@ public class LoginBean implements Serializable {
         }
     }
 
-   public void logout() {
+   public void logOut() {
 	   if(this.currentUser.isAuthenticated()) {
-           currentUser.logout();
-           redirectTo("cerrarsesion.xhtml");
+           this.currentUser.logout();
+           redirectTo("iniciosesion.xhtml");
 	   }
    }
 

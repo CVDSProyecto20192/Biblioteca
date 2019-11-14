@@ -3,6 +3,7 @@ package edu.eci.cvds.view;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -16,11 +17,10 @@ import org.apache.shiro.subject.Subject;
 import java.io.IOException;
 import java.io.Serializable;
 
-@Deprecated
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 
-public class LoginBean  extends BasePageBean implements Serializable{
+public class LoginBean implements Serializable{
     /**
      *
      */
@@ -29,15 +29,17 @@ public class LoginBean  extends BasePageBean implements Serializable{
     private String userName;
     private String password;
     private boolean rememberMe;
-    private Subject currentUser;
+    //private Subject currentUser;
+    //private UsernamePasswordToken token;
 
     public void login(){
         try {
-            this.currentUser = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
+        	Subject currentUser = SecurityUtils.getSubject();
+        	UsernamePasswordToken token= new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
 
             currentUser.login(token);
             currentUser.getSession().setAttribute("Correo", userName);
+            
             token.setRememberMe(true);
             
             redirectToMenu(); 
@@ -50,32 +52,44 @@ public class LoginBean  extends BasePageBean implements Serializable{
                     "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }
     }
-
+    
+    private Subject getUser() {
+    	return SecurityUtils.getSubject();
+    }
+    
    public void logout() {
-	   if(this.currentUser.isAuthenticated()) {
-           currentUser.logout();
-           redirectTo("cerrarsesion.xhtml");
-           System.out.println("Si salió");
-           
+	   try {
+		   if(getUser().isAuthenticated()) {
+			   getUser().logout();
+			   
+			   redirectTo("cerrarsesion.xhtml");
+	           
+		   }
 	   }
+	   catch(Exception e) {
+		   e.printStackTrace();
+		   
+	   }
+		   
    }
 
     public void redirectToMenu(){
-        if (currentUser.hasRole("administrador")){
-                try {
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("menuAdmin.xhtml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-        }else{
-            try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
-                System.out.println("Si entró");
-            
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    	if(getUser()!=null) {
+	        if (getUser().hasRole("administrador")){
+	                try {
+	                    FacesContext.getCurrentInstance().getExternalContext().redirect("menuAdmin.xhtml");
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	        }else{
+	            try {
+	                FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
+	            
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+    	}
     }
 
 	public void isLogged(){
@@ -85,7 +99,7 @@ public class LoginBean  extends BasePageBean implements Serializable{
 		}
     }
     
-    public void redirectTo(String path){
+    private void redirectTo(String path){
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(path);
         } catch (IOException e) {
@@ -116,4 +130,6 @@ public class LoginBean  extends BasePageBean implements Serializable{
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
 }

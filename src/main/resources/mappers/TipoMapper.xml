@@ -26,6 +26,8 @@
 			t.descripcion as des_tipo
 			
 			FROM BR_TIPO as t
+			
+			ORDER BY t.id
  			
 	</select>
 	

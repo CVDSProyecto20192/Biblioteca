@@ -53,7 +53,7 @@
     	VALUES (#{id_recurso},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad}, #{recurso.tipo.id}, #{recurso.disponible}) 
     </insert>
     
-	<update parameterType="Horario" id="actualizarIdHorario">
+	<update id="actualizarIdHorario">
 	
 		update BR_RECURSO
     		   

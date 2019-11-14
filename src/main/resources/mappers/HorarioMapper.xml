@@ -23,7 +23,7 @@
 			
 			h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas
+			h.horas as horas
 			
 			FROM BR_HORARIO as h
     		

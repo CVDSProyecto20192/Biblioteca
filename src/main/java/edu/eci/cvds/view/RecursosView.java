@@ -90,7 +90,7 @@ public class RecursosView {
 		}
 	}
 	
-	private void actionSetTiempo(long id) {
+	private void actionSetTiempo(long id_h) {
 		try {
 			Recurso r=this.serviciosReserva.consultarRecurso(this.id);
 			DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
@@ -100,12 +100,12 @@ public class RecursosView {
 	        
 	        for (String weekday : weekdays) {
 	        	if(weekday!="" && weekday!="domingo"){
-	        		Horario h=new Horario(id,weekday,horas);
+	        		Horario h=new Horario(id_h,weekday,horas);
 	        		this.serviciosReserva.agregarHorario(h);
-	        		this.serviciosReserva.actualizarHorario(r,h);
 	        		this.tiempo.add(h);
 	        	}
 	        }
+	        this.serviciosReserva.actualizarHorario(r.getId(),id_h);
 	        r.setTiempo(this.tiempo);
 	        
 		

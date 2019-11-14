@@ -42,7 +42,7 @@ public interface ServiciosReserva {
 
 	public void agregarHorario(Horario h) throws ServiciosReservaException;
 	
-	public void actualizarHorario(Recurso r,Horario h) throws ServiciosReservaException;
+	public void actualizarHorario(long l,long id_h) throws ServiciosReservaException;
 	
 	public long consultarIdHorario(Recurso r) throws ServiciosReservaException;
 

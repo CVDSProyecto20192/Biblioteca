@@ -201,13 +201,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
-	public void actualizarHorario(Recurso r,Horario h) throws ServiciosReservaException {
+	public void actualizarHorario(long idRec,long idHor) throws ServiciosReservaException {
 		try {
-			long idRec=r.getId();
-			long idHor=h.getId();
 			recursoDAO.updateIdHorario(idRec, idHor);
-			List<Horario>tiempo=horarioDAO.loadAllDia(idHor);
-			r.setTiempo(tiempo);
 			
 		} 
 		catch (PersistenceException e) {

@@ -5,6 +5,32 @@
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ReservaMapper">
 	
+	<select parameterType="map" id="consultarReservas" resultMap="ReservaResult">
+			SELECT res.codigo as res_codigo, 
+			res.fecha, 
+			res.hora, 
+			res.duracion, 
+			u.carnet as carnet_usuario,
+  			u.documento as doc_usuario,
+  			u.correo as correo_usuario,
+  			u.nombres as nombres_usuario,
+  			u.apellidos as apellidos_usuario,
+			r.id as id_recurso,
+    		r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso
+			FROM br_reserva as res
+			left join BR_USUARIO as u on u.carnet=res.usuario
+			left join BR_RECURSO as r on r.id=res.recurso
+	</select>
 	
+	
+	<resultMap id="ReservaResult" type="Reserva">
+			<id property="codigo" column="res_codigo"/>
+			<result property="hora" column="hora"/>
+			<result property="duracion" column="duracion"/>
+			<result property="fecha" column="fecha"/>
+      		<association property="usuario" javaType="Usuario" column="usuario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper.CargoResult"/>
+			<association property="recurso" javaType="Recurso" column="recurso" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RecursoMapper.RecursoResult"/>
+    </resultMap>
 
 </mapper>

@@ -7,6 +7,7 @@ import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Reserva;
 
 public interface ServiciosReserva {
 
@@ -51,6 +52,7 @@ public interface ServiciosReserva {
 	long consultarIdUltimoHorario() throws ServiciosReservaException;
 
 	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
+	public List<Reserva> consultarReservas() throws ServiciosReservaException;
 }
 
 

@@ -11,10 +11,12 @@ import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
+import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
 public class ServiciosReservaImpl implements ServiciosReserva {
@@ -29,6 +31,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Inject
 	private HorarioDAO horarioDAO;
+	
+	@Inject
+	private ReservaDAO reservaDAO;
 	 
 	@Override
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException{
@@ -124,6 +129,19 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar los tipos", e);
+		}
+		return tl;
+	}
+	
+	@Override
+	public List<Reserva> consultarReservas() throws ServiciosReservaException {
+		List<Reserva> tl;
+		try {
+			tl=reservaDAO.loadAll();
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
 		return tl;
 	}

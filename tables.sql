@@ -21,13 +21,6 @@ CREATE TABLE public.br_usuario (
 	CONSTRAINT fk_usuario_cargo FOREIGN KEY (id_cargo) REFERENCES br_cargo(id)
 );
 
-CREATE TABLE public.br_reserva (
-	codigo serial NOT NULL,
-	fecha_prestamo date NULL,
-	usuario varchar NULL,
-	CONSTRAINT br_reserva_pkey PRIMARY KEY (codigo),
-	CONSTRAINT reserva_usuario FOREIGN KEY (usuario) REFERENCES br_usuario(carnet)
-);
 
 CREATE TABLE public.br_tipo (
 	tipo varchar(50) NOT NULL,
@@ -49,15 +42,21 @@ CREATE TABLE public.br_recurso (
 	CONSTRAINT fk_recurso_tipo FOREIGN KEY (id_tipo) REFERENCES br_tipo(id) ON DELETE CASCADE
 );
 
-
-CREATE TABLE public.reserva_recurso (
-	reserva int4 NOT NULL,
-	recurso int4 NOT NULL,
-	fecha_entrega date NULL,
-	CONSTRAINT reserva_recurso_pkey PRIMARY KEY (reserva, recurso),
-	CONSTRAINT reserva_recurso_recurso FOREIGN KEY (recurso) REFERENCES br_recurso(id),
-	CONSTRAINT reserva_recurso_reserva FOREIGN KEY (reserva) REFERENCES br_reserva(codigo)
+CREATE TABLE public.br_reserva (
+	codigo serial NOT NULL,
+	fecha date NOT NULL,
+	usuario varchar NOT NULL,
+	hora int4 NOT NULL,
+	duracion int4 NOT NULL,
+	recurso int8 NOT NULL,
+	CONSTRAINT br_reserva_pkey PRIMARY KEY (codigo),
+	CONSTRAINT ck_limite CHECK (((hora + duracion) < 1901)),
+	CONSTRAINT ck_maxima CHECK (((duracion < 201) AND (duracion > 0))),
+	CONSTRAINT ck_rangohora CHECK ((hora > 699)),
+	CONSTRAINT reserva_recurso_fk FOREIGN KEY (recurso) REFERENCES br_recurso(id) ON DELETE CASCADE,
+	CONSTRAINT reserva_usuario FOREIGN KEY (usuario) REFERENCES br_usuario(carnet)
 );
+
 
 
 /*CREATE UNIQUE INDEX recurso_index ON br_recurso (nombre, id_tipo);*/

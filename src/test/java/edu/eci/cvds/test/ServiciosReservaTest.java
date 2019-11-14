@@ -12,6 +12,7 @@ import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosReservaFactory;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
@@ -19,7 +20,7 @@ import org.junit.Assert;
 
 public class ServiciosReservaTest{
     
-	/*@Inject
+	@Inject
     ServiciosReserva serviciosReserva;
     public ServiciosReservaTest(){
         
@@ -27,9 +28,9 @@ public class ServiciosReservaTest{
 
     @Before
     public void setUp(){
-        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReservaTesting();        
+        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReserva();        
     }
-
+	/*
     @Test
     public void deberiaInsertarTipo(){
 		boolean r = false;
@@ -157,5 +158,16 @@ public class ServiciosReservaTest{
 		
 		Assert.assertTrue(r);	
 	}*/
+	
+	@Test
+	public void prueba(){
+		try{
+			System.out.println(serviciosReserva.consultarReservas());
+		}
+		catch (ServiciosReservaException e){
+			e.printStackTrace();
+			System.out.println("fracaso");
+        }
+	}
 	
 }

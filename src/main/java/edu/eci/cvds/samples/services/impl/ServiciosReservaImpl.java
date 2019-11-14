@@ -75,6 +75,17 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return r;
 	}
+	@Override
+	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException{
+		List<Recurso> r=null;
+		try {
+			r=recursoDAO.loadActivos();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar los recursos activos", e);
+		}
+		return r;
+	}
 
 	@Override
 	public void agregarRecurso(Recurso r) throws ServiciosReservaException{

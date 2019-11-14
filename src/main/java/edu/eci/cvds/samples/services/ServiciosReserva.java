@@ -50,6 +50,7 @@ public interface ServiciosReserva {
 
 	long consultarIdUltimoHorario() throws ServiciosReservaException;
 
+	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
 }
 
 

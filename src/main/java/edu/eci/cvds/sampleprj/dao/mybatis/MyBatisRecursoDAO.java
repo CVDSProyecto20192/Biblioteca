@@ -36,6 +36,16 @@ public class MyBatisRecursoDAO implements RecursoDAO{
 	}
 	
 	@Override
+	public List<Recurso> loadActivos() throws PersistenceException {
+		try{
+			return recursoMapper.consultarRecursosActivos();
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Recursos activos", e);
+		}  
+	}
+	
+	@Override
 	public void addRecurso(Recurso r) throws PersistenceException {
 		try{
 			recursoMapper.insertarRecurso(r);

@@ -14,6 +14,8 @@ public interface RecursoDAO {
 	
 	public List<Recurso> loadAll() throws PersistenceException;
 	
+	public List<Recurso> loadActivos() throws PersistenceException;
+	
 	public void addRecurso(Recurso r) throws PersistenceException;
 	
 	public void updateIdHorario(long id_recurso, long id_horario) throws PersistenceException;

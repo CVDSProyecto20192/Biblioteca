@@ -20,7 +20,7 @@ import java.io.Serializable;
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 
-public class LoginBean implements Serializable {
+public class LoginBean  extends BasePageBean implements Serializable{
     /**
      *
      */
@@ -31,7 +31,7 @@ public class LoginBean implements Serializable {
     private boolean rememberMe;
     private Subject currentUser;
 
-    public void login() {
+    public void login(){
         try {
             this.currentUser = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
@@ -51,10 +51,12 @@ public class LoginBean implements Serializable {
         }
     }
 
-   public void logOut() {
+   public void logout() {
 	   if(this.currentUser.isAuthenticated()) {
-           this.currentUser.logout();
-           redirectTo("iniciosesion.xhtml");
+           currentUser.logout();
+           redirectTo("cerrarsesion.xhtml");
+           System.out.println("Si salió");
+           
 	   }
    }
 
@@ -68,6 +70,8 @@ public class LoginBean implements Serializable {
         }else{
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
+                System.out.println("Si entró");
+            
             } catch (IOException e) {
                 e.printStackTrace();
             }

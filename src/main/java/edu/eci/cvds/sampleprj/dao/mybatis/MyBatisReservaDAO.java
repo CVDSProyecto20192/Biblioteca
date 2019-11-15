@@ -12,6 +12,8 @@ import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ReservaMapper;
 import edu.eci.cvds.samples.entities.Reserva;
 
+import java.util.Date;
+
 public class MyBatisReservaDAO implements ReservaDAO {
 	
 	@Inject
@@ -25,6 +27,28 @@ public class MyBatisReservaDAO implements ReservaDAO {
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al consultar Reservas", e);
 		}  
+	}
+	
+	@Override
+	public Reserva consultarFranja(Date fecha, int hora, int duracion) throws PersistenceException {
+		Reserva r = null;
+		try{
+			r = reservaMapper.consultarFranja(fecha, hora, duracion);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar franja", e);
+		}  	
+		return r;
+	}
+	
+	@Override
+	public void insertarReserva(Reserva reserva) throws PersistenceException {
+		try{
+			reservaMapper.insertarReserva(reserva);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al insertar reserva", e);
+		}  	
 	}
 
 }

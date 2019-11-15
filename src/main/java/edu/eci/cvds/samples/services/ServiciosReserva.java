@@ -8,7 +8,7 @@ import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Reserva;
-
+import java.util.Date;
 public interface ServiciosReserva {
 
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException;
@@ -53,6 +53,8 @@ public interface ServiciosReserva {
 
 	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
 	public List<Reserva> consultarReservas() throws ServiciosReservaException;
+	public Reserva consultarFranja(Date fecha, int hora, int duracion) throws ServiciosReservaException; 
+	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso, long grupo) throws ServiciosReservaException;
 }
 
 

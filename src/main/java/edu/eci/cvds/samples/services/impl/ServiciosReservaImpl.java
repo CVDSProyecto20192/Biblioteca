@@ -18,7 +18,7 @@ import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
-
+import java.util.Date;
 public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
 	private UsuarioDAO userDAO;
@@ -271,6 +271,39 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar id del ultimo horario", e);
+		}
+	}
+	
+	@Override
+	public Reserva consultarFranja(Date fecha, int hora, int duracion) throws ServiciosReservaException {
+		Reserva r = null;
+		try {
+			r = reservaDAO.consultarFranja(fecha, hora, duracion);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar franja", e);
+		}
+		return r;
+	}
+	
+	@Override
+	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso, long grupo) throws ServiciosReservaException{
+		try {
+			Usuario u = consultarUsuario(usuario);
+			Recurso r = consultarRecurso(recurso);
+			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, grupo);
+			if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion()) == null){
+				reservaDAO.insertarReserva(res);
+			}
+			else{
+				throw new ServiciosReservaException("Error al insertar reserva");
+			}
+		} 
+		catch (ServiciosReservaException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
 		}
 	}
 }

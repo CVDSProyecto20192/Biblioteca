@@ -43,12 +43,14 @@ CREATE TABLE public.br_recurso (
 );
 
 CREATE TABLE public.br_reserva (
-	codigo serial NOT NULL,
+	codigo int4 NOT NULL,
 	fecha date NOT NULL,
 	usuario varchar NOT NULL,
 	hora int4 NOT NULL,
 	duracion int4 NOT NULL,
 	recurso int8 NOT NULL,
+	activa bool NOT NULL DEFAULT true,
+	grupo int4 NULL,
 	CONSTRAINT br_reserva_pkey PRIMARY KEY (codigo),
 	CONSTRAINT ck_limite CHECK (((hora + duracion) < 1901)),
 	CONSTRAINT ck_maxima CHECK (((duracion < 201) AND (duracion > 0))),

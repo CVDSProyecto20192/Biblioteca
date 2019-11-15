@@ -17,6 +17,9 @@ import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosReservaFactory;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import org.junit.Assert;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ServiciosReservaTest{
     
@@ -162,11 +165,19 @@ public class ServiciosReservaTest{
 	@Test
 	public void prueba(){
 		try{
-			System.out.println(serviciosReserva.consultarReservas());
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = formatter.parse("2019-11-14");
+			System.out.println(serviciosReserva.consultarFranja(date, 1810, 10));
+			System.out.println(serviciosReserva.consultarUsuario("0000001"));
+			System.out.println(serviciosReserva.consultarRecurso((long) 1));
+			serviciosReserva.insertarReserva("2019-11-15", 1400, 100, "0000001", (long) 1, (long) 0);
 		}
 		catch (ServiciosReservaException e){
 			e.printStackTrace();
 			System.out.println("fracaso");
+        }
+		catch (ParseException e) {
+            e.printStackTrace();
         }
 	}
 	

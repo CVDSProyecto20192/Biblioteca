@@ -9,7 +9,9 @@
 			SELECT res.codigo as res_codigo, 
 			res.fecha, 
 			res.hora, 
-			res.duracion, 
+			res.duracion,
+			res.activa,
+			res.grupo,
 			u.carnet as carnet_usuario,
   			u.documento as doc_usuario,
   			u.correo as correo_usuario,
@@ -23,13 +25,49 @@
 			left join BR_RECURSO as r on r.id=res.recurso
 	</select>
 	
+	<select parameterType="map" id="consultarFranja" resultMap="ReservaResult">
+			SELECT res.codigo as res_codigo, 
+			res.fecha, 
+			res.hora, 
+			res.duracion,
+			res.activa,
+			res.grupo,
+			u.carnet as carnet_usuario,
+  			u.documento as doc_usuario,
+  			u.correo as correo_usuario,
+  			u.nombres as nombres_usuario,
+  			u.apellidos as apellidos_usuario,
+			r.id as id_recurso,
+    		r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso
+			FROM br_reserva as res
+			left join BR_USUARIO as u on u.carnet=res.usuario
+			left join BR_RECURSO as r on r.id=res.recurso
+			WHERE
+			res.fecha = #{fecha} AND (((#{hora} + #{duracion} >= res.hora AND res.hora >= #{hora}) OR (#{hora} + #{duracion} >= res.hora + res.duracion AND res.hora + res.duracion >= #{hora})) OR		
+			((res.hora + res.duracion >= #{hora}  AND #{hora} >= res.hora) OR (res.hora + res.duracion >= #{hora} + #{duracion} AND #{hora} + #{duracion} >= res.hora))) AND res.activa = true
+	</select>
+	
+	
+	<insert id ="insertarReserva">
+		<selectKey keyProperty="id_reserva" resultType="int" order="BEFORE">
+			select coalesce(MAX(codigo)+1 , '1') from BR_RESERVA
+		</selectKey>
+    	INSERT INTO public.br_reserva
+	   (codigo, fecha, usuario, hora, duracion, recurso, grupo)	
+    	VALUES (#{id_reserva},#{reserva.fecha},#{reserva.usuario.carnet},#{reserva.hora}, #{reserva.duracion}, #{reserva.recurso.id}, #{reserva.grupo}) 
+    </insert>
+	
+	
 	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>
 			<result property="hora" column="hora"/>
 			<result property="duracion" column="duracion"/>
 			<result property="fecha" column="fecha"/>
-      		<association property="usuario" javaType="Usuario" column="usuario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper.CargoResult"/>
+			<result property="activa" column="activa"/>
+			<result property="grupo" column="grupo"/>
+      		<association property="usuario" javaType="Usuario" column="usuario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper.UsuarioResult"/>
 			<association property="recurso" javaType="Recurso" column="recurso" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RecursoMapper.RecursoResult"/>
     </resultMap>
 

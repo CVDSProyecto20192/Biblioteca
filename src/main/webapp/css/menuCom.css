@@ -7,10 +7,6 @@ html {
 	margin:0;
 }
 
-body {
-  background-image: url(/img/fon3.gif);
-  background-size: 100% 100%;
-}
 
 section{
 	width: 90%;
@@ -42,14 +38,15 @@ section{
 .elemento:hover{
  border: solid 1vw rgba(255,255,255,.0);
  margin: 2vw;
- opacity: 0.50;
- background-color: rgba(255,255,255,.0);
+ opacity: 1;
+ background-color: rgba(255,255,255,.20);
 }
 
 .icon{
 	display: text-align:center;
 	margin:2.1vw auto;
 	background-color: rgba(255,255,255,.40);
+	opacity: 0.80;
 	width:8vw;
 	padding:3vw;
 	margin-left: 11%;

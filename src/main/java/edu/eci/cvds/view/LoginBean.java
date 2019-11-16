@@ -29,8 +29,6 @@ public class LoginBean implements Serializable{
     private String userName;
     private String password;
     private boolean rememberMe;
-    //private Subject currentUser;
-    //private UsernamePasswordToken token;
 
     public void login(){
         try {

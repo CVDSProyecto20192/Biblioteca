@@ -23,7 +23,7 @@
     height: 1.46vw;
     background: rgba(255, 255, 255, 0.2);
     animation: animate 25s linear infinite;
-    bottom: -2vw;
+    bottom: 0vw;
     
 }
 
@@ -40,7 +40,7 @@
     width: 1.46vw;
     height: 1.46vw;
     animation-delay: 2s;
-    animation-duration: 12s;
+    animation-duration: 10s;
 }
 
 .circles li:nth-child(3){
@@ -76,7 +76,7 @@
     left: 35%;
     width: 10vw;
     height: 10vw;
-    animation-delay: 7s;
+    animation-delay: 5s;
 }
 
 .circles li:nth-child(8){

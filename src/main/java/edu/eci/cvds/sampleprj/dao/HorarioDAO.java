@@ -1,6 +1,9 @@
 package edu.eci.cvds.sampleprj.dao;
 
+import java.sql.Date;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.samples.entities.Horario;
@@ -17,5 +20,6 @@ public interface HorarioDAO {
 
 	public long loadLastId() throws PersistenceException;
 	
+	public void updateHoras(long idHorario, String dia, List<Date> horas) throws PersistenceException;
 	
 }

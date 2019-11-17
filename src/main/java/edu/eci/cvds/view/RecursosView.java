@@ -2,6 +2,8 @@ package edu.eci.cvds.view;
 
 import java.sql.Date;
 import java.text.DateFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -53,20 +55,42 @@ public class RecursosView {
 		try {
 			this.tipo=serviciosReserva.consultarTipo(this.idTipo);
 			actionDisponible();
+		
 			Recurso r=new Recurso(this.id,this.nombre,this.ubicacion,this.capacidad,this.disponible,this.tiempo,this.tipo);
 			serviciosReserva.agregarRecurso(r);
 			actionBuscarId();
-			long id=actionSetIdHorario();
+			actionSetHorarios(r);
 			
-			if(id==-1) System.out.println("No hay más espacio para adicionar horarios");
-			else actionSetTiempo(id);
 			
-		} catch (ServiciosReservaException e) {
+		} 
+		catch (ServiciosReservaException e) {
 			e.printStackTrace();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void actionSetHorarios(Recurso r) {
+		long id_r=r.getId();
+		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
+		this.tiempo=new ArrayList<Horario>();
+        String[] weekdays = dfs.getWeekdays();
+        
+        for (String weekday : weekdays) {
+        	if(weekday!="" && weekday!="domingo"){
+        		Horario h=new Horario(id_r,weekday);
+        		try {
+					this.serviciosReserva.agregarHorario(h);
+					this.serviciosReserva.actualizarHorario(id_r, id_r);
+				} 
+        		catch (Exception e) {
+					e.printStackTrace();
+				}
+        		this.tiempo.add(h);
+        	}
+        }
+        r.setTiempo(this.tiempo);
 	}
 	
 	
@@ -90,52 +114,6 @@ public class RecursosView {
 		}
 	}
 	
-	private void actionSetTiempo(long id_h) {
-		try {
-			Recurso r=this.serviciosReserva.consultarRecurso(this.id);
-			DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
-			this.tiempo=new ArrayList<Horario>();
-			List<Date> horas = null;
-	        String[] weekdays = dfs.getWeekdays();
-	        
-	        for (String weekday : weekdays) {
-	        	if(weekday!="" && weekday!="domingo"){
-	        		Horario h=new Horario(id_h,weekday,horas);
-	        		this.serviciosReserva.agregarHorario(h);
-	        		this.tiempo.add(h);
-	        	}
-	        }
-	        this.serviciosReserva.actualizarHorario(r.getId(),id_h);
-	        r.setTiempo(this.tiempo);
-	        
-		
-		} 
-		catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
-
-	private long actionSetIdHorario() {
-		long id=-1;
-		long i=0;
-		try {
-			long lastR=serviciosReserva.consultarIdUltimoRecurso();
-			long lastH=serviciosReserva.consultarIdUltimoHorario();
-			
-			while(lastR!=lastH && i<Long.MAX_VALUE) {
-				lastR=serviciosReserva.consultarIdUltimoRecurso();
-				lastH=lastR;
-				i++;
-			}
-			id=lastH;
-			
-		} 
-		catch (ServiciosReservaException e) {
-			e.printStackTrace();
-		}
-		return id;
-	}
 	
 	public void actionDisponible() {
 		this.disponible=false;
@@ -171,6 +149,12 @@ public class RecursosView {
 		this.idTipo=0;
 		
 	}
+	
+	public void actionSetIdRen(long id) {
+		this.baseBean.setIdRec(id);
+	}
+	
+	
 	
 	public long getId() {
 		return this.id;

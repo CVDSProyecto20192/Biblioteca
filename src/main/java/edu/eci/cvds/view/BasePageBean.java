@@ -20,7 +20,7 @@ public class BasePageBean implements Serializable {
  	private static final long serialVersionUID = 1L;
  	
 	private Injector injector;
-	//protected long docAlq;
+	protected long idRec;
 	
     private Injector getInjector() {
         if (injector == null) {
@@ -87,11 +87,15 @@ public class BasePageBean implements Serializable {
 		return "cerrarsesion?faces-redirect=true";
 	}
 	
-	/*public long getDocAlq() {
-		return this.docAlq;
+	public String page7(){
+		return "horario?faces-redirect=true";
+	}
+	
+	public long getIdRec() {
+		return this.idRec;
 	}
     
-    public void setDocAlq(long a) {
-		this.docAlq=a;
-	}*/
+    public void setIdRec(long a) {
+		this.idRec=a;
+	}
 }

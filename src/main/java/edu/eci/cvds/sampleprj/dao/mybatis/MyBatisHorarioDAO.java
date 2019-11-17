@@ -1,5 +1,6 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -61,6 +62,16 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al consultar id del último Horario", e);
+		}
+	}
+
+	@Override
+	public void updateHoras(long idHorario, String dia, List<Date> horas) throws PersistenceException{
+		try{
+			horarioMapper.actualizarHoras(idHorario, dia, horas);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al actualizar Horario", e);
 		}
 	}
 

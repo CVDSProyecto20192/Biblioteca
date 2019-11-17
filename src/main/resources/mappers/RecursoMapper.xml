@@ -109,6 +109,7 @@
 			BR_RECURSO
 			
 	</select>
+	
 
 	<resultMap id="RecursoResult" type="Recurso">
 			

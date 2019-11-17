@@ -16,6 +16,11 @@ public class Horario implements Serializable{
 		this.horas=horas;
 	}
 	
+	public Horario(long id, String dia) {
+		this.id=id;
+		this.dia=dia;
+	}
+
 	public long getId() {
 		return this.id;
 	}

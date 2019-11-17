@@ -1,6 +1,6 @@
 package edu.eci.cvds.samples.services.impl;
 
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -66,14 +66,12 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 
 	@Override
 	public List<Recurso> consultarRecursos() throws ServiciosReservaException{
-		List<Recurso> r=null;
 		try {
-			r=recursoDAO.loadAll();
+			return recursoDAO.loadAll();
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar los recursos", e);
 		}
-		return r;
 	}
 
 	@Override
@@ -171,11 +169,12 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 
 	@Override
-	public List<Horario> consultarHorarioDia(long idHorario) throws ServiciosReservaException {
+	public List<Horario> consultarHorarioDias(long idHorario) throws ServiciosReservaException {
 		try {
 			return horarioDAO.loadAllDia(idHorario);
 		} 
 		catch (PersistenceException e) {
+			System.out.println("consul "+idHorario);
 			throw new ServiciosReservaException("Error al consultar horarios: "+idHorario, e);
 		}
 	}
@@ -243,5 +242,16 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar id del ultimo horario", e);
 		}
+	}
+
+	@Override
+	public void actualizarHoras(long idHorario, String dia, List<Date> horas) throws ServiciosReservaException {
+		try {
+			horarioDAO.updateHoras(idHorario, dia, horas);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al actualizar horas", e);
+		}
+		
 	}
 }

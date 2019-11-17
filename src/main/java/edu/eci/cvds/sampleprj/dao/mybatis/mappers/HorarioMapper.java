@@ -1,5 +1,6 @@
 package edu.eci.cvds.sampleprj.dao.mybatis.mappers;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -31,5 +32,7 @@ public interface HorarioMapper {
     public void insertarHorario(@Param("horario")Horario h);
 
 	public long consultarUltimoId();
+	
+	public long actualizarHoras(@Param("id_horario") long idHorario, @Param("dia") String dia, @Param("tiempo") List<Date> horas);
     
 }

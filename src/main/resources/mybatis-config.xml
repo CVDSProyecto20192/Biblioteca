@@ -17,7 +17,7 @@
 		<typeAlias type='edu.eci.cvds.samples.entities.Tipo' alias='Tipo'/>	
     	<typeAlias type='edu.eci.cvds.samples.entities.Recurso' alias='Recurso'/>
 		<typeAlias type='edu.eci.cvds.samples.entities.Reserva' alias='Reserva'/>
-    	<typeAlias type='edu.eci.cvds.samples.entities.Reserva' alias='Horario'/>
+    	<typeAlias type='edu.eci.cvds.samples.entities.Horario' alias='Horario'/>
 
 	</typeAliases>
     

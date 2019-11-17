@@ -10,7 +10,7 @@
     		
     		h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas
+			h.horas as horas_horario
 			
 			FROM BR_HORARIO as h
     		
@@ -23,7 +23,8 @@
 			
 			h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas as horas
+			h.horas as horas_horario
+			
 			
 			FROM BR_HORARIO as h
     		
@@ -36,7 +37,7 @@
 			
 			h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas
+			h.horas as horas_horario
 			
 			FROM BR_HORARIO as h
     		
@@ -54,15 +55,23 @@
 	</select>
 	
 	<insert id ="insertarHorario">
-    	insert into BR_HORARIO (id, dia, horas) 
-    	VALUES (#{horario.id},#{horario.dia},#{horario.horas})
+    	insert into BR_HORARIO (id, dia) 
+    	VALUES (#{horario.id},#{horario.dia})
     </insert>
+
+	<update id="actualizarHoras">
+			UPDATE BR_HORARIO
+		
+			SET horas=#{tiempo}
+
+			WHERE id=#{id_horario} and dia=#{dia}
+	</update>
 
 	<resultMap id="HorarioResult" type="Horario">
 			
 			<id property="id" column="id_horario"/>
 			<result property="dia" column="dia_horario"/>
-			<result property="horas" column="horas"/>
+			<collection property="horas" ofType="java.sql.Date" column="horas_horario" />  
     	
     </resultMap>
 

@@ -1,5 +1,6 @@
 package edu.eci.cvds.samples.services;
 
+import java.sql.Date;
 import java.util.List;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
@@ -36,7 +37,7 @@ public interface ServiciosReserva {
 
 	public Horario consultarHorario(long id, String dia) throws ServiciosReservaException;
 
-	public List<Horario> consultarHorarioDia(long id) throws ServiciosReservaException;
+	public List<Horario> consultarHorarioDias(long id) throws ServiciosReservaException;
 
 	public List<Horario> consultarHorarios() throws ServiciosReservaException;
 
@@ -49,7 +50,8 @@ public interface ServiciosReserva {
 	long consultarIdUltimoRecurso() throws ServiciosReservaException;
 
 	long consultarIdUltimoHorario() throws ServiciosReservaException;
-
+	
+	public void actualizarHoras(long idHorario, String dia, List<Date> horas) throws ServiciosReservaException;
 }
 
 

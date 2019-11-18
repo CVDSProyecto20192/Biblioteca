@@ -306,4 +306,35 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al insertar reserva", e);
 		}
 	}
+	
+	@Override
+	public List<Date> getFechas(String fecha, String fechaFin,int periodicidad){
+		 List<Date> fechas = reservaDAO.getFechas(fecha, fechaFin, periodicidad);
+		 return fechas;
+	}
+	
+	@Override
+	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, long grupo, String fechaFin,int periodicidad) throws ServiciosReservaException{
+		try {
+			Usuario u = consultarUsuario(usuario);
+			Recurso r = consultarRecurso(recurso);
+			List<Date> fechas = getFechas(fecha, fechaFin, periodicidad);
+			for(int i=0; i<fechas.size();i++){
+				Date f = fechas.get(i);
+				Reserva res = new Reserva((long) 2, f, hora, duracion, u, r, grupo);
+				if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion()) == null){
+					reservaDAO.insertarReserva(res);
+				}
+				else{
+					throw new ServiciosReservaException("Error al insertar reserva");
+				}
+			}
+		}catch (ServiciosReservaException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}
+	
+	}
+
 }

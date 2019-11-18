@@ -165,20 +165,19 @@ public class ServiciosReservaTest{
 	@Test
 	public void prueba(){
 		try{
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			/**SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = formatter.parse("2019-11-14");
 			System.out.println(serviciosReserva.consultarFranja(date, 1810, 10));
 			System.out.println(serviciosReserva.consultarUsuario("0000001"));
-			System.out.println(serviciosReserva.consultarRecurso((long) 1));
-			serviciosReserva.insertarReserva("2019-11-15", 1400, 100, "0000001", (long) 1, (long) 0);
+			System.out.println(serviciosReserva.consultarRecurso((long) 1));**/
+			serviciosReserva.insertarReservaDias("2019-11-17", 1400, 100, "0000001", (long) 1, (long) 0, "2019-11-30", 4);
 		}
 		catch (ServiciosReservaException e){
 			e.printStackTrace();
 			System.out.println("fracaso");
         }
-		catch (ParseException e) {
+		/**catch (ParseException e) {
             e.printStackTrace();
-        }
+        }**/
 	}
-	
 }

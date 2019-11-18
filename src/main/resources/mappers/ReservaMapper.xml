@@ -46,6 +46,7 @@
 			WHERE
 			res.fecha = #{fecha} AND (((#{hora} + #{duracion} >= res.hora AND res.hora >= #{hora}) OR (#{hora} + #{duracion} >= res.hora + res.duracion AND res.hora + res.duracion >= #{hora})) OR		
 			((res.hora + res.duracion >= #{hora}  AND #{hora} >= res.hora) OR (res.hora + res.duracion >= #{hora} + #{duracion} AND #{hora} + #{duracion} >= res.hora))) AND res.activa = true
+			AND r.id = #{recurso}
 	</select>
 	
 	

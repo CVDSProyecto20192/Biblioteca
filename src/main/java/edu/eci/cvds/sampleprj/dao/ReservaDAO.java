@@ -10,7 +10,7 @@ import java.util.Date;
 public interface ReservaDAO {
 	public List<Reserva> loadAll() throws PersistenceException;
 	
-	public Reserva consultarFranja(Date fecha, int hora, int duracion) throws PersistenceException;
+	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws PersistenceException;
 	
 	public void insertarReserva(Reserva reserva) throws PersistenceException;
 	

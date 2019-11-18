@@ -275,10 +275,10 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
-	public Reserva consultarFranja(Date fecha, int hora, int duracion) throws ServiciosReservaException {
+	public Reserva consultarFranja(Date fecha, int hora, int duracion,long recurso) throws ServiciosReservaException {
 		Reserva r = null;
 		try {
-			r = reservaDAO.consultarFranja(fecha, hora, duracion);
+			r = reservaDAO.consultarFranja(fecha, hora, duracion,recurso);
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar franja", e);
@@ -292,7 +292,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			Usuario u = consultarUsuario(usuario);
 			Recurso r = consultarRecurso(recurso);
 			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, grupo);
-			if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion()) == null){
+			if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null){
 				reservaDAO.insertarReserva(res);
 			}
 			else{
@@ -322,7 +322,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			for(int i=0; i<fechas.size();i++){
 				Date f = fechas.get(i);
 				Reserva res = new Reserva((long) 2, f, hora, duracion, u, r, grupo);
-				if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion()) == null){
+				if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null){
 					reservaDAO.insertarReserva(res);
 				}
 				else{

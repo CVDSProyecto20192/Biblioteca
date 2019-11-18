@@ -33,10 +33,10 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	}
 	
 	@Override
-	public Reserva consultarFranja(Date fecha, int hora, int duracion) throws PersistenceException {
+	public Reserva consultarFranja(Date fecha, int hora, int duracion,long recurso) throws PersistenceException {
 		Reserva r = null;
 		try{
-			r = reservaMapper.consultarFranja(fecha, hora, duracion);
+			r = reservaMapper.consultarFranja(fecha, hora, duracion, recurso);
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al consultar franja", e);

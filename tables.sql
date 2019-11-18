@@ -51,14 +51,12 @@ CREATE TABLE public.br_reserva (
 	recurso int8 NOT NULL,
 	activa bool NOT NULL DEFAULT true,
 	grupo int4 NULL,
+	registro date NOT NULL,
 	CONSTRAINT br_reserva_pkey PRIMARY KEY (codigo),
 	CONSTRAINT ck_limite CHECK (((hora + duracion) < 1901)),
 	CONSTRAINT ck_maxima CHECK (((duracion < 201) AND (duracion > 0))),
-	CONSTRAINT ck_rangohora CHECK ((hora > 699)),
-	CONSTRAINT reserva_recurso_fk FOREIGN KEY (recurso) REFERENCES br_recurso(id) ON DELETE CASCADE,
-	CONSTRAINT reserva_usuario FOREIGN KEY (usuario) REFERENCES br_usuario(carnet)
+	CONSTRAINT ck_rangohora CHECK ((hora > 699))
 );
-
 
 
 /*CREATE UNIQUE INDEX recurso_index ON br_recurso (nombre, id_tipo);*/

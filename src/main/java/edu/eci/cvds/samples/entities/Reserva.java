@@ -13,12 +13,13 @@ public class Reserva {
 	private Recurso recurso;
 	private boolean activa;
 	private long grupo;
+	private Date registro;
 	
 	public Reserva() {
 		
 	}
 	
-	public Reserva(long codigo, Date fecha, int hora, int duracion, Usuario usuario, Recurso recurso, long grupo){
+	public Reserva(long codigo, Date fecha, int hora, int duracion, Usuario usuario, Recurso recurso, long grupo, Date registro){
 		 this.codigo=codigo;
 		 this.fecha=fecha;
 		 this.hora=hora;
@@ -27,9 +28,10 @@ public class Reserva {
 		 this.activa = true;
 		 this.grupo = grupo;
 		 this.recurso=recurso;
+		 this.registro=registro;
 	}
 	
-	public Reserva(long codigo, String fecha, int hora, int duracion, Usuario usuario, Recurso recurso, long grupo){
+	public Reserva(long codigo, String fecha, int hora, int duracion, Usuario usuario, Recurso recurso, long grupo, Date registro){
 		 this.recurso=recurso;
 		 this.codigo=codigo;
 		 this.hora=hora;
@@ -37,6 +39,7 @@ public class Reserva {
 		 this.usuario=usuario;
 		 this.activa = true;
 		 this.grupo = grupo;
+		 this.registro=registro;
 		 try{
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = formatter.parse(fecha);
@@ -62,6 +65,14 @@ public class Reserva {
 	
 	public void setFecha(Date fecha){
 		this.fecha=fecha;
+	}
+	
+	public Date getRegistro(){
+		return this.registro;
+	}
+	
+	public void setRegistro(Date registro){
+		this.registro=registro;
 	}
 	
 	public int getHora(){

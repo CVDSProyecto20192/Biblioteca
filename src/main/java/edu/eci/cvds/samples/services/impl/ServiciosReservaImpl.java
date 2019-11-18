@@ -287,11 +287,11 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
-	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso, long grupo) throws ServiciosReservaException{
+	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso) throws ServiciosReservaException{
 		try {
 			Usuario u = consultarUsuario(usuario);
 			Recurso r = consultarRecurso(recurso);
-			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, grupo);
+			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, (long) 0, null);
 			if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null){
 				reservaDAO.insertarReserva(res);
 			}
@@ -314,27 +314,46 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
-	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, long grupo, String fechaFin,int periodicidad) throws ServiciosReservaException{
+	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, String fechaFin,int periodicidad) throws ServiciosReservaException{
 		try {
-			Usuario u = consultarUsuario(usuario);
-			Recurso r = consultarRecurso(recurso);
 			List<Date> fechas = getFechas(fecha, fechaFin, periodicidad);
+			boolean flag = true;
 			for(int i=0; i<fechas.size();i++){
 				Date f = fechas.get(i);
-				Reserva res = new Reserva((long) 2, f, hora, duracion, u, r, grupo);
-				if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null){
-					reservaDAO.insertarReserva(res);
-				}
-				else{
-					throw new ServiciosReservaException("Error al insertar reserva");
+				if (consultarFranja(f, hora, duracion,recurso) != null){
+					flag=false;
 				}
 			}
+	
+			if(flag){
+				Usuario u = consultarUsuario(usuario);
+				Recurso r = consultarRecurso(recurso);
+				long grupo = consultarGrupo();
+				for(int i=0; i<fechas.size();i++){
+					Date f = fechas.get(i);
+					Reserva res = new Reserva((long) 0, f, hora, duracion, u, r, grupo, null);
+					reservaDAO.insertarReserva(res);
+				}
+			}else{
+				throw new ServiciosReservaException("Error al insertar reservas");
+			}
+			
 		}catch (ServiciosReservaException e) {
 			throw new ServiciosReservaException("Error al insertar reserva", e);
 		}catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al insertar reserva", e);
 		}
 	
+	}
+	
+	@Override
+	public long consultarGrupo() throws ServiciosReservaException {
+		try{
+			return reservaDAO.consultarGrupo();
+		}
+		catch(PersistenceException e){
+			throw new ServiciosReservaException("Error al consultar id del grupo", e);
+		}  
 	}
 
 }

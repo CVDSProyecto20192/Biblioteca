@@ -49,6 +49,9 @@
 			AND r.id = #{recurso}
 	</select>
 	
+	<select id="consultarIdGrupo" resultType="long">
+		select coalesce(MAX(grupo)+1 , '1') from BR_RESERVA
+	</select>
 	
 	<insert id ="insertarReserva">
 		<selectKey keyProperty="id_reserva" resultType="int" order="BEFORE">
@@ -60,7 +63,6 @@
     </insert>
 	
 	
-	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>
 			<result property="hora" column="hora"/>
@@ -68,6 +70,7 @@
 			<result property="fecha" column="fecha"/>
 			<result property="activa" column="activa"/>
 			<result property="grupo" column="grupo"/>
+			<result property="registro" column="registro"/>
       		<association property="usuario" javaType="Usuario" column="usuario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper.UsuarioResult"/>
 			<association property="recurso" javaType="Recurso" column="recurso" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RecursoMapper.RecursoResult"/>
     </resultMap>

@@ -15,4 +15,6 @@ public interface ReservaDAO {
 	public void insertarReserva(Reserva reserva) throws PersistenceException;
 	
 	public List<Date> getFechas(String fecha, String fechaFin,int periodicidad);
+	
+	public long consultarGrupo() throws PersistenceException;
 }

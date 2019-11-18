@@ -14,5 +14,7 @@ public interface ReservaMapper {
 	public Reserva consultarFranja(@Param("fecha")Date fecha , @Param("hora")int hora, @Param("duracion")int duracion,@Param("recurso")long recurso);
 	
 	public void insertarReserva(@Param("reserva")Reserva reserva);
+	
+	public long consultarIdGrupo();
 
 }

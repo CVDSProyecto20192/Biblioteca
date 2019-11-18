@@ -48,28 +48,6 @@ public class MyBatisRecursoDAO implements RecursoDAO{
 	}
 	
 	@Override
-	public void updateIdHorario(long id_recurso, long id_horario) throws PersistenceException {
-		try{
-			recursoMapper.actualizarIdHorario(id_recurso,id_horario);
-
-		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al actualizar horario del ecurso", e);
-		}  
-	}
-
-	@Override
-	public long loadIdHorario(long id) throws PersistenceException {
-		try{
-			return recursoMapper.consultarIdHorario(id);
-
-		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al cargar id del horario", e);
-		}  
-	}
-	
-	@Override
 	public long loadIdRecurso(String nombre, Tipo t, String ubicacion) throws PersistenceException {
 		try{
 			return recursoMapper.consultarIdRecurso(nombre, t, ubicacion);

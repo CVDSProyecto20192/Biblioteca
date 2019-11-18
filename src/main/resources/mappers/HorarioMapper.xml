@@ -14,7 +14,7 @@
 			hs.hora as hora
 			
 			FROM BR_HORARIO as h 
-			left join BR_HORA as hs on h.id_hora=hs.id
+			left join BR_HORA as hs on h.id=hs.id_horario and h.dia=hs.dia_horario
     		
     		WHERE h.id=#{id_horario} and h.dia=#{dia_horario}
  			
@@ -26,15 +26,12 @@
 			h.id as id_horario,
 			h.dia as dia_horario,
 			
-			hs.id as id_hora,
-			hs.dia as dia_hora,
 			hs.hora as hora
 			
 			FROM BR_HORARIO as h 
-			left join BR_HORA as hs on h.id_hora=hs.id 
+			left join BR_HORA as hs on h.id=hs.id_horario and h.dia=hs.dia_horario
     		
     		WHERE h.id=#{id_horario} 
-dia
 	</select>
 	
 	<select parameterType="map" id="consultarHorarios" resultMap="HorarioResult">
@@ -46,7 +43,7 @@ dia
 			hs.hora as hora
 			
 			FROM BR_HORARIO as h 
-			left join BR_HORA as hs on h.id_hora=hs.id
+			left join BR_HORA as hs on h.id=hs.id_horario and h.dia=hs.dia_horario
     		
     		ORDER by h.id
     		
@@ -61,30 +58,39 @@ dia
 			
 	</select>
 	
+
 	<insert id ="insertarHorario">
-    	insert into BR_HORARIO (id, dia) 
-    	VALUES (#{horario.id},#{horario.dia})
+    	insert into BR_HORARIO (id, dia, id_recurso) 
+    	VALUES (#{horario.id},#{horario.dia}, #{id_recurso})
     </insert>
 	
-	
+
 	<insert id ="insertarHora">
-    	insert into BR_HORA (id, dia, hora) 
-    	VALUES (#{hora.id},#{hora.dia},#{hora.hora})
+		<selectKey keyProperty="id_hora" resultType="int" order="BEFORE">
+			select COUNT(id)+1 from BR_HORA
+		</selectKey>
+    	insert into BR_HORA (id, hora, id_horario, dia_horario) 
+    	VALUES (#{id_hora},#{hora.hora}, #{horario.id}, #{horario.dia})
     </insert>
 
 
-	<update id="actualizarHoras">
-			UPDATE BR_HORARIO
+	
+	<select id="consultarIdHora" resultType="long">
+	
+		SELECT 
+		hs.id
 		
-			SET horas=#{tiempo}
-
-			WHERE id=#{id_horario} and dia=#{dia}
-	</update>
-
-
+		FROM BR_HORA as hs
+		
+		WHERE hs.id_horario=#{horario.id} and h.dia_horario=#{horario.dia} and hs.hora=#{hora.hora}
+	
+	
+	</select>
+	
+	
 	<resultMap id="HoraResult" type="Hora">
+	
 		<result property="id" column="id_hora"/>
-		<result property="dia" column="dia_hora"/>
 		<result property="hora" column="hora"/>
 
   	</resultMap>
@@ -93,7 +99,7 @@ dia
 			
 			<id property="id" column="id_horario"/>
 			<id property="dia" column="dia_horario"/>
-			<collection property="horas" ofType="Hora" column="id_hora" 
+			<collection property="horas" ofType="Hora" column="{id_horario, dia_horario}" 
 			resultMap="HoraResult"/>  
     	
     </resultMap>

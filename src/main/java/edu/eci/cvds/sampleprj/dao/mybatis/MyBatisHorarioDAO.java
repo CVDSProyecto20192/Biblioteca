@@ -8,7 +8,9 @@ import com.google.inject.Inject;
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper;
+import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
+import edu.eci.cvds.samples.entities.Recurso;
 
 public class MyBatisHorarioDAO implements HorarioDAO{
 	
@@ -47,9 +49,9 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 
 	
 	@Override
-	public void addHorario(Horario h) throws PersistenceException {
+	public void addHorario(Horario h, long r) throws PersistenceException {
 		try{
-			horarioMapper.insertarHorario(h);
+			horarioMapper.insertarHorario(h, r);
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al insertar Horario", e);
@@ -57,6 +59,28 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 		
 	}
 
+	@Override
+	public void addHora(Horario h, Hora hs) throws PersistenceException {
+		try{
+			horarioMapper.insertarHora(h, hs);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al insertar Hora", e);
+		}
+		
+	}
+	
+	@Override
+	public long loadIdHora(Hora h, Horario hs) throws PersistenceException {
+		try{
+			return horarioMapper.consultarIdHora(h, hs);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar hora", e);
+		}
+	}
+
+	
 	@Override
 	public long loadLastId() throws PersistenceException {
 		try{
@@ -67,14 +91,5 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 		}
 	}
 
-	@Override
-	public void updateHoras(long idHorario, String dia, List<Date> horas) throws PersistenceException{
-		try{
-			horarioMapper.actualizarHoras(idHorario, dia, horas);
-		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al actualizar Horario", e);
-		}
-	}
-
+	
 }

@@ -7,13 +7,11 @@ import java.time.LocalDateTime;
 public class Hora implements Serializable{
 	
 	private long id;
-	private String dia;
 	private LocalDateTime hora;
 
 		
-	public Hora(long id, String dia, LocalDateTime hora) {
+	public Hora(long id, LocalDateTime hora) {
 		this.id=id;
-		this.dia=dia;
 		this.hora=hora;
 	}
 
@@ -27,13 +25,6 @@ public class Hora implements Serializable{
 		this.id=id;
 	}
 	
-	public String getDia() {
-		return this.dia;
-	}
-	
-	public void setDia(String dia) {
-		this.dia=dia;
-	}
 	
 	public LocalDateTime getHora() {
 		return this.hora;
@@ -45,7 +36,7 @@ public class Hora implements Serializable{
 	
 	@Override
     public String toString() {
-        return "Hora{" + "id=" + id + ", dia=" + dia + ", hora=" + hora + '}';                                                  
+        return "Hora{" + "id=" + id + ", hora=" + hora + '}';                                                  
 
 	}
 }

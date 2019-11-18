@@ -100,8 +100,8 @@ public class Recurso implements Serializable{
 
 	@Override
     public String toString() {
-        return "Recurso{" + "id=" + this.id + ", nombre=" + this.nombre + ", ubicacion=" +
-        this.ubicacion + ", capacidad=" + this.capacidad + ", tiempo=\n\t" + this.tiempo + ", tipo=" + this.tipo +  '}';                                
+        return "Recurso{" + "id=" + id + ", nombre=" + nombre + ", ubicacion=" +
+        ubicacion + ", capacidad=" + capacidad + ", tiempo=\n\t" + tiempo + ", tipo=" + tipo +  '}';                                
     }
 }
 

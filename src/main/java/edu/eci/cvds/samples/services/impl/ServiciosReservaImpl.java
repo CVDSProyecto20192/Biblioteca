@@ -11,6 +11,7 @@ import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
+import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
@@ -190,9 +191,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 
 	@Override
-	public void agregarHorario(Horario h) throws ServiciosReservaException {
+	public void agregarHorario(Horario h, long r) throws ServiciosReservaException {
 		try {
-			horarioDAO.addHorario(h);
+			horarioDAO.addHorario(h,r);
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al agregar el horario", e);
@@ -200,25 +201,23 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
-	public void actualizarHorario(long idRec,long idHor) throws ServiciosReservaException {
+	public void agregarHora(Horario h, Hora hs) throws ServiciosReservaException {
 		try {
-			recursoDAO.updateIdHorario(idRec, idHor);
-			
+			horarioDAO.addHora(h, hs);
 		} 
 		catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al actualizar el horario", e);
+			throw new ServiciosReservaException("Error al agregar la hora", e);
 		}
+		
 	}
 	
 	@Override
-	public long consultarIdHorario(Recurso r) throws ServiciosReservaException {
+	public long consultarIdHora(Horario h, Hora hs) throws ServiciosReservaException {
 		try {
-			long idRec=r.getId();
-			long idTiempo=recursoDAO.loadIdHorario(idRec);
-			return idTiempo;
+			return horarioDAO.loadIdHora(hs, h);
 		} 
 		catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar id del horario", e);
+			throw new ServiciosReservaException("Error al consultar id de la hora", e);
 		}
 	}
 	
@@ -244,14 +243,8 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 	}
 
-	@Override
-	public void actualizarHoras(long idHorario, String dia, List<Date> horas) throws ServiciosReservaException {
-		try {
-			horarioDAO.updateHoras(idHorario, dia, horas);
-		} 
-		catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al actualizar horas", e);
-		}
-		
-	}
+
 }
+
+
+

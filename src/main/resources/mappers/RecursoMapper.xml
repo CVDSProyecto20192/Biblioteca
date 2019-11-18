@@ -53,26 +53,6 @@
     	VALUES (#{id_recurso},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad}, #{recurso.tipo.id}, #{recurso.disponible}) 
     </insert>
     
-	<update id="actualizarIdHorario">
-	
-		update BR_RECURSO
-    		   
-    	set	id_horario = #{id_horario}
-    		   
-    	where id = #{id_recurso}
-
-	</update>
-
-	<select id="consultarIdHorario" resultType="long">
-			SELECT 
-    		
-    		r.id_horario 
-		
-			FROM BR_RECURSO as r
-
-			WHERE r.id=#{id_rec}
-	</select>
-	
     <select id="consultarIdRecurso" resultType="long">
 			SELECT 
     		
@@ -82,6 +62,7 @@
 
 			WHERE r.nombre=#{nom_rec} and r.id_tipo=#{tipo.id} and r.ubicacion=#{ubi_rec}
 	</select>
+
 	
 	<select id="consultarDisponibilidadRecurso" resultType="boolean">
 			SELECT 
@@ -93,6 +74,7 @@
 			WHERE r.id=#{id_rec} 
 	</select>
 
+
 	<update id="actDisponibilidadRecurso">
 			UPDATE BR_RECURSO
 		
@@ -100,6 +82,7 @@
 
 			WHERE id=#{id_rec} 
 	</update>
+	
 	
 	<select id="consultarUltimoId" resultType="long">
 			SELECT 
@@ -118,8 +101,10 @@
 			<result property="ubicacion" column="ubi_recurso"/>
     		<result property="capacidad" column="cap_recurso"/>
 			<result property="disponible" column="disp_recurso"/>
-      		<association property="tipo" javaType="Tipo" column="id_tipo" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoMapper.TipoResult"/>   			
-			<collection property="tiempo" ofType="Horario" column="id_horario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper.HorarioResult"/>      
+      		<association property="tipo" javaType="Tipo" column="id_tipo" 
+			resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoMapper.TipoResult"/>   			
+			<collection property="tiempo" ofType="Horario" column="id_recurso" 
+			resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper.HorarioResult"/>      
     </resultMap>
 
 </mapper>

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -60,7 +61,8 @@ public class RecursosView {
 			Recurso r=new Recurso(this.id,this.nombre,this.ubicacion,this.capacidad,this.disponible,this.tiempo,this.tipo);
 			serviciosReserva.agregarRecurso(r);
 			actionBuscarId();
-			actionSetHorarios(r);
+			r.setId(this.id);
+			actionHorarios(r);
 			
 			
 		} 
@@ -72,25 +74,38 @@ public class RecursosView {
 		}
 	}
 	
-	private void actionSetHorarios(Recurso r) {
+	
+	
+	private void actionHorarios(Recurso r) {
 		long id_r=r.getId();
 		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
 		this.tiempo=new ArrayList<Horario>();
         String[] weekdays = dfs.getWeekdays();
+        LocalDateTime horaPrueba= LocalDateTime.now();
+        ArrayList<Hora>prueba=new ArrayList<Hora>();
+        
         for (String weekday : weekdays) {
         	if(weekday!="" && weekday!="domingo"){
         		Horario h=new Horario(id_r,weekday);
-        		try {
-					this.serviciosReserva.agregarHorario(h);
-					this.serviciosReserva.actualizarHorario(id_r, id_r);
-				} 
-        		catch (Exception e) {
-					e.printStackTrace();
+        		Hora hs=new Hora(id_r,horaPrueba);
+        		long id_hora;
+				try {
+					/*id_hora = this.serviciosReserva.consultarIdHora(h, hs);
+					hs.setId(id_hora);
+					prueba.add(hs);
+					this.serviciosReserva.agregarHora(h, hs);*/
+					this.serviciosReserva.agregarHorario(h, id_r);
+				} catch (ServiciosReservaException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				//h.setHoras(prueba);
         		this.tiempo.add(h);
         	}
         }
         r.setTiempo(this.tiempo);
+        System.out.println(this.tiempo);
+        System.out.println(this.tiempo.size());
 	}
 	
 	

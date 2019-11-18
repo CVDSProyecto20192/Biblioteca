@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.exceptions.PersistenceException;
+import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
+import edu.eci.cvds.samples.entities.Recurso;
 
 public interface HorarioDAO {
 
@@ -16,10 +18,13 @@ public interface HorarioDAO {
 	
 	public List<Horario> loadAll() throws PersistenceException;
 	
-	public void addHorario(Horario h) throws PersistenceException;
+	public void addHorario(Horario h, long r) throws PersistenceException;
+	
+	public void addHora(Horario h, Hora hs) throws PersistenceException;
+	
+	public long loadIdHora(Hora h, Horario hs) throws PersistenceException;
 
 	public long loadLastId() throws PersistenceException;
 	
-	public void updateHoras(long idHorario, String dia, List<Date> horas) throws PersistenceException;
 	
 }

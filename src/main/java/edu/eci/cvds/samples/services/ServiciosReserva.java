@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
+import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
@@ -40,18 +41,17 @@ public interface ServiciosReserva {
 	public List<Horario> consultarHorarioDias(long id) throws ServiciosReservaException;
 
 	public List<Horario> consultarHorarios() throws ServiciosReservaException;
-
-	public void agregarHorario(Horario h) throws ServiciosReservaException;
 	
-	public void actualizarHorario(long l,long id_h) throws ServiciosReservaException;
+	public void agregarHorario(Horario h, long id_r) throws ServiciosReservaException;
 	
-	public long consultarIdHorario(Recurso r) throws ServiciosReservaException;
-
+	public void agregarHora(Horario h, Hora hs) throws ServiciosReservaException;
+	
+	public long consultarIdHora(Horario h, Hora hs) throws ServiciosReservaException;
+		
 	long consultarIdUltimoRecurso() throws ServiciosReservaException;
 
 	long consultarIdUltimoHorario() throws ServiciosReservaException;
 	
-	public void actualizarHoras(long idHorario, String dia, List<Date> horas) throws ServiciosReservaException;
 }
 
 

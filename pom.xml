@@ -20,6 +20,13 @@
     </properties>
 
     <dependencies>
+    
+	    <dependency> 
+		 <groupId>org.mybatis</groupId> 
+		 <artifactId>mybatis-typehandlers-jsr310</artifactId> 
+		 <version>1.0.1</version> 
+		</dependency>
+		
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-guice</artifactId>
@@ -101,6 +108,14 @@
 			<artifactId>guice</artifactId>
 			<version>4.2.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.ibatis/ibatis-core -->
+		<dependency>
+		    <groupId>org.apache.ibatis</groupId>
+		    <artifactId>ibatis-core</artifactId>
+		    <version>3.0</version>
+		</dependency>
+		
 		
         <dependency>
             <groupId>org.quicktheories</groupId>

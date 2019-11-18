@@ -29,7 +29,7 @@
     <dispatcher>INCLUDE</dispatcher>
     <dispatcher>ERROR</dispatcher>
    </filter-mapping>
-
+ 	
 	
 	<servlet>
    		<servlet-name>Faces Servlet</servlet-name>

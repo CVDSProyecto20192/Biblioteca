@@ -10,9 +10,11 @@
     		
     		h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas as horas_horario
 			
-			FROM BR_HORARIO as h
+			hs.hora as hora
+			
+			FROM BR_HORARIO as h 
+			left join BR_HORA as hs on h.id_hora=hs.id
     		
     		WHERE h.id=#{id_horario} and h.dia=#{dia_horario}
  			
@@ -23,13 +25,16 @@
 			
 			h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas as horas_horario
 			
+			hs.id as id_hora,
+			hs.dia as dia_hora,
+			hs.hora as hora
 			
-			FROM BR_HORARIO as h
+			FROM BR_HORARIO as h 
+			left join BR_HORA as hs on h.id_hora=hs.id 
     		
-    		WHERE h.id=#{id_horario}
-    		
+    		WHERE h.id=#{id_horario} 
+dia
 	</select>
 	
 	<select parameterType="map" id="consultarHorarios" resultMap="HorarioResult">
@@ -37,9 +42,11 @@
 			
 			h.id as id_horario,
 			h.dia as dia_horario,
-			h.horas as horas_horario
 			
-			FROM BR_HORARIO as h
+			hs.hora as hora
+			
+			FROM BR_HORARIO as h 
+			left join BR_HORA as hs on h.id_hora=hs.id
     		
     		ORDER by h.id
     		
@@ -58,6 +65,13 @@
     	insert into BR_HORARIO (id, dia) 
     	VALUES (#{horario.id},#{horario.dia})
     </insert>
+	
+	
+	<insert id ="insertarHora">
+    	insert into BR_HORA (id, dia, hora) 
+    	VALUES (#{hora.id},#{hora.dia},#{hora.hora})
+    </insert>
+
 
 	<update id="actualizarHoras">
 			UPDATE BR_HORARIO
@@ -67,11 +81,20 @@
 			WHERE id=#{id_horario} and dia=#{dia}
 	</update>
 
+
+	<resultMap id="HoraResult" type="Hora">
+		<result property="id" column="id_hora"/>
+		<result property="dia" column="dia_hora"/>
+		<result property="hora" column="hora"/>
+
+  	</resultMap>
+
 	<resultMap id="HorarioResult" type="Horario">
 			
 			<id property="id" column="id_horario"/>
-			<result property="dia" column="dia_horario"/>
-			<collection property="horas" ofType="java.sql.Date" column="horas_horario" />  
+			<id property="dia" column="dia_horario"/>
+			<collection property="horas" ofType="Hora" column="id_hora" 
+			resultMap="HoraResult"/>  
     	
     </resultMap>
 

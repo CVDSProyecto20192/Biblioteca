@@ -25,6 +25,8 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 	@Override
 	public List<Horario> loadAllDia(long id) throws PersistenceException {
 		try{
+			System.out.println("My batis horario");
+			System.out.println(id);
 			return horarioMapper.consultarHorarioDias(id);
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){

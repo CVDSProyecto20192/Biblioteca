@@ -28,7 +28,6 @@ public class HorariosView {
 	private long id;
 	private String dia;
 	private String hora;
-	private List<Date> horas;
 	private List<Horario> horario;
 	
 
@@ -39,9 +38,8 @@ public class HorariosView {
 	@PostConstruct
 	public void init() {
 		serviciosReserva=baseBean.getServiciosRecurso();
-		/*actionSetId();
-		System.out.println(this.id);
-		actionSetHorario();*/
+		actionSetId();
+		actionSetHorario();
 		
 	}
 	
@@ -54,6 +52,10 @@ public class HorariosView {
 	private void actionSetHorario() {
 		try {
 			this.horario=serviciosReserva.consultarHorarioDias(this.id);
+			System.out.println("tAMAÑO");
+
+			System.out.println(this.horario.size());
+			System.out.println(horario);
 		} catch (ServiciosReservaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,13 +108,6 @@ public class HorariosView {
 		this.hora=h;
 	}
 	
-	public List<Date> getHoras() {
-		return this.horas;
-	}
-	
-	public void setHoras(List<Date> horas) {
-		this.horas=horas;
-	}
 	
 	public List<Horario> gethorario() {
 		return this.horario;

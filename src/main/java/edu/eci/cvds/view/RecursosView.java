@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
+
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.*;
@@ -34,7 +35,7 @@ public class RecursosView {
 	private String ubicacion;
 	private int capacidad;
 	private boolean disponible;
-	private List<Horario> tiempo;
+	private ArrayList<Horario> tiempo;
 	private Tipo tipo;
 	private int idTipo;
 	private List<Recurso> listaRecursos;
@@ -76,7 +77,6 @@ public class RecursosView {
 		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
 		this.tiempo=new ArrayList<Horario>();
         String[] weekdays = dfs.getWeekdays();
-        
         for (String weekday : weekdays) {
         	if(weekday!="" && weekday!="domingo"){
         		Horario h=new Horario(id_r,weekday);
@@ -205,7 +205,7 @@ public class RecursosView {
 		return this.tiempo;
 	}
 	
-	public void setTiempo(List<Horario> time) {
+	public void setTiempo(ArrayList<Horario> time) {
 		this.tiempo=time;
 		
 	}

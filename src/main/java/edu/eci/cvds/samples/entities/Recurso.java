@@ -1,7 +1,7 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Recurso implements Serializable{
 	/**
@@ -13,7 +13,7 @@ public class Recurso implements Serializable{
 	private String ubicacion;
 	private int capacidad;
 	private boolean disponible;
-	private List<Horario> tiempo;
+	private ArrayList<Horario> tiempo;
 	private Tipo tipo;
 	
 	public Recurso(){
@@ -21,7 +21,7 @@ public class Recurso implements Serializable{
 	}
 	
 	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible, 
-			List<Horario>tiempo, Tipo tipo){
+			ArrayList<Horario>tiempo, Tipo tipo){
 		
 		this.id=id;
 		this.nombre=nombre;
@@ -33,7 +33,7 @@ public class Recurso implements Serializable{
 	}
 	
 	public Recurso(long id, String nombre, String ubicacion, int capacidad, boolean disponible,
-			List<Horario>tiempo){
+			ArrayList<Horario>tiempo){
 		
 		this.id=id;
 		this.nombre=nombre;
@@ -82,11 +82,11 @@ public class Recurso implements Serializable{
 		this.disponible = disponible;
 	}
 	
-	public List<Horario> getTiempo() {
+	public ArrayList<Horario> getTiempo() {
 		return this.tiempo;
 	}
 
-	public void setTiempo(List<Horario> tiempo) {
+	public void setTiempo(ArrayList<Horario> tiempo) {
 		this.tiempo=tiempo;
 	}
 	

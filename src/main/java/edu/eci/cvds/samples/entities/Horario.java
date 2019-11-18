@@ -1,16 +1,26 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
+import java.sql.Array;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.sql.Types;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import org.apache.ibatis.type.LocalDateTimeTypeHandler;
+import org.apache.ibatis.type.LocalDateTypeHandler;
 
 public class Horario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -690719691374115753L;
 	private long id;
 	private String dia;
-	private List<Date> horas;
+	private ArrayList<Hora> horas;
 
-
-	public Horario(long id, String dia, List<Date> horas) {
+	public Horario(long id, String dia, ArrayList<Hora> horas) {
 		this.id=id;
 		this.dia=dia;
 		this.horas=horas;
@@ -19,8 +29,12 @@ public class Horario implements Serializable{
 	public Horario(long id, String dia) {
 		this.id=id;
 		this.dia=dia;
+		this.horas = new ArrayList<Hora>();
+		
 	}
 
+	public Horario() {}
+	
 	public long getId() {
 		return this.id;
 	}
@@ -33,22 +47,23 @@ public class Horario implements Serializable{
 		return this.dia;
 	}
 	
-	public void setId(String dia) {
+	public void setDia(String dia) {
 		this.dia=dia;;
 	}
 	
-	public List<Date> getHoras() {
+	public ArrayList<Hora> getHoras() {
 		return this.horas;
 	}
 	
-	public void setId(List<Date> horas) {
+	public void setHoras(ArrayList<Hora> horas) {
 		this.horas=horas;
 	}
 	
 	@Override
     public String toString() {
-        return "Horario{" + "id=" + this.id + ", dia=" + this.dia + ", horas=\n\t" + this.horas + '}';                                                  
-    }
+		return "Horario{" + "id=" + id + ", dia=" + dia + ", horas=\n\t" + horas + '}';                                                  
+
+	}
 }
 	
 	

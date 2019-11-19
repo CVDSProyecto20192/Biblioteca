@@ -69,8 +69,8 @@
 		<selectKey keyProperty="id_hora" resultType="int" order="BEFORE">
 			select COUNT(id)+1 from BR_HORA
 		</selectKey>
-    	insert into BR_HORA (id, hora, id_horario, dia_horario) 
-    	VALUES (#{id_hora},#{hora.hora}, #{horario.id}, #{horario.dia})
+    	insert into BR_HORA (id, hora, id_horario, dia_horario, disponible) 
+    	VALUES (#{id_hora},#{hora.hora}, #{horario.id}, #{horario.dia}, #{hora.disponible})
     </insert>
 
 
@@ -92,6 +92,7 @@
 	
 		<result property="id" column="id_hora"/>
 		<result property="hora" column="hora"/>
+		<result property="disponible" column="disponible"/>
 
   	</resultMap>
 

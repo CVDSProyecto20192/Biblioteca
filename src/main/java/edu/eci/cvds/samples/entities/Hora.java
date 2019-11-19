@@ -8,11 +8,18 @@ public class Hora implements Serializable{
 	
 	private long id;
 	private LocalDateTime hora;
+	private boolean disponible;
 
-		
+	public Hora(long id, LocalDateTime hora, boolean disponible) {
+		this.id=id;
+		this.hora=hora;
+		this.disponible=disponible;
+	}
+	
 	public Hora(long id, LocalDateTime hora) {
 		this.id=id;
 		this.hora=hora;
+		this.disponible=false;
 	}
 
 	public Hora() {}
@@ -34,9 +41,27 @@ public class Hora implements Serializable{
 		this.hora=hora;
 	}
 	
+	public boolean getDisponible() {
+		return this.disponible;
+	}
+	
+	public void setDisponible(boolean disponible) {
+		this.disponible=disponible;
+	}
+	
 	@Override
     public String toString() {
-        return "Hora{" + "id=" + id + ", hora=" + hora + '}';                                                  
+        return "Hora{" + "id=" + id + ", hora=" + hora + ", disponible=" + disponible + '}';                                                  
 
 	}
 }
+
+
+
+
+
+
+
+
+
+

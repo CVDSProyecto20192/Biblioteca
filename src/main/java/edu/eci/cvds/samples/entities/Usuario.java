@@ -94,7 +94,7 @@ public class Usuario implements Serializable{
 	
 	@Override
     public String toString() {
-        return "Usuario{" + "carnet=" + this.carnet + ", documento=" + this.documento + ", correo=" + this.correo + ", nombres=" + this.nombres + ", apellidos=" + this.apellidos + ", cargo=" + this.cargo +  '}';                                
+        return "Usuario{" + "carnet=" + carnet + ", documento=" + documento + ", correo=" + correo + ", nombres=" + nombres + ", apellidos=" + apellidos + ", cargo=" + cargo +  '}';                                
     }
 
 }

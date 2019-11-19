@@ -43,6 +43,6 @@ public class Tipo implements Serializable{
 	
 	@Override
     public String toString() {
-        return "Tipo{" + "id=" + this.id + "tipo=" + this.tipo + ", descripcion=" + this.descripcion + '}';
+        return "Tipo{" + "id=" + id + "tipo=" + tipo + ", descripcion=" + descripcion + '}';
     }
 }

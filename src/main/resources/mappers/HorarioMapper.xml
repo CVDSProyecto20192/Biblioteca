@@ -82,7 +82,7 @@
 		
 		FROM BR_HORA as hs
 		
-		WHERE hs.id_horario=#{horario.id} and h.dia_horario=#{horario.dia} and hs.hora=#{hora.hora}
+		WHERE hs.id_horario=#{horario.id} and hs.dia_horario=#{horario.dia} and hs.hora=#{hora.hora}
 	
 	
 	</select>

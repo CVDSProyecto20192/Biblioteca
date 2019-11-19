@@ -57,7 +57,12 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	@Override
 	public void insertarReserva(Reserva reserva) throws PersistenceException {
 		try{
-			reservaMapper.insertarReserva(reserva);
+			if (consultarFecha(reserva.getFecha(), reserva.getHora())){
+				reservaMapper.insertarReserva(reserva);
+			}
+			else{
+				throw new PersistenceException("La reserva debe hacerse para despues de la hora actual");
+			}
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al insertar reserva", e);
@@ -84,5 +89,19 @@ public class MyBatisReservaDAO implements ReservaDAO {
 		return fechas;
 	}
 	
-
+	public boolean consultarFecha(Date fecha, int hora){
+		boolean flag = true;
+		int h = hora/100;
+		int m = hora % 100;
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(fecha);
+		calendar.add(Calendar.HOUR, h);
+		calendar.add(Calendar.MINUTE, m);
+		Date fecha2 = calendar.getTime();
+		Date actual = new Date();
+		if (fecha2.compareTo(actual) < 0){
+			flag = false;
+		}
+		return flag;
+	}
 }

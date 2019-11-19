@@ -19,6 +19,7 @@ import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 import java.util.Date;
+import java.text.SimpleDateFormat;  
 public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
 	private UsuarioDAO userDAO;

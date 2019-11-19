@@ -8,7 +8,7 @@
 	<select parameterType="map" id="consultarReservas" resultMap="ReservaResult">
 			SELECT res.codigo as res_codigo, 
 			res.fecha, 
-			res.hora, 
+			res.hora as tiempo, 
 			res.duracion,
 			res.activa,
 			res.grupo,
@@ -17,18 +17,26 @@
   			u.correo as correo_usuario,
   			u.nombres as nombres_usuario,
   			u.apellidos as apellidos_usuario,
+			c.id as id_cargo,
+			c.nombre as nombre_cargo,
+			c.descripcion as des_cargo,
 			r.id as id_recurso,
     		r.nombre as nombre_recurso,
-			r.ubicacion as ubi_recurso
+			r.ubicacion as ubi_recurso,
+			t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo
 			FROM br_reserva as res
 			left join BR_USUARIO as u on u.carnet=res.usuario
 			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_CARGO as c on u.id_cargo=c.id
+			left join BR_TIPO as t on r.id_tipo=t.id
 	</select>
 	
 	<select parameterType="map" id="consultarFranja" resultMap="ReservaResult">
 			SELECT res.codigo as res_codigo, 
 			res.fecha, 
-			res.hora, 
+			res.hora as tiempo, 
 			res.duracion,
 			res.activa,
 			res.grupo,
@@ -37,12 +45,16 @@
   			u.correo as correo_usuario,
   			u.nombres as nombres_usuario,
   			u.apellidos as apellidos_usuario,
+			c.id as id_cargo,
+			c.nombre as nombre_cargo,
+			c.descripcion as des_cargo,
 			r.id as id_recurso,
     		r.nombre as nombre_recurso,
 			r.ubicacion as ubi_recurso
 			FROM br_reserva as res
 			left join BR_USUARIO as u on u.carnet=res.usuario
 			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_CARGO as c on u.id_cargo=c.id
 			WHERE
 			res.fecha = #{fecha} AND (((#{hora} + #{duracion} >= res.hora AND res.hora >= #{hora}) OR (#{hora} + #{duracion} >= res.hora + res.duracion AND res.hora + res.duracion >= #{hora})) OR		
 			((res.hora + res.duracion >= #{hora}  AND #{hora} >= res.hora) OR (res.hora + res.duracion >= #{hora} + #{duracion} AND #{hora} + #{duracion} >= res.hora))) AND res.activa = true
@@ -65,7 +77,7 @@
 	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>
-			<result property="hora" column="hora"/>
+			<result property="hora" column="tiempo"/>
 			<result property="duracion" column="duracion"/>
 			<result property="fecha" column="fecha"/>
 			<result property="activa" column="activa"/>

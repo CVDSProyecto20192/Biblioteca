@@ -170,8 +170,8 @@ public class ServiciosReservaTest{
 			System.out.println(serviciosReserva.consultarFranja(date, 1810, 10));
 			System.out.println(serviciosReserva.consultarUsuario("0000001"));
 			System.out.println(serviciosReserva.consultarRecurso((long) 1));**/
-			serviciosReserva.insertarReservaDias("2019-11-20", 700, 100, "0000001", (long) 6, "2019-12-25", 1);
-			//System.out.println(serviciosReserva.consultarGrupo());
+			//serviciosReserva.insertarReservaDias("2019-11-20", 700, 100, "0000001", (long) 6, "2019-12-25", 1);
+			System.out.println(serviciosReserva.consultarReservas());
 		}
 		catch (ServiciosReservaException e){
 			e.printStackTrace();

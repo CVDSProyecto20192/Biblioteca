@@ -34,7 +34,9 @@
 				<div class="contenedor">
 				
 					<div class="elemento" id="uno">
-						<img class="icon" src="img/reserva.svg"/>
+						<p:commandLink action="#{LoginBean.redirectTo('reservas.xhtml')}" update="@form">
+							<img class="icon" src="img/reserva.svg"/>
+						</p:commandLink>
 					</div>
 					
 					<div class="elemento" id="dos">

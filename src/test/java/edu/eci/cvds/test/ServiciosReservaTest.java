@@ -12,14 +12,18 @@ import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosReservaFactory;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import org.junit.Assert;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ServiciosReservaTest{
     
-	/*@Inject
+	@Inject
     ServiciosReserva serviciosReserva;
     public ServiciosReservaTest(){
         
@@ -27,9 +31,9 @@ public class ServiciosReservaTest{
 
     @Before
     public void setUp(){
-        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReservaTesting();        
+        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReserva();        
     }
-
+	/*
     @Test
     public void deberiaInsertarTipo(){
 		boolean r = false;
@@ -158,4 +162,23 @@ public class ServiciosReservaTest{
 		Assert.assertTrue(r);	
 	}*/
 	
+	@Test
+	public void prueba(){
+		try{
+			/**SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = formatter.parse("2019-11-14");
+			System.out.println(serviciosReserva.consultarFranja(date, 1810, 10));
+			System.out.println(serviciosReserva.consultarUsuario("0000001"));
+			System.out.println(serviciosReserva.consultarRecurso((long) 1));**/
+			serviciosReserva.insertarReservaDias("2019-11-20", 700, 100, "0000001", (long) 6, "2019-12-25", 1);
+			//System.out.println(serviciosReserva.consultarGrupo());
+		}
+		catch (ServiciosReservaException e){
+			e.printStackTrace();
+			System.out.println("fracaso");
+        }
+		/**catch (ParseException e) {
+            e.printStackTrace();
+        }**/
+	}
 }

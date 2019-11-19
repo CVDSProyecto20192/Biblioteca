@@ -170,7 +170,17 @@ public class RecursosView {
 		this.baseBean.setIdRec(id);
 	}
 	
-	
+	public List<Recurso> getActivos(){
+		List<Recurso> activos = null;
+		try{
+			activos= serviciosReserva.consultarRecursosActivos();
+		}
+		catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return activos;
+	}
 	
 	public long getId() {
 		return this.id;

@@ -1,6 +1,5 @@
 package edu.eci.cvds.samples.services.impl;
 
-import java.sql.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -12,12 +11,15 @@ import edu.eci.cvds.sampleprj.dao.RecursoDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
 import edu.eci.cvds.samples.entities.Hora;
+import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;  
 public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
 	private UsuarioDAO userDAO;
@@ -30,6 +32,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Inject
 	private HorarioDAO horarioDAO;
+	
+	@Inject
+	private ReservaDAO reservaDAO;
 	 
 	@Override
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException{
@@ -74,6 +79,17 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar los recursos", e);
 		}
 	}
+	@Override
+	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException{
+		List<Recurso> r=null;
+		try {
+			r=recursoDAO.loadActivos();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar los recursos activos", e);
+		}
+		return r;
+	}
 
 	@Override
 	public void agregarRecurso(Recurso r) throws ServiciosReservaException{
@@ -112,6 +128,19 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar los tipos", e);
+		}
+		return tl;
+	}
+	
+	@Override
+	public List<Reserva> consultarReservas() throws ServiciosReservaException {
+		List<Reserva> tl;
+		try {
+			tl=reservaDAO.loadAll();
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
 		return tl;
 	}
@@ -243,8 +272,87 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 	}
 
+	
+	@Override
+	public Reserva consultarFranja(Date fecha, int hora, int duracion,long recurso) throws ServiciosReservaException {
+		Reserva r = null;
+		try {
+			r = reservaDAO.consultarFranja(fecha, hora, duracion,recurso);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar franja", e);
+		}
+		return r;
+	}
+	
+	@Override
+	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso) throws ServiciosReservaException{
+		try {
+			Usuario u = consultarUsuario(usuario);
+			Recurso r = consultarRecurso(recurso);
+			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, (long) 0, null);
+			if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null){
+				reservaDAO.insertarReserva(res);
+			}
+			else{
+				throw new ServiciosReservaException("Error al insertar reserva");
+			}
+		} 
+		catch (ServiciosReservaException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}
+	}
+	
+	@Override
+	public List<Date> getFechas(String fecha, String fechaFin,int periodicidad){
+		 List<Date> fechas = reservaDAO.getFechas(fecha, fechaFin, periodicidad);
+		 return fechas;
+	}
+	
+	@Override
+	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, String fechaFin,int periodicidad) throws ServiciosReservaException{
+		try {
+			List<Date> fechas = getFechas(fecha, fechaFin, periodicidad);
+			boolean flag = true;
+			for(int i=0; i<fechas.size();i++){
+				Date f = fechas.get(i);
+				if (consultarFranja(f, hora, duracion,recurso) != null){
+					flag=false;
+				}
+			}
+	
+			if(flag){
+				Usuario u = consultarUsuario(usuario);
+				Recurso r = consultarRecurso(recurso);
+				long grupo = consultarGrupo();
+				for(int i=0; i<fechas.size();i++){
+					Date f = fechas.get(i);
+					Reserva res = new Reserva((long) 0, f, hora, duracion, u, r, grupo, null);
+					reservaDAO.insertarReserva(res);
+				}
+			}else{
+				throw new ServiciosReservaException("Error al insertar reservas");
+			}
+			
+		}catch (ServiciosReservaException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al insertar reserva", e);
+		}
+	
+	}
+	
+	@Override
+	public long consultarGrupo() throws ServiciosReservaException {
+		try{
+			return reservaDAO.consultarGrupo();
+		}
+		catch(PersistenceException e){
+			throw new ServiciosReservaException("Error al consultar id del grupo", e);
+		}  
+	}
 
 }
-
-
-

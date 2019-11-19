@@ -14,6 +14,8 @@ public interface RecursoDAO {
 	
 	public List<Recurso> loadAll() throws PersistenceException;
 	
+	public List<Recurso> loadActivos() throws PersistenceException;
+	
 	public void addRecurso(Recurso r) throws PersistenceException;
 		
 	public long loadIdRecurso(String nombre,Tipo t, String ubicacion) throws PersistenceException;

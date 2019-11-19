@@ -1,15 +1,14 @@
 package edu.eci.cvds.samples.services;
 
-import java.sql.Date;
 import java.util.List;
-
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
-
+import edu.eci.cvds.samples.entities.Reserva;
+import java.util.Date;
 public interface ServiciosReserva {
 
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException;
@@ -52,6 +51,17 @@ public interface ServiciosReserva {
 
 	long consultarIdUltimoHorario() throws ServiciosReservaException;
 	
+
+	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
+	public List<Reserva> consultarReservas() throws ServiciosReservaException;
+	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws ServiciosReservaException; 
+	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso) throws ServiciosReservaException;
+	
+	public List<Date> getFechas(String fecha, String fechaFin,int periodicidad);
+	
+	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, String fechaFin,int periodicidad) throws ServiciosReservaException;
+
+	public long consultarGrupo() throws ServiciosReservaException;
 }
 
 

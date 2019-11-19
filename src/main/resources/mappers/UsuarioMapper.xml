@@ -56,7 +56,7 @@
 	
 	<resultMap id="UsuarioResult" type="Usuario">
 			
-			<id property="carnet" column="id_usuario"/>
+			<id property="carnet" column="carnet_usuario"/>
 			<result property="documento" column="doc_usuario"/>
 			<result property="correo" column="correo_usuario"/>
     		<result property="nombres" column="nombres_usuario"/>

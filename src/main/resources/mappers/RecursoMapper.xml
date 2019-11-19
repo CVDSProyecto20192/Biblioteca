@@ -45,6 +45,28 @@
     		
 	</select>
 	
+	<select parameterType="map" id="consultarRecursosActivos" resultMap="RecursoResult">
+			SELECT 
+    		
+    		r.id as id_recurso,
+    		r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso,
+    		r.capacidad as cap_recurso,
+			r.disponible as disp_recurso,
+    			
+			t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo
+			
+			FROM BR_RECURSO as r
+    		left join BR_TIPO as t on r.id_tipo=t.id
+    		
+			where
+			r.disponible = true
+    		ORDER by r.id
+    		
+	</select>
+	
 	<insert id ="insertarRecurso">
 		<selectKey keyProperty="id_recurso" resultType="int" order="BEFORE">
 			select COUNT(id)+1 from BR_RECURSO

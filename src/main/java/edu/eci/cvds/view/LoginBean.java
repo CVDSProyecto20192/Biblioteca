@@ -43,14 +43,10 @@ public class LoginBean implements Serializable{
             redirectToMenu(); 
             
         } catch (UnknownAccountException e) {
-        	System.out.println("No existe");
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } 
         catch (IncorrectCredentialsException e) {
-        	System.out.println("No");
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Contraseña incorrecta", "La contraseña ingresada no es correcta"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }
     }
     
@@ -93,6 +89,7 @@ public class LoginBean implements Serializable{
     	}
     }
 
+
 	public void isLogged(){
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.getSession().getAttribute("Correo") != null){
@@ -100,7 +97,7 @@ public class LoginBean implements Serializable{
 		}
     }
     
-    private void redirectTo(String path){
+    public void redirectTo(String path){
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(path);
         } catch (IOException e) {

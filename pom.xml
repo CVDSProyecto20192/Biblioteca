@@ -20,13 +20,7 @@
     </properties>
 
     <dependencies>
-    
-	    <dependency> 
-		 <groupId>org.mybatis</groupId> 
-		 <artifactId>mybatis-typehandlers-jsr310</artifactId> 
-		 <version>1.0.1</version> 
-		</dependency>
-		
+	
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-guice</artifactId>
@@ -98,12 +92,6 @@
         </dependency>
 
 		<dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
-
-		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
 			<version>4.2.2</version>
@@ -116,14 +104,6 @@
 		    <version>3.0</version>
 		</dependency>
 		
-		
-        <dependency>
-            <groupId>org.quicktheories</groupId>
-            <artifactId>quicktheories</artifactId>
-            <version>0.26</version>
-            <scope>test</scope>
-        </dependency>
-
 		<!--Shiro dependencies-->
 
 	    <dependency>

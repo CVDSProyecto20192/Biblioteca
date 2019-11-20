@@ -47,7 +47,7 @@ public class HorariosView {
 	
 	@PostConstruct
 	public void init() {
-		serviciosReserva=baseBean.getServiciosRecurso();
+		serviciosReserva=baseBean.getServiciosReserva();
 		actionSetId();
 		actionSetHorario();
 		actionCreateHash();

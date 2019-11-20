@@ -6,28 +6,77 @@
       xmlns:h="http://java.sun.com/jsf/html"
 
       xmlns:p="http://primefaces.org/ui">
-      
-      <h:head>
-      
-      	<meta http-equiv="Expires" content="0" />
+	
+	<h:head>
+		<link rel="stylesheet" type="text/css" href="css/recursos.css" />
+		
+		<meta http-equiv="Expires" content="0" />
 		<meta http-equiv="Pragma" content="no-cache" />
 		
-		<script type="text/javascript">
-		  if(history.forward(1)){
-		    location.replace( history.forward(1) );
-		  }
-		</script>
+		<title>Reservas</title>
 		
-      
-      	<title>Reservas</title>
-      </h:head>
-      
-      
-      <h:body>
-      
-      
-      
-      </h:body>
-      
+    </h:head>
 	
+    <h:body >
+
+		<h1>Biblioteca</h1>
+		<h2>Reservas</h2>
+		<br/>
+        <h:form id="reservas_form">
+            <section>
+                <div style="text-align: center" class='table'>
+                
+                    <p:dataTable class="reservas" value="#{ReservasUsersBean.reservas}" var = "reserva" style="margin: 0 auto;"
+                    rows="8" paginator="true" 
+    				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
+    				rowsPerPageTemplate="8, 16, 24">
+	
+    					<p:column headerText="Codigo" >
+                        	<h:outputText value="#{reserva.codigo}"></h:outputText>
+                        </p:column>            
+						
+                        <p:column headerText="Fecha" filterBy="#{reserva.fecha}">
+                        	<h:outputText value="#{reserva.fecha}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Hora" filterBy="#{reserva.hora}">
+                        	<h:outputText value="#{reserva.hora}"></h:outputText>
+                        </p:column>       
+                        
+                        <p:column headerText="Duración" filterBy="#{reserva.duracion}">
+                        	<h:outputText value="#{reserva.duracion}"></h:outputText>
+                        </p:column>            
+				
+                        <p:column headerText="Registro" filterBy="#{reserva.registro}">
+                        	<h:outputText value="#{reserva.registro}"></h:outputText>
+                        </p:column>  
+						
+					
+                    </p:dataTable>
+                </div>  
+              
+            </section>
+			
+			<br/>
+
+			<section>
+		
+				<div style="text-align: center">
+					<p:commandButton id= "back" value="Back Admin" action="#{ReservaBean.page01}" update="reservas_form"></p:commandButton>
+				
+                </div> 
+				
+				<div style="text-align: center">
+					<p:commandButton id= "back2" value="Back Com" action="#{ReservaBean.page02}" update="reservas_form"></p:commandButton>
+				
+                </div> 
+				
+			</section>
+			
+			<br/>
+		
+
+        </h:form>
+    </h:body>
+    
 </html>

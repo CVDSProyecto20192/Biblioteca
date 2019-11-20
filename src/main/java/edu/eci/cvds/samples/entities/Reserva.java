@@ -126,8 +126,8 @@ public class Reserva {
 	@Override
     public String toString() {
         return "Reserva{" + "codigo=" + this.codigo + ", fecha=" + this.fecha + ", hora=" +
-        this.hora + ", duracion=" + this.duracion + ", usuario=" + this.usuario + ", recurso=" + this.recurso +   
-		", activa=" + this.activa + ", grupo=" + this.grupo + '}';                                
+        this.hora + ", duracion=" + this.duracion + ", activa=" + this.activa + ", grupo=" + this.grupo +", Registro=" + registro +", usuario=" + this.usuario + ", recurso=" + this.recurso +   
+		 '}';                                
     }
 	
 }

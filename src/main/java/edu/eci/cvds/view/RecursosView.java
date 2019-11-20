@@ -47,7 +47,7 @@ public class RecursosView {
 	
 	@PostConstruct
 	public void init() {
-		serviciosReserva=baseBean.getServiciosRecurso();
+		serviciosReserva=baseBean.getServiciosReserva();
 		actionReiniciar();
 		actionSetListaRecursos();
 	}
@@ -155,7 +155,7 @@ public class RecursosView {
 	}
 	
 	public void actionReiniciar() {
-		this.id=-1;
+		reiniciarId();
 		this.nombre=null;
 		this.ubicacion=null;
 		this.capacidad=0;
@@ -164,6 +164,14 @@ public class RecursosView {
 		this.tipo=null;
 		this.idTipo=0;
 		
+	}
+	
+	private void reiniciarId(){
+		try{
+			this.id= serviciosReserva.consultarIdUltimoRecurso()+1;
+		}catch (ServiciosReservaException e) {
+			this.id=this.id;
+		}
 	}
 	
 	public void actionSetIdRen(long id) {

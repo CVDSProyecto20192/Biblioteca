@@ -42,7 +42,7 @@ public class ReservasView implements Serializable{
 
     @PostConstruct
     public void init() {
-        serviciosReserva=baseBean.getServiciosRecurso();
+        serviciosReserva=baseBean.getServiciosReserva();
         this.dia = false;
         this.semana = false;
         this.mes = false;

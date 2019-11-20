@@ -51,7 +51,7 @@ public class BasePageBean implements Serializable {
     	return getInjector().getInstance(ReservaDAO.class);
     }
     
-    protected ServiciosReserva getServiciosRecurso() {
+    protected ServiciosReserva getServiciosReserva() {
     	return getInjector().getInstance(ServiciosReserva.class);
     }
     

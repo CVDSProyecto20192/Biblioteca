@@ -354,5 +354,18 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar id del grupo", e);
 		}  
 	}
+	
+	@Override
+	public List<Reserva> consultarReservasRecurso(long recursoId) throws ServiciosReservaException {
+		List<Reserva> reservas;
+		try {
+			reservas=reservaDAO.consultarReservasRecurso(recursoId);
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas del recurso con Id: " + recursoId , e);
+		}
+		return reservas;
+	}
 
 }

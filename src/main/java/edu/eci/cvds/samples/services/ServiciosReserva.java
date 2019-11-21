@@ -53,8 +53,13 @@ public interface ServiciosReserva {
 	
 
 	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
+	
 	public List<Reserva> consultarReservas() throws ServiciosReservaException;
+	
+	public List<Reserva> consultarReservasRecurso(long recursoId) throws ServiciosReservaException;
+	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws ServiciosReservaException; 
+	
 	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso) throws ServiciosReservaException;
 	
 	public List<Date> getFechas(String fecha, String fechaFin,int periodicidad);

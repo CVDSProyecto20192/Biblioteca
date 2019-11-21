@@ -3,6 +3,7 @@ package edu.eci.cvds.view;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -20,6 +21,7 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import edu.eci.cvds.samples.entities.Reserva;
 
 @Deprecated
 @ManagedBean(name = "DispoBean")
@@ -39,40 +41,27 @@ public class DisponibilidadView implements Serializable {
 
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
+    private String recurso;
+    private List<Reserva> reservas;
 
-    public BasePageBean getBaseBean() {
-        return baseBean;
+    public DisponibilidadView() {
     }
 
-    public ScheduleEvent getEvent() {
-        return event;
+    public List<Reserva> getReservas() {
+        return reservas;
     }
 
-    public void setEvent(ScheduleEvent event) {
-        this.event = event;
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
-    public ScheduleModel getEventModel() {
-        return eventModel;
+    public String getRecurso() {
+        return recurso;
     }
 
-    public void setEventModel(ScheduleModel eventModel) {
-        this.eventModel = eventModel;
+    public void setRecurso(String recurso) {
+        this.recurso = recurso;
     }
-
-    public ServiciosReserva getServiciosReserva() {
-        return serviciosReserva;
-    }
-
-    public void setServiciosReserva(ServiciosReserva serviciosReserva) {
-        this.serviciosReserva = serviciosReserva;
-    }
-
-    public void setBaseBean(BasePageBean baseBean) {
-        this.baseBean = baseBean;
-    }
-
-    public DisponibilidadView(){}
 
     @PostConstruct
     public void init(){
@@ -81,7 +70,12 @@ public class DisponibilidadView implements Serializable {
         eventModel = new DefaultScheduleModel();
 
         DefaultScheduleEvent event = new DefaultScheduleEvent("Prueba", previousDay8Pm(), previousDay11Pm());
+
         eventModel.addEvent(event);
+    }
+
+    public void actionverDisponibilidad(){
+        
     }
 
     private Date previousDay8Pm() {
@@ -131,6 +125,38 @@ public class DisponibilidadView implements Serializable {
     
     private void addMessage(FacesMessage message) {
 		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
+    }
+    
+    public BasePageBean getBaseBean() {
+        return baseBean;
+    }
+
+    public ScheduleEvent getEvent() {
+        return event;
+    }
+
+    public void setEvent(ScheduleEvent event) {
+        this.event = event;
+    }
+
+    public ScheduleModel getEventModel() {
+        return eventModel;
+    }
+
+    public void setEventModel(ScheduleModel eventModel) {
+        this.eventModel = eventModel;
+    }
+
+    public ServiciosReserva getServiciosReserva() {
+        return serviciosReserva;
+    }
+
+    public void setServiciosReserva(ServiciosReserva serviciosReserva) {
+        this.serviciosReserva = serviciosReserva;
+    }
+
+    public void setBaseBean(BasePageBean baseBean) {
+        this.baseBean = baseBean;
+    }
 
 }

@@ -6,39 +6,58 @@
       xmlns:h="http://java.sun.com/jsf/html"
 
 	  xmlns:p="http://primefaces.org/ui">
+	  
+	<h:head>
+		<title>Disponibilidad</title>
+	</h:head>
 
 	<h:body>
 		<h:form>
 
+
 			<p:growl id="messages" showDetail="true" />
 
-			<h:panelGrid columnClasses="value">
-				<p:schedule id="schedule" value="#{DispoBean.eventModel}" widgetVar="myschedule" timeZone="GMT+2" >
-					<p:ajax event="dateSelect" listener="#{ShowBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-					<p:ajax event="eventSelect" listener="#{ShowBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
-					<p:ajax event="eventMove" listener="#{ShowBean.onEventMove}" update="messages" />
-					<p:ajax event="eventResize" listener="#{ShowBean.onEventResize}" update="messages" />
-				</p:schedule>
+			<h1 style="text-align: center;">Consultar Disponibilidad</h1>
+
+			<h:panelGrid style="margin: auto;" columns="2" cellpadding="20">
+				<p:outputLabel value="Recurso:"/>
+				<p:inputText value="#{DispoBean.recurso}"/>
+
+				<div style="text-align: center;">
+					<p:commandButton value="Consultar" action="#{DispoBean.actionVerDisponibilidad}" update="@form"/>
+				</div>
 			</h:panelGrid>
 
-			<p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-				<h:panelGrid id="eventDetails" columns="2">
-					<p:outputLabel for="title" value="Titles:" />
-					<p:inputText id="title" value="#{ShowBean.event.title}" required="true" />
+			<h:panelGrid style="margin: auto;">
+			</h:panelGrid>
 
-					<p:outputLabel for="from" value="From:" />
-					<p:calendar id="from" value="#{ShowBean.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+			<h:panelGrid>
 
-					<p:outputLabel for="to" value="To:" />
-					<p:calendar id="to" value="#{ShowBean.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule">
+					<p:ajax event="eventSelect" Listener="#{DipoBean.onEventSelect}" update="eventDetails" onComplete="eventDialog.show();"/>		
+				</p:schedule>  
 
-					<p:outputLabel for="allDay" value="All Day:" />
-					<h:selectBooleanCheckbox id="allDay" value="#{ShowBean.event.allDay}" />
+			</h:panelGrid>
 
-					<p:commandButton type="reset" value="Reset" />
-					<p:commandButton id="addButton" value="Save" actionListener="#{ShowBean.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
-				</h:panelGrid>
-			</p:dialog>    
+            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                <h:panelGrid id="eventDetails" columns="2">
+                    <p:outputLabel for="title" value="Titles:" />
+                    <p:inputText id="title" value="#{DispoBean.event.title}" required="true" />
+
+                    <p:outputLabel for="from" value="From:" />
+                    <p:calendar id="from" value="#{DispoBean.event.startDate}" pattern="dd/MM/yyyy HH:mm"/>
+
+                    <p:outputLabel for="to" value="To:" />
+                    <p:calendar id="to" value="#{DispoBean.event.endDate}" pattern="dd/MM/yyyy HH:mm"/>
+
+                    <p:outputLabel for="allDay" value="All Day:" />
+                    <h:selectBooleanCheckbox id="allDay" value="#{DispoBean.event.allDay}" />
+
+                    <p:commandButton type="reset" value="Reset" />
+                    <p:commandButton id="addButton" value="Save" actionListener="#{DispoBean.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+                </h:panelGrid>
+            </p:dialog>   
+
 		</h:form>
 	</h:body>
 	  

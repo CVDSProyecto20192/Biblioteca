@@ -1,6 +1,6 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -80,6 +80,37 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 		}
 	}
 
+
+	@Override
+	public void updateTiempoHora(long idHora, Date hora) throws PersistenceException {
+		try{
+			horarioMapper.actualizarTiempoHora(idHora, hora);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar hora", e);
+		}		
+	}
+	
+	@Override
+	public boolean loadDispHora(long idHora) throws PersistenceException {
+		try{
+			return horarioMapper.consultarDispHora(idHora);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar hora", e);
+		}
+	}
+
+	@Override
+	public void updateDispHora(long idHora, boolean b) throws PersistenceException {
+		try{
+			horarioMapper.actualizarDispHora(idHora,b);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al actualizar diaponibilidad de hora", e);
+		}
+	}
+
 	
 	@Override
 	public long loadLastId() throws PersistenceException {
@@ -90,6 +121,5 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 			throw new PersistenceException("Error al consultar id del último Horario", e);
 		}
 	}
-
 	
 }

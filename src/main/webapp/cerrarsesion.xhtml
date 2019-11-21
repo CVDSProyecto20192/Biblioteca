@@ -15,22 +15,20 @@
     <h:body>
 
 		<h1>Biblioteca</h1>
-    <h2>Se ha cerrado tu sesión</h2>
+    	<h2>Se ha cerrado tu sesión</h2>
     
-    <h:form>  
-
-        <p:growl id="messages" showDetail="true" />  
-
-        <p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule">  
-
-            <p:ajax event="eventSelect" listener="#{calendarController.onEventSelect}" update="eventDetails" oncomplete="eventDialog.show()" />  
-
-        </p:schedule>  
-
-    </h:form> 
+	    <h:form>  
+	
+	        <p:growl id="messages" showDetail="true" />  
+	
+	        <p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule">  
+	
+	            <p:ajax event="eventSelect" listener="#{calendarController.onEventSelect}" update="eventDetails" oncomplete="eventDialog.show()" />  
+	
+	        </p:schedule>  
+	
+	    </h:form> 
     
-		
-      
 
     </h:body>
     

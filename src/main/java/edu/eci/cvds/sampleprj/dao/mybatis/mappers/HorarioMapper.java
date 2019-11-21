@@ -1,6 +1,6 @@
 package edu.eci.cvds.sampleprj.dao.mybatis.mappers;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -46,6 +46,8 @@ public interface HorarioMapper {
      */
     public void insertarHora(@Param("horario")Horario h, @Param("hora") Hora hora);
     
+    
+    
     /**
      * Consultar el id de la hora según el horario
      * @param hora
@@ -53,14 +55,31 @@ public interface HorarioMapper {
      * @return
      */
     public long consultarIdHora(@Param("hora") Hora hora, @Param("horario") Horario horario);
+
+    
+    public void actualizarTiempoHora(@Param("id_hora") long idHora, @Param("tiempo_hora") Date hora);
+    
+    /**
+     * Retorna la disponibilidad de la hora dada
+     * @param idHora
+     * @return
+     */
+    public boolean consultarDispHora(@Param("id_hora") long idHora);
+
+    /**
+     * Actualiza la disponibilidad de la hora
+     * @param idHora
+     * @param b
+     */
+	public void actualizarDispHora(@Param("id_hora") long idHora, @Param("disp") boolean b);
+	
     
     /**
      * Consultar el id del último horario añadido
      * @return
      */
 	public long consultarUltimoId();
-	
-	
+
     
 }
 

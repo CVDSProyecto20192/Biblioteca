@@ -5,6 +5,7 @@ import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -75,37 +76,50 @@ public class RecursosView {
 	}
 	
 	
+	/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	String formatDT = this.hora.format(formatter);
+	this.hora = LocalDateTime.parse(formatDT, DateTimeFormatter.ISO_DATE_TIME);*/
+	
+	/*private void createHour(long id_r, LocalDateTime hour) {
+		Hora hs=new Hora(id_r,hour);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		String formatDT = hour.format(formatter);
+		hour = LocalDateTime.parse(formatDT, formatter);
+		
+	}*/
 	
 	
 	private void actionHorarios(Recurso r) {
 		long id_r=r.getId();
-		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
 		this.tiempo=new ArrayList<Horario>();
+		
+		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
         String[] weekdays = dfs.getWeekdays();
-        LocalDateTime horaDefault= LocalDateTime.now();
         
-        ArrayList<Hora>defaultValue=new ArrayList<Hora>();
-        
+        //SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm:ss z");
+
         for (String weekday : weekdays) {
         	if(weekday!="" && weekday!="domingo"){
         		Horario h=new Horario(id_r,weekday);
-        		Hora hs=new Hora(id_r,horaDefault);
+        		Hora hs=new Hora();
         		long id_hora;
 				try {
 					this.serviciosReserva.agregarHorario(h, id_r);
 					this.serviciosReserva.agregarHora(h, hs);
 					id_hora = this.serviciosReserva.consultarIdHora(h, hs);
-					hs.setId(id_hora);
-					defaultValue.add(hs);
-					
+					hs.setId(id_hora);		
 				} 
 				catch (ServiciosReservaException e1) {
 					e1.printStackTrace();
 				}
-				h.setHoras(defaultValue);
-        		this.tiempo.add(h);
         	}
         }
+        try {
+			this.tiempo=(ArrayList<Horario>) this.serviciosReserva.consultarHorarioDias(id_r);
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         r.setTiempo(this.tiempo);
 	}
 	
@@ -155,7 +169,7 @@ public class RecursosView {
 	}
 	
 	public void actionReiniciar() {
-		reiniciarId();
+		this.id=-1;
 		this.nombre=null;
 		this.ubicacion=null;
 		this.capacidad=0;
@@ -164,14 +178,6 @@ public class RecursosView {
 		this.tipo=null;
 		this.idTipo=0;
 		
-	}
-	
-	private void reiniciarId(){
-		try{
-			this.id= serviciosReserva.consultarIdUltimoRecurso()+1;
-		}catch (ServiciosReservaException e) {
-			this.id=this.id;
-		}
 	}
 	
 	public void actionSetIdRen(long id) {
@@ -189,6 +195,7 @@ public class RecursosView {
 		}
 		return activos;
 	}
+	
 	
 	public long getId() {
 		return this.id;

@@ -97,8 +97,6 @@ public class ServiciosReservaTest{
 		Assert.assertTrue(r);
     }
 	
-
-
 	@Test
     public void noDeberiaAgregarUnRecursoQueNoPoseeUnTipoRegistrado(){
 		boolean r = false;
@@ -112,7 +110,6 @@ public class ServiciosReservaTest{
         }
 		Assert.assertTrue(r);
     }
-
 	@Test
     public void deberiaEstarDisponibleUnRecursoRecienIngresado(){
 		boolean r = false;

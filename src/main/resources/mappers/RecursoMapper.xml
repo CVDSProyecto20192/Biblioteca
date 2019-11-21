@@ -67,6 +67,7 @@
     		
 	</select>
 	
+	
 	<insert id ="insertarRecurso">
 		<selectKey keyProperty="id_recurso" resultType="int" order="BEFORE">
 			select COUNT(id)+1 from BR_RECURSO

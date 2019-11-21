@@ -1,28 +1,35 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDateTime;
 
 public class Hora implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long id;
-	private LocalDateTime hora;
+	private Date hora;
 	private boolean disponible;
 
-	public Hora(long id, LocalDateTime hora, boolean disponible) {
+	public Hora(long id, Date hora, boolean disponible) {
 		this.id=id;
 		this.hora=hora;
 		this.disponible=disponible;
 	}
 	
-	public Hora(long id, LocalDateTime hora) {
+	public Hora(long id, Date hora) {
 		this.id=id;
 		this.hora=hora;
 		this.disponible=false;
 	}
 
-	public Hora() {}
+	public Hora() {
+		this.hora= new Date(System.currentTimeMillis());
+		this.disponible=false;
+	}
 	
 	public long getId() {
 		return this.id;
@@ -33,11 +40,11 @@ public class Hora implements Serializable{
 	}
 	
 	
-	public LocalDateTime getHora() {
+	public Date getHora() {
 		return this.hora;
 	}
 	
-	public void setHora(LocalDateTime hora) {
+	public void setHora(Date hora) {
 		this.hora=hora;
 	}
 	
@@ -55,12 +62,6 @@ public class Hora implements Serializable{
 
 	}
 }
-
-
-
-
-
-
 
 
 

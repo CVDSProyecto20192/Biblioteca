@@ -1,5 +1,6 @@
 package edu.eci.cvds.samples.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -8,18 +9,17 @@ import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.RecursoDAO;
+import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.sampleprj.dao.TipoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
 import edu.eci.cvds.samples.entities.Hora;
-import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.samples.entities.Horario;
 import edu.eci.cvds.samples.entities.Recurso;
+import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
-import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
-import java.util.Date;
-import java.text.SimpleDateFormat;  
+
 public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
 	private UsuarioDAO userDAO;
@@ -32,10 +32,10 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Inject
 	private HorarioDAO horarioDAO;
-	
+	 
 	@Inject
 	private ReservaDAO reservaDAO;
-	 
+	
 	@Override
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException{
 		Usuario u=null;
@@ -79,17 +79,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar los recursos", e);
 		}
 	}
-	@Override
-	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException{
-		List<Recurso> r=null;
-		try {
-			r=recursoDAO.loadActivos();
-		} 
-		catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar los recursos activos", e);
-		}
-		return r;
-	}
 
 	@Override
 	public void agregarRecurso(Recurso r) throws ServiciosReservaException{
@@ -128,19 +117,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar los tipos", e);
-		}
-		return tl;
-	}
-	
-	@Override
-	public List<Reserva> consultarReservas() throws ServiciosReservaException {
-		List<Reserva> tl;
-		try {
-			tl=reservaDAO.loadAll();
-			
-		} 
-		catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
 		return tl;
 	}
@@ -240,6 +216,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		
 	}
 	
+	
 	@Override
 	public long consultarIdHora(Horario h, Hora hs) throws ServiciosReservaException {
 		try {
@@ -249,6 +226,42 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar id de la hora", e);
 		}
 	}
+	
+	
+	@Override
+	public void cambiarTiempoHora(long idHora, Date hora) throws ServiciosReservaException{
+		try {
+			horarioDAO.updateTiempoHora(idHora,hora);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar id de la hora", e);
+		}
+		
+	}
+	
+	
+	@Override
+	public boolean consultarDispHora(long idHora) throws ServiciosReservaException {
+		try {
+			return horarioDAO.loadDispHora(idHora);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar disponibilidad de la hora", e);
+		}
+	}
+
+	
+	@Override
+	public void cambiarDispHora(long idHora, boolean b) throws ServiciosReservaException {
+		try {
+			horarioDAO.updateDispHora(idHora, b);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al cambiar disponibilidad de la hora", e);
+		}
+	}
+
+	
 	
 	@Override
 	public long consultarIdUltimoRecurso() throws ServiciosReservaException {
@@ -260,7 +273,8 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar id del ultimo recurso", e);
 		}
 	}
-
+	
+	
 	@Override
 	public long consultarIdUltimoHorario() throws ServiciosReservaException {
 		try {
@@ -354,6 +368,31 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar id del grupo", e);
 		}  
 	}
+
+	@Override
+	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException{
+		List<Recurso> r=null;
+		try {
+			r=recursoDAO.loadActivos();
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar los recursos activos", e);
+		}
+		return r;
+	}
+
+	@Override
+	public List<Reserva> consultarReservas() throws ServiciosReservaException {
+		List<Reserva> tl;
+		try {
+			tl=reservaDAO.loadAll();
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+		return tl;
+	}
 	
 	@Override
 	public List<Reserva> consultarReservasRecurso(long recursoId) throws ServiciosReservaException {
@@ -368,4 +407,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		return reservas;
 	}
 
+
+
 }
+
+
+

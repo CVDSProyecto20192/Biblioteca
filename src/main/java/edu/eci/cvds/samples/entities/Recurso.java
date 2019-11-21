@@ -15,8 +15,6 @@ public class Recurso implements Serializable{
 	private boolean disponible;
 	private ArrayList<Horario> tiempo;
 	private Tipo tipo;
-	private boolean activa;
-	private long grupo;
 	
 	public Recurso(){
 		

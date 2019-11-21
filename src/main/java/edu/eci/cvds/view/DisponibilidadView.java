@@ -21,6 +21,7 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Reserva;
 
 @Deprecated
@@ -41,10 +42,18 @@ public class DisponibilidadView implements Serializable {
 
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
-    private String recurso;
+    private long recurso;
     private List<Reserva> reservas;
 
     public DisponibilidadView() {
+    }
+
+    public long getRecurso() {
+        return recurso;
+    }
+
+    public void setRecurso(long recurso) {
+        this.recurso = recurso;
     }
 
     public List<Reserva> getReservas() {
@@ -55,36 +64,46 @@ public class DisponibilidadView implements Serializable {
         this.reservas = reservas;
     }
 
-    public String getRecurso() {
-        return recurso;
-    }
-
-    public void setRecurso(String recurso) {
-        this.recurso = recurso;
-    }
-
     @PostConstruct
-    public void init(){
+    public void init() {
         serviciosReserva = baseBean.getServiciosReserva();
 
         eventModel = new DefaultScheduleModel();
-
-        DefaultScheduleEvent event = new DefaultScheduleEvent("Prueba", previousDay8Pm(), previousDay11Pm());
-
-        eventModel.addEvent(event);
     }
 
-    public void actionverDisponibilidad(){
+    public void actionVerDisponibilidad() {
+        System.out.println(this.recurso);
+        try {
+            reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
+        } catch (ServiciosReservaException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        System.out.println(reservas.size());
+
+        DefaultScheduleEvent event;
+
+        for (Reserva r:reservas){ 
+
+            Date inicio = getDate(r.getFecha(), r.getHora());
+            Date fin = getDate(r.getFecha(), r.getHora()+r.getDuracion());
+
+            event = new DefaultScheduleEvent("Reservado", inicio, fin);
+
+            this.eventModel.addEvent(event);
+
+        }
+    }
+
+    private Date getDate(Date date, int hora) {
         
-    }
-
-    private Date previousDay8Pm() {
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
-		t.set(Calendar.HOUR, 8);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, (int)hora/100);
+        calendar.set(Calendar.MINUTE,hora%100);
 		
-		return t.getTime();
+		return calendar.getTime();
     }
     
     private Calendar today() {

@@ -30,36 +30,15 @@
 				</div>
 			</h:panelGrid>
 
-			<h:panelGrid style="margin: auto;">
-			</h:panelGrid>
-
 			<h:panelGrid>
 
 				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule">
-					<p:ajax event="eventSelect" Listener="#{DipoBean.onEventSelect}" update="eventDetails" onComplete="eventDialog.show();"/>		
+					<p:ajax event="eventSelect" Listener="#{DispoBean.onEventSelect}" />		
 				</p:schedule>  
 
 			</h:panelGrid>
 
-            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-                <h:panelGrid id="eventDetails" columns="2">
-                    <p:outputLabel for="title" value="Titles:" />
-                    <p:inputText id="title" value="#{DispoBean.event.title}" required="true" />
-
-                    <p:outputLabel for="from" value="From:" />
-                    <p:calendar id="from" value="#{DispoBean.event.startDate}" pattern="dd/MM/yyyy HH:mm"/>
-
-                    <p:outputLabel for="to" value="To:" />
-                    <p:calendar id="to" value="#{DispoBean.event.endDate}" pattern="dd/MM/yyyy HH:mm"/>
-
-                    <p:outputLabel for="allDay" value="All Day:" />
-                    <h:selectBooleanCheckbox id="allDay" value="#{DispoBean.event.allDay}" />
-
-                    <p:commandButton type="reset" value="Reset" />
-                    <p:commandButton id="addButton" value="Save" actionListener="#{DispoBean.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
-                </h:panelGrid>
-            </p:dialog>   
-
+            
 		</h:form>
 	</h:body>
 	  

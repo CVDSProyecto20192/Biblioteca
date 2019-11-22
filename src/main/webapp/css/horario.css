@@ -1,0 +1,166 @@
+html, body{
+ 	background-color: #000;
+	height:100%;
+	width:100%;
+}
+
+h1{
+	
+	color: #B0ACF5;
+	
+}
+
+
+h2{
+	color: #B0ACF5;
+	
+}
+
+.contenedorTotal1{
+	overflow:hidden;
+	margin-left: 3%;
+	margin-right: 3%;
+	width:100%;
+	
+}
+
+.contenedorTotal2{
+	overflow:hidden;
+	clear:both;
+	margin-left: 3%;
+	margin-right: 3%;
+	width:100%;
+}
+
+.contenedor1{
+	font-size:1.2vw;
+	border: 0.1vw solid rgba(255,255,255,10);
+  	border-collapse: collapse;
+  	width: 29%;
+  	background-color: #fff;
+  	float:left;
+}
+
+.contenedor2{
+	font-size:1.2vw;
+	border: 0.1vw solid rgba(255,255,255,10);
+  	border-collapse: collapse;
+  	width: 29%;
+  	background-color: #fff;
+	float:left;
+	margin-left: 1%;
+}
+
+.contenedor3{
+	font-size:1.2vw;
+	border: 0.1vw solid rgba(255,255,255,10);
+  	border-collapse: collapse;
+  	width: 29%;
+  	background-color: #fff;
+	float:left;
+	margin-left: 1%;
+}
+
+.contenedor4{
+	font-size:1.2vw;
+	border: 0.1vw solid rgba(255,255,255,10);
+  	border-collapse: collapse;
+  	width: 29%;
+  	background-color: #fff;
+  	float:left;
+  	margin-top: 2%;
+  	
+}
+
+.contenedor5{
+	font-size:1.2vw;
+	border: 0.1vw solid rgba(255,255,255,10);
+  	border-collapse: collapse;
+  	width: 29%;
+  	background-color: #fff;
+  	float:left;
+  	margin-top: 2%;
+  	margin-left: 1%;
+  	
+}
+
+.contenedor6{
+	font-size:1.2vw;
+	border: 0.1vw solid rgba(255,255,255,10);
+  	border-collapse: collapse;
+  	width: 29%;
+  	background-color: #fff;
+  	float:left;
+  	margin-top: 2%;
+  	margin-left: 1%;
+  	
+}
+
+
+.horario1{
+	font-size:1.2vw;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+.horario2{
+	font-size:1.2vw;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+.horario3{
+	font-size:1.2vw;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+.horario4{
+	font-size:1.2vw;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+.horario5{
+	font-size:1.2vw;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+.horario6{
+	font-size:1.2vw;
+  	border-collapse: collapse;
+  	width: 100%;
+}
+
+.calendar{
+	width: 10vw;
+}
+
+.fecha{
+	width:69%;
+}
+
+.disp{
+	width:32%;
+}
+
+.okButton{
+	height:2vw;
+	line-height: 2vw;
+	font-size: 2vw;
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+
+
+
+
+
+
+
+
+
+

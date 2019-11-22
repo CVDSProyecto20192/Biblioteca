@@ -3,6 +3,7 @@ package edu.eci.cvds.samples.entities;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 public class Reserva {
 
 	private long codigo;

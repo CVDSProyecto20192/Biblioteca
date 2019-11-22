@@ -11,7 +11,9 @@
     		h.id as id_horario,
 			h.dia as dia_horario,
 			
-			hs.hora as hora
+			hs.id as id_hora,
+			hs.hora as hora,
+			hs.disponible as disponible
 			
 			FROM BR_HORARIO as h 
 			left join BR_HORA as hs on h.id=hs.id_horario and h.dia=hs.dia_horario
@@ -26,12 +28,16 @@
 			h.id as id_horario,
 			h.dia as dia_horario,
 			
-			hs.hora as hora
+			hs.id as id_hora,
+			hs.hora as hora,
+			hs.disponible as disponible
 			
 			FROM BR_HORARIO as h 
 			left join BR_HORA as hs on h.id=hs.id_horario and h.dia=hs.dia_horario
     		
     		WHERE h.id=#{id_horario} 
+
+			ORDER BY hs.hora
 	</select>
 	
 	<select parameterType="map" id="consultarHorarios" resultMap="HorarioResult">
@@ -40,7 +46,9 @@
 			h.id as id_horario,
 			h.dia as dia_horario,
 			
-			hs.hora as hora
+			hs.id as id_hora,
+			hs.hora as hora,
+			hs.disponible as disponible
 			
 			FROM BR_HORARIO as h 
 			left join BR_HORA as hs on h.id=hs.id_horario and h.dia=hs.dia_horario
@@ -84,8 +92,36 @@
 		
 		WHERE hs.id_horario=#{horario.id} and hs.dia_horario=#{horario.dia} and hs.hora=#{hora.hora}
 	
+	</select>
+	
+	<select id="consultarDispHora" resultType="boolean">
+	
+		SELECT 
+		hs.disponible
+		
+		FROM BR_HORA as hs
+		
+		WHERE hs.id=#{id_hora} 
 	
 	</select>
+	
+	<update id="actualizarDispHora">
+	
+			UPDATE BR_HORA
+		
+			SET disponible=#{disp}
+
+			WHERE id=#{id_hora} 
+	</update>
+	
+	<update id="actualizarTiempoHora">
+	
+			UPDATE BR_HORA
+		
+			SET hora=#{tiempo_hora}
+
+			WHERE id=#{id_hora} 
+	</update>
 	
 	
 	<resultMap id="HoraResult" type="Hora">

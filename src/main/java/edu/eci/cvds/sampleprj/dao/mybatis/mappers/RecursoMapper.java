@@ -15,8 +15,8 @@ public interface RecursoMapper {
      * @return 
      */
     public List<Recurso> consultarRecursos();
-	
-	public List<Recurso> consultarRecursosActivos();
+    
+    public List<Recurso> consultarRecursosActivos();
 
     public void insertarRecurso(@Param("recurso")Recurso r);
     

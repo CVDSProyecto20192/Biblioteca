@@ -59,7 +59,7 @@ public class LoginBean implements Serializable{
 		   if(getUser().isAuthenticated()) {
 			   getUser().logout();
 			   
-			   redirectTo("cerrarsesion.xhtml");
+			   redirectTo("iniciosesion.xhtml");
 	           
 		   }
 	   }

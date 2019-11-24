@@ -28,12 +28,12 @@ public class ReservasUsersView {
 	@ManagedProperty(value = "#{ReservaBean}")
 	private BasePageBean baseBean;
 	
-	
 	private List<Reserva> reservas;
+	
+	private Reserva selected;
 	
 	public ReservasUsersView() {
 	}
-
 	
 	@PostConstruct
 	public void init() {
@@ -50,12 +50,20 @@ public class ReservasUsersView {
 		return this.reservas;
 	}
 	
-	public BasePageBean getUsuario() {
+	public BasePageBean getBaseBean() {
 		return this.baseBean;
 	}
 	
 	public void setBaseBean(BasePageBean bs){
 	    this.baseBean = bs;
+	}
+	
+	public Reserva getSelected() {
+		return this.selected;
+	}
+	
+	public void setSelected(Reserva re) {
+		this.selected = re;
 	}
 }
 	

@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<link rel="stylesheet" type="text/css" href="css/recursos.css" />
+		<link rel="stylesheet" type="text/css" href="css/reservas.css" />
 		
 		<meta http-equiv="Expires" content="0" />
 		<meta http-equiv="Pragma" content="no-cache" />
@@ -23,42 +23,128 @@
 		<h2>Reservas</h2>
 		<br/>
         <h:form id="reservas_form">
-            <section>
-                <div style="text-align: center" class='table'>
-                
-                    <p:dataTable class="reservas" value="#{ReservasUsersBean.reservas}" var = "reserva" style="margin: 0 auto;"
-                    rows="8" paginator="true" 
-    				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
-    				rowsPerPageTemplate="8, 16, 24">
-	
-    					<p:column headerText="Codigo" >
-                        	<h:outputText value="#{reserva.codigo}"></h:outputText>
-                        </p:column>            
-						
-                        <p:column headerText="Fecha" filterBy="#{reserva.fecha}">
-                        	<h:outputText value="#{reserva.fecha}"></h:outputText>
-                        </p:column>
-
-                        <p:column headerText="Hora" filterBy="#{reserva.hora}">
-                        	<h:outputText value="#{reserva.hora}"></h:outputText>
-                        </p:column>       
-                        
-                        <p:column headerText="Duración" filterBy="#{reserva.duracion}">
-                        	<h:outputText value="#{reserva.duracion}"></h:outputText>
-                        </p:column>            
+			<p:dataView value="#{ReservasUsersBean.reservas}" var = "reserva" 
+			rows="8" paginator="true" rowsPerPageTemplate="8, 16, 24"
+			paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" >
 				
-                        <p:column headerText="Registro" filterBy="#{reserva.registro}">
-                        	<h:outputText value="#{reserva.registro}"></h:outputText>
-                        </p:column>  
+				<p:dataViewGridItem>
+					<p:panel header="#{reserva.codigo}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
+							<p:graphicImage height="20%" url="/img/libro.png"/>
+								<h:panelGrid columns="2" style="width:100%">
+									<h:outputText value="Fecha:"/>
+									<h:outputText value="#{reserva.fecha}"/>
+									<h:outputText value="Registro:"/>
+									<h:outputText value="#{reserva.registro}"/>
+									<p:commandLink value="Usuario" update=":reservas_form:userDetail"  oncomplete="PF('userDialog').show()" title="Ver Usuario">
+										<h:outputText styleClass="ui-icon pi pi-user" style="margin:0 auto;"/>
+										<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+									</p:commandLink>
+									
+									<p:commandLink value="Recurso" update=":reservas_form:sourceDetail"  oncomplete="PF('sourceDialog').show()" title="Ver Recurso">
+										<h:outputText styleClass="ui-icon pi pi-user" style="margin:0 auto;"/>
+										<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+									</p:commandLink>
+								</h:panelGrid>
+						</h:panelGrid>
+					</p:panel>
+				</p:dataViewGridItem>
+    					
+				<p:dataViewListItem>
+					<h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
+						<p:graphicImage height="20%"  url="/img/libro.png"/>						
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Codigo:"/>
+								<h:outputText value="#{reserva.codigo}"/>
+								<h:outputText value="Fecha:"/>
+								<h:outputText value="#{reserva.fecha}"/>
+								<h:outputText value="Hora:"/>
+								<h:outputText value="#{reserva.hora}"/>
+								<h:outputText value="Duración:"/>
+								<h:outputText value="#{reserva.duracion}"/>
+								<h:outputText value="Registro:"/>
+								<h:outputText value="#{reserva.registro}"/>
 						
-					
-                    </p:dataTable>
-                </div>  
-              
-            </section>
+							</h:panelGrid>
+						</p:outputPanel>
+						<p:commandLink value="Usuario" update=":reservas_form:userDetail"  oncomplete="PF('userDialog').show()" title="Ver Usuario">
+							<h:outputText styleClass="ui-icon pi pi-user" style="margin:0 auto;"/>
+							<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+						</p:commandLink>
+						
+						<p:commandLink value="Recurso" update=":reservas_form:sourceDetail"  oncomplete="PF('sourceDialog').show()" title="Ver Recurso">
+							<h:outputText styleClass="ui-icon pi pi-user" style="margin:0 auto;"/>
+							<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+						</p:commandLink>
+						
+					</h:panelGrid>
+				</p:dataViewListItem>
+			</p:dataView>
+			
+			<p:dialog header="Usuario" widgetVar="userDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="userDetail" style="text-align: center;">
+					<p:panelGrid columns="2" rendered="#{not empty ReservasUsersBean.selected}" columnClasses="label,value">
+						<f:facet name="header">
+							<p:graphicImage height="4%"  url="/img/usu.png"/>
+						</f:facet>
+						<h:outputText value="Carnet:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.carnet}"/>
+						
+						<h:outputText value="Documento:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.documento}"/>
+						
+						<h:outputText value="Correo:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.correo}"/>
+						
+						<h:outputText value="Nombres:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.nombres}"/>
+						
+						<h:outputText value="Apellidos:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.apellidos}"/>
+						
+						<h:outputText value="Ultimo Ingreso:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.ultimoIngreso}"/>
+						
+						<h:outputText value="Bloqueado:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.bloqueado}"/>
+						
+						<h:outputText value="Cargo:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.usuario.cargo.nombre}"/>	
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			
+			<p:dialog header="Recurso" widgetVar="sourceDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="sourceDetail" style="text-align: center;">
+					<p:panelGrid columns="2" rendered="#{not empty ReservasUsersBean.selected}" columnClasses="label,value">
+						<f:facet name="header">
+							<p:graphicImage height="4%"  url="/img/usu.png"/>
+						</f:facet>
+						<h:outputText value="Id:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.recurso.id}"/>
+
+						<h:outputText value="Nombre:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.recurso.nombre}"/>
+						
+						<h:outputText value="Ubicacion:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.recurso.ubicacion}"/>
+						
+						<h:outputText value="Capacidad:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.recurso.capacidad}"/>
+						
+						<h:outputText value="Disponible:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.recurso.disponible}"/>
+						
+						<h:outputText value="Tipo:"/>
+						<h:outputText value="#{ReservasUsersBean.selected.recurso.tipo.tipo}"/>
+						
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			
 			
 			<br/>
-
 			<section>
 		
 				<div style="text-align: center">

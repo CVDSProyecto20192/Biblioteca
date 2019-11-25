@@ -46,8 +46,18 @@ public class DisponibilidadView implements Serializable {
 	private int hora;
 	private int duracionHora;
 	private int duracionMinutos;
+	private boolean repetir;
     public DisponibilidadView() {
     }
+
+	public boolean isRepetir(){
+		return repetir;
+	}
+	
+	public void setRepetir(boolean repetir){
+		System.out.println(this.repetir);
+		this.repetir = repetir;
+	}
 
     public long getRecurso() {
         return recurso;
@@ -166,5 +176,15 @@ public class DisponibilidadView implements Serializable {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		fecha = dateFormat.format(event.getStartDate());
 		hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
+	}
+	
+	public void cambiar(){
+		if (isRepetir()){
+			this.repetir = false;
+		}
+		else{
+			this.repetir = true;
+		}
+		System.out.println(this.repetir);
 	}
 }

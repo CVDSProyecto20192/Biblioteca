@@ -309,7 +309,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 				reservaDAO.insertarReserva(res);
 			}
 			else{
-				throw new ServiciosReservaException("Error al insertar reserva");
+				throw new ServiciosReservaException("Imposible hacer esta reserva, porque el horario no esta disponible");
 			}
 		} 
 		catch (ServiciosReservaException e) {
@@ -348,7 +348,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 					reservaDAO.insertarReserva(res);
 				}
 			}else{
-				throw new ServiciosReservaException("Error al insertar reservas");
+				throw new ServiciosReservaException("Imposible hacer esta reserva, porque el horario no esta disponible");
 			}
 			
 		}catch (ServiciosReservaException e) {

@@ -12,6 +12,7 @@
 	</h:head>
 
 	<h:head>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	</h:head>
 	<h:body>
 		<h:form>
@@ -45,6 +46,10 @@
 					
 					<p:outputLabel for="duracionMinutos" value="Minutos:"/>
 					<p:inputText id="duracionMinutos" value="#{DispoBean.duracionMinutos}" required="true"/>
+					
+					<h:outputText value="Recurrente: "/>
+					<p:selectBooleanButton id="repetir" value="#{DispoBean.repetir}" onLabel="Yes" offLabel="No" onIcon="fas fa-check" offIcon="fas fa-times" style="width:100px"/>
+					<h:outputText id="ll" value="llll" rendered="#{DispoBean.repetir == false}" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

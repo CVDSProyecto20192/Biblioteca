@@ -21,9 +21,8 @@
 
 			<h:panelGrid style="margin: auto;" columns="2" cellpadding="20">
 				<p:outputLabel value="Recurso:"/>
-				<p:inputText value="#{DispoBean.recurso}" >
-					<p:ajax listener="#{DispoBean.reset}" update="@form"/>
-				</p:inputText>
+				<p:inputText value="#{DispoBean.recurso}" />
+					
 
 				<div style="text-align: center;">
 					<p:commandButton value="Consultar" action="#{DispoBean.actionVerDisponibilidad}" update="@form"/>
@@ -33,11 +32,21 @@
 			<h:panelGrid>
 
 				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule" timeZone="GMT-5" >
+					<p:ajax event="eventSelect" listener="#{DispoBean.onEventSelected}" />
+					<p:ajax event="dateSelect" listener="#{DispoBean.onDateSelected}" oncomplete="PF('eventDialog').show();"/>
 				</p:schedule>  
 
 			</h:panelGrid>
-
-            
+			
+			<p:dialog widgetVar="eventDialog" header="Reserva" showEffect="clip" hideEffect="clip">
+				<h:panelGrid id="Reserva" columns="2">
+					<p:outputLabel for="duracionHora" value="Hora(s):"/>
+					<p:inputText id="duracionHora" value="#{DispoBean.duracionHora}" required="true"/>
+					
+					<p:outputLabel for="duracionMinutos" value="Minutos:"/>
+					<p:inputText id="duracionMinutos" value="#{DispoBean.duracionMinutos}" required="true"/>
+				</h:panelGrid>
+			</p:dialog>
 		</h:form>
 	</h:body>
 	  

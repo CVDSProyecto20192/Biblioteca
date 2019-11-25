@@ -13,10 +13,14 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.ScheduleEvent;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import java.text.DateFormat; 
+import java.text.SimpleDateFormat;  
 
 @Deprecated
 @ManagedBean(name = "DispoBean")
@@ -38,7 +42,10 @@ public class DisponibilidadView implements Serializable {
     private ScheduleEvent event = new DefaultScheduleEvent();
     private long recurso;
     private List<Reserva> reservas;
-
+	private String fecha;
+	private int hora;
+	private int duracionHora;
+	private int duracionMinutos;
     public DisponibilidadView() {
     }
 
@@ -49,6 +56,23 @@ public class DisponibilidadView implements Serializable {
     public void setRecurso(long recurso) {
         this.recurso = recurso;
     }
+	
+	public int getDuracionHora(){
+		return duracionHora;
+	}
+	
+	public int getDuracionMinutos(){
+		return duracionMinutos;
+	}
+	
+	public void setDuracionHora(int duracionHora){
+		this.duracionHora = duracionHora;
+	}
+	
+	public void setDuracionMinutos(int duracionMinutos){
+		this.duracionMinutos = duracionMinutos;
+	}
+
 
     public List<Reserva> getReservas() {
         return reservas;
@@ -66,6 +90,10 @@ public class DisponibilidadView implements Serializable {
     }
 
     public void actionVerDisponibilidad() {
+		this.eventModel.clear();
+		if (reservas != null){
+			this.reservas.clear();
+		}
         try {
             reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
         } catch (ServiciosReservaException e) {
@@ -94,7 +122,7 @@ public class DisponibilidadView implements Serializable {
 
     public void reset(){
         this.eventModel.clear();
-        this.reservas.clear();
+		this.reservas.clear();
     }
         
     public BasePageBean getBaseBean() {
@@ -128,5 +156,15 @@ public class DisponibilidadView implements Serializable {
     public void setBaseBean(BasePageBean baseBean) {
         this.baseBean = baseBean;
     }
-
+	
+	public void onEventSelected(SelectEvent selectEvent){
+		event = (ScheduleEvent) selectEvent.getObject();
+	}
+	
+	public void onDateSelected(SelectEvent selectEvent){
+		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		fecha = dateFormat.format(event.getStartDate());
+		hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
+	}
 }

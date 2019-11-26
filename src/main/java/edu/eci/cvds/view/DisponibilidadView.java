@@ -108,7 +108,7 @@ public class DisponibilidadView implements Serializable {
             reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
         } catch (ServiciosReservaException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            baseBean.mensajeApp(e);
         }
 
         DefaultScheduleEvent event;

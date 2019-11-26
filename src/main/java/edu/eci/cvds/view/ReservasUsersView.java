@@ -41,7 +41,7 @@ public class ReservasUsersView {
 		try {
 			reservas= serviciosReserva.consultarReservas();
 		}catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	

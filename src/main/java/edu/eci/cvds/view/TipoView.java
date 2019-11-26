@@ -37,7 +37,7 @@ public class TipoView {
 			this.listaTipos=serviciosReserva.consultarTipos();
 		} 
 		catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	

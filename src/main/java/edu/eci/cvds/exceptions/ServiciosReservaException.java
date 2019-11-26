@@ -12,7 +12,6 @@ public class ServiciosReservaException extends Exception{
 	
 	public ServiciosReservaException(String msg, Exception e) {
         super(msg,e);
-    
     }
 
 }

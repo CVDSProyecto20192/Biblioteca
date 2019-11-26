@@ -65,13 +65,12 @@ public class RecursosView {
 			r.setId(this.id);
 			actionHorarios(r);
 			
-			
 		} 
 		catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	
@@ -109,16 +108,17 @@ public class RecursosView {
 					id_hora = this.serviciosReserva.consultarIdHora(h, hs);
 					hs.setId(id_hora);		
 				} 
-				catch (ServiciosReservaException e1) {
-					e1.printStackTrace();
+				catch (ServiciosReservaException e) {
+					baseBean.mensajeApp(e);
 				}
         	}
         }
+        
         try {
 			this.tiempo=(ArrayList<Horario>) this.serviciosReserva.consultarHorarioDias(id_r);
-		} catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+        catch (ServiciosReservaException e) {
+			baseBean.mensajeApp(e);
 		}
         r.setTiempo(this.tiempo);
 	}
@@ -129,8 +129,7 @@ public class RecursosView {
 			this.id=serviciosReserva.consultarIdRecurso(this.nombre,this.tipo,this.ubicacion);
 		} 
 		catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	
@@ -139,8 +138,7 @@ public class RecursosView {
 			this.listaRecursos=serviciosReserva.consultarRecursos();
 		} 
 		catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	
@@ -156,8 +154,8 @@ public class RecursosView {
 			b = serviciosReserva.consultarDisponibilidadRecurso(id);
 			serviciosReserva.cambiarDisponibilidadRecurso(id,!b);
 		} catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			baseBean.mensajeApp(e);
 		}
 		
 	}
@@ -191,7 +189,7 @@ public class RecursosView {
 		}
 		catch (ServiciosReservaException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		return activos;
 	}

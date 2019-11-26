@@ -49,7 +49,7 @@ h2{
 	font-size:1.2vw;
   	border-collapse: collapse;
   	width: 29%;
-  	background-color: #fff;
+  	overflow:hidden;
 	float:left;
 	margin-left: 3%;
 	border-buttom: 0.1vw solid rgba(255,255,255,255);
@@ -61,7 +61,7 @@ h2{
 	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
-  	background-color: #fff;
+  	overflow:hidden;
 	float:left;
 	margin-left: 3%;
 }
@@ -71,7 +71,7 @@ h2{
 	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
-  	background-color: #fff;
+  	overflow:hidden;
   	float:left;
   	margin-top: 2%;
   	
@@ -82,7 +82,7 @@ h2{
 	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
-  	background-color: #fff;
+  	overflow:hidden;
   	float:left;
   	margin-top: 2%;
   	margin-left: 3%;
@@ -94,7 +94,7 @@ h2{
 	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
-  	background-color: #fff;
+  	overflow:hidden;
   	float:left;
   	margin-top: 2%;
   	margin-left: 3%;
@@ -256,12 +256,12 @@ h2{
 }
  
 .horario5 tr:nth-child(even){
-	background-color: #692DAC;
+	background-color: #D1CAB0;
 	color: white;
 }
 
 .horario5 tr:nth-child(odd){
-	background-color: #D1CAB0;
+	background-color: #692DAC;
 	color: black;
 }
 
@@ -310,7 +310,7 @@ h2{
 
 
 .addPart{
-	background-color: #CECCFA;
+	background-color: transparent;
 		
 }
 
@@ -329,6 +329,10 @@ h2{
 
 .disp{
 	width:37%;
+}
+
+.add{
+	background-image: url("#{facesContext.externalContext.request.contextPath}/img/plus.svg");
 }
 
 .dispButtom{

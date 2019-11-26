@@ -55,6 +55,10 @@ public class BasePageBean implements Serializable {
     	return getInjector().getInstance(ServiciosReserva.class);
     }
     
+    protected void mensajeApp(Exception e) {
+		Messages.lanzarMensajeAplicacion(e.getMessage());
+	}
+    
     public String page01(){
 		return "menuAdmin?faces-redirect=true";
 	}

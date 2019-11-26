@@ -3,6 +3,11 @@ package edu.eci.cvds.exceptions;
 
 public class PersistenceException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 468187741104740422L;
+
 	public PersistenceException(String msg) {
         super(msg);
     }

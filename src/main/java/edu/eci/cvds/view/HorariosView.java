@@ -105,8 +105,8 @@ public class HorariosView {
 			this.horario=serviciosReserva.consultarHorarioDias(this.id);
 
 		} catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			baseBean.mensajeApp(e);
 		}
 	}
 	
@@ -126,7 +126,7 @@ public class HorariosView {
 	       // serviciosReserva.actualizarHoras(2, horas);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		
 	}
@@ -138,7 +138,7 @@ public class HorariosView {
 			this.serviciosReserva.cambiarTiempoHora(idHora, hora);
 			reinicioListas();
 		} catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	
@@ -153,7 +153,7 @@ public class HorariosView {
 			this.serviciosReserva.cambiarDispHora(idHora, !b);
 		} 
 		catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		
 	}
@@ -170,7 +170,7 @@ public class HorariosView {
 			b = this.serviciosReserva.consultarDispHora(idHora);
 			if(b) ans="Libre";
 		} catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		
 		return ans;
@@ -192,7 +192,7 @@ public class HorariosView {
 		} 
 		catch (ServiciosReservaException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		
 	}
@@ -207,7 +207,7 @@ public class HorariosView {
 			establecerHora(h, hs);
 			reinicioListas();
 		} catch (ServiciosReservaException e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 	}
 	
@@ -268,7 +268,7 @@ public class HorariosView {
 			}
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			baseBean.mensajeApp(e);
 		}
 		return horas;
 		

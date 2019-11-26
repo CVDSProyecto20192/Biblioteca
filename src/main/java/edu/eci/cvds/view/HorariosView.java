@@ -136,6 +136,7 @@ public class HorariosView {
 	public void actualizarHora(long idHora, Date hora) {
 		try {
 			this.serviciosReserva.cambiarTiempoHora(idHora, hora);
+			reinicioListas();
 		} catch (ServiciosReservaException e) {
 			e.printStackTrace();
 		}

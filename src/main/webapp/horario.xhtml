@@ -33,18 +33,20 @@
 		<h2>Horarios</h2>
 		
 		<div class="contenedorTotal1">
-			<div class="contenedor1" style="text-align: center;">		
+			<div class="contenedor1">		
 		        <h:form id="horario_form1">
 		            <p:growl id="msgs">
 					   	<p:dataTable class="horario1" id="horario1" widgetVar="hora1" var="hora1" value="#{HorarioBean.ls1}" 
-					    editable="true" >
+					    editable="true" scrollable="true" scrollHeight="200" style="text-align: center;">
 					        <f:facet name="header">
-					            Lunes
+					        	<span class="header">
+					           		Lunes
+					           	</span>
 					        </f:facet>
 					 	
 					        <p:column headerText="Espacio" class="fecha">
 					   		
-					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe" value="#{hora1.hora}" showOn="button" 
+					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe" value="#{hora1.hora}"  
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora1.id,hora1.hora)}" 
@@ -53,29 +55,35 @@
 					        </p:column>
 						
 							<p:column headerText="Disposición" class="disp">
-								<p:commandButton actionListener="#{HorarioBean.actionLiberarHora(hora1.id)}" 
+								<p:commandButton class="dispButtom" actionListener="#{HorarioBean.actionLiberarHora(hora1.id)}" 
 								value="#{HorarioBean.actionDisponibilidad(hora1.id)}" update="horario_form1" />            
 			      			</p:column>  
-					        
-					        
+					    	
+					    	<f:facet name="footer">
+					    		<div class="espacio"></div>
+					        </f:facet>
+					    	    
 						</p:dataTable>
-						<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(0)}" update="horario_form1"/>
+						
+						<div class="addPart">
+							<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(0)}" update="horario_form1"/>
+						</div>
 					</p:growl>			
 		        </h:form>
 			</div>
 			
-			<div class="contenedor2" style="text-align: center;">		
+			<div class="contenedor2">		
 		        <h:form id="horario_form2">
 		            <p:growl id="msgs">
 					   	<p:dataTable class="horario2" id="horario2" widgetVar="hora2" var="hora2" value="#{HorarioBean.ls2}" 
-					    editable="true" >
+					    editable="true" scrollable="true" scrollHeight="200" style="text-align: center;">
 					        <f:facet name="header">
 					            Martes
 					        </f:facet>
 					 	
 					        <p:column headerText="Espacio" class="fecha">
 					   		
-					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe" value="#{hora2.hora}" showOn="button" 
+					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe" value="#{hora2.hora}" 
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora2.id,hora2.hora)}" 
@@ -88,25 +96,30 @@
 								value="#{HorarioBean.actionDisponibilidad(hora2.id)}" update="horario_form2" />            
 			      			</p:column>  
 					        
+					        <f:facet name="footer">
+					    		<div class="espacio"></div>
+					        </f:facet>
 					        
 						</p:dataTable>
-						<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(1)}" update="horario_form1"/>
+						<div class="addPart">
+							<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(1)}" update="horario_form1"/>
+						</div>
 					</p:growl>			
 		        </h:form>
 			</div>
 			
-			<div class="contenedor3" style="text-align: center;">		
+			<div class="contenedor3">		
 		        <h:form id="horario_form3">
 		            <p:growl id="msgs">
 					   	<p:dataTable class="horario3" id="horario3" widgetVar="hora3" var="hora3" value="#{HorarioBean.ls3}" 
-					    editable="true" >
+					    editable="true" scrollable="true" scrollHeight="200" style="text-align: center;">
 					        <f:facet name="header">
 					            Mi&#233;rcoles
 					        </f:facet>
 					 	
 					        <p:column headerText="Espacio" class="fecha">
 					   		
-					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe" value="#{hora3.hora}" showOn="button" 
+					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe" value="#{hora3.hora}" 
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora3.id,hora3.hora)}" 
@@ -119,9 +132,14 @@
 								value="#{HorarioBean.actionDisponibilidad(hora3.id)}" update="horario_form3" />            
 			      			</p:column>  
 					        
+					        <f:facet name="footer">
+					    		<div class="espacio"></div>
+					        </f:facet>
 					        
 						</p:dataTable>
-						<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(2)}" update="horario_form1"/>
+						<div class="addPart">
+							<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(2)}" update="horario_form1"/>
+						</div>
 					</p:growl>			
 		        </h:form>
 			</div>
@@ -132,18 +150,18 @@
 		
 		<div class="contenedorTotal2">
 		
-			<div class="contenedor4" style="text-align: center;">		
+			<div class="contenedor4">		
 		        <h:form id="horario_form4">
 		            <p:growl id="msgs">
 					   	<p:dataTable class="horario4" id="horario4" widgetVar="hora4" var="hora4" value="#{HorarioBean.ls4}" 
-					    editable="true" >
+					    editable="true" scrollable="true" scrollHeight="200" style="text-align: center;">
 					        <f:facet name="header">
 					            Jueves
 					        </f:facet>
 					 	
 					        <p:column headerText="Espacio" class="fecha">
 					   		
-					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe4" value="#{hora4.hora}" showOn="button" 
+					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe4" value="#{hora4.hora}"  
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora4.id,hora4.hora)}" 
@@ -156,25 +174,30 @@
 								value="#{HorarioBean.actionDisponibilidad(hora4.id)}" update="horario_form4" />            
 			      			</p:column>  
 					        
+					        <f:facet name="footer">
+					    		<div class="espacio"></div>
+					        </f:facet>
 					        
 						</p:dataTable>
-						<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(3)}" update="horario_form4"/>
+						<div class="addPart">
+							<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(3)}" update="horario_form4"/>
+						</div>
 					</p:growl>			
 		        </h:form>
 			</div>
 			
-			<div class="contenedor5" style="text-align: center;">		
+			<div class="contenedor5">		
 		        <h:form id="horario_form5">
 		            <p:growl id="msgs">
 					   	<p:dataTable class="horario5" id="horario5" widgetVar="hora5" var="hora5" value="#{HorarioBean.ls5}" 
-					    editable="true" >
+					    editable="true" scrollable="true" scrollHeight="200" style="text-align: center;">
 					        <f:facet name="header">
 					            Viernes
 					        </f:facet>
 					 	
 					        <p:column headerText="Espacio" class="fecha">
 					   		
-					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe5" value="#{hora5.hora}" showOn="button" 
+					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe5" value="#{hora5.hora}" 
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora5.id,hora5.hora)}" 
@@ -187,25 +210,30 @@
 								value="#{HorarioBean.actionDisponibilidad(hora5.id)}" update="horario_form5" />            
 			      			</p:column>  
 					        
+					        <f:facet name="footer">
+					    		<div class="espacio"></div>
+					        </f:facet>
 					        
 						</p:dataTable>
-						<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(4)}" update="horario_form5"/>
+						<div class="addPart">
+							<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(4)}" update="horario_form5"/>
+						</div>
 					</p:growl>			
 		        </h:form>
 			</div>
 		
-			<div class="contenedor6" style="text-align: center;">		
+			<div class="contenedor6">		
 		        <h:form id="horario_form6">
 		            <p:growl id="msgs">
 					   	<p:dataTable class="horario6" id="horario6" widgetVar="hora6" var="hora6" value="#{HorarioBean.ls6}" 
-					    editable="true" >
+					    editable="true" scrollable="true" scrollHeight="200" style="text-align: center;">
 					        <f:facet name="header">
 					            S&#225;bado
 					        </f:facet>
 					 	
 					        <p:column headerText="Espacio" class="fecha">
 					   		
-					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe6" value="#{hora6.hora}" showOn="button" 
+					   			<p:calendar inputStyleClass="calendar" id="dateTimeDe6" value="#{hora6.hora}" 
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora6.id,hora6.hora)}" 
@@ -218,9 +246,14 @@
 								value="#{HorarioBean.actionDisponibilidad(hora6.id)}" update="horario_form6" />            
 			      			</p:column>  
 					        
+					        <f:facet name="footer">
+					    		<div class="espacio"></div>
+					        </f:facet>
 					        
 						</p:dataTable>
-						<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(5)}" update="horario_form6"/>
+						<div class="addPart">
+							<h:commandButton value="Add" action="#{HorarioBean.actionAddRow(5)}" update="horario_form6"/>
+						</div>
 					</p:growl>			
 		        </h:form>
 			</div>

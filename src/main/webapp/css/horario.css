@@ -1,20 +1,24 @@
 html, body{
- 	background-color: #000;
+ 	background-color: #CECCFA;
 	height:100%;
 	width:100%;
 }
 
-h1{
-	
-	color: #B0ACF5;
-	
-}
 
+h1{
+  color: white;
+  text-align: center;
+  font-size: 2.5vw;
+  font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+}
 
 h2{
-	color: #B0ACF5;
-	
+  color: white;
+  font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
+  font-size: 2vw;
+  text-align: center;
 }
+
 
 .contenedorTotal1{
 	overflow:hidden;
@@ -34,36 +38,37 @@ h2{
 
 .contenedor1{
 	font-size:1.2vw;
-	border: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
+  	overflow:hidden;
   	width: 29%;
-  	background-color: #fff;
-  	float:left;
+	float:left;
+	border-buttom: 0.1vw solid rgba(255,255,255,255);
 }
 
 .contenedor2{
 	font-size:1.2vw;
-	border: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
   	background-color: #fff;
 	float:left;
-	margin-left: 1%;
+	margin-left: 3%;
+	border-buttom: 0.1vw solid rgba(255,255,255,255);
+	
 }
 
 .contenedor3{
 	font-size:1.2vw;
-	border: 0.1vw solid rgba(255,255,255,10);
+	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
   	background-color: #fff;
 	float:left;
-	margin-left: 1%;
+	margin-left: 3%;
 }
 
 .contenedor4{
 	font-size:1.2vw;
-	border: 0.1vw solid rgba(255,255,255,10);
+	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
   	background-color: #fff;
@@ -74,63 +79,244 @@ h2{
 
 .contenedor5{
 	font-size:1.2vw;
-	border: 0.1vw solid rgba(255,255,255,10);
+	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
   	background-color: #fff;
   	float:left;
   	margin-top: 2%;
-  	margin-left: 1%;
+  	margin-left: 3%;
   	
 }
 
 .contenedor6{
 	font-size:1.2vw;
-	border: 0.1vw solid rgba(255,255,255,10);
+	border-buttom: 0.1vw solid rgba(255,255,255,10);
   	border-collapse: collapse;
   	width: 29%;
   	background-color: #fff;
   	float:left;
   	margin-top: 2%;
-  	margin-left: 1%;
+  	margin-left: 3%;
   	
 }
 
+/************** Lunes *********************/
 
 .horario1{
 	font-size:1.2vw;
-  	border-collapse: collapse;
   	width: 100%;
+  	border-collapse: collapse;
+  	table-layout: fixed;
+  	white-space: nowrap;
+  
 }
 
+
+.horario1 th {
+  background-color:#777B88;
+  color:white;
+}
+ 
+ 
+.horario1 tr:nth-child(even){
+	background-color: #330033;
+	color: white;
+}
+
+.horario1 tr:nth-child(odd){
+	background-color: #E0E7FF;
+	color: black;
+}
+
+.horario1 tr:hover {
+	background-color: #660033;
+}
+
+
+
+/************** Martes *********************/
 .horario2{
 	font-size:1.2vw;
-  	border-collapse: collapse;
   	width: 100%;
+  	border-collapse: collapse;
+  	table-layout: fixed;
+  	white-space: nowrap;
+  
 }
 
+
+.horario2 th {
+  text-align: left;
+  background-color:#777B88;
+  color:white;
+}
+ 
+
+.horario2 tr:nth-child(even){
+	background-color: #B3B3B7;
+	color: white;
+}
+
+.horario2 tr:nth-child(odd){
+	background-color: #D1CAB0;
+	color: black;
+}
+
+.horario2 tr:hover {
+	background-color: #000078;
+}
+
+
+
+/************** Miércoles *********************/
 .horario3{
 	font-size:1.2vw;
-  	border-collapse: collapse;
   	width: 100%;
+  	border-collapse: collapse;
+  	table-layout: fixed;
+  	white-space: nowrap;
+  
 }
 
+
+.horario3 th {
+  text-align: left;
+  background-color:#777B88;
+  color:white;
+  
+  
+}
+ 
+.horario3 tr:nth-child(even){
+	background-color: #B76EB8;
+	color: white;
+}
+
+.horario3 tr:nth-child(odd){
+	background-color: #028482;
+	color: black;
+}
+
+.horario3 tr:hover {
+	background-color: #7ABA7A;
+}
+
+
+/************** Jueves *********************/
 .horario4{
 	font-size:1.2vw;
-  	border-collapse: collapse;
   	width: 100%;
+  	border-collapse: collapse;
+  	table-layout: fixed;
+  	white-space: nowrap;
+  
 }
 
+.horario4 th {
+  text-align: left;
+  background-color:#777B88;
+  color:white;
+  
+  
+}
+ 
+.horario4 tr:nth-child(even){
+	background-color: #669966;
+	color: white;
+}
+
+.horario4 tr:nth-child(odd){
+	background-color: #FFCC00;
+	color: black;
+}
+
+.horario4 tr:hover {
+	background-color: #993366;
+}
+
+
+/************** Viernes *********************/
 .horario5{
 	font-size:1.2vw;
-  	border-collapse: collapse;
   	width: 100%;
+  	border-collapse: collapse;
+  	table-layout: fixed;
+  	white-space: nowrap;
+  
 }
 
+
+.horario5 th {
+  text-align: left;
+  background-color:#777B88;
+  color:white;
+  
+  
+}
+ 
+.horario5 tr:nth-child(even){
+	background-color: #692DAC;
+	color: white;
+}
+
+.horario5 tr:nth-child(odd){
+	background-color: #D1CAB0;
+	color: black;
+}
+
+.horario5 tr:hover {
+	background-color: #9D538E;
+}
+
+/************** Sábado *********************/
 .horario6{
 	font-size:1.2vw;
-  	border-collapse: collapse;
   	width: 100%;
+  	border-collapse: collapse;
+  	table-layout: fixed;
+  	white-space: nowrap;
+  
+}
+
+
+.horario6 th {
+  text-align: left;
+  background-color:#777B88;
+  color:white;
+  
+  
+}
+ 
+.horario6 tr:nth-child(even){
+	background-color: #CC99CC;
+	color: white;
+}
+
+.horario6 tr:nth-child(odd){
+	background-color: #000000;
+	color: black;
+}
+
+.horario6 tr:hover {
+	background-color: #FFFFFF;
+}
+
+
+/*********************************************/
+
+.header{
+}
+
+
+.addPart{
+	background-color: #CECCFA;
+		
+}
+
+.espacio{
+	height: 1.2vw;
+	text-align: left;
 }
 
 .calendar{
@@ -142,7 +328,12 @@ h2{
 }
 
 .disp{
-	width:32%;
+	width:37%;
+}
+
+.dispButtom{
+	margin-rigth: 0.1vw;
+	margin-left: 0.1vw;
 }
 
 .okButton{
@@ -154,6 +345,28 @@ h2{
     
 }
 
+
+
+
+/****************************************************/
+
+ /* Track */
+::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important; 
+   -webkit-border-radius: 10xp !important;
+   border-radius: 10px !important;
+ }
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   -webkit-border-radius: 10px !important;
+   border-radius: 10px !important;
+   background-color: #F7F1FD !important; 
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important; 
+ }
+
+ ::-webkit-scrollbar-thumb:window-inactive {
+   background: rgba(255,0,0,0.4) !important; 
+ }
 
 
 

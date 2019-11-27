@@ -59,7 +59,11 @@ public interface ServiciosReserva {
 
 	public long consultarIdUltimoHorario() throws ServiciosReservaException;
 
-
+	public void eliminarRecurso(long i) throws ServiciosReservaException;
+	
+	public void eliminarHora(Horario h, long idHora) throws ServiciosReservaException;
+	
+	
 	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
 	
 	public List<Reserva> consultarReservas() throws ServiciosReservaException;
@@ -75,6 +79,7 @@ public interface ServiciosReserva {
 	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, String fechaFin,int periodicidad) throws ServiciosReservaException;
 
 	public long consultarGrupo() throws ServiciosReservaException;
+
 }
 
 

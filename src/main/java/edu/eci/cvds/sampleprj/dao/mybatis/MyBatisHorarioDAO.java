@@ -121,5 +121,16 @@ public class MyBatisHorarioDAO implements HorarioDAO{
 			throw new PersistenceException("Error al consultar id del último Horario", e);
 		}
 	}
+
+	@Override
+	public void removeHora(Horario h,long idHora) throws PersistenceException {
+		try{
+			horarioMapper.eliminarHora(idHora);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al eliminar la hora", e);
+		}
+		
+	}
 	
 }

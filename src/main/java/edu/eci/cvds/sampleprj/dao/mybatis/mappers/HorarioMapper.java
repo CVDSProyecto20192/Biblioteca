@@ -80,6 +80,12 @@ public interface HorarioMapper {
      */
 	public long consultarUltimoId();
 
+	/**
+	 * Elimina la hora según su id y el horario al que pertenece
+	 * @param idHora Id de hora a eliminar
+	 */
+	public void eliminarHora(@Param("id_hora")long idHora);
+
     
 }
 

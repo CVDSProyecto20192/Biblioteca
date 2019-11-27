@@ -27,4 +27,6 @@ public interface RecursoMapper {
     public void actDisponibilidadRecurso(@Param("id_rec")long id, @Param("disp")boolean b);
 
 	public long consultarUltimoId();
+
+	public void eliminarRecurso(@Param("id_rec")long idRecurso);
 }

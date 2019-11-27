@@ -95,11 +95,21 @@ public class MyBatisRecursoDAO implements RecursoDAO{
 	public long loadLastId() throws PersistenceException {
 		try{
 			return recursoMapper.consultarUltimoId();
-			
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al consultar id del último recurso ", e);
 		} 
+	}
+
+	@Override
+	public void removeRecurso(long idRecurso) throws PersistenceException{
+		try{
+			recursoMapper.eliminarRecurso(idRecurso);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al eliminar recurso "+idRecurso, e);
+		} 
+		
 	}
 
 	

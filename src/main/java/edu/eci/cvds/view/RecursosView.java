@@ -92,8 +92,8 @@ public class RecursosView {
 		long id_r=r.getId();
 		this.tiempo=new ArrayList<Horario>();
 		
-		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
-        String[] weekdays = dfs.getWeekdays();
+		
+        String[] weekdays = this.baseBean.diasDeLaSemana();
         
         //SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm:ss z");
 

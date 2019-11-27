@@ -1,6 +1,9 @@
 package edu.eci.cvds.view;
 
 import java.io.Serializable;
+import java.text.DateFormatSymbols;
+import java.util.Locale;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -58,6 +61,12 @@ public class BasePageBean implements Serializable {
     protected void mensajeApp(Exception e) {
 		Messages.lanzarMensajeAplicacion(e.getMessage());
 	}
+    
+    protected String[] diasDeLaSemana() {
+    	DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
+        String[] weekdays = dfs.getWeekdays();
+        return weekdays;
+    }
     
     public String page01(){
 		return "menuAdmin?faces-redirect=true";

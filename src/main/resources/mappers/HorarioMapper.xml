@@ -75,7 +75,7 @@
 
 	<insert id ="insertarHora">
 		<selectKey keyProperty="id_hora" resultType="int" order="BEFORE">
-			select COUNT(id)+1 from BR_HORA
+			select COALESCE(MAX(id)+1,1) from BR_HORA
 		</selectKey>
     	insert into BR_HORA (id, hora, id_horario, dia_horario, disponible) 
     	VALUES (#{id_hora},#{hora.hora}, #{horario.id}, #{horario.dia}, #{hora.disponible})
@@ -122,6 +122,14 @@
 
 			WHERE id=#{id_hora} 
 	</update>
+	
+	
+	<delete id="eliminarHora">
+	
+			DELETE FROM BR_HORA
+
+			WHERE id=#{id_hora} 
+	</delete>
 	
 	
 	<resultMap id="HoraResult" type="Hora">

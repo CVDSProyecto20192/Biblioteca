@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
@@ -63,75 +64,9 @@ public class HorariosView {
 		serviciosReserva=baseBean.getServiciosReserva();
 		actionSetId();
 		reinicioListas();
-	}
-
-	
-	/**
-	 * Relaciona cada horario con su respectivo hashMap
-	 */
-	private void actionCreateHash() {
-		this.total=new ArrayList<HashMap<String, ArrayList<Hora>>>();
-		for(Horario h:this.horario) {
-			HashMap<String, ArrayList<Hora>> array=new HashMap<String, ArrayList<Hora>>();
-			actionCreateMaps(array,h);
-			this.total.add(array);
-		}
-	}
-	
-	/**
-	 * Inicializa los HashMaps
-	 * @param array
-	 * @param h
-	 */
-	private void actionCreateMaps(HashMap<String, ArrayList<Hora>> array, Horario h) {
-		ArrayList<Hora>horas=h.getHoras();
-		String dia=h.getDia();
-		array.put(dia,horas);
-	}
-	
-	/**
-	 * Establece el id del horario seleccionado por el usuario
-	 */
-	private void actionSetId() {
-		this.id=baseBean.getIdRec();
-	}
-	
-	
-	/**
-	 * Establece el horario seleccionado por el usuario (objeto)
-	 */
-	private void actionSetHorario() {
-		try {
-			this.horario=serviciosReserva.consultarHorarioDias(this.id);
-
-		} catch (ServiciosReservaException e) {
-
-			baseBean.mensajeApp(e);
-		}
-	}
-	
-	
-	/**
-	 * 
-	 */
-	private void actionConvertHoras() {
-		SimpleDateFormat format =new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    	
-        String dateInString=this.dia+" "+this.hora; Date date = null;
-    	try {
-			date = format.parse(dateInString);
-			System.out.println(date); 
-			List<Date> horas=new ArrayList<Date>();
-	        horas.add(date);
-	       // serviciosReserva.actualizarHoras(2, horas);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			baseBean.mensajeApp(e);
-		}
 		
 	}
-	
-	
+
 	
 	public void actualizarHora(long idHora, Date hora) {
 		try {
@@ -176,30 +111,11 @@ public class HorariosView {
 		return ans;
 	}
 
-	private ArrayList<String> getKeysTotal(int i){
-		ArrayList<String> ans=new ArrayList<String>();
-		HashMap<String, ArrayList<Hora>> hash=this.total.get(i);
-		Set<String> keys=hash.keySet();
-		ans.addAll(keys);
-		return ans;
-	}
-	
-	private void establecerHora(Horario h, Hora hs) {
-		long id_hora;
-		try {
-			id_hora = this.serviciosReserva.consultarIdHora(h, hs);
-			hs.setId(id_hora);
-		} 
-		catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			baseBean.mensajeApp(e);
-		}
-		
-	}
 	
 	public void actionAddRow(int i) {
 		ArrayList<String> keys=getKeysTotal(i);
-		String dia=keys.get(0);
+		String dia=asignarDiaNUmero(i);
+		System.out.println(dia);
 		try {
 			Horario h=this.serviciosReserva.consultarHorario(this.id, dia);
 			Hora hs=new Hora(); 
@@ -208,13 +124,152 @@ public class HorariosView {
 			reinicioListas();
 		} catch (ServiciosReservaException e) {
 			baseBean.mensajeApp(e);
+			e.printStackTrace();
 		}
 	}
+	
+	
+	public void actionDeleteRow(int i, long idHora){
+		ArrayList<String> keys=getKeysTotal(i);
+		String dia=keys.get(0);
+		try {
+			Horario h=this.serviciosReserva.consultarHorario(this.id, dia);
+			this.serviciosReserva.eliminarHora(h,idHora);
+			reinicioListas();
+		} catch (ServiciosReservaException e) {
+			baseBean.mensajeApp(e);
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	private void reinicioListas() {
 		actionSetHorario();
 		actionCreateHash();
 	}
+	
+	private int asignarNumeroDia(String dia) {
+		int ans=0;
+		String [] dias= {"lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
+		
+		String [] otros=this.baseBean.diasDeLaSemana();
+		
+		for(int i=0; i<6; i++) {
+			String d=dias[i];
+			if(d==dia) {
+				ans=i;
+			}
+		}
+		
+		System.out.println("Asignar");
+		String l=new String("lunes");
+		dia=new String(dia);
+		System.out.println(dia.contentEquals(l));
+		System.out.println(dia.equals(l));
+		System.out.println(dia.equals("lunes"));
+		System.out.println(dia);
+		System.out.println(Objects.equals(dia, l));
+		if(dia.contentEquals("lunes")) {
+			System.out.println(true);
+		}
+		
+		for(String i:otros) {
+			if(i.equals(dia)) {
+				System.out.println("siiii");
+			}
+		}
+		return ans;
+		
+	}
+	
+	
+	private String asignarDiaNUmero(int num) {
+		
+		String ans="";
+		switch(num) {
+		
+		case 0:
+			ans="lunes";
+			break;
+			
+		case 1:
+			ans="martes";
+			break;
+			
+		case 3:
+			ans="miércoles";
+			break;
+			
+		case 4:
+			ans="jueves";
+			break;
+			
+		case 5:
+			ans="viernes";
+			break;
+			
+		case 6:
+			ans="sábado";
+			break;
+		}
+		
+		return ans;
+	}
+	
+	
+	/**
+	 * Inicializa los HashMaps
+	 * @param array
+	 * @param h
+	 */
+	private int actionCreateMaps(HashMap<String, ArrayList<Hora>> array, Horario h) {
+		ArrayList<Hora>horas=h.getHoras();
+		String dia=h.getDia();
+		System.out.println(dia);
+		System.out.println(horas);
+		System.out.println(asignarNumeroDia(dia));
+		array.put(dia,horas);
+		
+		return asignarNumeroDia(dia);
+	}
+	
+	/**
+	 * Relaciona cada horario con su respectivo hashMap
+	 */
+	private void actionCreateHash() {
+		total=new ArrayList<HashMap<String, ArrayList<Hora>>>();
+		for(Horario h:this.horario) {
+			HashMap<String, ArrayList<Hora>> array=new HashMap<String, ArrayList<Hora>>();
+			int posicion=actionCreateMaps(array,h);
+			this.total.add(posicion, array);
+			//thi
+		}
+	}
+	
+	
+	/**
+	 * Establece el id del horario seleccionado por el usuario
+	 */
+	private void actionSetId() {
+		this.id=baseBean.getIdRec();
+	}
+	
+	
+	/**
+	 * Establece el horario seleccionado por el usuario (objeto)
+	 */
+	private void actionSetHorario() {
+		try {
+			this.horario=serviciosReserva.consultarHorarioDias(this.id);
+
+		} catch (ServiciosReservaException e) {
+
+			baseBean.mensajeApp(e);
+		}
+	}
+	
+	
 	
 	
 	public long getId() {
@@ -271,6 +326,27 @@ public class HorariosView {
 			baseBean.mensajeApp(e);
 		}
 		return horas;
+		
+	}
+	
+	private ArrayList<String> getKeysTotal(int i){
+		ArrayList<String> ans=new ArrayList<String>();
+		HashMap<String, ArrayList<Hora>> hash=this.total.get(i);
+		Set<String> keys=hash.keySet();
+		ans.addAll(keys);
+		return ans;
+	}
+	
+	private void establecerHora(Horario h, Hora hs) {
+		long id_hora;
+		try {
+			id_hora = this.serviciosReserva.consultarIdHora(h, hs);
+			hs.setId(id_hora);
+		} 
+		catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			baseBean.mensajeApp(e);
+		}
 		
 	}
 	

@@ -25,4 +25,6 @@ public interface RecursoDAO {
 	public void updateDispRecurso(long id, boolean b) throws PersistenceException;
 
 	public long loadLastId() throws PersistenceException;
+
+	public void removeRecurso(long idRecurso) throws PersistenceException;
 }

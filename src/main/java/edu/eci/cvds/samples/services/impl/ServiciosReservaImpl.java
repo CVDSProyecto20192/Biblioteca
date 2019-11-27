@@ -288,6 +288,30 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 
 	
 	@Override
+	public void eliminarRecurso(long idRecurso) throws ServiciosReservaException {
+		try {
+			recursoDAO.removeRecurso(idRecurso);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al eliminar el recurso " + idRecurso, e);
+		}
+		
+	}
+	
+	
+	@Override
+	public void eliminarHora(Horario h,long idHora) throws ServiciosReservaException {
+		try {
+			horarioDAO.removeHora(h,idHora);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al eliminar la hora " + idHora, e);
+		}
+		
+	}
+	
+	
+	@Override
 	public Reserva consultarFranja(Date fecha, int hora, int duracion,long recurso) throws ServiciosReservaException {
 		Reserva r = null;
 		try {
@@ -407,6 +431,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		return reservas;
 	}
 
-
-
 }
+
+

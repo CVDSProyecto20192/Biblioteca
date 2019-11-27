@@ -70,7 +70,7 @@
 	
 	<insert id ="insertarRecurso">
 		<selectKey keyProperty="id_recurso" resultType="int" order="BEFORE">
-			select COUNT(id)+1 from BR_RECURSO
+			select COALESCE(MAX(id)+1,1) from BR_RECURSO
 		</selectKey>
     	insert into BR_RECURSO (id, nombre, ubicacion, capacidad, id_tipo, disponible) 
     	VALUES (#{id_recurso},#{recurso.nombre},#{recurso.ubicacion},#{recurso.capacidad}, #{recurso.tipo.id}, #{recurso.disponible}) 
@@ -115,6 +115,18 @@
 			BR_RECURSO
 			
 	</select>
+	
+	
+	<delete id="eliminarRecurso">
+			DELETE 
+
+			FROM
+			BR_RECURSO
+			
+			WHERE
+			id=#{id_rec} 
+			
+	</delete>
 	
 
 	<resultMap id="RecursoResult" type="Recurso">

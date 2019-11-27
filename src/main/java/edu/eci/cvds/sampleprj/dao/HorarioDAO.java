@@ -33,5 +33,7 @@ public interface HorarioDAO {
 	
 	public long loadLastId() throws PersistenceException;
 
+	public void removeHora(Horario h, long idHora) throws PersistenceException;
+
 	
 }

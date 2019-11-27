@@ -311,6 +311,7 @@ h2{
 
 .addPart{
 	background-color: transparent;
+	text-align:right;
 		
 }
 
@@ -332,7 +333,8 @@ h2{
 }
 
 .add{
-	background-image: url("#{facesContext.externalContext.request.contextPath}/img/plus.svg");
+	width: 1.2vw;
+	height: 1.2vw;
 }
 
 .dispButtom{

@@ -15,7 +15,7 @@
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	</h:head>
 	<h:body>
-		<h:form>
+		<h:form id="horario">
 			<p:growl id="messages" showDetail="true" />
 
 			<h1 style="text-align: center;">Consultar Disponibilidad</h1>
@@ -46,13 +46,39 @@
 					
 					<p:outputLabel for="duracionMinutos" value="Minutos:"/>
 					<p:inputText id="duracionMinutos" value="#{DispoBean.duracionMinutos}" required="true"/>
-					
-					<h:outputText value="Recurrente: "/>
-					<p:selectBooleanButton id="repetir" value="#{DispoBean.repetir}" onLabel="Yes" offLabel="No" onIcon="fas fa-check" offIcon="fas fa-times" style="width:100px"/>
-					<h:outputText id="ll" value="llll" rendered="#{DispoBean.repetir == false}" />
+					<h:form id="concurrente">
+						<h:outputText value="Recurrente: "/>
+						<h:selectBooleanCheckbox id="repetir" onclick="hideOrShow(this.checked);"/>
+						<h:panelGrid id="panel1" columns="2">
+							<h:outputText value="Repetir cada (dias): "/>
+							<p:inputText id="repetirVal" value="#{DispoBean.repetir}"/>
+						</h:panelGrid>
+						<h:panelGrid id="panel2" columns="4">
+							<h:outputText value="Fecha fin (AAAA/MM/ddd): "/>
+							<p:inputText id="año" value="#{DispoBean.year}"/>
+							<p:inputText id="mes" value="#{DispoBean.mes}"/>
+							<p:inputText id="dia" value="#{DispoBean.dia}"/>
+						</h:panelGrid>
+						<p:commandButton value="Reservar" action="#{DispoBean.actionReservar}" />
+					</h:form>
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
 	</h:body>
-	  
+	
+<script type="text/javascript">
+    function hideOrShow(show) {
+        // Get the panel using its ID
+        var obj = document.getElementById("horario:concurrente:panel1");
+		var obj2 = document.getElementById("horario:concurrente:panel2");
+        if (show) {
+            obj.style.display = "block";
+			obj2.style.display = "block";
+        } else {
+            obj.style.display = "none";
+			obj2.style.display = "none";
+        }
+    }
+</script>
+
 </html>

@@ -46,19 +46,45 @@ public class DisponibilidadView implements Serializable {
 	private int hora;
 	private int duracionHora;
 	private int duracionMinutos;
-	private boolean repetir;
+	private String year;
+	private String mes;
+	private String dia;
+	private int repetir;
     public DisponibilidadView() {
     }
-
-	public boolean isRepetir(){
+	
+	public String getYear(){
+		return year;
+	}
+	
+	public String getMes(){
+		return mes;
+	}
+	
+	public int getRepetir(){
 		return repetir;
 	}
 	
-	public void setRepetir(boolean repetir){
-		System.out.println(this.repetir);
+	public String getDia(){
+		return dia;
+	}
+	
+	public void setYear(String year){
+		this.year = year;
+	}
+	
+	public void setRepetir(int repetir){
 		this.repetir = repetir;
 	}
-
+	
+	public void setMes(String mes){
+		this.mes = mes;
+	}
+	
+	public void setDia(String dia){
+		this.dia = dia;
+	}
+	
     public long getRecurso() {
         return recurso;
     }
@@ -129,6 +155,14 @@ public class DisponibilidadView implements Serializable {
 
         }
     }
+	
+	public void actionReservar(){
+		System.out.println("entro");
+		int dur = (duracionHora * 100) + duracionMinutos;
+		String fechaFin = year + "-" + mes + "-" + dia;
+		System.out.println(dur);
+		System.out.println(fechaFin);
+	}
 
     public void reset(){
         this.eventModel.clear();
@@ -176,15 +210,5 @@ public class DisponibilidadView implements Serializable {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		fecha = dateFormat.format(event.getStartDate());
 		hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
-	}
-	
-	public void cambiar(){
-		if (isRepetir()){
-			this.repetir = false;
-		}
-		else{
-			this.repetir = true;
-		}
-		System.out.println(this.repetir);
 	}
 }

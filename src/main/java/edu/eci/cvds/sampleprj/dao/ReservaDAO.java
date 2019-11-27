@@ -12,6 +12,8 @@ public interface ReservaDAO {
 	
 	public List<Reserva> consultarReservasRecurso(long recursoId) throws PersistenceException;
 	
+	public List<Reserva> consultarReservasGrupo(int grupo) throws PersistenceException;
+	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws PersistenceException;
 	
 	public void insertarReserva(Reserva reserva) throws PersistenceException;

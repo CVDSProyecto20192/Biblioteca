@@ -430,6 +430,19 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return reservas;
 	}
+	
+	@Override
+	public List<Reserva> consultarReservasGrupo(int grupo) throws ServiciosReservaException {
+		List<Reserva> reservas;
+		try {
+			reservas=reservaDAO.consultarReservasGrupo(grupo);
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas del grupo: " + grupo, e);
+		}
+		return reservas;
+	}
 
 }
 

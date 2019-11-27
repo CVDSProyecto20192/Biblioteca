@@ -52,7 +52,7 @@
 				</p:dataViewGridItem>
     					
 				<p:dataViewListItem>
-					<h:panelGrid columns="4" style="width:100%" columnClasses="logo,detail">
+					<h:panelGrid columns="6" style="width:100%" columnClasses="logo,detail" cellpadding="10">
 						<p:graphicImage height="20%"  url="/img/libro.png"/>						
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
@@ -68,7 +68,17 @@
 								<h:outputText value="#{reserva.registro}"/>
 						
 							</h:panelGrid>
+							
 						</p:outputPanel>
+						
+						<h:panelGrid columns="1" >
+								<h:outputText value="CONCURRENTE" rendered="#{reserva.grupo != 0}"/>
+								<p:commandLink aligupdate=":reservas_form:concurrentDetail"  oncomplete="PF('concurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
+									<i class="fas fa-user" style="font-size:36px;"></i>
+									<h:outputText style="margin:0 auto;"/>
+									<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+								</p:commandLink>
+							</h:panelGrid>
 						<p:commandLink update=":reservas_form:userDetail"  oncomplete="PF('userDialog').show()" title="Ver Usuario">
 							<i class="fas fa-user" style="font-size:36px;"></i>
 							<h:outputText style="margin:0 auto;"/>
@@ -106,9 +116,6 @@
 						<h:outputText value="Apellidos:"/>
 						<h:outputText value="#{ReservasUsersBean.selected.usuario.apellidos}"/>
 						
-						<h:outputText value="Ultimo Ingreso:"/>
-						<h:outputText value="#{ReservasUsersBean.selected.usuario.ultimoIngreso}"/>
-						
 						<h:outputText value="Bloqueado:"/>
 						<h:outputText value="#{ReservasUsersBean.selected.usuario.bloqueado}"/>
 						
@@ -141,6 +148,24 @@
 						
 						<h:outputText value="Tipo:"/>
 						<h:outputText value="#{ReservasUsersBean.selected.recurso.tipo.tipo}"/>
+						
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			
+			
+			<p:dialog header="Fechas" widgetVar="concurrentDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="concurrentDetail" style="text-align: center;">
+					<p:panelGrid columns="2" rendered="#{not empty ReservasUsersBean.selected}" columnClasses="label,value">
+						<f:facet name="header">
+							<p:graphicImage height="4%"  url="/img/usu.png"/>
+						</f:facet>
+						<h:outputText value="Próxima ocurrencia:"/>
+						<h:outputText value="#{ReservasUsersBean.siguiente}"/>
+
+						<h:outputText value="Finalización:"/>
+						<h:outputText value="#{ReservasUsersBean.ultima}"/>
+						
 						
 					</p:panelGrid>
 				</p:outputPanel>

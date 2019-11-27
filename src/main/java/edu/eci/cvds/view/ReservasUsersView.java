@@ -32,6 +32,10 @@ public class ReservasUsersView {
 	
 	private Reserva selected;
 	
+	private Reserva siguiente;
+	
+	private Reserva ultima;
+	
 	public ReservasUsersView() {
 	}
 	
@@ -65,6 +69,31 @@ public class ReservasUsersView {
 	public void setSelected(Reserva re) {
 		this.selected = re;
 	}
+	
+	public Reserva getUltima() {
+		listar(selected.getGrupo());
+		return this.ultima;
+	}
+
+	
+	public Reserva getSiguiente() {
+		return this.siguiente;
+	}
+	
+	private void listar(int grupo){
+		List<Reserva> grupito = null;
+		try {
+			grupito= serviciosReserva.consultarReservasGrupo(grupo);
+			long idS= selected.getCodigo();
+			boolean flag = false;
+			for(Reserva r: grupito){
+				long id2= r.getCodigo();
+			}
+		}catch (ServiciosReservaException e) {
+			baseBean.mensajeApp(e);
+		}
+	}
+	
 }
 	
 	

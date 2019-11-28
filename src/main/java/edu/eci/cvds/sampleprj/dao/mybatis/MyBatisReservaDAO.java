@@ -43,7 +43,7 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	}
 	
 	@Override
-	public List<Reserva> consultarReservasGrupo(int grupo) throws PersistenceException {
+	public List<Reserva> consultarReservasGrupo(long grupo) throws PersistenceException {
 		try{
 			return reservaMapper.consultarReservasGrupo(grupo);
 		}

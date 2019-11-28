@@ -1,6 +1,6 @@
 package edu.eci.cvds.view;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ public class ReservasUsersView {
 	
 	private Reserva selected;
 	
-	private Reserva siguiente;
+	private String siguiente;
 	
-	private Reserva ultima;
+	private String ultima;
 	
 	public ReservasUsersView() {
 	}
@@ -72,29 +72,64 @@ public class ReservasUsersView {
 	
 	public Reserva getUltima() {
 		listar((int) selected.getGrupo());
+	}
+	public String getUltima() {
+		calcularUltima();
 		return this.ultima;
 	}
 
 	
-	public Reserva getSiguiente() {
+	public String getSiguiente() {
+		calcularSiguiente();
 		return this.siguiente;
 	}
 	
-	private void listar(int grupo){
-		List<Reserva> grupito = null;
+	private void calcularSiguiente(){
+		Reserva resSig=null;
 		try {
-			grupito= serviciosReserva.consultarReservasGrupo(grupo);
-			long idS= selected.getCodigo();
+			List<Reserva> grupito= serviciosReserva.consultarReservasGrupo(selected.getGrupo());
 			boolean flag = false;
-			for(Reserva r: grupito){
-				long id2= r.getCodigo();
+			Reserva r = null;
+			for(int i=0;i<grupito.size();i++){
+				r=grupito.get(i);
+				if(flag==true){
+					flag=false;
+					resSig=r;
+				}
+				if(r.getCodigo()==selected.getCodigo()){
+					flag=true;
+				}	
+			}
+			if(resSig!=null){
+				Date fecha1 = resSig.getFechaI();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				siguiente = sdf.format(fecha1);
+			}else{
+				siguiente = "Esta es la última.";
+			}
+			
+		}catch (ServiciosReservaException e) {
+			baseBean.mensajeApp(e);
+		}
+	}
+	
+	private void calcularUltima(){
+		try {
+			List<Reserva> grupito = serviciosReserva.consultarReservasGrupo(selected.getGrupo());
+			Reserva ult=grupito.get(grupito.size()-1);
+			if(ult.getCodigo()!=selected.getCodigo()){
+				Date fecha1 = ult.getFechaI();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				ultima = sdf.format(fecha1);
+			}else{
+				ultima = "Esta es la última";
 			}
 		}catch (ServiciosReservaException e) {
 			baseBean.mensajeApp(e);
 		}
 	}
 	
-}
 	
+}
 	
 	

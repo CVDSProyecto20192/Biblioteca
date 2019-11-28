@@ -13,13 +13,12 @@ public interface ReservaMapper {
 	
 	public List<Reserva> consultarReservasRecurso(@Param("recursoId")long recursoId);
 	
-	public List<Reserva> consultarReservasGrupo(@Param("group")int grupo);
+	public List<Reserva> consultarReservasGrupo(@Param("group")long grupo);
 	
 	public Reserva consultarFranja(@Param("fecha")Date fecha , @Param("hora")int hora, @Param("duracion")int duracion,@Param("recurso")long recurso);
 	
 	public void insertarReserva(@Param("reserva")Reserva reserva);
 	
 	public long consultarIdGrupo();
-	
 
 }

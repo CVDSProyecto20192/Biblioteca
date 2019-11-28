@@ -432,7 +432,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
-	public List<Reserva> consultarReservasGrupo(int grupo) throws ServiciosReservaException {
+	public List<Reserva> consultarReservasGrupo(long grupo) throws ServiciosReservaException {
 		List<Reserva> reservas;
 		try {
 			reservas=reservaDAO.consultarReservasGrupo(grupo);
@@ -443,7 +443,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return reservas;
 	}
-
 }
 
 

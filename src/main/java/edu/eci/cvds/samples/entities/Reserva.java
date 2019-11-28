@@ -15,6 +15,8 @@ public class Reserva {
 	private boolean activa;
 	private long grupo;
 	private Date registro;
+	private Date fechaF;
+	private Date fechaI;
 	
 	public Reserva() {
 		
@@ -74,6 +76,18 @@ public class Reserva {
 	
 	public void setRegistro(Date registro){
 		this.registro=registro;
+	}
+	public Date getFechaI(){
+		fechaI = (Date) fecha.clone();
+		fechaI.setHours(hora/100);
+		fechaI.setMinutes(hora%100);
+		return this.fechaI;
+	}
+	public Date getFechaF(){
+		fechaF = (Date) fecha.clone();
+		fechaF.setHours((hora+duracion)/100);
+		fechaF.setMinutes((hora+duracion)%100);
+		return this.fechaF;
 	}
 	
 	public int getHora(){

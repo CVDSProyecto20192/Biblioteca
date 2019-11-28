@@ -70,7 +70,7 @@ public interface ServiciosReserva {
 	
 	public List<Reserva> consultarReservasRecurso(long recursoId) throws ServiciosReservaException;
 	
-	public List<Reserva> consultarReservasGrupo(int grupo) throws ServiciosReservaException;
+	public List<Reserva> consultarReservasGrupo(long grupo) throws ServiciosReservaException;
 	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws ServiciosReservaException; 
 	

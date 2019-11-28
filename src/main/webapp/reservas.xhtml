@@ -31,21 +31,33 @@
 						<h:panelGrid columns="1" style="width:100%">
 							<p:graphicImage height="20%" url="/img/libro.png"/>
 								<h:panelGrid columns="2" style="width:100%">
-									<h:outputText value="Fecha:"/>
-									<h:outputText value="#{reserva.fecha}"/>
+									<h:outputText value="Fecha Inicio:"/>
+									<h:outputText value="#{reserva.fechaI}"/>
+									<h:outputText value="Fecha Fin:"/>
+									<h:outputText value="#{reserva.fechaF}"/>
 									<h:outputText value="Registro:"/>
 									<h:outputText value="#{reserva.registro}"/>
+									
+									<p:commandLink update=":reservas_form:concurrentDetail"  oncomplete="PF('concurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
+										<i class="fas fa-history" style="font-size:36px;"></i>
+										<h:outputText style="margin:0 auto;"/>
+										<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+									</p:commandLink>
+								
 									<p:commandLink update=":reservas_form:userDetail"  oncomplete="PF('userDialog').show()" title="Ver Usuario">
 										<i class="fas fa-user" style="font-size:36px;"></i>
 										<h:outputText style="margin:0 auto;"/>
 										<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
 									</p:commandLink>
 									
+									<h:outputText value="CONCURRENTE" rendered="#{reserva.grupo != 0}"/>
+									
 									<p:commandLink update=":reservas_form:sourceDetail"  oncomplete="PF('sourceDialog').show()" title="Ver Recurso">
 										<i class="fas fa-search" style="font-size:36px;"></i>
 										<h:outputText  style="margin:0 auto;"/>
 										<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
 									</p:commandLink>
+											
 								</h:panelGrid>
 						</h:panelGrid>
 					</p:panel>
@@ -58,27 +70,24 @@
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputText value="Codigo:"/>
 								<h:outputText value="#{reserva.codigo}"/>
-								<h:outputText value="Fecha:"/>
-								<h:outputText value="#{reserva.fecha}"/>
-								<h:outputText value="Hora:"/>
-								<h:outputText value="#{reserva.hora}"/>
-								<h:outputText value="Duración:"/>
-								<h:outputText value="#{reserva.duracion}"/>
+								<h:outputText value="Fecha Inicio:"/>
+								<h:outputText value="#{reserva.fechaI}"/>
+								<h:outputText value="Fecha Fin:"/>
+								<h:outputText value="#{reserva.fechaF}"/>
 								<h:outputText value="Registro:"/>
 								<h:outputText value="#{reserva.registro}"/>
 						
 							</h:panelGrid>
 							
 						</p:outputPanel>
-						
-						<h:panelGrid columns="1" >
-								<h:outputText value="CONCURRENTE" rendered="#{reserva.grupo != 0}"/>
-								<p:commandLink aligupdate=":reservas_form:concurrentDetail"  oncomplete="PF('concurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
-									<i class="fas fa-user" style="font-size:36px;"></i>
-									<h:outputText style="margin:0 auto;"/>
-									<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
-								</p:commandLink>
-							</h:panelGrid>
+								
+						<h:outputText value="CONCURRENTE" rendered="#{reserva.grupo != 0}" width="85" height="85"/>
+						<p:commandLink update=":reservas_form:concurrentDetail"  oncomplete="PF('concurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
+							<i class="fas fa-history" style="font-size:36px;"></i>
+							<h:outputText style="margin:0 auto;"/>
+							<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
+						</p:commandLink>
+	
 						<p:commandLink update=":reservas_form:userDetail"  oncomplete="PF('userDialog').show()" title="Ver Usuario">
 							<i class="fas fa-user" style="font-size:36px;"></i>
 							<h:outputText style="margin:0 auto;"/>
@@ -90,6 +99,7 @@
 							<h:outputText  style="margin:0 auto;"/>
 							<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
 						</p:commandLink>
+						
 						
 					</h:panelGrid>
 				</p:dataViewListItem>
@@ -128,9 +138,7 @@
 			<p:dialog header="Recurso" widgetVar="sourceDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="sourceDetail" style="text-align: center;">
 					<p:panelGrid columns="2" rendered="#{not empty ReservasUsersBean.selected}" columnClasses="label,value">
-						<f:facet name="header">
-							<p:graphicImage height="4%"  url="/img/usu.png"/>
-						</f:facet>
+						
 						<h:outputText value="Id:"/>
 						<h:outputText value="#{ReservasUsersBean.selected.recurso.id}"/>
 
@@ -163,7 +171,7 @@
 						<h:outputText value="Próxima ocurrencia:"/>
 						<h:outputText value="#{ReservasUsersBean.siguiente}"/>
 
-						<h:outputText value="Finalización:"/>
+						<h:outputText value="Finaliza:"/>
 						<h:outputText value="#{ReservasUsersBean.ultima}"/>
 						
 						

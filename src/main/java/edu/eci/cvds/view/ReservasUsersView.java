@@ -70,9 +70,9 @@ public class ReservasUsersView {
 		this.selected = re;
 	}
 	
-	public Reserva getUltima() {
-		listar((int) selected.getGrupo());
-	}
+	//public Reserva getUltima() {
+		//listar((int) selected.getGrupo());
+	//}
 	public String getUltima() {
 		calcularUltima();
 		return this.ultima;

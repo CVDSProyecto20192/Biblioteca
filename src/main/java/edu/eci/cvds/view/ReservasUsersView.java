@@ -71,7 +71,7 @@ public class ReservasUsersView {
 	}
 	
 	public Reserva getUltima() {
-		listar(selected.getGrupo());
+		listar((int) selected.getGrupo());
 		return this.ultima;
 	}
 

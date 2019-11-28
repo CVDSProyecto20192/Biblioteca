@@ -44,45 +44,40 @@ public class DisponibilidadView implements Serializable {
     private List<Reserva> reservas;
 	private String fecha;
 	private int hora;
+	private int minutos;
 	private int duracionHora;
 	private int duracionMinutos;
-	private String year;
-	private String mes;
-	private String dia;
 	private int repetir;
+	private Date fechaFin;
+	private int eventoHora;
     public DisponibilidadView() {
     }
 	
-	public String getYear(){
-		return year;
+	public Date getFechaFin(){
+		return fechaFin;
 	}
 	
-	public String getMes(){
-		return mes;
+	public int getHora(){
+		return hora;
+	}
+	public int getEventoHora(){
+		return eventoHora;
+	}
+	
+	public int getMinutos(){
+		return minutos;
+	}
+	
+	public void setFechaFin (Date fechaFin){
+		this.fechaFin = fechaFin;
 	}
 	
 	public int getRepetir(){
 		return repetir;
 	}
 	
-	public String getDia(){
-		return dia;
-	}
-	
-	public void setYear(String year){
-		this.year = year;
-	}
-	
 	public void setRepetir(int repetir){
 		this.repetir = repetir;
-	}
-	
-	public void setMes(String mes){
-		this.mes = mes;
-	}
-	
-	public void setDia(String dia){
-		this.dia = dia;
 	}
 	
     public long getRecurso() {
@@ -109,6 +104,15 @@ public class DisponibilidadView implements Serializable {
 		this.duracionMinutos = duracionMinutos;
 	}
 
+	public void setHora(int hora){
+		this.hora = hora;
+		System.out.println("set");
+		System.out.println(hora);
+	}
+	
+	public void setMinutos(int minutos){
+		this.minutos = minutos;
+	}
 
     public List<Reserva> getReservas() {
         return reservas;
@@ -157,11 +161,23 @@ public class DisponibilidadView implements Serializable {
     }
 	
 	public void actionReservar(){
-		System.out.println("entro");
 		int dur = (duracionHora * 100) + duracionMinutos;
-		String fechaFin = year + "-" + mes + "-" + dia;
-		System.out.println(dur);
-		System.out.println(fechaFin);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try{
+			if (fechaFin != null){
+				String fechaFinReservas = dateFormat.format(fechaFin);
+				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001" , recurso, fechaFinReservas , repetir);
+			}
+			else{
+				System.out.println(fecha);
+				System.out.println(hora);
+				System.out.println(recurso);
+				serviciosReserva.insertarReserva(fecha, hora, dur, "0000001", recurso);
+			}
+		}catch (ServiciosReservaException e) {
+            // TODO Auto-generated catch block
+            baseBean.mensajeApp(e);
+        } 
 	}
 
     public void reset(){
@@ -209,6 +225,6 @@ public class DisponibilidadView implements Serializable {
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		fecha = dateFormat.format(event.getStartDate());
-		hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
+		this.hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
 	}
 }

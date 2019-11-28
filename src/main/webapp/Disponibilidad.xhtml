@@ -40,27 +40,32 @@
 			</h:panelGrid>
 			
 			<p:dialog widgetVar="eventDialog" header="Reserva" showEffect="clip" hideEffect="clip">
-				<h:panelGrid id="Reserva" columns="2">
-					<p:outputLabel for="duracionHora" value="Hora(s):"/>
-					<p:inputText id="duracionHora" value="#{DispoBean.duracionHora}" required="true"/>
-					
-					<p:outputLabel for="duracionMinutos" value="Minutos:"/>
-					<p:inputText id="duracionMinutos" value="#{DispoBean.duracionMinutos}" required="true"/>
+				<h:panelGrid id="Reserva" columns="2" >
+					<h:panelGrid id="panelHora" columns="4" rendered="#{DispoBean.hora == 100}">
+						<p:outputLabel for="Hora" value="Hora de la Reserva "/>
+						<p:inputNumber id="Hora" value="#{DispoBean.hora}" minValue="0" maxValue="24" />
+						<p:outputLabel value=":"/>
+						<p:inputNumber id="Minutos" value="#{DispoBean.minutos}" minValue="0" maxValue="59"/>
+					</h:panelGrid>	
+					<p:outputLabel value=""/>
+					<h:panelGrid id="panelDuracion" columns="4">
+						<p:outputLabel for="duracionHora" value="Duracion de la reserva "/>
+						<p:inputNumber id="duracionHora" value="#{DispoBean.duracionHora}" required="true" minValue="0" maxValue="2" />
+						<p:outputLabel for="duracionMinutos" value=":"/>
+						<p:inputNumber id="duracionMinutos" value="#{DispoBean.duracionMinutos}" required="true" minValue="0" maxValue="59"/>
+					</h:panelGrid>
+					<p:outputLabel value=""/>
 					<h:form id="concurrente">
 						<h:outputText value="Recurrente: "/>
 						<h:selectBooleanCheckbox id="repetir" onclick="hideOrShow(this.checked);"/>
 						<h:panelGrid id="panel1" columns="2">
 							<h:outputText value="Repetir cada (dias): "/>
-							<p:inputText id="repetirVal" value="#{DispoBean.repetir}"/>
+							<p:inputNumber id="repetirVal" value="#{DispoBean.repetir}" minValue="0" decimalPlaces="0"/>
+							<p:outputLabel for="fechaFin" value="Fecha fin: " />
+							<p:datePicker id="fechaFin" value="#{DispoBean.fechaFin}" locale="es" monthNavigator="true" pattern="yyyy-MM-dd"/>
 						</h:panelGrid>
-						<h:panelGrid id="panel2" columns="4">
-							<h:outputText value="Fecha fin (AAAA/MM/ddd): "/>
-							<p:inputText id="año" value="#{DispoBean.year}"/>
-							<p:inputText id="mes" value="#{DispoBean.mes}"/>
-							<p:inputText id="dia" value="#{DispoBean.dia}"/>
-						</h:panelGrid>
-						<p:commandButton value="Reservar" action="#{DispoBean.actionReservar}" />
 					</h:form>
+					<h:commandButton value="Reservar" action="#{DispoBean.actionReservar}" update="@form"/>
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>
@@ -79,6 +84,35 @@
 			obj2.style.display = "none";
         }
     }
+</script>
+
+<script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDayOfWeek: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
 </script>
 
 </html>

@@ -45,7 +45,7 @@ public class HorariosView {
 	private String hora;
 	
 	private List<Horario> horario;
-	private List<HashMap<String, ArrayList<Hora>>> total;
+	private HashMap<Integer, ArrayList<Hora>> total;
 	private List<Hora> ls1;
 	private List<Hora> ls2;
 	private List<Hora> ls3;
@@ -53,7 +53,7 @@ public class HorariosView {
 	private List<Hora> ls5;
 	private List<Hora> ls6;
 
-	
+	private String[] dias;
 	
 	public HorariosView() {
 	}
@@ -63,6 +63,8 @@ public class HorariosView {
 	public void init() {
 		serviciosReserva=baseBean.getServiciosReserva();
 		actionSetId();
+		acionSetDiasDeLaSemana();
+		actionInicializarTotal();
 		reinicioListas();
 		
 	}
@@ -113,9 +115,7 @@ public class HorariosView {
 
 	
 	public void actionAddRow(int i) {
-		ArrayList<String> keys=getKeysTotal(i);
-		String dia=asignarDiaNUmero(i);
-		System.out.println(dia);
+		String dia=asignarDiaNumero(i);
 		try {
 			Horario h=this.serviciosReserva.consultarHorario(this.id, dia);
 			Hora hs=new Hora(); 
@@ -130,11 +130,11 @@ public class HorariosView {
 	
 	
 	public void actionDeleteRow(int i, long idHora){
-		ArrayList<String> keys=getKeysTotal(i);
-		String dia=keys.get(0);
+		String dia=asignarDiaNumero(i);
 		try {
 			Horario h=this.serviciosReserva.consultarHorario(this.id, dia);
 			this.serviciosReserva.eliminarHora(h,idHora);
+			actionSetHorario();
 			reinicioListas();
 		} catch (ServiciosReservaException e) {
 			baseBean.mensajeApp(e);
@@ -143,116 +143,23 @@ public class HorariosView {
 		
 	}
 	
+	private void acionSetDiasDeLaSemana(){
+		String[] d= {"domingo","lunes","martes","miércoles","jueves","viernes","sábado"};
+		this.dias=d;
+	}
+	
+	private void actionInicializarTotal() {
+		this.total=new HashMap<Integer, ArrayList<Hora>>();
+		for(int i=1;i<7;i++) {
+			ArrayList<Hora> array=new ArrayList<Hora>();
+			this.total.put(i, array);
+		}
+	}
+	
 	
 	private void reinicioListas() {
 		actionSetHorario();
 		actionCreateHash();
-	}
-	
-	private int asignarNumeroDia(String dia) {
-		int ans=0;
-		String [] dias= {"lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
-		
-		String [] otros=this.baseBean.diasDeLaSemana();
-		
-		for(int i=0; i<6; i++) {
-			String d=dias[i];
-			if(d==dia) {
-				ans=i;
-			}
-		}
-		
-		System.out.println("Asignar");
-		String l=new String("lunes");
-		dia=new String(dia);
-		System.out.println(dia.contentEquals(l));
-		System.out.println(dia.equals(l));
-		System.out.println(dia.equals("lunes"));
-		System.out.println(dia);
-		System.out.println(Objects.equals(dia, l));
-		if(dia.contentEquals("lunes")) {
-			System.out.println(true);
-		}
-		
-		for(String i:otros) {
-			if(i.equals(dia)) {
-				System.out.println("siiii");
-			}
-		}
-		return ans;
-		
-	}
-	
-	
-	private String asignarDiaNUmero(int num) {
-		
-		String ans="";
-		switch(num) {
-		
-		case 0:
-			ans="lunes";
-			break;
-			
-		case 1:
-			ans="martes";
-			break;
-			
-		case 3:
-			ans="miércoles";
-			break;
-			
-		case 4:
-			ans="jueves";
-			break;
-			
-		case 5:
-			ans="viernes";
-			break;
-			
-		case 6:
-			ans="sábado";
-			break;
-		}
-		
-		return ans;
-	}
-	
-	
-	/**
-	 * Inicializa los HashMaps
-	 * @param array
-	 * @param h
-	 */
-	private int actionCreateMaps(HashMap<String, ArrayList<Hora>> array, Horario h) {
-		ArrayList<Hora>horas=h.getHoras();
-		String dia=h.getDia();
-		System.out.println(dia);
-		System.out.println(horas);
-		System.out.println(asignarNumeroDia(dia));
-		array.put(dia,horas);
-		
-		return asignarNumeroDia(dia);
-	}
-	
-	/**
-	 * Relaciona cada horario con su respectivo hashMap
-	 */
-	private void actionCreateHash() {
-		total=new ArrayList<HashMap<String, ArrayList<Hora>>>();
-		for(Horario h:this.horario) {
-			HashMap<String, ArrayList<Hora>> array=new HashMap<String, ArrayList<Hora>>();
-			int posicion=actionCreateMaps(array,h);
-			this.total.add(posicion, array);
-			//thi
-		}
-	}
-	
-	
-	/**
-	 * Establece el id del horario seleccionado por el usuario
-	 */
-	private void actionSetId() {
-		this.id=baseBean.getIdRec();
 	}
 	
 	
@@ -264,12 +171,54 @@ public class HorariosView {
 			this.horario=serviciosReserva.consultarHorarioDias(this.id);
 
 		} catch (ServiciosReservaException e) {
-
 			baseBean.mensajeApp(e);
 		}
 	}
 	
 	
+	/**
+	 * Relaciona cada horario con su numero para el hashMap
+	 */
+	private void actionCreateHash() {
+		for(Horario h:this.horario) {
+			ArrayList<Hora>horas=h.getHoras();
+			String dia=h.getDia();
+			int posicion=asignarNumeroDia(dia);
+			this.total.put(posicion, horas);
+			
+		}
+	}
+	
+	private int asignarNumeroDia(String dia) {
+		int ans=0;
+		dia=dia.replace(" ","");
+		
+		for(int i=0; i<7; i++) {
+			String d=this.dias[i];
+			
+			if(d.equals(dia)) {
+				ans=i;
+			}
+		}
+		
+		return ans;
+		
+	}
+	
+	
+	private String asignarDiaNumero(int num) {
+		
+		return this.dias[num];
+	}
+	
+	
+	
+	/**
+	 * Establece el id del horario seleccionado por el usuario
+	 */
+	private void actionSetId() {
+		this.id=baseBean.getIdRec();
+	}
 	
 	
 	public long getId() {
@@ -305,38 +254,6 @@ public class HorariosView {
 	}
 	
 	
-	/**
-	 * Separara las listas que se encuentran en el hashmap
-	 * @param i
-	 * @return
-	 */
-	private ArrayList<Hora> getArrayFromTotal(int i) {
-		ArrayList<Hora> horas=null;
-		try {
-			HashMap<String, ArrayList<Hora>> array=this.total.get(i);
-			Collection<ArrayList<Hora>> horasList=array.values();
-			
-			Iterator<ArrayList<Hora>> it = horasList.iterator();
-			
-			while(it.hasNext()) {
-				horas=it.next();
-			}
-		}
-		catch(Exception e) {
-			baseBean.mensajeApp(e);
-		}
-		return horas;
-		
-	}
-	
-	private ArrayList<String> getKeysTotal(int i){
-		ArrayList<String> ans=new ArrayList<String>();
-		HashMap<String, ArrayList<Hora>> hash=this.total.get(i);
-		Set<String> keys=hash.keySet();
-		ans.addAll(keys);
-		return ans;
-	}
-	
 	private void establecerHora(Horario h, Hora hs) {
 		long id_hora;
 		try {
@@ -344,41 +261,39 @@ public class HorariosView {
 			hs.setId(id_hora);
 		} 
 		catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
 			baseBean.mensajeApp(e);
 		}
 		
 	}
 	
 	public List<Hora> getLs1(){
-		this.ls1=new ArrayList<Hora>();
-		this.ls1=getArrayFromTotal(0);
+		this.ls1=this.total.get(1);
 		return this.ls1;
 	}
 	
 	public List<Hora> getLs2(){
-		this.ls2=getArrayFromTotal(1);
+		this.ls2=this.total.get(2);
 		return this.ls2;
 	}
 	
 	public List<Hora> getLs3(){
-		this.ls3=getArrayFromTotal(2);
+		this.ls3=this.total.get(3);
 		return this.ls3;
 	}
 	
 	public List<Hora> getLs4(){
-		this.ls4=getArrayFromTotal(3);
+		this.ls4=this.total.get(4);
 		return this.ls4;
 	}
 	
 	public List<Hora> getLs5(){
-		this.ls5=getArrayFromTotal(4);
+		this.ls5=this.total.get(5);
 		return this.ls5;
 	}
 	
 	
 	public List<Hora> getLs6(){
-		this.ls6=getArrayFromTotal(5);
+		this.ls6=this.total.get(6);
 		return this.ls6;
 	}
 	

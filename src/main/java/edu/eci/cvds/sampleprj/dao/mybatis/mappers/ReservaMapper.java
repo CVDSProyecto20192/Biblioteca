@@ -20,6 +20,5 @@ public interface ReservaMapper {
 	public void insertarReserva(@Param("reserva")Reserva reserva);
 	
 	public long consultarIdGrupo();
-	
 
 }

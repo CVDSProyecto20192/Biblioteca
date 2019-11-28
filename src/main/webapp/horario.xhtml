@@ -52,7 +52,7 @@
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora1.id,hora1.hora)}" 
 						        update="horario_form1"/>
 						        &nbsp;
-								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(0,hora1.id)}"          
+								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(1,hora1.id)}"          
 								update="horario_form1" />
 						        
 					        </p:column>
@@ -69,7 +69,7 @@
 						</p:dataTable>
 						
 						<div class="addPart">
-							<h:commandButton image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(0)}" 
+							<h:commandButton image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(1)}" 
 							update="horario_form1" />
 							
 						</div>
@@ -93,6 +93,9 @@
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora2.id,hora2.hora)}" 
 						        update="horario_form2"/>
+						        &nbsp;
+								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(2,hora2.id)}"          
+								update="horario_form2" />
 						        
 					        </p:column>
 						
@@ -107,11 +110,8 @@
 					        
 						</p:dataTable>
 						<div class="addPart">
-							<h:commandButton value="Add" image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(1)}" 
+							<h:commandButton value="Add" image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(2)}" 
 							update="horario_form2"/>
-							&nbsp;
-							<h:commandButton image="img/minus.svg" class="add"  
-							update="horario_form2" />
 						</div>
 					</p:growl>			
 		        </h:form>
@@ -133,6 +133,9 @@
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora3.id,hora3.hora)}" 
 						        update="horario_form3"/>
+						        &nbsp;
+								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(3,hora3.id)}"          
+								update="horario_form3" />
 						        
 					        </p:column>
 						
@@ -147,11 +150,8 @@
 					        
 						</p:dataTable>
 						<div class="addPart">
-							<h:commandButton value="Add" image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(2)}" 
+							<h:commandButton value="Add" image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(3)}" 
 							update="horario_form3"/>
-							&nbsp;
-							<h:commandButton image="img/minus.svg" class="add"  
-							update="horario_form3" />
 						</div>
 					</p:growl>			
 		        </h:form>
@@ -178,7 +178,10 @@
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora4.id,hora4.hora)}" 
-						        update="horario_form1"/>
+						        update="horario_form4"/>
+						        &nbsp;
+								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(4,hora4.id)}"          
+								update="horario_form4" />
 						        
 					        </p:column>
 						
@@ -193,11 +196,8 @@
 					        
 						</p:dataTable>
 						<div class="addPart">
-							<h:commandButton image="img/plus.svg" class="add" value="Add" action="#{HorarioBean.actionAddRow(3)}" 
+							<h:commandButton image="img/plus.svg" class="add" value="Add" action="#{HorarioBean.actionAddRow(4)}" 
 							update="horario_form4"/>
-							&nbsp;
-							<h:commandButton image="img/minus.svg" class="add"  
-							update="horario_form4" />
 						</div>
 					</p:growl>			
 		        </h:form>
@@ -218,7 +218,10 @@
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora5.id,hora5.hora)}" 
-						        update="horario_form1"/>
+						        update="horario_form5"/>
+						        &nbsp;
+								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(5,hora5.id)}"          
+								update="horario_form5" />
 						        
 					        </p:column>
 						
@@ -233,11 +236,8 @@
 					        
 						</p:dataTable>
 						<div class="addPart">
-							<h:commandButton image="img/plus.svg" class="add" value="Add" action="#{HorarioBean.actionAddRow(4)}" 
+							<h:commandButton image="img/plus.svg" class="add" value="Add" action="#{HorarioBean.actionAddRow(5)}" 
 							update="horario_form5"/>
-							&nbsp;
-							<h:commandButton image="img/minus.svg" class="add"  
-							update="horario_form5" />
 						</div>
 					</p:growl>			
 		        </h:form>
@@ -258,7 +258,10 @@
 					   			pattern="dd/MM/yyyy HH:mm" effect="fold" locale="es"/>
 					   
 						        <p:commandButton class="okButton" value="Ok" action="#{HorarioBean.actualizarHora(hora6.id,hora6.hora)}" 
-						        update="horario_form1"/>
+						        update="horario_form6"/>
+						        &nbsp;
+								<h:commandButton image="img/minus.svg" class="add" action="#{HorarioBean.actionDeleteRow(6,hora6.id)}"          
+								update="horario_form6" />
 						        
 					        </p:column>
 						
@@ -273,11 +276,8 @@
 					        
 						</p:dataTable>
 						<div class="addPart">
-							<h:commandButton value="Add" image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(5)}"
+							<h:commandButton value="Add" image="img/plus.svg" class="add" action="#{HorarioBean.actionAddRow(6)}"
 							 update="horario_form6"/>
-							 &nbsp;
-							<h:commandButton image="img/minus.svg" class="add"  
-							update="horario_form6" />
 						</div>
 					</p:growl>			
 		        </h:form>

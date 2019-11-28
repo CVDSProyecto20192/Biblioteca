@@ -82,7 +82,6 @@ public interface ServiciosReserva {
 
 	public long consultarGrupo() throws ServiciosReservaException;
 
-
 }
 
 

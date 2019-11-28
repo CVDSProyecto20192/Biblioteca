@@ -406,6 +406,20 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 
 	@Override
+	public Reserva consultarReserva(long codigo) throws ServiciosReservaException{
+		Reserva res;
+		try {
+			res=reservaDAO.ConsultarReserva(codigo);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reserva", e);
+		}
+		return res;
+
+	}
+
+
+	@Override
 	public List<Reserva> consultarReservas() throws ServiciosReservaException {
 		List<Reserva> tl;
 		try {

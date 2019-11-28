@@ -9,6 +9,9 @@ public interface ReservaMapper {
      * Consultar todas las reservas
      * @return 
      */
+	 
+	public Reserva consultarReserva(@Param("codigo") long codigo);
+	
 	public List<Reserva> consultarReservas();
 	
 	public List<Reserva> consultarReservasRecurso(@Param("recursoId")long recursoId);

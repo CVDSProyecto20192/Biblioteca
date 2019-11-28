@@ -50,175 +50,194 @@ public class DisponibilidadView implements Serializable {
 	private int repetir;
 	private Date fechaFin;
 	private int eventoHora;
-    public DisponibilidadView() {
-    }
-	
-	public Date getFechaFin(){
+	private Reserva selected;
+
+	public DisponibilidadView() {
+	}
+
+	public Reserva getSelected() {
+		return selected;
+	}
+
+	public void setSelected(Reserva selected) {
+		this.selected = selected;
+	}
+
+	public Date getFechaFin() {
 		return fechaFin;
 	}
-	
-	public int getHora(){
+
+	public int getHora() {
 		return hora;
 	}
-	public int getEventoHora(){
+
+	public int getEventoHora() {
 		return eventoHora;
 	}
-	
-	public int getMinutos(){
+
+	public int getMinutos() {
 		return minutos;
 	}
-	
-	public void setFechaFin (Date fechaFin){
+
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	
-	public int getRepetir(){
+
+	public int getRepetir() {
 		return repetir;
 	}
-	
-	public void setRepetir(int repetir){
+
+	public void setRepetir(int repetir) {
 		this.repetir = repetir;
 	}
-	
-    public long getRecurso() {
-        return recurso;
-    }
 
-    public void setRecurso(long recurso) {
-        this.recurso = recurso;
-    }
-	
-	public int getDuracionHora(){
+	public long getRecurso() {
+		return recurso;
+	}
+
+	public void setRecurso(long recurso) {
+		this.recurso = recurso;
+	}
+
+	public int getDuracionHora() {
 		return duracionHora;
 	}
-	
-	public int getDuracionMinutos(){
+
+	public int getDuracionMinutos() {
 		return duracionMinutos;
 	}
-	
-	public void setDuracionHora(int duracionHora){
+
+	public void setDuracionHora(int duracionHora) {
 		this.duracionHora = duracionHora;
 	}
-	
-	public void setDuracionMinutos(int duracionMinutos){
+
+	public void setDuracionMinutos(int duracionMinutos) {
 		this.duracionMinutos = duracionMinutos;
 	}
 
-	public void setHora(int hora){
+	public void setHora(int hora) {
 		this.hora = hora;
 		System.out.println("set");
 		System.out.println(hora);
 	}
-	
-	public void setMinutos(int minutos){
+
+	public void setMinutos(int minutos) {
 		this.minutos = minutos;
 	}
 
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
 
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
 
-    @PostConstruct
-    public void init() {
-        serviciosReserva = baseBean.getServiciosReserva();
+	@PostConstruct
+	public void init() {
+		serviciosReserva = baseBean.getServiciosReserva();
 
-        eventModel = new DefaultScheduleModel();
-    }
+		eventModel = new DefaultScheduleModel();
+	}
 
-    public void actionVerDisponibilidad() {
+	public void actionVerDisponibilidad() {
 		this.eventModel.clear();
-		if (reservas != null){
+		if (reservas != null) {
 			this.reservas.clear();
 		}
-        try {
-            reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
-        } catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
-            baseBean.mensajeApp(e);
-        }
+		try {
+			reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			baseBean.mensajeApp(e);
+		}
 
-        DefaultScheduleEvent event;
+		DefaultScheduleEvent event;
 
-        for (Reserva r:reservas){ 
+		for (Reserva r : reservas) {
 
-            Date t = (Date) r.getFecha().clone();
-            t.setHours((int)r.getHora()/100);
-            t.setMinutes(r.getHora()%100);
+			Date t = (Date) r.getFecha().clone();
+			t.setHours((int) r.getHora() / 100);
+			t.setMinutes(r.getHora() % 100);
 
-            Date y = (Date) r.getFecha().clone();
-            y.setHours((int)(r.getHora()+r.getDuracion())/100);
-            y.setMinutes((r.getHora()+r.getDuracion())%100);
+			Date y = (Date) r.getFecha().clone();
+			y.setHours((int) (r.getHora() + r.getDuracion()) / 100);
+			y.setMinutes((r.getHora() + r.getDuracion()) % 100);
 
-            event = new DefaultScheduleEvent("Resevado",t,y);
+			event = new DefaultScheduleEvent("Resevado", t, y);
+			String code = Long.toString(r.getCodigo());
+			event.setDescription(code);
+			this.eventModel.addEvent(event);
 
-            this.eventModel.addEvent(event);
+		}
+	}
 
-        }
-    }
-	
-	public void actionReservar(){
+	public void actionReservar() {
 		int dur = (duracionHora * 100) + duracionMinutos;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		try{
-			if (fechaFin != null){
+		try {
+			if (fechaFin != null) {
 				String fechaFinReservas = dateFormat.format(fechaFin);
-				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001" , recurso, fechaFinReservas , repetir);
-			}
-			else{
+				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001", recurso, fechaFinReservas, repetir);
+			} else {
 				System.out.println(fecha);
 				System.out.println(hora);
 				System.out.println(recurso);
 				serviciosReserva.insertarReserva(fecha, hora, dur, "0000001", recurso);
 			}
-		}catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
-            baseBean.mensajeApp(e);
-        } 
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			baseBean.mensajeApp(e);
+		}
 	}
 
-    public void reset(){
-        this.eventModel.clear();
+	public void reset() {
+		this.eventModel.clear();
 		this.reservas.clear();
-    }
-        
-    public BasePageBean getBaseBean() {
-        return baseBean;
-    }
+	}
 
-    public ScheduleEvent getEvent() {
-        return event;
-    }
+	public BasePageBean getBaseBean() {
+		return baseBean;
+	}
 
-    public void setEvent(ScheduleEvent event) {
-        this.event = event;
-    }
+	public ScheduleEvent getEvent() {
+		return event;
+	}
 
-    public ScheduleModel getEventModel() {
-        return eventModel;
-    }
+	public void setEvent(ScheduleEvent event) {
+		this.event = event;
+	}
 
-    public void setEventModel(ScheduleModel eventModel) {
-        this.eventModel = eventModel;
-    }
+	public ScheduleModel getEventModel() {
+		return eventModel;
+	}
 
-    public ServiciosReserva getServiciosReserva() {
-        return serviciosReserva;
-    }
+	public void setEventModel(ScheduleModel eventModel) {
+		this.eventModel = eventModel;
+	}
 
-    public void setServiciosReserva(ServiciosReserva serviciosReserva) {
-        this.serviciosReserva = serviciosReserva;
-    }
+	public ServiciosReserva getServiciosReserva() {
+		return serviciosReserva;
+	}
 
-    public void setBaseBean(BasePageBean baseBean) {
-        this.baseBean = baseBean;
-    }
-	
-	public void onEventSelected(SelectEvent selectEvent){
+	public void setServiciosReserva(ServiciosReserva serviciosReserva) {
+		this.serviciosReserva = serviciosReserva;
+	}
+
+	public void setBaseBean(BasePageBean baseBean) {
+		this.baseBean = baseBean;
+	}
+
+	public void onEventSelected(SelectEvent selectEvent) {
 		event = (ScheduleEvent) selectEvent.getObject();
+		Long codigo = Long.parseLong(event.getDescription());
+		try {
+			setSelected(serviciosReserva.consultarReserva(codigo));
+			System.out.println(selected);
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void onDateSelected(SelectEvent selectEvent){

@@ -32,8 +32,8 @@
 
 			<h:panelGrid>
 
-				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule" timeZone="GMT-5" >
-					<p:ajax event="eventSelect" listener="#{DispoBean.onEventSelected}" />
+				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule"  >
+					<p:ajax event="eventSelect" listener="#{DispoBean.onEventSelected}" oncomplete="PF('infoDialog').show();"/>
 					<p:ajax event="dateSelect" listener="#{DispoBean.onDateSelected}" oncomplete="PF('eventDialog').show();"/>
 				</p:schedule>  
 
@@ -68,6 +68,20 @@
 					<h:commandButton value="Reservar" action="#{DispoBean.actionReservar}" update="@form"/>
 				</h:panelGrid>
 			</p:dialog>
+			
+			<p:dialog header="Info" widgetVar="infoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="infoDetail" style="text-align: center;">
+					<p:panelGrid columns="2" rendered="#{not empty DispoBean.selected}" columnClasses="label,value">
+						<f:facet name="header">
+							<p:graphicImage height="4%"  url="/img/usu.png"/>
+						</f:facet>
+						<h:outputText value="Carnet:"/>
+						<h:outputText value="#{Dispobean.selected}"/>
+					
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			
 		</h:form>
 	</h:body>
 	

@@ -65,6 +65,8 @@ public interface ServiciosReserva {
 	
 	
 	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
+
+	public Reserva consultarReserva(long codigo) throws ServiciosReservaException;
 	
 	public List<Reserva> consultarReservas() throws ServiciosReservaException;
 	

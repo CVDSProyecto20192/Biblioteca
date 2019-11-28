@@ -4,6 +4,36 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ReservaMapper">
+
+	<select parameterType="map" id="consultarReserva" resultMap="ReservaResult">
+			SELECT res.codigo as res_codigo, 
+			res.fecha, 
+			res.hora as tiempo, 
+			res.duracion,
+			res.activa,
+			res.grupo,
+			res.registro,
+			u.carnet as carnet_usuario,
+  			u.documento as doc_usuario,
+  			u.correo as correo_usuario,
+  			u.nombres as nombres_usuario,
+  			u.apellidos as apellidos_usuario,
+			c.id as id_cargo,
+			c.nombre as nombre_cargo,
+			c.descripcion as des_cargo,
+			r.id as id_recurso,
+    		r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso,
+			t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo
+			FROM br_reserva as res
+			left join BR_USUARIO as u on u.carnet=res.usuario
+			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_CARGO as c on u.id_cargo=c.id
+			left join BR_TIPO as t on r.id_tipo=t.id
+			WHERE res.codigo = #{codigo}
+	</select>
 	
 	<select parameterType="map" id="consultarReservas" resultMap="ReservaResult">
 			SELECT res.codigo as res_codigo, 

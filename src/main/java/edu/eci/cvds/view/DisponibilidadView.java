@@ -3,11 +3,13 @@ package edu.eci.cvds.view;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.faces.context.FacesContext; 
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
@@ -24,7 +26,7 @@ import java.text.SimpleDateFormat;
 
 @Deprecated
 @ManagedBean(name = "DispoBean")
-@SessionScoped
+@ViewScoped
 
 public class DisponibilidadView implements Serializable {
 
@@ -53,6 +55,9 @@ public class DisponibilidadView implements Serializable {
 	private Reserva selected;
 
 	public DisponibilidadView() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		String r = request.getParameter("recurso");
+		this.recurso = Long.parseLong(r);
 	}
 
 	public Reserva getSelected() {
@@ -90,15 +95,7 @@ public class DisponibilidadView implements Serializable {
 	public void setRepetir(int repetir) {
 		this.repetir = repetir;
 	}
-
-	public long getRecurso() {
-		return recurso;
-	}
-
-	public void setRecurso(long recurso) {
-		this.recurso = recurso;
-	}
-
+	
 	public int getDuracionHora() {
 		return duracionHora;
 	}
@@ -138,6 +135,8 @@ public class DisponibilidadView implements Serializable {
 		serviciosReserva = baseBean.getServiciosReserva();
 
 		eventModel = new DefaultScheduleModel();
+		
+		actionVerDisponibilidad();
 	}
 
 	public void actionVerDisponibilidad() {

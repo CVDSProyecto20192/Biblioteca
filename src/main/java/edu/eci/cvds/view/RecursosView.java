@@ -41,6 +41,7 @@ public class RecursosView {
 	private Tipo tipo;
 	private int idTipo;
 	private List<Recurso> listaRecursos;
+	private Recurso selectedRecurso;
 	
 	public RecursosView() {
 	}
@@ -278,6 +279,18 @@ public class RecursosView {
 	
 	public void setBaseBean(BasePageBean bs){
 	    this.baseBean = bs;
+	}
+	
+	public Recurso getSelectedRecurso() {
+        return selectedRecurso;
+    }
+	
+	public void setSelectedRecurso(Recurso selectedRecurso) {
+        this.selectedRecurso = selectedRecurso;
+    }
+	
+	public String disponibilidad(){
+		return "Disponibilidad?faces-redirect=true&recurso=" + selectedRecurso.getId();
 	}
 	
 	/*public static void main(String[] args) {

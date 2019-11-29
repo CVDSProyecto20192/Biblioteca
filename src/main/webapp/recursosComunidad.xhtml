@@ -35,7 +35,7 @@
                     <p:dataTable class="recursos" value="#{RecursosBean.activos}" var = "recurso" style="margin: 0 auto;"
                     rows="8" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
-    				rowsPerPageTemplate="8, 16, 24">
+    				rowsPerPageTemplate="8, 16, 24" selectionMode="single" selection="#{RecursosBean.selectedRecurso}" rowKey="#{recurso.id}">
 	
     					<p:column headerText="Id Recurso" >
                         	<h:outputText value="#{recurso.id}"></h:outputText>
@@ -56,19 +56,18 @@
                         <p:column headerText="Tipo" filterBy="#{recurso.tipo.tipo}">
                         	<h:outputText value="#{recurso.tipo.tipo}"></h:outputText>
                         </p:column>  
-					
                     </p:dataTable>
+					<div style="text-align: center">
+						<p:commandButton icon="pi pi-search" value="Disponibilidad" action="#{RecursosBean.disponibilidad}" />
+					</div> 
                 </div>  
-              
             </section>
 			
 			<br/>
 
 			<section>
-		
 				<div style="text-align: center">
 					<p:commandButton id= "back" value="Back" action="#{ReservaBean.page02}" update="recursos_form"></p:commandButton>
-				
                 </div> 
 
 			</section>

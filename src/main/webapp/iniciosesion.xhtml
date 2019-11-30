@@ -31,7 +31,6 @@
 		<h2>Sistema de reservas</h2>
 		
         <h:form id="iniciosesion_form">
-            <section>
             	<div style="text-align: center">
             		
             		<h3>Inicio de Sesi&#243;n</h3>
@@ -58,18 +57,23 @@
 						
 						<br/>
 						
-						<div>
-	    					<p:commandButton value="Login" action="#{LoginBean.login}" update="iniciosesion_form"/>
-							<br/>
-							
-						</div>
+						<h:panelGrid cellpadding="10" style="margin: auto;" >
+							<p:commandButton value="Login" action="#{LoginBean.login}" update="iniciosesion_form"/>
+						</h:panelGrid>
+
 					</div>
 				
 				</div>
 			
-			</section>
 
-        </h:form>
+		</h:form>
+		
+		<h:form id="b_form">
+			<h:panelGrid style="margin: auto;">
+				<p:commandButton value="Iniciar como invitado" action="#{LoginBean.logAsNoRegister}" update="b_form" />
+			</h:panelGrid>
+		</h:form>
+
 
     </h:body>
     

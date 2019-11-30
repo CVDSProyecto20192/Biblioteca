@@ -28,7 +28,7 @@ public class LoginBean implements Serializable {
     private String userName;
     private String password;
     private boolean rememberMe;
-    private boolean user, admin;
+    private boolean user, admin, noLogged;
 
     public void login() {
         try {
@@ -51,7 +51,15 @@ public class LoginBean implements Serializable {
         }
     }
 
-   public void logout() {
+    public boolean isNoLogged() {
+        return noLogged;
+    }
+
+    public void setNoLogged(boolean noLogged) {
+        this.noLogged = noLogged;
+    }
+
+    public void logout() {
 	   try {
 		   if(getUser().isAuthenticated()) {
 			   getUser().logout();
@@ -112,6 +120,32 @@ public class LoginBean implements Serializable {
             else if(getUser().hasRole("Comunidad")){
                 this.user = true;
             }
+            else{
+                this.noLogged = true;
+            }
+        }
+    }
+
+    public void logAsNoRegister(){
+        this.userName="NoRegistrado";
+        this.password="NoRegistrado";
+        try {
+            Subject currentUser = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
+
+            currentUser.login(token);
+            currentUser.getSession().setAttribute("Correo", userName);
+
+            token.setRememberMe(true);
+
+            redirectTo("recursosComunidad.xhtml");
+
+        } catch (UnknownAccountException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+        } catch (IncorrectCredentialsException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }
     }
 

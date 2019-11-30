@@ -15,6 +15,9 @@
 		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	</h:head>
 	<h:body>
+
+		<f:event type="preRenderView" listener="#{LoginBean.inSession}"/>
+
 		<h:form id="horario">
 			<p:growl id="messages" showDetail="true" />
 
@@ -63,24 +66,46 @@
 				<h:panelGrid columns="2" border="1" cellpadding="10" cellspacing="1">
 
 					<f:facet name="header">
-						<img src="img/Booking.png"/>
+						<img src="img/Booking.png" />
 					</f:facet>
 
-					<h:outputText value="Recurso reservado"/>
-					<h:outputText value="#{DispoBean.selected.recurso.nombre}"/>
+					<h:outputText value="Recurso reservado" rendered="#{LoginBean.admin}" />
+					<h:outputText value="#{DispoBean.selected.recurso.nombre}" rendered="#{LoginBean.admin}"/>
 					
-					<h:outputText value ="Fecha de solicitud"/>
-					<h:outputText value="#{DispoBean.selected.fecha}"/>
+					<h:outputText value ="Fecha de solicitud" rendered="#{LoginBean.admin}"/>
+					<h:outputText value="#{DispoBean.selected.fecha}" rendered="#{LoginBean.admin}"/>
 
-					<h:outputText value ="Fecha de inicio"/>
-					<h:outputText value="#{DispoBean.selected.fechaI}"/>
+					<h:outputText value ="Fecha de inicio" rendered="#{LoginBean.admin}"/>
+					<h:outputText value="#{DispoBean.selected.fechaI}" rendered="#{LoginBean.admin}"/>
 
-					<h:outputText value="Fecha de finalización"/>
-					<h:outputText value="#{DispoBean.selected.fechaF}"/>
+					<h:outputText value="Fecha de finalización" rendered="#{LoginBean.admin}"/>
+					<h:outputText value="#{DispoBean.selected.fechaF}" rendered="#{LoginBean.admin}"/>
 
-					<h:outputText value="Usuario" />
-					<h:outputText value ="#{DispoBean.selected.usuario.nombres}"/>
+					<h:outputText value="Usuario" rendered="#{LoginBean.admin}"/>
+					<h:outputText value ="#{DispoBean.selected.usuario.nombres}" rendered="#{LoginBean.admin}"/>
 
+
+					<h:outputText value="Recurso reservado" rendered="#{LoginBean.user}"/>
+					<h:outputText value="#{DispoBean.selected.recurso.nombre}" rendered="#{LoginBean.user}"/>
+
+					<h:outputText value ="Fecha de inicio" rendered="#{LoginBean.user}"/>
+					<h:outputText value="#{DispoBean.selected.fechaI}" rendered="#{LoginBean.user}"/>
+
+					<h:outputText value="Fecha de finalización" rendered="#{LoginBean.user}"/>
+					<h:outputText value="#{DispoBean.selected.fechaF}" rendered="#{LoginBean.user}"/>
+
+					<h:outputText value="Usuario" rendered="#{LoginBean.user}"/>
+					<h:outputText value ="#{DispoBean.selected.usuario.nombres}" rendered="#{LoginBean.user}"/>
+
+
+					<h:outputText value="Recurso reservado" rendered="#{LoginBean.noLogged}"/>
+					<h:outputText value="#{DispoBean.selected.recurso.nombre}" rendered="#{LoginBean.noLogged}"/>
+
+					<h:outputText value ="Fecha de inicio" rendered="#{LoginBean.noLogged}"/>
+					<h:outputText value="#{DispoBean.selected.fechaI}" rendered="#{LoginBean.noLogged}"/>
+
+					<h:outputText value="Fecha de finalización" rendered="#{LoginBean.noLogged}"/>
+					<h:outputText value="#{DispoBean.selected.fechaF}" rendered="#{LoginBean.noLogged}"/>
 				</h:panelGrid>
 			</p:dialog>
 			

@@ -20,6 +20,7 @@ import org.junit.Assert;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class ServiciosReservaTest{
     
@@ -169,7 +170,7 @@ public class ServiciosReservaTest{
 			System.out.println(serviciosReserva.consultarRecurso((long) 1));**/
 
 			//serviciosReserva.insertarReservaDias("2019-11-29", 1000, 100, "0000001", (long) 1, "2019-12-7", 3);
-			System.out.println(serviciosReserva.consultarReservasRecurso((long) 1 ));
+			System.out.println(serviciosReserva.consultarReservasRecurso((long) 2 ));
 			//serviciosReserva.insertarReserva("2019-11-30", 1300, 100, "0000001", (long) 1);
 		}
 		catch (ServiciosReservaException e){
@@ -179,5 +180,18 @@ public class ServiciosReservaTest{
 		/**catch (ParseException e) {
             e.printStackTrace();
         }**/
+	}
+
+	@Test
+	public void pruebaConsultarReservasUsuario(){
+		try{
+			List<Reserva> resUsu= serviciosReserva.consultarReservasUsuario("0000001");
+			System.out.println(resUsu);
+			//serviciosReserva.insertarReserva("2019-11-30", 1300, 100, "0000001", (long) 1);
+		}
+		catch (ServiciosReservaException e){
+			e.printStackTrace();
+			System.out.println("fracaso");
+        }
 	}
 }

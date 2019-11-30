@@ -461,6 +461,19 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 	
 	@Override
+	public List<Reserva> consultarReservasUsuario(String usuario) throws ServiciosReservaException {
+		List<Reserva> reservas;
+		try {
+			reservas=reservaDAO.consultarReservasUsuario(usuario);
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas del usuario: " + usuario, e);
+		}
+		return reservas;
+	}
+
+	@Override
 	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException{
 		Reserva resSig=null;
 		String siguiente=null;

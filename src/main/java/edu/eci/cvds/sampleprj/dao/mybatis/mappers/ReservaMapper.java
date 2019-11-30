@@ -17,6 +17,8 @@ public interface ReservaMapper {
 	public List<Reserva> consultarReservasRecurso(@Param("recursoId")long recursoId);
 	
 	public List<Reserva> consultarReservasGrupo(@Param("group")long grupo);
+
+	public List<Reserva> consultarReservasUsuario(@Param("user")String usuario);
 	
 	public Reserva consultarFranja(@Param("fecha")Date fecha , @Param("hora")int hora, @Param("duracion")int duracion,@Param("recurso")long recurso);
 	

@@ -13,6 +13,8 @@ public interface ReservaDAO {
 	public List<Reserva> consultarReservasRecurso(long recursoId) throws PersistenceException;
 	
 	public List<Reserva> consultarReservasGrupo(long grupo) throws PersistenceException;
+
+	public List<Reserva> consultarReservasUsuario(String usuario) throws PersistenceException;
 	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws PersistenceException;
 	

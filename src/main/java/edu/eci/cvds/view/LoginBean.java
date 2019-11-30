@@ -1,26 +1,25 @@
 package edu.eci.cvds.view;
 
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-
-
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
-import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.apache.shiro.subject.Subject;
-
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.subject.Subject;
+
+@Deprecated
 @ManagedBean(name = "LoginBean")
 @SessionScoped
 
-public class LoginBean implements Serializable{
+public class LoginBean implements Serializable {
     /**
      *
      */
@@ -29,31 +28,29 @@ public class LoginBean implements Serializable{
     private String userName;
     private String password;
     private boolean rememberMe;
+    private boolean user, admin;
 
-    public void login(){
+    public void login() {
         try {
-        	Subject currentUser = SecurityUtils.getSubject();
-        	UsernamePasswordToken token= new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
+            Subject currentUser = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, new Sha256Hash(password).toHex());
 
             currentUser.login(token);
             currentUser.getSession().setAttribute("Correo", userName);
-            
+
             token.setRememberMe(true);
-            
-            redirectToMenu(); 
-            
+
+            redirectToMenu();
+
         } catch (UnknownAccountException e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
-        } 
-        catch (IncorrectCredentialsException e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
+        } catch (IncorrectCredentialsException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }
     }
-    
-    private Subject getUser() {
-    	return SecurityUtils.getSubject();
-    }
-    
+
    public void logout() {
 	   try {
 		   if(getUser().isAuthenticated()) {
@@ -105,6 +102,20 @@ public class LoginBean implements Serializable{
         }
     }
 
+    public void inSession(){
+        this.user = false;
+        this.admin = false;
+        if (getUser()!=null){
+            if (getUser().hasRole("administrador")){
+                this.admin = true;
+            }
+            else if(getUser().hasRole("Comunidad")){
+                this.user = true;
+            }
+        }
+    }
+
+    //Gets and Sets
     public boolean isRememberMe() {
         return rememberMe;
     }
@@ -129,5 +140,24 @@ public class LoginBean implements Serializable{
         this.userName = userName;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public boolean isUser() {
+        return user;
+    }
+
+    public void setUser(boolean user) {
+        this.user = user;
+    }
+
+    private Subject getUser() {
+    	return SecurityUtils.getSubject();
+    }
 
 }

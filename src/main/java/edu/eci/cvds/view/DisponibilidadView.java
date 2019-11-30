@@ -1,28 +1,27 @@
 package edu.eci.cvds.view;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.faces.context.FacesContext; 
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.model.ScheduleEvent;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
-import java.text.DateFormat; 
-import java.text.SimpleDateFormat;  
 
 @Deprecated
 @ManagedBean(name = "DispoBean")
@@ -30,20 +29,20 @@ import java.text.SimpleDateFormat;
 
 public class DisponibilidadView implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private ServiciosReserva serviciosReserva;
+	private ServiciosReserva serviciosReserva;
 
-    @ManagedProperty(value = "#{ReservaBean}")
-    private BasePageBean baseBean;
+	@ManagedProperty(value = "#{ReservaBean}")
+	private BasePageBean baseBean;
 
-    private ScheduleModel eventModel;
-    private ScheduleEvent event = new DefaultScheduleEvent();
-    private long recurso;
-    private List<Reserva> reservas;
+	private ScheduleModel eventModel;
+	private ScheduleEvent event = new DefaultScheduleEvent();
+	private long recurso;
+	private List<Reserva> reservas;
 	private String fecha;
 	private int hora;
 	private int minutos;
@@ -58,6 +57,89 @@ public class DisponibilidadView implements Serializable {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		String r = request.getParameter("recurso");
 		this.recurso = Long.parseLong(r);
+	}
+
+	@PostConstruct
+	public void init() {
+		serviciosReserva = baseBean.getServiciosReserva();
+
+		eventModel = new DefaultScheduleModel();
+		
+		actionVerDisponibilidad();
+	}
+
+	public void actionVerDisponibilidad() {
+		this.eventModel.clear();
+		if (reservas != null) {
+			this.reservas.clear();
+		}
+		try {
+			reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			baseBean.mensajeApp(e);
+		}
+
+		DefaultScheduleEvent event;
+
+		for (Reserva r : reservas) {
+
+			Date t = (Date) r.getFecha().clone();
+			t.setHours((int) r.getHora() / 100);
+			t.setMinutes(r.getHora() % 100);
+
+			Date y = (Date) r.getFecha().clone();
+			y.setHours((int) (r.getHora() + r.getDuracion()) / 100);
+			y.setMinutes((r.getHora() + r.getDuracion()) % 100);
+
+			event = new DefaultScheduleEvent("Resevado", t, y);
+			String code = Long.toString(r.getCodigo());
+			event.setDescription(code);
+			this.eventModel.addEvent(event);
+
+		}
+	}
+
+	public void actionReservar() {
+		int dur = (duracionHora * 100) + duracionMinutos;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			if (fechaFin != null) {
+				String fechaFinReservas = dateFormat.format(fechaFin);
+				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001", recurso, fechaFinReservas, repetir);
+			} else {
+				System.out.println(fecha);
+				System.out.println(hora);
+				System.out.println(recurso);
+				serviciosReserva.insertarReserva(fecha, hora, dur, "0000001", recurso);
+			}
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			baseBean.mensajeApp(e);
+		}
+	}
+
+	public void reset() {
+		this.eventModel.clear();
+		this.reservas.clear();
+	}
+
+	public void onEventSelected(SelectEvent selectEvent) {
+		event = (ScheduleEvent) selectEvent.getObject();
+		Long codigo = Long.parseLong(event.getDescription());
+		try {
+			setSelected(serviciosReserva.consultarReserva(codigo));
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void onDateSelected(SelectEvent selectEvent){
+		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		fecha = dateFormat.format(event.getStartDate());
+		this.hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
 	}
 
 	public Reserva getSelected() {
@@ -130,71 +212,6 @@ public class DisponibilidadView implements Serializable {
 		this.reservas = reservas;
 	}
 
-	@PostConstruct
-	public void init() {
-		serviciosReserva = baseBean.getServiciosReserva();
-
-		eventModel = new DefaultScheduleModel();
-		
-		actionVerDisponibilidad();
-	}
-
-	public void actionVerDisponibilidad() {
-		this.eventModel.clear();
-		if (reservas != null) {
-			this.reservas.clear();
-		}
-		try {
-			reservas = serviciosReserva.consultarReservasRecurso(this.recurso);
-		} catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			baseBean.mensajeApp(e);
-		}
-
-		DefaultScheduleEvent event;
-
-		for (Reserva r : reservas) {
-
-			Date t = (Date) r.getFecha().clone();
-			t.setHours((int) r.getHora() / 100);
-			t.setMinutes(r.getHora() % 100);
-
-			Date y = (Date) r.getFecha().clone();
-			y.setHours((int) (r.getHora() + r.getDuracion()) / 100);
-			y.setMinutes((r.getHora() + r.getDuracion()) % 100);
-
-			event = new DefaultScheduleEvent("Resevado", t, y);
-			String code = Long.toString(r.getCodigo());
-			event.setDescription(code);
-			this.eventModel.addEvent(event);
-
-		}
-	}
-
-	public void actionReservar() {
-		int dur = (duracionHora * 100) + duracionMinutos;
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			if (fechaFin != null) {
-				String fechaFinReservas = dateFormat.format(fechaFin);
-				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001", recurso, fechaFinReservas, repetir);
-			} else {
-				System.out.println(fecha);
-				System.out.println(hora);
-				System.out.println(recurso);
-				serviciosReserva.insertarReserva(fecha, hora, dur, "0000001", recurso);
-			}
-		} catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			baseBean.mensajeApp(e);
-		}
-	}
-
-	public void reset() {
-		this.eventModel.clear();
-		this.reservas.clear();
-	}
-
 	public BasePageBean getBaseBean() {
 		return baseBean;
 	}
@@ -227,22 +244,11 @@ public class DisponibilidadView implements Serializable {
 		this.baseBean = baseBean;
 	}
 
-	public void onEventSelected(SelectEvent selectEvent) {
-		event = (ScheduleEvent) selectEvent.getObject();
-		Long codigo = Long.parseLong(event.getDescription());
-		try {
-			setSelected(serviciosReserva.consultarReserva(codigo));
-			System.out.println(selected);
-		} catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setRecurso(long recurso){
+		this.recurso = recurso;
 	}
-	
-	public void onDateSelected(SelectEvent selectEvent){
-		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		fecha = dateFormat.format(event.getStartDate());
-		this.hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
+
+	public long getRecurso(){
+		return this.recurso;
 	}
 }

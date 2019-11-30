@@ -18,11 +18,12 @@
 		<h:form id="horario">
 			<p:growl id="messages" showDetail="true" />
 
+			<h1 style="text-align: center;">Consultar Disponibilidad</h1>
 
 			<h:panelGrid>
 
-				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule"  >
-					<p:ajax event="eventSelect" listener="#{DispoBean.onEventSelected}" oncomplete="PF('infoDialog').show();"/>
+				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule" timeZone="GMT-5" >
+					<p:ajax event="eventSelect" listener="#{DispoBean.onEventSelected}" oncomplete="PF('infoDialog').show();" update="@form" />
 					<p:ajax event="dateSelect" listener="#{DispoBean.onDateSelected}" oncomplete="PF('eventDialog').show();"/>
 				</p:schedule>  
 
@@ -59,23 +60,30 @@
 			</p:dialog>
 			
 			<p:dialog header="Info" widgetVar="infoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="infoDetail" style="text-align: center;">
-					<p:panelGrid columns="2" rendered="#{not empty DispoBean.selected}" columnClasses="label,value">
-						<f:facet name="header">
-							<p:graphicImage height="4%"  url="/img/usu.png"/>
-						</f:facet>
-						<h:outputText value="Carnet:"/>
-						<h:outputText value="#{Dispobean.selected}"/>
+				<h:panelGrid columns="2" border="1" cellpadding="10" cellspacing="1">
+
+					<f:facet name="header">
+						<img src="img/Booking.png"/>
+					</f:facet>
+
+					<h:outputText value="Recurso reservado"/>
+					<h:outputText value="#{DispoBean.selected.recurso.nombre}"/>
 					
-					</p:panelGrid>
-				</p:outputPanel>
+					<h:outputText value ="Fecha de solicitud"/>
+					<h:outputText value="#{DispoBean.selected.fecha}"/>
+
+					<h:outputText value ="Fecha de inicio"/>
+					<h:outputText value="#{DispoBean.selected.fechaI}"/>
+
+					<h:outputText value="Fecha de finalización"/>
+					<h:outputText value="#{DispoBean.selected.fechaF}"/>
+
+					<h:outputText value="Usuario" />
+					<h:outputText value ="#{DispoBean.selected.usuario.nombres}"/>
+
+				</h:panelGrid>
 			</p:dialog>
 			
-			
-			<div style="text-align: center">
-					<p:commandButton id= "back" value="Back" action="#{LoginBean.redirectTo('recursosComunidad.xhtml')}" ></p:commandButton>
-				
-            </div> 
 		</h:form>
 	</h:body>
 	

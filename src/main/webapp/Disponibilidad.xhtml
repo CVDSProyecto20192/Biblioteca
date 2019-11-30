@@ -69,8 +69,8 @@
 						<img src="img/Booking.png" />
 					</f:facet>
 
-					<h:outputText value="Recurso reservado" rendered="#{LoginBean.admin}" />
-					<h:outputText value="#{DispoBean.selected.recurso.nombre}" rendered="#{LoginBean.admin}"/>
+					<h:outputText value="Recurso reservado" />
+					<h:outputText value="#{DispoBean.selected.recurso.nombre}" />
 					
 					<h:outputText value ="Fecha de solicitud" rendered="#{LoginBean.admin}"/>
 					<h:outputText value="#{DispoBean.selected.fecha}" rendered="#{LoginBean.admin}"/>
@@ -78,37 +78,40 @@
 					<h:outputText value ="Fecha de inicio" rendered="#{LoginBean.admin}"/>
 					<h:outputText value="#{DispoBean.selected.fechaI}" rendered="#{LoginBean.admin}"/>
 
-					<h:outputText value="Fecha de finalización" rendered="#{LoginBean.admin}"/>
-					<h:outputText value="#{DispoBean.selected.fechaF}" rendered="#{LoginBean.admin}"/>
-
-					<h:outputText value="Usuario" rendered="#{LoginBean.admin}"/>
-					<h:outputText value ="#{DispoBean.selected.usuario.nombres}" rendered="#{LoginBean.admin}"/>
-
-
-					<h:outputText value="Recurso reservado" rendered="#{LoginBean.user}"/>
-					<h:outputText value="#{DispoBean.selected.recurso.nombre}" rendered="#{LoginBean.user}"/>
-
 					<h:outputText value ="Fecha de inicio" rendered="#{LoginBean.user}"/>
 					<h:outputText value="#{DispoBean.selected.fechaI}" rendered="#{LoginBean.user}"/>
-
-					<h:outputText value="Fecha de finalización" rendered="#{LoginBean.user}"/>
-					<h:outputText value="#{DispoBean.selected.fechaF}" rendered="#{LoginBean.user}"/>
-
-					<h:outputText value="Usuario" rendered="#{LoginBean.user}"/>
-					<h:outputText value ="#{DispoBean.selected.usuario.nombres}" rendered="#{LoginBean.user}"/>
-
-
-					<h:outputText value="Recurso reservado" rendered="#{LoginBean.noLogged}"/>
-					<h:outputText value="#{DispoBean.selected.recurso.nombre}" rendered="#{LoginBean.noLogged}"/>
 
 					<h:outputText value ="Fecha de inicio" rendered="#{LoginBean.noLogged}"/>
 					<h:outputText value="#{DispoBean.selected.fechaI}" rendered="#{LoginBean.noLogged}"/>
 
-					<h:outputText value="Fecha de finalización" rendered="#{LoginBean.noLogged}"/>
-					<h:outputText value="#{DispoBean.selected.fechaF}" rendered="#{LoginBean.noLogged}"/>
+					<h:outputText value="Fecha de finalización" />
+					<h:outputText value="#{DispoBean.selected.fechaF}" />
+
+					<h:outputText value="Usuario" rendered="#{LoginBean.admin}"/>
+					<h:outputText value ="#{DispoBean.selected.usuario.nombres}" rendered="#{LoginBean.admin}"/>
+
+					<h:outputText value="RECURRENTE" rendered="#{DispoBean.selected.grupo != 0}" width="85" height="85"/>
+					<p:commandLink update=":horario:recurrentDetail"  oncomplete="PF('recurrentDialog').show()" title="Ver Información"  rendered="#{DispoBean.selected.grupo != 0}">
+						<h:outputText value="Ver Fechas" style="margin:0 auto;"/>
+						<f:setPropertyActionListener value="#{DispoBean.selected}" target="#{ReservasUsersBean.selected}"/>
+					</p:commandLink>
+					
 				</h:panelGrid>
 			</p:dialog>
 			
+			<p:dialog header="Fechas" widgetVar="recurrentDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="recurrentDetail" style="text-align: center;">
+					<p:panelGrid columns="2" rendered="#{not empty ReservasUsersBean.selected}" columnClasses="label,value">
+						<h:outputText value="Próxima ocurrencia:"/>
+						<h:outputText value="#{ReservasUsersBean.siguiente}"/>
+
+						<h:outputText value="Finaliza:"/>
+						<h:outputText value="#{ReservasUsersBean.ultima}"/>
+						
+						
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
 		</h:form>
 	</h:body>
 	

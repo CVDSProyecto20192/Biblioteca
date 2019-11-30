@@ -38,7 +38,7 @@
 									<h:outputText value="Registro:"/>
 									<h:outputText value="#{reserva.registro}"/>
 									
-									<p:commandLink update=":reservas_form:concurrentDetail"  oncomplete="PF('concurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
+									<p:commandLink update=":reservas_form:recurrentDetail"  oncomplete="PF('recurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
 										<i class="fas fa-history" style="font-size:36px;"></i>
 										<h:outputText style="margin:0 auto;"/>
 										<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
@@ -81,8 +81,8 @@
 							
 						</p:outputPanel>
 								
-						<h:outputText value="CONCURRENTE" rendered="#{reserva.grupo != 0}" width="85" height="85"/>
-						<p:commandLink update=":reservas_form:concurrentDetail"  oncomplete="PF('concurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
+						<h:outputText value="RECURRENTE" rendered="#{reserva.grupo != 0}" width="85" height="85"/>
+						<p:commandLink update=":reservas_form:recurrentDetail"  oncomplete="PF('recurrentDialog').show()" title="Ver Información"  rendered="#{reserva.grupo != 0}">
 							<i class="fas fa-history" style="font-size:36px;"></i>
 							<h:outputText style="margin:0 auto;"/>
 							<f:setPropertyActionListener value="#{reserva}" target="#{ReservasUsersBean.selected}"/>
@@ -162,12 +162,10 @@
 			</p:dialog>
 			
 			
-			<p:dialog header="Fechas" widgetVar="concurrentDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="concurrentDetail" style="text-align: center;">
+			<p:dialog header="Fechas" widgetVar="recurrentDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="recurrentDetail" style="text-align: center;">
 					<p:panelGrid columns="2" rendered="#{not empty ReservasUsersBean.selected}" columnClasses="label,value">
-						<f:facet name="header">
-							<p:graphicImage height="4%"  url="/img/usu.png"/>
-						</f:facet>
+						
 						<h:outputText value="Próxima ocurrencia:"/>
 						<h:outputText value="#{ReservasUsersBean.siguiente}"/>
 

@@ -19,6 +19,8 @@ import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
@@ -456,6 +458,58 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar las reservas del grupo: " + grupo, e);
 		}
 		return reservas;
+	}
+	
+	@Override
+	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException{
+		Reserva resSig=null;
+		String siguiente=null;
+		try {
+			List<Reserva> grupito= consultarReservasGrupo(selected.getGrupo());
+			boolean flag = false;
+			Reserva r = null;
+			for(int i=0;i<grupito.size();i++){
+				r=grupito.get(i);
+				if(flag==true){
+					flag=false;
+					resSig=r;
+				}
+				if(r.getCodigo()==selected.getCodigo()){
+					flag=true;
+				}	
+			}
+			if(resSig!=null){
+				Date fecha1 = resSig.getFechaI();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				siguiente = sdf.format(fecha1);
+			}else{
+				siguiente = "Esta es la última.";
+			}
+			
+		}catch (ServiciosReservaException e) {
+			throw new ServiciosReservaException("Error al consultar la siguiente", e);
+		}
+		
+		return siguiente;
+	}
+	@Override
+	public String calcularUltima(Reserva selected) throws ServiciosReservaException{
+		String ultima = null;
+		try {
+			List<Reserva> grupito = consultarReservasGrupo(selected.getGrupo());
+			Reserva ult=grupito.get(grupito.size()-1);
+			if(ult.getCodigo()!=selected.getCodigo()){
+				Date fecha1 = ult.getFechaI();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+				ultima = sdf.format(fecha1);
+			}else{
+				ultima = "Esta es la última";
+			}
+		}catch (ServiciosReservaException e) {
+			throw new ServiciosReservaException("Error al consultar la ultima", e);
+		}
+		
+		return ultima;
 	}
 }
 

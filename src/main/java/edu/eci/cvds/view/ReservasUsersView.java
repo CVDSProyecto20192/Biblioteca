@@ -1,8 +1,6 @@
 package edu.eci.cvds.view;
 
 import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -74,61 +72,23 @@ public class ReservasUsersView {
 		//listar((int) selected.getGrupo());
 	//}
 	public String getUltima() {
-		calcularUltima();
+		try{
+			ultima=serviciosReserva.calcularUltima(selected);
+		}catch(ServiciosReservaException e){
+			baseBean.mensajeApp(e);
+		}
 		return this.ultima;
 	}
 
 	
 	public String getSiguiente() {
-		calcularSiguiente();
+		try{
+			siguiente=serviciosReserva.calcularSiguiente(selected);
+		}catch(ServiciosReservaException e){
+			baseBean.mensajeApp(e);
+		}
 		return this.siguiente;
 	}
-	
-	private void calcularSiguiente(){
-		Reserva resSig=null;
-		try {
-			List<Reserva> grupito= serviciosReserva.consultarReservasGrupo(selected.getGrupo());
-			boolean flag = false;
-			Reserva r = null;
-			for(int i=0;i<grupito.size();i++){
-				r=grupito.get(i);
-				if(flag==true){
-					flag=false;
-					resSig=r;
-				}
-				if(r.getCodigo()==selected.getCodigo()){
-					flag=true;
-				}	
-			}
-			if(resSig!=null){
-				Date fecha1 = resSig.getFechaI();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-				siguiente = sdf.format(fecha1);
-			}else{
-				siguiente = "Esta es la última.";
-			}
-			
-		}catch (ServiciosReservaException e) {
-			baseBean.mensajeApp(e);
-		}
-	}
-	
-	private void calcularUltima(){
-		try {
-			List<Reserva> grupito = serviciosReserva.consultarReservasGrupo(selected.getGrupo());
-			Reserva ult=grupito.get(grupito.size()-1);
-			if(ult.getCodigo()!=selected.getCodigo()){
-				Date fecha1 = ult.getFechaI();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-				ultima = sdf.format(fecha1);
-			}else{
-				ultima = "Esta es la última";
-			}
-		}catch (ServiciosReservaException e) {
-			baseBean.mensajeApp(e);
-		}
-	}
-	
 	
 }
 	

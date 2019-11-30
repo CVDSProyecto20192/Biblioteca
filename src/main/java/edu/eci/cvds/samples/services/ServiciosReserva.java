@@ -83,7 +83,11 @@ public interface ServiciosReserva {
 	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, String fechaFin,int periodicidad) throws ServiciosReservaException;
 
 	public long consultarGrupo() throws ServiciosReservaException;
-
+	
+	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException;
+	
+	public String calcularUltima(Reserva selected) throws ServiciosReservaException;
+	
 }
 
 

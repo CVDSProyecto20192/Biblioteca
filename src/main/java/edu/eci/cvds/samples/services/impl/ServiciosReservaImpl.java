@@ -572,9 +572,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 
 	@Override
-	public List<Reserva> tiposMasUsados() throws ServiciosReservaException {
+	public List<Reserva> frecuenteXTipo() throws ServiciosReservaException {
 		try {
-			return reservaDAO.tiposMasUsados();
+			return reservaDAO.frecuenteXTipo();
 		} catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}

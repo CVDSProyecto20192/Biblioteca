@@ -180,9 +180,9 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	}
 
 	@Override
-	public List<Reserva> tiposMasUsados() throws PersistenceException {
+	public List<Reserva> frecuenteXTipo() throws PersistenceException {
 		try{
-			return reservaMapper.tiposMasUsados();
+			return reservaMapper.frecuenteXTipo();
 		}catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al consultar Reservas", e);
 		}  

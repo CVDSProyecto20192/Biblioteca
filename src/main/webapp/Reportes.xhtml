@@ -31,12 +31,11 @@
                         <f:selectItem itemLabel="Horarios con mayor ocupación de recursos" itemValue="horariosMas"/>
                         <f:selectItem itemLabel="Horarios con menor ocupación de recursos" itemValue="horariosMenos"/>
                         <f:selectItem itemLabel="Reservas recurrentes" itemValue="recurrentes"/>
-                        <f:selectItem itemLabel="Tipo de recurso más usados" itemValue="tipoMasUsados"/>
                     </p:selectOneMenu>
                 </h:panelGrid>
 
                 <h:panelGrid id="recursosMasUsados" style="margin: auto;" cellpadding="15"> 
-                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
                         
                         <f:facet name="header">
                             Totalizado por fecha
@@ -59,7 +58,7 @@
                         </p:column>
                     </p:dataTable>
 
-                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentesXHorario}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentesXHorario}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
                         
                         <f:facet name="header">
                             Totalizado por horario
@@ -76,6 +75,29 @@
                         <p:column headerText="Fecha de reserva" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
                             <h:outputText value="#{reserva.hora}"/>
                         </p:column>
+                        
+                        <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
+                            <h:outputText value="#{reserva.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable var="reserva" value="#{ReportBean.frecuenteXTipo}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                        
+                        <f:facet name="header">
+                            Totalizado por tipo de recurso
+                        </f:facet>
+
+                        <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
+                            <h:outputText value="#{reserva.recurso.id}"/>
+                        </p:column>
+        
+                        <p:column headerText="Nombre Recurso" style="text-align: center;" filterBy="#{reserva.recurso.nombre}" sortBy="#{reserva.recurso.nombre}" >
+                            <h:outputText value="#{reserva.recurso.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Tipo de recurso" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
+                            <h:outputText value="#{reserva.recurso.tipo.tipo}"/>
+                        </p:column> 
                         
                         <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
                             <h:outputText value="#{reserva.count}"/>
@@ -121,24 +143,6 @@
 
                         <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.coun}" sortBy="#{hora.count}">
                             <h:outputText value="#{hora.count}"/>
-                        </p:column>
-                    </p:dataTable>
-
-                    <p:dataTable var="tipo" value="#{ReportBean.tiposMasUsados}" style="width: 580px;" rendered="#{ReportBean.tipoMasUsados}">
-                        <p:column headerText="Id tipo recurso" style="text-align: center;" filterBy="#{tipo.recurso.tipo.id}" sortBy="#{tipo.recurso.tipo.id}">
-                            <h:outputText value="#{tipo.recurso.tipo.id}"/>
-                        </p:column>
-
-                        <p:column headerText="Tipo recurso" style="text-align: center;" filterBy="#{tipo.recurso.tipo.tipo}" sortBy="#{tipo.recurso.tipo.tipo}">
-                            <h:outputText value="#{tipo.recurso.tipo.tipo}"/>
-                        </p:column>
-
-                        <p:column headerText="Descripción tipo" style="text-align: center;" filterBy="#{tipo.recurso.tipo.descripcion}" sortBy="#{tipo.recurso.tipo.descripcion}">
-                            <h:outputText value="#{tipo.recurso.tipo.descripcion}"/>
-                        </p:column>
-    
-                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{tipo.count}" sortBy="#{tipo.count}">
-                            <h:outputText value="#{tipo.count}"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGrid>

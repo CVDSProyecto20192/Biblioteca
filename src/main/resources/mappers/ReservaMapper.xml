@@ -226,6 +226,20 @@
 		FETCH FIRST 10 ROWS ONLY
 	</select>
 
+	<select id="frecuenteXTipo" resultMap="ReservaResult">
+		select
+			r.id as id_recurso,
+			r.nombre as nombre_recurso,
+			t.tipo as nom_tipo,
+			count(t.tipo) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_TIPO as t on r.id_tipo=t.id
+		group by t.tipo, r.id
+		order by num_veces desc
+	</select>
+
 	<select id="recursosMasFrecuentes" resultMap="ReservaResult" >
 
 		SELECT
@@ -256,32 +270,8 @@
 			order by num_veces
 			FETCH FIRST 10 ROWS ONLY
 	</select>
-
-	<select id="masFrecuenteXHorario" resultMap="ReservaResult">
-		SELECT
-			res.hora as tiempo, 
-			count(res.hora) as num_veces
-		FROM br_reserva as res
-			left join BR_USUARIO as u on u.carnet=res.usuario
-			left join BR_RECURSO as r on r.id=res.recurso
-		group by res.hora
-		order by num_veces DESC
-		FETCH FIRST 10 ROWS ONLY
-	</select>
 	
-	<select id="tiposMasUsados" resultMap="ReservaResult">
-		select
-    		t.id as id_tipo,
-			t.tipo as nom_tipo,
-			t.descripcion as des_tipo,
-			count(t.tipo) as num_veces
-		FROM
-			br_reserva as res
-			left join BR_RECURSO as r on r.id=res.recurso
-			left join BR_TIPO as t on r.id_tipo=t.id
-		group by t.tipo,t.id
-		order by num_veces desc
-	</select>
+
 	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>

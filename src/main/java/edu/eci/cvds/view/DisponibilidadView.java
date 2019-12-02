@@ -149,7 +149,6 @@ public class DisponibilidadView implements Serializable {
 		duracionHora = 0;
 		duracionMinutos = 0;
 		horaManual = false;
-		System.out.println(getCommunity());
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		fecha = dateFormat.format(event.getStartDate());

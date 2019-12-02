@@ -43,4 +43,14 @@ public class MyBatisTipoDAO implements TipoDAO {
 		
 	}
 
+	@Override
+	public int loadIdTipo(Tipo tipo) throws PersistenceException {
+		try {
+			return tipoMapper.consutarIdTipo(tipo);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("No fue posible consultar el id del tipo", e);
+		}
+	}
+
 }

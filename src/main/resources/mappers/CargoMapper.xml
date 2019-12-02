@@ -5,9 +5,36 @@
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper">
 
+	<select id="consultarCargo">
+		SELECT 
+		
+		c.id as id_cargo,
+		c.nombre as nombre_cargo,
+		c.descripcion as des_cargo
+		
+		FROM BR_CARGO as c
+	
+		WHERE c.id=#{id_cargo}
+	</select>
+
+	<select id="consultarCargos">
+		SELECT 
+		
+		c.id as id_cargo,
+		c.nombre as nombre_cargo,
+		c.descripcion as des_cargo
+		
+		FROM BR_CARGO as c
+	
+		ORDER BY c.id
+	</select>
+
 	<insert id ="insertarCargo">
+		<selectKey keyProperty="id_cargo" resultType="int" order="BEFORE">
+			select COALESCE(MAX(id)+1,1) from BR_CARGO
+		</selectKey>
     	insert into BR_CARGO (id, nombre, descripcion) 
-    	VALUES (#{cargo.id},#{cargo.nombre},#{cargo.descripcion})                     
+    	VALUES (#{id_cargo},#{cargo.nombre},#{cargo.descripcion})                     
     </insert>
 	
 	

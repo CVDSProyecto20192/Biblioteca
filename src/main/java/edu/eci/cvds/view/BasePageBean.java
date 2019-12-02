@@ -14,6 +14,7 @@ import com.google.inject.Injector;
 
 import edu.eci.cvds.sampleprj.dao.*;
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import edu.eci.cvds.samples.services.ServiciosUsuario;
 
 
 @ManagedBean(name="ReservaBean")
@@ -58,15 +59,15 @@ public class BasePageBean implements Serializable {
     	return getInjector().getInstance(ServiciosReserva.class);
     }
     
+    protected ServiciosUsuario getServiciosUsuario() {
+    	return getInjector().getInstance(ServiciosUsuario.class);
+    }
+    
     protected void mensajeApp(Exception e) {
 		Messages.lanzarMensajeAplicacion(e.getMessage());
 	}
     
-    protected String[] diasDeLaSemana() {
-    	DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
-        String[] weekdays = dfs.getWeekdays();
-        return weekdays;
-    }
+    
     
     public String page01(){
 		return "menuAdmin?faces-redirect=true";
@@ -85,8 +86,9 @@ public class BasePageBean implements Serializable {
 	}
     
 	public String page3(){
-		return "recursos?faces-redirect=true";
+		return "recursosAdmin?faces-redirect=true";
 	}
+	
 	
 	public String page4(){
 		return "reservas?faces-redirect=true";
@@ -102,6 +104,22 @@ public class BasePageBean implements Serializable {
 	
 	public String page7(){
 		return "horario?faces-redirect=true";
+	}
+	
+	public String page8(){
+		return "recursosComunidad?faces-redirect=true";
+	}
+	
+	public String page9(){
+		return "usuarios?faces-redirect=true";
+	}
+	
+	public String page10(){
+		return "registroUsuarios?faces-redirect=true";
+	}
+	
+	public String page11(){
+		return "tipos?faces-redirect=true";
 	}
 	
 	public long getIdRec() {

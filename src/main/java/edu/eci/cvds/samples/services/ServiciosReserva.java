@@ -13,15 +13,26 @@ import edu.eci.cvds.samples.entities.Usuario;
 
 public interface ServiciosReserva {
 
-	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException;
-
-	public List<Usuario>consultarUsuarios() throws ServiciosReservaException;
-
+	/***************************************Recursos*********************************/
+	
 	public Recurso consultarRecurso(long id) throws ServiciosReservaException;
 	
 	public List<Recurso> consultarRecursos() throws ServiciosReservaException;
 	
 	public void agregarRecurso(Recurso r) throws ServiciosReservaException;
+	
+	public long  consultarIdRecurso(String nombre, Tipo tipo, String ubicacion) throws ServiciosReservaException;
+
+	public boolean consultarDisponibilidadRecurso(long id) throws ServiciosReservaException;
+	
+	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException;
+	
+	public long consultarIdUltimoRecurso() throws ServiciosReservaException;
+
+	public void eliminarRecurso(long i) throws ServiciosReservaException;
+	
+	/*************************************Tipo Recurso*******************************/
+
 	
 	public Tipo consultarTipoRecurso(long id) throws ServiciosReservaException;
 	
@@ -31,12 +42,13 @@ public interface ServiciosReserva {
 	
 	public void agregarTipo(Tipo r) throws ServiciosReservaException;
 	
-	public long  consultarIdRecurso(String nombre, Tipo tipo, String ubicacion) throws ServiciosReservaException;
-
-	public boolean consultarDisponibilidadRecurso(long id) throws ServiciosReservaException;
+	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
 	
-	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException;
+	public int consultarIdTipo(Tipo tipo) throws ServiciosReservaException;
+	
+	/***********************************Horario Recurso*******************************/
 
+	
 	public Horario consultarHorario(long id, String dia) throws ServiciosReservaException;
 
 	public List<Horario> consultarHorarioDias(long id) throws ServiciosReservaException;
@@ -55,17 +67,13 @@ public interface ServiciosReserva {
 
 	public void cambiarDispHora(long id, boolean b) throws ServiciosReservaException;
 	
-	public long consultarIdUltimoRecurso() throws ServiciosReservaException;
-
 	public long consultarIdUltimoHorario() throws ServiciosReservaException;
 
-	public void eliminarRecurso(long i) throws ServiciosReservaException;
-	
 	public void eliminarHora(Horario h, long idHora) throws ServiciosReservaException;
 	
 	
-	public List<Recurso> consultarRecursosActivos() throws ServiciosReservaException;
-
+	/***************************************Reservas*********************************/
+	
 	public Reserva consultarReserva(long codigo) throws ServiciosReservaException;
 	
 	public List<Reserva> consultarReservas() throws ServiciosReservaException;
@@ -73,7 +81,7 @@ public interface ServiciosReserva {
 	public List<Reserva> consultarReservasRecurso(long recursoId) throws ServiciosReservaException;
 	
 	public List<Reserva> consultarReservasGrupo(long grupo) throws ServiciosReservaException;
-
+	
 	public List<Reserva> consultarReservasUsuario(String usuario) throws ServiciosReservaException;
 	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws ServiciosReservaException; 
@@ -87,9 +95,9 @@ public interface ServiciosReserva {
 	public long consultarGrupo() throws ServiciosReservaException;
 	
 	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException;
-	
-	public String calcularUltima(Reserva selected) throws ServiciosReservaException;
 
+	public String calcularUltima(Reserva selected) throws ServiciosReservaException;
+	
 	public List<Reserva> recursosFrecuentes() throws ServiciosReservaException;
 
 	public List<Reserva> frecuenteXHorario() throws ServiciosReservaException;
@@ -97,7 +105,7 @@ public interface ServiciosReserva {
 	public List<Reserva> recursosMasFrecuentes() throws ServiciosReservaException;
 
 	public List<Reserva> masFrecuenteXHorario() throws ServiciosReservaException;
-	
+
 }
 
 

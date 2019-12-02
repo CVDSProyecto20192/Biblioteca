@@ -14,6 +14,8 @@ import edu.eci.cvds.samples.entities.Usuario;
 public interface ServiciosReserva {
 
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException;
+	
+	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException;
 
 	public List<Usuario>consultarUsuarios() throws ServiciosReservaException;
 

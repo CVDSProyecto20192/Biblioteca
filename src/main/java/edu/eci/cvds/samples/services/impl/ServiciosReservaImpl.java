@@ -48,6 +48,17 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return u;
 	}
+	
+	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException{
+		Usuario u=null;
+		try {
+			u = userDAO.loadCorreo(correo);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el usuario "+correo, e);
+		}
+		return u;
+	}
 
 	@Override
 	public List<Usuario> consultarUsuarios() throws ServiciosReservaException{
@@ -326,11 +337,12 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Override
 	public void insertarReserva(String fecha, int hora, int duracion, String usuario, long recurso) throws ServiciosReservaException{
+		SimpleDateFormat formato = new SimpleDateFormat("E");
 		try {
 			Usuario u = consultarUsuario(usuario);
 			Recurso r = consultarRecurso(recurso);
 			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, (long) 0, null);
-			if (consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null){
+			if ((consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null) && !(formato.format(res.getFecha()).equals("Sun")) && !(formato.format(res.getFecha()).equals("Sat") && hora + duracion > 1300 )){
 				reservaDAO.insertarReserva(res);
 			}
 			else{
@@ -353,6 +365,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	
 	@Override
 	public void insertarReservaDias(String fecha, int hora, int duracion, String usuario, long recurso, String fechaFin,int periodicidad) throws ServiciosReservaException{
+		SimpleDateFormat formato = new SimpleDateFormat("E");
 		try {
 			List<Date> fechas = getFechas(fecha, fechaFin, periodicidad);
 			boolean flag = true;
@@ -369,8 +382,11 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 				long grupo = consultarGrupo();
 				for(int i=0; i<fechas.size();i++){
 					Date f = fechas.get(i);
-					Reserva res = new Reserva((long) 0, f, hora, duracion, u, r, grupo, null);
-					reservaDAO.insertarReserva(res);
+					if (!(formato.format(f).equals("Sun")) && !(formato.format(f).equals("Sat") && hora + duracion > 1300 )){
+						Reserva res = new Reserva((long) 0, f, hora, duracion, u, r, grupo, null);
+						System.out.println(res);
+						reservaDAO.insertarReserva(res);
+					}
 				}
 			}else{
 				throw new ServiciosReservaException("Imposible hacer esta reserva, porque el horario no esta disponible");

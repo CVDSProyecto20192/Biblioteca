@@ -25,6 +25,8 @@ public class BasePageBean implements Serializable {
 	private Injector injector;
 	protected long idRec;
 	
+	private String usuario;
+	
     private Injector getInjector() {
         if (injector == null) {
             ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext()
@@ -110,5 +112,13 @@ public class BasePageBean implements Serializable {
     
     public void setIdRec(long a) {
 		this.idRec=a;
+	}
+	
+	public String getUsuario(){
+		return this.usuario;
+	}
+	
+	public void setUsuario (String Usuario){
+		this.usuario = usuario;
 	}
 }

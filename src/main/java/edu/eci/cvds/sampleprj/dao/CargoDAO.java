@@ -13,4 +13,6 @@ public interface CargoDAO {
 	
 	public void addCargo(Cargo cargo) throws PersistenceException;
 
+	public int loadIdCargo(Cargo cargo) throws PersistenceException;
 }
+

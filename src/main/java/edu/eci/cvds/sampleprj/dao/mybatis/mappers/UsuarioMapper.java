@@ -14,9 +14,9 @@ public interface UsuarioMapper {
 	 * @return Usuario con el carnet dado
 	 */
 	public Usuario consultarUsuario(@Param("carnet_usuario")String carnet); 
-	
-	public Usuario consultarUsuarioCorreo(@Param("correo")String carnet); 
     
+	public Usuario consultarUsuarioCorreo(@Param("correo")String carnet); 
+	
     /**
      * Consultar todos los usuarios
      * @return Lista con todos los usuarios existentes

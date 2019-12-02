@@ -33,7 +33,8 @@ public class LoginBean implements Serializable {
     private String password;
     private boolean rememberMe;
     private boolean user, admin, noLogged;
-
+    
+    
     public void login() {
         try {
             Subject currentUser = SecurityUtils.getSubject();
@@ -43,7 +44,7 @@ public class LoginBean implements Serializable {
             currentUser.getSession().setAttribute("Correo", userName);
 
             token.setRememberMe(true);
-			
+
             redirectToMenu();
 
         } catch (UnknownAccountException e) {
@@ -71,6 +72,7 @@ public class LoginBean implements Serializable {
 	   try {
 		   if(getUser().isAuthenticated()) {
 			   getUser().logout();
+			   
 			   redirectTo("iniciosesion.xhtml");
 	           
 		   }
@@ -201,7 +203,6 @@ public class LoginBean implements Serializable {
     private Subject getUser() {
     	return SecurityUtils.getSubject();
     }
-
     
     public BasePageBean getBaseBean() {
 		return this.baseBean;
@@ -211,5 +212,4 @@ public class LoginBean implements Serializable {
 	    this.baseBean = bs;
 	}
 }
-
 

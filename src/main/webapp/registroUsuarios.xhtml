@@ -22,7 +22,7 @@
 		<br/>
 		
         <h:form id="registroUsuario_form">
-        	<section id="contenedor">
+        	<div id="contenedor">
         	
 				<div id="registro">
 					
@@ -75,7 +75,15 @@
 						</p>
 					</div>
 				</div>
-            </section>
+				
+				<div>
+    				<p:commandButton value="Registrar" action="#{UsuariosBean.actionRegistrarUsuario}" update="registroUsuario_form"/>
+					<p:commandButton value="Ok" action="#{UsuariosBean.actionReiniciar}" update="registroUsuario_form"/>
+						
+					<br/>
+				
+				</div>
+            </div>
 		</h:form>
     </h:body>
 </html>

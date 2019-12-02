@@ -13,12 +13,8 @@ import edu.eci.cvds.samples.entities.Usuario;
 
 public interface ServiciosReserva {
 
-	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException;
+	/***************************************Recursos*********************************/
 	
-	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException;
-
-	public List<Usuario>consultarUsuarios() throws ServiciosReservaException;
-
 	public Recurso consultarRecurso(long id) throws ServiciosReservaException;
 	
 	public List<Recurso> consultarRecursos() throws ServiciosReservaException;
@@ -34,7 +30,8 @@ public interface ServiciosReserva {
 	public long consultarIdUltimoRecurso() throws ServiciosReservaException;
 
 	public void eliminarRecurso(long i) throws ServiciosReservaException;
-
+	
+	/*************************************Tipo Recurso*******************************/
 
 	
 	public Tipo consultarTipoRecurso(long id) throws ServiciosReservaException;
@@ -49,6 +46,8 @@ public interface ServiciosReserva {
 	
 	public int consultarIdTipo(Tipo tipo) throws ServiciosReservaException;
 	
+	/***********************************Horario Recurso*******************************/
+
 	
 	public Horario consultarHorario(long id, String dia) throws ServiciosReservaException;
 
@@ -73,6 +72,9 @@ public interface ServiciosReserva {
 	public void eliminarHora(Horario h, long idHora) throws ServiciosReservaException;
 	
 	
+	/***************************************Reservas*********************************/
+	
+	public Usuario consultarUsuarioCorreo(String usuario)  throws ServiciosReservaException;
 	
 	public Reserva consultarReserva(long codigo) throws ServiciosReservaException;
 	
@@ -105,11 +107,11 @@ public interface ServiciosReserva {
 	public List<Reserva> recursosMasFrecuentes() throws ServiciosReservaException;
 
 	public List<Reserva> masFrecuenteXHorario() throws ServiciosReservaException;
-
+	
 	public List<Reserva> tiposMasUsados() throws ServiciosReservaException;
 
 	public List<Reserva> recursosFrecuentesXHorario() throws ServiciosReservaException;
-	
+
 }
 
 

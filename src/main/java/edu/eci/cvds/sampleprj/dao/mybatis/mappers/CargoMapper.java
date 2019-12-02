@@ -13,5 +13,7 @@ public interface CargoMapper {
 	public List<Cargo> consultarCargos();
 	
 	public void insertarCargo(@Param("cargo")Cargo cargo);
+	
+	public int consutarIdCargo(@Param("cargo")Cargo cargo);
 
 }

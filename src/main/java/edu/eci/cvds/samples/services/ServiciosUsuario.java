@@ -34,7 +34,8 @@ public interface ServiciosUsuario {
 	
 	public void insertarCargo(Cargo cargo) throws ServiciosUsuarioException;
 
-
+	public int consultarIdCargo(Cargo cargo) throws ServiciosUsuarioException;
+	
 }
 
 

@@ -35,7 +35,7 @@
                     <p:dataTable class="recursos" value="#{RecursosBean.activos}" var = "recurso" style="margin: 0 auto;"
                     rows="8" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
-    				rowsPerPageTemplate="8, 16, 24">
+    				rowsPerPageTemplate="8, 16, 24" selectionMode="single" selection="#{RecursosBean.selectedRecurso}" rowKey="#{recurso.id}">
 	
     					<p:column headerText="Id Recurso" >
                         	<h:outputText value="#{recurso.id}"></h:outputText>
@@ -58,6 +58,10 @@
                         </p:column>  
 					
                     </p:dataTable>
+					
+					<div style="text-align: center">
+						<p:commandButton icon="pi pi-search" value="Disponibilidad" action="#{RecursosBean.disponibilidad}" />
+					</div> 
                 </div>  
               
             </section>

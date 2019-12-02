@@ -27,14 +27,13 @@
 
 				<p:schedule value="#{DispoBean.eventModel}" widgetVar="myschedule" timeZone="GMT-5" >
 					<p:ajax event="eventSelect" listener="#{DispoBean.onEventSelected}" oncomplete="PF('infoDialog').show();" update="@form" />
-					<p:ajax event="dateSelect" listener="#{DispoBean.onDateSelected}" oncomplete="PF('eventDialog').show();"/>
+					<p:ajax event="dateSelect" listener="#{DispoBean.onDateSelected}" oncomplete="PF('eventDialog').show();" update="@form"/>
 				</p:schedule>  
-
 			</h:panelGrid>
 			
-			<p:dialog widgetVar="eventDialog" header="Reserva" showEffect="clip" hideEffect="clip">
-				<h:panelGrid id="Reserva" columns="2" >
-					<h:panelGrid id="panelHora" columns="4" rendered="#{DispoBean.hora == 100}">
+			<p:dialog widgetVar="eventDialog" header="Reserva" showEffect="clip" hideEffect="clip" >
+				<h:panelGrid id="Reserva" columns="2" rendered="#{LoginBean.user}">
+					<h:panelGrid id="panelHora" columns="4" rendered="#{DispoBean.hora == 0}">
 						<p:outputLabel for="Hora" value="Hora de la Reserva "/>
 						<p:inputNumber id="Hora" value="#{DispoBean.hora}" minValue="0" maxValue="24" />
 						<p:outputLabel value=":"/>
@@ -50,8 +49,8 @@
 					<p:outputLabel value=""/>
 					<h:form id="concurrente">
 						<h:outputText value="Recurrente: "/>
-						<h:selectBooleanCheckbox id="repetir" onclick="hideOrShow(this.checked);"/>
-						<h:panelGrid id="panel1" columns="2">
+						<h:selectBooleanCheckbox id="repetir" onclick="hideOrShow(this.checked);"  />
+						<h:panelGrid id="panel1" columns="2"  style="display:none">
 							<h:outputText value="Repetir cada (dias): "/>
 							<p:inputNumber id="repetirVal" value="#{DispoBean.repetir}" minValue="0" decimalPlaces="0"/>
 							<p:outputLabel for="fechaFin" value="Fecha fin: " />
@@ -60,6 +59,12 @@
 					</h:form>
 					<h:commandButton value="Reservar" action="#{DispoBean.actionReservar}" update="@form"/>
 				</h:panelGrid>
+				<h:panelGrid id="AbrirSesion" columns="2" rendered="#{LoginBean.user == false}">
+					<p:outputLabel value="Debe iniciar sesion para poder reservar a esta hora"/>
+					<div style="text-align: center">
+					<p:commandButton  value="Iniciar Sesion" action="#{ReservaBean.page1}" />
+					</div>
+				</h:panelGrid>	
 			</p:dialog>
 			
 			<p:dialog header="Info" widgetVar="infoDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
@@ -119,16 +124,16 @@
     function hideOrShow(show) {
         // Get the panel using its ID
         var obj = document.getElementById("horario:concurrente:panel1");
-		var obj2 = document.getElementById("horario:concurrente:panel2");
         if (show) {
             obj.style.display = "block";
-			obj2.style.display = "block";
         } else {
             obj.style.display = "none";
-			obj2.style.display = "none";
         }
     }
 </script>
+
+
+
 
 <script type="text/javascript">
             PrimeFaces.locales['es'] = {

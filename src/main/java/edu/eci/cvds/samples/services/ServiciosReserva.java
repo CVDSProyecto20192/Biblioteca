@@ -74,6 +74,8 @@ public interface ServiciosReserva {
 	
 	/***************************************Reservas*********************************/
 	
+	public Usuario consultarUsuarioCorreo(String usuario)  throws ServiciosReservaException;
+	
 	public Reserva consultarReserva(long codigo) throws ServiciosReservaException;
 	
 	public List<Reserva> consultarReservas() throws ServiciosReservaException;
@@ -105,11 +107,16 @@ public interface ServiciosReserva {
 	public List<Reserva> recursosMasFrecuentes() throws ServiciosReservaException;
 
 	public List<Reserva> masFrecuenteXHorario() throws ServiciosReservaException;
+<<<<<<< HEAD
 
 	public List<Reserva> frecuenteXTipo() throws ServiciosReservaException;
+=======
+	
+	public List<Reserva> tiposMasUsados() throws ServiciosReservaException;
+>>>>>>> 907bac1db2aebe19daf3b20ebb85a1d95bcd490c
 
 	public List<Reserva> recursosFrecuentesXHorario() throws ServiciosReservaException;
-	
+
 }
 
 

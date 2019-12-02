@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.exceptions.ServiciosUsuarioException;
+import edu.eci.cvds.samples.entities.Cargo;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosUsuario;
@@ -44,6 +45,23 @@ public class UsuariosView {
 		serviciosUsuario=baseBean.getServiciosUsuario();
 		actionReiniciar();
 		actionSetListaUsuarios();
+	}
+	
+	
+	public void actionRegistrarUsuario() {
+		
+		try {
+			Cargo c = this.serviciosUsuario.consultarCargo(this.idCargo);
+			System.out.println(this.serviciosUsuario);
+			/*System.out.println(c);
+			Usuario user=new Usuario(this.carnet, this.documento, this.correo, this.nombres, 
+					this.apellidos, this.password, this.bloqueado, c);
+			System.out.println(user);
+			this.serviciosUsuario.insertarUsuario(user);*/
+		} catch (ServiciosUsuarioException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 
@@ -88,7 +106,7 @@ public class UsuariosView {
 		this.password=null;
 		this.ultimoIngreso=null;
 		this.bloqueado=false;
-		this.idCargo=0;
+		this.idCargo=-1;
 		
 	}
 	
@@ -174,7 +192,23 @@ public class UsuariosView {
 	public void setBaseBean(BasePageBean bs){
 	    this.baseBean = bs;
 	}
-
+	
+	public ServiciosUsuario getServU() {
+		return this.serviciosUsuario;
+	}
+	
+	/*public static void main(String args[]) {
+		
+		try {
+			UsuariosView  u=new UsuariosView();
+			Cargo c = u.getServU().consultarCargo(2);
+			System.out.println(c);
+		} catch (ServiciosUsuarioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}*/
 
 }
 

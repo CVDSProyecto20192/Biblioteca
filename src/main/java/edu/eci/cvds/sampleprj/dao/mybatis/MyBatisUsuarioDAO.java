@@ -25,6 +25,14 @@ public class MyBatisUsuarioDAO implements UsuarioDAO{
 	}
 
 	@Override
+	public Usuario loadCorreo(String correo) throws PersistenceException {
+		Usuario user=usuarioMapper.consultarUsuarioCorreo(correo);
+		if(user==null) throw new PersistenceException("Error al consultar cliente "+ correo+
+		" - No existe");
+		else return user;   
+	}
+	
+	@Override
 	public List<Usuario> loadAll() throws PersistenceException {
 		try{
 			return usuarioMapper.consultarUsuarios();

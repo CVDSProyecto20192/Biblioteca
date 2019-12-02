@@ -21,6 +21,7 @@ import org.primefaces.model.ScheduleModel;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Reserva;
+import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
 @Deprecated
@@ -52,6 +53,7 @@ public class DisponibilidadView implements Serializable {
 	private Date fechaFin;
 	private int eventoHora;
 	private Reserva selected;
+	private boolean horaManual;
 
 	public DisponibilidadView() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -83,19 +85,22 @@ public class DisponibilidadView implements Serializable {
 		DefaultScheduleEvent event;
 
 		for (Reserva r : reservas) {
+			
+			if (r.getActiva()){
 
-			Date t = (Date) r.getFecha().clone();
-			t.setHours((int) r.getHora() / 100);
-			t.setMinutes(r.getHora() % 100);
+				Date t = (Date) r.getFecha().clone();
+				t.setHours((int) r.getHora() / 100);
+				t.setMinutes(r.getHora() % 100);
 
-			Date y = (Date) r.getFecha().clone();
-			y.setHours((int) (r.getHora() + r.getDuracion()) / 100);
-			y.setMinutes((r.getHora() + r.getDuracion()) % 100);
+				Date y = (Date) r.getFecha().clone();
+				y.setHours((int) (r.getHora() + r.getDuracion()) / 100);
+				y.setMinutes((r.getHora() + r.getDuracion()) % 100);
 
-			event = new DefaultScheduleEvent("Resevado", t, y);
-			String code = Long.toString(r.getCodigo());
-			event.setDescription(code);
-			this.eventModel.addEvent(event);
+				event = new DefaultScheduleEvent("Resevado", t, y);
+				String code = Long.toString(r.getCodigo());
+				event.setDescription(code);
+				this.eventModel.addEvent(event);
+			}
 
 		}
 	}
@@ -103,16 +108,18 @@ public class DisponibilidadView implements Serializable {
 	public void actionReservar() {
 		int dur = (duracionHora * 100) + duracionMinutos;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		if (horaManual){
+			hora = (hora * 100) + minutos;
+		}
 		try {
 			if (fechaFin != null) {
 				String fechaFinReservas = dateFormat.format(fechaFin);
 				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001", recurso, fechaFinReservas, repetir);
 			} else {
-				System.out.println(fecha);
 				System.out.println(hora);
-				System.out.println(recurso);
 				serviciosReserva.insertarReserva(fecha, hora, dur, "0000001", recurso);
 			}
+			actionVerDisponibilidad();
 		} catch (ServiciosReservaException e) {
 			// TODO Auto-generated catch block
 			baseBean.mensajeApp(e);
@@ -136,10 +143,19 @@ public class DisponibilidadView implements Serializable {
 	}
 	
 	public void onDateSelected(SelectEvent selectEvent){
+		fechaFin = null;
+		minutos = 0;
+		repetir = 0;
+		duracionHora = 0;
+		duracionMinutos = 0;
+		horaManual = false;
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		fecha = dateFormat.format(event.getStartDate());
 		this.hora = (event.getStartDate().getHours() * 100) + (event.getStartDate().getMinutes());
+		if (hora == 0){
+			horaManual = true;
+		}
 	}
 
 	public Reserva getSelected() {
@@ -196,8 +212,6 @@ public class DisponibilidadView implements Serializable {
 
 	public void setHora(int hora) {
 		this.hora = hora;
-		System.out.println("set");
-		System.out.println(hora);
 	}
 
 	public void setMinutos(int minutos) {
@@ -251,4 +265,19 @@ public class DisponibilidadView implements Serializable {
 	public long getRecurso(){
 		return this.recurso;
 	}
+	
+	public String getCommunity(){
+		String s = null;
+		try{
+			Usuario u = serviciosReserva.consultarUsuarioCorreo(baseBean.getUsuario());
+			s = u.getCarnet();
+		} catch (ServiciosReservaException e) {
+			// TODO Auto-generated catch block
+			baseBean.mensajeApp(e);
+		}
+		return s;
+	}
+	
+	
+	
 }

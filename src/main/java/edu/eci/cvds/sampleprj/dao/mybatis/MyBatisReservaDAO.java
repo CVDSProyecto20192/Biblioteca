@@ -95,6 +95,7 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	public void insertarReserva(Reserva reserva) throws PersistenceException {
 		try{
 			if (consultarFecha(reserva.getFecha(), reserva.getHora())){
+				System.out.println(reserva);
 				reservaMapper.insertarReserva(reserva);
 			}
 			else{
@@ -180,21 +181,24 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<Reserva> frecuenteXTipo() throws PersistenceException {
 		try{
 			return reservaMapper.frecuenteXTipo();
 		}catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al consultar Reservas", e);
 		}  
+=======
+	public List<Reserva> tiposMasUsados() throws PersistenceException {
+		// TODO Auto-generated method stub
+		return null;
+>>>>>>> 907bac1db2aebe19daf3b20ebb85a1d95bcd490c
 	}
 
 	@Override
 	public List<Reserva> recursosFrecuentesXHorario() throws PersistenceException {
-		try{
-			return reservaMapper.recursosFrecuentesXHorario();
-		}catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al consultar Reservas", e);
-		}  
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

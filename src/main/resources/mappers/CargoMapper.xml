@@ -5,7 +5,7 @@
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper">
 
-	<select id="consultarCargo">
+	<select id="consultarCargo" resultMap="CargoResult">
 		SELECT 
 		
 		c.id as id_cargo,
@@ -17,7 +17,7 @@
 		WHERE c.id=#{id_cargo}
 	</select>
 
-	<select id="consultarCargos">
+	<select id="consultarCargos" resultMap="CargoResult">
 		SELECT 
 		
 		c.id as id_cargo,
@@ -27,6 +27,15 @@
 		FROM BR_CARGO as c
 	
 		ORDER BY c.id
+	</select>
+
+	<select id="consutarIdCargo" resultType="int">
+		SELECT
+		c.id
+		
+		FROM BR_CARGO as c
+		
+		WHERE c.nombre=#{cargo.nombre} and c.descripcion=#{cargo.descripcion}
 	</select>
 
 	<insert id ="insertarCargo">

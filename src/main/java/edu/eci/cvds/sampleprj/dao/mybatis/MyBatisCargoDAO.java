@@ -30,7 +30,9 @@ public class MyBatisCargoDAO implements CargoDAO {
 			return cargoMapper.consultarCargos();
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			e.printStackTrace();
 			throw new PersistenceException("No fue listar los cargos");
+			
 		}
 	}
 	
@@ -43,6 +45,16 @@ public class MyBatisCargoDAO implements CargoDAO {
 			throw new PersistenceException("No fue posible agregar el cargo");
 		}
 		
+	}
+
+	@Override
+	public int loadIdCargo(Cargo cargo) throws PersistenceException {
+		try {
+			return cargoMapper.consutarIdCargo(cargo);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("No fue consultar el id del cargo");
+		}
 	}
 
 }

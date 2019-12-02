@@ -47,17 +47,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return u;
 	}
-	
-	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException{
-		Usuario u=null;
-		try {
-			u = userDAO.loadCorreo(correo);
-		} 
-		catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar el usuario "+correo, e);
-		}
-		return u;
-	}
 
 	public List<Usuario> consultarUsuarios() throws ServiciosReservaException{
 		List<Usuario> users;
@@ -561,6 +550,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 
 	@Override
 	public List<Reserva> frecuenteXHorario() throws ServiciosReservaException {
+
 		try{
 			return reservaDAO.frecuenteXHorario();
 		}catch (PersistenceException e) {
@@ -586,7 +576,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
 	}
-
+	
 	@Override
 	public List<Reserva> tiposMasUsados() throws ServiciosReservaException {
 		try {
@@ -605,6 +595,16 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 	}
 
+	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException{
+		Usuario u=null;
+		try {
+			u = userDAO.loadCorreo(correo);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el usuario "+correo, e);
+		}
+		return u;
+	}
 }
 
 

@@ -1,10 +1,8 @@
 package edu.eci.cvds.sampleprj.dao.mybatis.mappers;
-
 import edu.eci.cvds.samples.entities.Reserva;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import java.util.Date;
-
 public interface ReservaMapper {
 	
 	/**

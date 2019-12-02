@@ -138,6 +138,16 @@ public class ServiciosUsuarioImpl implements ServiciosUsuario {
 		catch (PersistenceException e) {
 			throw new ServiciosUsuarioException("Error al agregar cargo", e);
 		}
-		
 	}
+
+	@Override
+	public int consultarIdCargo(Cargo cargo) throws ServiciosUsuarioException {
+		try {
+			return cargoDAO.loadIdCargo(cargo);
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosUsuarioException("Error al consultar id del cargo", e);
+		}
+	}
+
 }

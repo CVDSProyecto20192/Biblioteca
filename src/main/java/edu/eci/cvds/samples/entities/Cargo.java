@@ -20,6 +20,11 @@ public class Cargo implements Serializable{
 		
 	}
 
+	public Cargo(String nombre, String descripcion) {
+		this.nombre=nombre;
+		this.descripcion=descripcion;
+	}
+	
 	
 	public long getId(){
 		return this.id;

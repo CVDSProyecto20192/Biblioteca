@@ -24,9 +24,9 @@ public class BasePageBean implements Serializable {
  	private static final long serialVersionUID = 1L;
  	
 	private Injector injector;
-	protected long idRec;
-	
+	private long idRec;
 	private String usuario;
+
 	
     private Injector getInjector() {
         if (injector == null) {
@@ -124,6 +124,10 @@ public class BasePageBean implements Serializable {
 		return "tipos?faces-redirect=true";
 	}
 	
+	public String page12(){
+		return "cargos?faces-redirect=true";
+	}
+	
 	public long getIdRec() {
 		return this.idRec;
 	}
@@ -131,12 +135,12 @@ public class BasePageBean implements Serializable {
     public void setIdRec(long a) {
 		this.idRec=a;
 	}
-	
-	public String getUsuario(){
+    
+    public String getUsuario(){
 		return this.usuario;
 	}
-	
-	public void setUsuario (String Usuario){
+
+	public void setUsuario (String usuario){
 		this.usuario = usuario;
 	}
 }

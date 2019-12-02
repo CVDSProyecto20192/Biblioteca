@@ -27,30 +27,6 @@
     		WHERE u.carnet=#{carnet_usuario}
  			
 	</select>
-	
-	
-	<select parameterType="map" id="consultarUsuarioCorreo" resultMap="UsuarioResult">
-			SELECT 
-    		
-    		u.carnet as carnet_usuario,
-  			u.documento as doc_usuario,
-  			u.correo as correo_usuario,
-  			u.nombres as nombres_usuario,
-  			u.apellidos as apellidos_usuario,
-  			u.passwd,
-  			u.ultimoingreso,
-  			u.bloqueado,
-    		
-    		c.id as id_cargo,
-			c.nombre as nombre_cargo,
-			c.descripcion as des_cargo
-			
-			FROM BR_USUARIO as u 
-    		left join BR_CARGO as c on u.id_cargo=c.id
-    		
-    		WHERE u.correo=#{correo}
- 			
-	</select>
 
 	<select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
 			SELECT 
@@ -92,6 +68,29 @@
 		FROM BR_USUARIO as u
 		
 		WHERE u.carnet=#{carnet_usuario}
+	</select>
+	
+	<select parameterType="map" id="consultarUsuarioCorreo" resultMap="UsuarioResult">
+			SELECT 
+
+    		u.carnet as carnet_usuario,
+  			u.documento as doc_usuario,
+  			u.correo as correo_usuario,
+  			u.nombres as nombres_usuario,
+  			u.apellidos as apellidos_usuario,
+  			u.passwd,
+  			u.ultimoingreso,
+  			u.bloqueado,
+
+    		c.id as id_cargo,
+			c.nombre as nombre_cargo,
+			c.descripcion as des_cargo
+
+			FROM BR_USUARIO as u 
+    		left join BR_CARGO as c on u.id_cargo=c.id
+
+    		WHERE u.correo=#{correo}
+
 	</select>
 	
 

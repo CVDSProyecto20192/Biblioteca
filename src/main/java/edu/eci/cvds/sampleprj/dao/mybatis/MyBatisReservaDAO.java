@@ -182,20 +182,14 @@ public class MyBatisReservaDAO implements ReservaDAO {
 
 	@Override
 	public List<Reserva> tiposMasUsados() throws PersistenceException {
-		try{
-			return reservaMapper.tiposMasUsados();
-		}catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al consultar Reservas", e);
-		}  
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Reserva> recursosFrecuentesXHorario() throws PersistenceException {
-		try{
-			return reservaMapper.recursosFrecuentesXHorario();
-		}catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al consultar Reservas", e);
-		}  
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -13,17 +13,12 @@ import edu.eci.cvds.samples.entities.Usuario;
 
 public interface ServiciosReserva {
 
-<<<<<<< HEAD
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException;
 	
 	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException;
 
 	public List<Usuario>consultarUsuarios() throws ServiciosReservaException;
 
-=======
-	/***************************************Recursos*********************************/
-	
->>>>>>> 948c9eaacb7029fa867bc9855f8c817eeb74895b
 	public Recurso consultarRecurso(long id) throws ServiciosReservaException;
 	
 	public List<Recurso> consultarRecursos() throws ServiciosReservaException;
@@ -39,8 +34,7 @@ public interface ServiciosReserva {
 	public long consultarIdUltimoRecurso() throws ServiciosReservaException;
 
 	public void eliminarRecurso(long i) throws ServiciosReservaException;
-	
-	/*************************************Tipo Recurso*******************************/
+
 
 	
 	public Tipo consultarTipoRecurso(long id) throws ServiciosReservaException;
@@ -55,8 +49,6 @@ public interface ServiciosReserva {
 	
 	public int consultarIdTipo(Tipo tipo) throws ServiciosReservaException;
 	
-	/***********************************Horario Recurso*******************************/
-
 	
 	public Horario consultarHorario(long id, String dia) throws ServiciosReservaException;
 
@@ -81,7 +73,6 @@ public interface ServiciosReserva {
 	public void eliminarHora(Horario h, long idHora) throws ServiciosReservaException;
 	
 	
-	/***************************************Reservas*********************************/
 	
 	public Reserva consultarReserva(long codigo) throws ServiciosReservaException;
 	

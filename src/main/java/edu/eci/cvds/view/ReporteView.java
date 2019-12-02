@@ -22,19 +22,12 @@ public class ReporteView {
     private BasePageBean basePageBean;
 
     private String show;
-    private boolean masUsados, menosUsados, horariosMas, horariosMenos, recurrentes, tipoMasUsados;
+    private boolean masUsados, menosUsados, horariosMas, horariosMenos, recurrentes;
 
     public ReporteView() {
 
     }
 
-    public boolean isTipoMasUsados() {
-        return tipoMasUsados;
-    }
-
-    public void setTipoMasUsados(boolean tipoMasUsados) {
-        this.tipoMasUsados = tipoMasUsados;
-    }
 
     @PostConstruct
     public void init() {
@@ -72,6 +65,17 @@ public class ReporteView {
         return frecuenteXHorario;
     }
 
+    public List<Reserva> getFrecuenteXTipo(){
+        List<Reserva> frecuenteXTipo = null;
+
+        try {
+            frecuenteXTipo = serviciosReserva.frecuenteXTipo();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return frecuenteXTipo;
+    }
+
     public List<Reserva> getMasFrecuenteXHorario(){
         List<Reserva> masFrecuenteXHorario = null;
         try {
@@ -92,17 +96,7 @@ public class ReporteView {
         return recursosMasFrecuentes;
     }
 
-    public List<Reserva> getTiposMasUsados(){
-        List<Reserva> tiposMasUsados = null;
 
-        try {
-            tiposMasUsados = serviciosReserva.tiposMasUsados();
-        } catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return tiposMasUsados;
-    }
 
     public void showTable(){
 
@@ -124,9 +118,6 @@ public class ReporteView {
             case "recurrentes":
                 this.recurrentes=true;
                 break;
-            case "tipoMasUsados":
-                this.tipoMasUsados=true;
-                break;
         }
     }
 
@@ -136,7 +127,6 @@ public class ReporteView {
         this.horariosMas=false;
         this.horariosMenos=false;
         this.recurrentes=false;
-        this.tipoMasUsados=false;
     }
 
     //Gets and Sets

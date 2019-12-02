@@ -32,7 +32,7 @@ public interface ReservaDAO {
 
 	public List<Reserva> masFrecuenteXHorario() throws PersistenceException;
 
-	public List<Reserva> tiposMasUsados() throws PersistenceException;
+	public List<Reserva> frecuenteXTipo() throws PersistenceException;
 
 	public List<Reserva> recursosFrecuentesXHorario() throws PersistenceException;
 }

@@ -1,12 +1,10 @@
 package edu.eci.cvds.sampleprj.dao;
 
+import java.util.Date;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.samples.entities.Reserva;
-import java.util.Date;
 public interface ReservaDAO {
 	public List<Reserva> loadAll() throws PersistenceException;
 	
@@ -25,4 +23,12 @@ public interface ReservaDAO {
 	public long consultarGrupo() throws PersistenceException;
 
 	public Reserva ConsultarReserva(long codigo) throws PersistenceException;
+
+	public List<Reserva> recursosFrecuentes() throws PersistenceException;
+
+	public List<Reserva> frecuenteXHorario() throws PersistenceException;
+
+	public List<Reserva> recursosMasFrecuentes() throws PersistenceException;
+
+	public List<Reserva> masFrecuenteXHorario() throws PersistenceException;
 }

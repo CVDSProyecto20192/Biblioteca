@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+
+    
+    <h:head>
+        
+        <title>Reportes</title>
+
+    </h:head>
+
+    <h:body>
+
+        <h1 style="text-align: center;">Reportes y estadisticas de los registros</h1>
+
+        <h:form>
+            <h:panelGrid cellpadding="25" style="margin: auto;">
+            
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Mostrar por: "/>
+                    <p:selectOneMenu value="#{ReportBean.show}">
+                        <p:ajax listener="#{ReportBean.showTable}" update="@form"/>
+                        <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                        <f:selectItem itemLabel="Recursos más usados" itemValue="masUsados"/>
+                        <f:selectItem itemLabel="Recursos menos usados" itemValue="menosUsados"/>
+                        <f:selectItem itemLabel="Horarios con mayor ocupación de recursos" itemValue="horariosMas"/>
+                        <f:selectItem itemLabel="Horarios con menor ocupación de recursos" itemValue="horariosMenos"/>
+                        <f:selectItem itemLabel="Reservas recurrentes" itemValue="recurrentes"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+
+                <h:panelGrid style="margin: auto;">
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 500px;" rendered="#{ReportBean.menosUsados}">
+                        <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
+                            <h:outputText value="#{reserva.recurso.id}"/>
+                        </p:column>
+        
+                        <p:column headerText="Nombre Recurso" style="text-align: center;" filterBy="#{reserva.recurso.nombre}" sortBy="#{reserva.recurso.nombre}" >
+                            <h:outputText value="#{reserva.recurso.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Ubicación Recurso" style="text-align: center;" filterBy="#{reserva.recurso.ubicacion}" sortBy="#{reserva.recurso.ubicacion}">
+                            <h:outputText value="#{reserva.recurso.ubicacion}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
+                            <h:outputText value="#{reserva.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosMasFrecuentes}" style="width: 500px;" rendered="#{ReportBean.masUsados}">
+                        <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
+                            <h:outputText value="#{reserva.recurso.id}"/>
+                        </p:column>
+        
+                        <p:column headerText="Nombre Recurso" style="text-align: center;" filterBy="#{reserva.recurso.nombre}" sortBy="#{reserva.recurso.nombre}" >
+                            <h:outputText value="#{reserva.recurso.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Ubicación Recurso" style="text-align: center;" filterBy="#{reserva.recurso.ubicacion}" sortBy="#{reserva.recurso.ubicacion}">
+                            <h:outputText value="#{reserva.recurso.ubicacion}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
+                            <h:outputText value="#{reserva.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable var="hora" value="#{ReportBean.frecuenteXHorario}" style="width: 280px;" rendered="#{ReportBean.horariosMenos}">
+                        <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
+                            <h:outputText value="#{hora.hora}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.coun}" sortBy="#{hora.count}" >
+                            <h:outputText value="#{hora.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable var="hora" value="#{ReportBean.masFrecuenteXHorario}" style="width: 280px;" rendered="#{ReportBean.horariosMas}">
+                        <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
+                            <h:outputText value="#{hora.hora}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.coun}" sortBy="#{hora.count}">
+                            <h:outputText value="#{hora.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                </h:panelGrid>
+            </h:panelGrid>   
+        </h:form>
+    </h:body>
+      
+</html>

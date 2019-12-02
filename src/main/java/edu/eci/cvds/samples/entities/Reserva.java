@@ -17,12 +17,16 @@ public class Reserva {
 	private Date registro;
 	private Date fechaF;
 	private Date fechaI;
-	
+	private int count;
+
 	public Reserva() {
-		
+
 	}
-	
-	public Reserva(long codigo, Date fecha, int hora, int duracion, Usuario usuario, Recurso recurso, long grupo, Date registro){
+
+
+
+	public Reserva(long codigo, Date fecha, int hora, int duracion, Usuario usuario, Recurso recurso, long grupo,
+			Date registro) {
 		 this.codigo=codigo;
 		 this.fecha=fecha;
 		 this.hora=hora;
@@ -136,6 +140,14 @@ public class Reserva {
 	
 	public void setUsuario(long grupo){
 		this.grupo=grupo;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	@Override

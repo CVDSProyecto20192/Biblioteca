@@ -1,9 +1,11 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
-import edu.eci.cvds.sampleprj.dao.ReservaDAO;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import org.apache.ibatis.annotations.Param;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import com.google.inject.Inject;
 
@@ -11,11 +13,6 @@ import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.sampleprj.dao.ReservaDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ReservaMapper;
 import edu.eci.cvds.samples.entities.Reserva;
-
-import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class MyBatisReservaDAO implements ReservaDAO {
 	
@@ -144,5 +141,43 @@ public class MyBatisReservaDAO implements ReservaDAO {
 		}
 		return flag;
 	}
+
+	@Override
+	public List<Reserva> recursosFrecuentes() throws PersistenceException {
+		try{
+			return reservaMapper.recursosFrecuentes();
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> frecuenteXHorario() throws PersistenceException{
+		try{
+			return reservaMapper.frecuenteXHorario();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> recursosMasFrecuentes() throws PersistenceException {
+		try{
+			return reservaMapper.recursosMasFrecuentes();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> masFrecuenteXHorario() throws PersistenceException {
+		try{
+			return reservaMapper.masFrecuenteXHorario();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
 
 }

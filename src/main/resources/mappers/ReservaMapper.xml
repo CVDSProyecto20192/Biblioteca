@@ -195,6 +195,70 @@
 	   (codigo, fecha, usuario, hora, duracion, recurso, grupo)	
     	VALUES (#{id_reserva},#{reserva.fecha},#{reserva.usuario.carnet},#{reserva.hora}, #{reserva.duracion}, #{reserva.recurso.id}, #{reserva.grupo}) 
     </insert>
+
+	<!--Consultas para generar los reportes-->
+
+	<select id="recursosFrecuentes" resultMap="ReservaResult" >
+
+		SELECT
+			r.id as id_recurso,
+			r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso,
+			count(r.id) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_USUARIO as u on u.carnet=res.usuario
+			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_CARGO as c on u.id_cargo=c.id
+			left join BR_TIPO as t on r.id_tipo=t.id	
+
+		GROUP BY r.id
+		order by num_veces
+		FETCH FIRST 10 ROWS ONLY
+	</select>
+
+	<select id="recursosMasFrecuentes" resultMap="ReservaResult" >
+
+		SELECT
+			r.id as id_recurso,
+			r.nombre as nombre_recurso,
+			r.ubicacion as ubi_recurso,
+			count(r.id) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_USUARIO as u on u.carnet=res.usuario
+			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_CARGO as c on u.id_cargo=c.id
+			left join BR_TIPO as t on r.id_tipo=t.id	
+
+		GROUP BY r.id
+		order by num_veces DESC
+		FETCH FIRST 10 ROWS ONLY
+	</select>
+
+	<select id="frecuenteXHorario" resultMap="ReservaResult">
+			SELECT
+				res.hora as tiempo, 
+				count(res.hora) as num_veces
+			FROM br_reserva as res
+				left join BR_USUARIO as u on u.carnet=res.usuario
+				left join BR_RECURSO as r on r.id=res.recurso
+			group by res.hora
+			order by num_veces
+			FETCH FIRST 10 ROWS ONLY
+	</select>
+
+	<select id="masFrecuenteXHorario" resultMap="ReservaResult">
+		SELECT
+			res.hora as tiempo, 
+			count(res.hora) as num_veces
+		FROM br_reserva as res
+			left join BR_USUARIO as u on u.carnet=res.usuario
+			left join BR_RECURSO as r on r.id=res.recurso
+		group by res.hora
+		order by num_veces DESC
+		FETCH FIRST 10 ROWS ONLY
+	</select>
 	
 	
 	<resultMap id="ReservaResult" type="Reserva">
@@ -205,6 +269,7 @@
 			<result property="activa" column="activa"/>
 			<result property="grupo" column="grupo"/>
 			<result property="registro" column="registro"/>
+			<result property="count" column="num_veces"/>
       		<association property="usuario" javaType="Usuario" column="usuario" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper.UsuarioResult"/>
 			<association property="recurso" javaType="Recurso" column="recurso" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RecursoMapper.RecursoResult"/>
     </resultMap>

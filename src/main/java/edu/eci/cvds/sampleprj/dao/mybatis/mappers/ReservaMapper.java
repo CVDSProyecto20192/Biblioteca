@@ -26,4 +26,12 @@ public interface ReservaMapper {
 	
 	public long consultarIdGrupo();
 
+	public List<Reserva> recursosFrecuentes();
+
+	public List<Reserva> frecuenteXHorario();
+
+	public List<Reserva> recursosMasFrecuentes();
+
+	public List<Reserva> masFrecuenteXHorario();
+
 }

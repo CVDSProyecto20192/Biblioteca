@@ -1,5 +1,6 @@
 package edu.eci.cvds.samples.services.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +20,6 @@ import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ServiciosReserva;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
@@ -524,6 +523,47 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		
 		return ultima;
 	}
+
+	@Override
+	public List<Reserva> recursosFrecuentes() throws ServiciosReservaException {
+		
+		try {
+			return reservaDAO.recursosFrecuentes();
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+	}
+
+	@Override
+	public List<Reserva> frecuenteXHorario() throws ServiciosReservaException {
+		
+		try{
+			return reservaDAO.frecuenteXHorario();
+		}catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+	}
+
+	@Override
+	public List<Reserva> recursosMasFrecuentes() throws ServiciosReservaException {
+		try {
+			return reservaDAO.recursosMasFrecuentes();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+	}
+
+	@Override
+	public List<Reserva> masFrecuenteXHorario() throws ServiciosReservaException {
+		try {
+			return reservaDAO.masFrecuenteXHorario();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+	}
+
 }
 
 

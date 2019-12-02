@@ -89,6 +89,14 @@ public interface ServiciosReserva {
 	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException;
 	
 	public String calcularUltima(Reserva selected) throws ServiciosReservaException;
+
+	public List<Reserva> recursosFrecuentes() throws ServiciosReservaException;
+
+	public List<Reserva> frecuenteXHorario() throws ServiciosReservaException;
+
+	public List<Reserva> recursosMasFrecuentes() throws ServiciosReservaException;
+
+	public List<Reserva> masFrecuenteXHorario() throws ServiciosReservaException;
 	
 }
 

@@ -24,12 +24,23 @@
     </h:head>
     
     <h:body onload="nobackbutton();">
-
-		<h1>Biblioteca</h1>
-		<h2>Recursos</h2>
-		<br/>
         <h:form id="recursos_form">
-            <section>
+        	<div class="arriba">
+					
+					<h:commandButton image="img/home.svg" id= "home" class="home"
+					action="#{ReservaBean.page01}" update="recursos_form"></h:commandButton>	
+					 &nbsp; 
+					<h:commandButton image="img/logout.svg" id= "close" class="close"
+					actionListener="#{LoginBean.logout}" update="recursos_form"></h:commandButton>	
+				
+					
+					<h1>Biblioteca</h1>
+					<h2>Recursos</h2>
+			</div>
+		
+			<br/>
+       	 
+            <div>
                 <div style="text-align: center" class='table'>
                 
                     <p:dataTable class="recursos" value="#{RecursosBean.listaRecursos}" var = "recurso" style="margin: 0 auto;"
@@ -64,30 +75,27 @@
 						<p:column headerText="Estado">
       						<p:commandButton actionListener="#{RecursosBean.actionBloquear(recurso.id)}" value="#{RecursosBean.actionEstado(recurso.disponible, recurso.capacidad)}" update="recursos_form" />            
       				    </p:column>  
-
+						
+						<p:column headerText="Horarios">
+      						<p:commandButton actionListener="#{RecursosBean.actionHorarios(recurso.id)}" action="#{ReservaBean.page7}" value="Ver" update="recursos_form" />            
+      				    </p:column>
 					
                     </p:dataTable>
                 </div>  
               
-            </section>
+            </div>
 			
 			<br/>
 
-			<section>
 		
-				<div style="text-align: center">
-					<p:commandButton id= "back" value="Back" action="#{ReservaBean.page01}" update="recursos_form"></p:commandButton>
-				
-                </div> 
+			<div class="backDiv" style="text-align: center">
+				<p:commandButton id= "back"  class="back" value="Back" 
+				action="#{ReservaBean.page2}" update="recursos_form"></p:commandButton>
+			
+           	</div> 
 
-			</section>
 			
 			<br/>
-			
-			<div id="close">
-				<p:commandButton id= "close" value="Cerrar Sesión" action="#{LoginBean.logout}" update="recursos_form"></p:commandButton>	
-					
-			</div>
 
         </h:form>
     </h:body>

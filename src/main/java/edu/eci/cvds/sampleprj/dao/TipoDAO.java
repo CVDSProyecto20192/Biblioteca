@@ -13,4 +13,6 @@ public interface TipoDAO {
 
 	public void addTipo(Tipo tipo) throws PersistenceException;
 	
+	public int loadIdTipo(Tipo tipo) throws PersistenceException;
+	
 }

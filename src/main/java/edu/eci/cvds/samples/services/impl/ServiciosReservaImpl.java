@@ -37,7 +37,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	@Inject
 	private ReservaDAO reservaDAO;
 	
-	@Override
 	public Usuario consultarUsuario(String carnet) throws ServiciosReservaException{
 		Usuario u=null;
 		try {
@@ -49,7 +48,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		return u;
 	}
 
-	@Override
 	public List<Usuario> consultarUsuarios() throws ServiciosReservaException{
 		List<Usuario> users;
 		try {
@@ -131,6 +129,17 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al agregar el tipo", e);
 		}
 		
+	}
+	
+	@Override
+	public int consultarIdTipo(Tipo tipo) throws ServiciosReservaException {
+		try {
+			return tipoDAO.loadIdTipo(tipo);
+			
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar el id del tipo", e);
+		}
 	}
 
 	@Override
@@ -418,8 +427,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		return res;
 
 	}
-
-
+	
 	@Override
 	public List<Reserva> consultarReservas() throws ServiciosReservaException {
 		List<Reserva> tl;
@@ -464,14 +472,14 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		List<Reserva> reservas;
 		try {
 			reservas=reservaDAO.consultarReservasUsuario(usuario);
-			
+
 		} 
 		catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar las reservas del usuario: " + usuario, e);
 		}
 		return reservas;
 	}
-
+	
 	@Override
 	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException{
 		Reserva resSig=null;
@@ -523,10 +531,10 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		
 		return ultima;
 	}
-
+	
 	@Override
 	public List<Reserva> recursosFrecuentes() throws ServiciosReservaException {
-		
+
 		try {
 			return reservaDAO.recursosFrecuentes();
 		} catch (PersistenceException e) {
@@ -537,7 +545,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 
 	@Override
 	public List<Reserva> frecuenteXHorario() throws ServiciosReservaException {
-		
 		try{
 			return reservaDAO.frecuenteXHorario();
 		}catch (PersistenceException e) {

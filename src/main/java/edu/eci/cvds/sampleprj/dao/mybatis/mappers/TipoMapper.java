@@ -16,7 +16,7 @@ public interface TipoMapper {
      */
     public List<Tipo> consultarTipos();
     
- 
     public void insertarTipo(@Param("tipo")Tipo tipo);
-    	
+    
+    public int consutarIdTipo(@Param("tipo")Tipo tipo);
 }

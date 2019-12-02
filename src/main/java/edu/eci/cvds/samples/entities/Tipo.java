@@ -17,6 +17,11 @@ public class Tipo implements Serializable{
 		this.descripcion=descripcion;
 	}
 	
+	public Tipo(String tipo, String descripcion){
+		this.tipo=tipo;
+		this.descripcion=descripcion;
+	}
+	
 	public int getId() {
 		return this.id;
 	}

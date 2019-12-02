@@ -34,4 +34,8 @@ public interface ReservaMapper {
 
 	public List<Reserva> masFrecuenteXHorario();
 
+	public List<Reserva> tiposMasUsados();
+
+	public List<Reserva> recursosFrecuentesXHorario();
+
 }

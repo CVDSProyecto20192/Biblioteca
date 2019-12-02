@@ -97,6 +97,10 @@ public interface ServiciosReserva {
 	public List<Reserva> recursosMasFrecuentes() throws ServiciosReservaException;
 
 	public List<Reserva> masFrecuenteXHorario() throws ServiciosReservaException;
+
+	public List<Reserva> tiposMasUsados() throws ServiciosReservaException;
+
+	public List<Reserva> recursosFrecuentesXHorario() throws ServiciosReservaException;
 	
 }
 

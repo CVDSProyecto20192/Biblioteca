@@ -564,6 +564,24 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 	}
 
+	@Override
+	public List<Reserva> tiposMasUsados() throws ServiciosReservaException {
+		try {
+			return reservaDAO.tiposMasUsados();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+	}
+
+	@Override
+	public List<Reserva> recursosFrecuentesXHorario() throws ServiciosReservaException {
+		try {
+			return reservaDAO.recursosFrecuentesXHorario();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas", e);
+		}
+	}
+
 }
 
 

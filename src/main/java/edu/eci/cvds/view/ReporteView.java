@@ -96,8 +96,6 @@ public class ReporteView {
         return recursosMasFrecuentes;
     }
 
-
-
     public void showTable(){
 
         reboot();

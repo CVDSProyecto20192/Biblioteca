@@ -24,6 +24,9 @@ import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 @Deprecated
 @ManagedBean(name = "DispoBean")
 @ViewScoped
@@ -54,6 +57,7 @@ public class DisponibilidadView implements Serializable {
 	private int eventoHora;
 	private Reserva selected;
 	private boolean horaManual;
+	private String carnet;
 
 	public DisponibilidadView() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -66,6 +70,8 @@ public class DisponibilidadView implements Serializable {
 		serviciosReserva = baseBean.getServiciosReserva();
 
 		eventModel = new DefaultScheduleModel();
+		
+		getCommunity();
 		
 		actionVerDisponibilidad();
 	}
@@ -111,13 +117,16 @@ public class DisponibilidadView implements Serializable {
 		if (horaManual){
 			hora = (hora * 100) + minutos;
 		}
+		//cuadrar las duraciones cuando superan los 60 min
+		if ((hora % 100) + (dur % 100) > 59){
+			dur = dur + 40;
+		}
 		try {
 			if (fechaFin != null) {
 				String fechaFinReservas = dateFormat.format(fechaFin);
-				serviciosReserva.insertarReservaDias(fecha, hora, dur, "0000001", recurso, fechaFinReservas, repetir);
+				serviciosReserva.insertarReservaDias(fecha, hora, dur, carnet, recurso, fechaFinReservas, repetir);
 			} else {
-				System.out.println(hora);
-				serviciosReserva.insertarReserva(fecha, hora, dur, "0000001", recurso);
+				serviciosReserva.insertarReserva(fecha, hora, dur, carnet, recurso);
 			}
 			actionVerDisponibilidad();
 		} catch (ServiciosReservaException e) {
@@ -149,6 +158,7 @@ public class DisponibilidadView implements Serializable {
 		duracionHora = 0;
 		duracionMinutos = 0;
 		horaManual = false;
+		getCommunity();
 		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		fecha = dateFormat.format(event.getStartDate());
@@ -266,16 +276,16 @@ public class DisponibilidadView implements Serializable {
 		return this.recurso;
 	}
 	
-	public String getCommunity(){
-		String s = null;
+	private void getCommunity(){
+		Subject subject = SecurityUtils.getSubject();
+		String s = String.valueOf(subject.getSession().getAttribute("Correo"));
 		try{
-			Usuario u = serviciosReserva.consultarUsuarioCorreo(baseBean.getUsuario());
-			s = u.getCarnet();
-		} catch (ServiciosReservaException e) {
+			Usuario u = serviciosReserva.consultarUsuarioCorreo(s);
+			this.carnet = u.getCarnet();
+		}catch (ServiciosReservaException e) {
 			// TODO Auto-generated catch block
-			baseBean.mensajeApp(e);
+			e.printStackTrace();
 		}
-		return s;
 	}
 	
 	

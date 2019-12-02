@@ -95,7 +95,6 @@ public class MyBatisReservaDAO implements ReservaDAO {
 	public void insertarReserva(Reserva reserva) throws PersistenceException {
 		try{
 			if (consultarFecha(reserva.getFecha(), reserva.getHora())){
-				System.out.println(reserva);
 				reservaMapper.insertarReserva(reserva);
 			}
 			else{

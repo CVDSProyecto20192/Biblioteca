@@ -105,10 +105,15 @@
                     </p:dataTable>
 
                 </h:panelGrid>
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <h:panelGrid id="recursosMenosUsados" style="margin: auto;">
 
-                <h:panelGrid style="margin: auto;">
+                    <p:dataTable var="reserva" value="#{ReportBean.menosFrecuentesXFecha}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
+                        
+                        <f:facet name="header">
+                            Totalizado por fecha
+                        </f:facet>
 
-                    <p:dataTable var="reserva" value="#{ReportBean.recursosMasFrecuentes}" style="width: 500px;" rendered="#{ReportBean.masUsados}">
                         <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
                             <h:outputText value="#{reserva.recurso.id}"/>
                         </p:column>
@@ -117,8 +122,8 @@
                             <h:outputText value="#{reserva.recurso.nombre}"/>
                         </p:column>
                         
-                        <p:column headerText="Ubicación Recurso" style="text-align: center;" filterBy="#{reserva.recurso.ubicacion}" sortBy="#{reserva.recurso.ubicacion}">
-                            <h:outputText value="#{reserva.recurso.ubicacion}"/>
+                        <p:column headerText="Fecha de reserva" style="text-align: center; width: 300px;" filterBy="#{reserva.fecha}" sortBy="#{reserva.fecha}">
+                            <h:outputText value="#{reserva.fecha}"/>
                         </p:column>
                         
                         <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
@@ -126,6 +131,53 @@
                         </p:column>
                     </p:dataTable>
 
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentesXHorario}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                        
+                        <f:facet name="header">
+                            Totalizado por horario
+                        </f:facet>
+
+                        <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
+                            <h:outputText value="#{reserva.recurso.id}"/>
+                        </p:column>
+        
+                        <p:column headerText="Nombre Recurso" style="text-align: center;" filterBy="#{reserva.recurso.nombre}" sortBy="#{reserva.recurso.nombre}" >
+                            <h:outputText value="#{reserva.recurso.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Fecha de reserva" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
+                            <h:outputText value="#{reserva.hora}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
+                            <h:outputText value="#{reserva.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable var="reserva" value="#{ReportBean.frecuenteXTipo}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                        
+                        <f:facet name="header">
+                            Totalizado por tipo de recurso
+                        </f:facet>
+
+                        <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
+                            <h:outputText value="#{reserva.recurso.id}"/>
+                        </p:column>
+        
+                        <p:column headerText="Nombre Recurso" style="text-align: center;" filterBy="#{reserva.recurso.nombre}" sortBy="#{reserva.recurso.nombre}" >
+                            <h:outputText value="#{reserva.recurso.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Tipo de recurso" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
+                            <h:outputText value="#{reserva.recurso.tipo.tipo}"/>
+                        </p:column> 
+                        
+                        <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
+                            <h:outputText value="#{reserva.count}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
                     <p:dataTable var="hora" value="#{ReportBean.frecuenteXHorario}" style="width: 280px;" rendered="#{ReportBean.horariosMenos}">
                         <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
                             <h:outputText value="#{hora.hora}"/>
@@ -145,7 +197,7 @@
                             <h:outputText value="#{hora.count}"/>
                         </p:column>
                     </p:dataTable>
-                </h:panelGrid>
+                
             </h:panelGrid>   
         </h:form>
     </h:body>

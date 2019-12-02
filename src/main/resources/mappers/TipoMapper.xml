@@ -31,10 +31,25 @@
  			
 	</select>
 	
+	<select id="consutarIdTipo" resultType="int">
+		SELECT
+		t.id
+		
+		FROM BR_TIPO as t
+		
+		WHERE t.tipo=#{tipo.tipo} and t.descripcion=#{tipo.descripcion}
+	</select>
+	
+	
 	<insert id ="insertarTipo">
+		<selectKey keyProperty="id_tipo" resultType="int" order="BEFORE">
+			select COALESCE(MAX(id)+1,1) from BR_TIPO
+		</selectKey>
     	insert into BR_TIPO (id, tipo, descripcion) 
-    	VALUES (#{tipo.id},#{tipo.tipo}, #{tipo.descripcion})                    
+    	VALUES (#{id_tipo},#{tipo.tipo}, #{tipo.descripcion})                    
     </insert>
+	
+	
 	
 	<resultMap id="TipoResult" type="Tipo">
 			

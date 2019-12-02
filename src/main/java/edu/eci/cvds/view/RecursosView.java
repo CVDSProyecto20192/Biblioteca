@@ -41,6 +41,7 @@ public class RecursosView {
 	private Tipo tipo;
 	private int idTipo;
 	private List<Recurso> listaRecursos;
+	
 	private Recurso selectedRecurso;
 	
 	public RecursosView() {
@@ -75,29 +76,13 @@ public class RecursosView {
 		}
 	}
 	
-	
-	/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-	String formatDT = this.hora.format(formatter);
-	this.hora = LocalDateTime.parse(formatDT, DateTimeFormatter.ISO_DATE_TIME);*/
-	
-	/*private void createHour(long id_r, LocalDateTime hour) {
-		Hora hs=new Hora(id_r,hour);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		String formatDT = hour.format(formatter);
-		hour = LocalDateTime.parse(formatDT, formatter);
-		
-	}*/
-	
-	
 	private void actionHorarios(Recurso r) {
 		long id_r=r.getId();
 		this.tiempo=new ArrayList<Horario>();
 		
-		
-        String[] weekdays = this.baseBean.diasDeLaSemana();
+		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
+        String[] weekdays = dfs.getWeekdays();
         
-        //SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm:ss z");
-
         for (String weekday : weekdays) {
         	if(weekday!="" && weekday!="domingo"){
         		Horario h=new Horario(id_r,weekday);
@@ -183,6 +168,12 @@ public class RecursosView {
 		this.baseBean.setIdRec(id);
 	}
 	
+	
+	public void actionHorarios(long idRecurso) {
+		this.baseBean.setIdRec(idRecurso);
+	}
+	
+	
 	public List<Recurso> getActivos(){
 		List<Recurso> activos = null;
 		try{
@@ -194,6 +185,8 @@ public class RecursosView {
 		}
 		return activos;
 	}
+	
+	
 	
 	
 	public long getId() {
@@ -272,7 +265,7 @@ public class RecursosView {
 		actionSetListaRecursos();
 		return this.listaRecursos;
 	}
-	
+
 	public BasePageBean getUsuario() {
 		return this.baseBean;
 	}
@@ -292,15 +285,4 @@ public class RecursosView {
 	public String disponibilidad(){
 		return "Disponibilidad?faces-redirect=true&recurso=" + selectedRecurso.getId();
 	}
-	
-	/*public static void main(String[] args) {
-		DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es"));
-        String[] weekdays = dfs.getWeekdays();
-        
-        for (String weekday : weekdays) {
-        	if(weekday!="" && weekday!="domingo"){
-        		System.out.println("weekday = " + weekday);
-        	}
-        }
-	}*/
 }

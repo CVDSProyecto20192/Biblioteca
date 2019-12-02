@@ -21,7 +21,7 @@
         <h:form>
             <h:panelGrid cellpadding="25" style="margin: auto;">
             
-                <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="2" cellpadding="5" style="margin: auto;">
                     <p:outputLabel value="Mostrar por: "/>
                     <p:selectOneMenu value="#{ReportBean.show}">
                         <p:ajax listener="#{ReportBean.showTable}" update="@form"/>
@@ -31,11 +31,17 @@
                         <f:selectItem itemLabel="Horarios con mayor ocupación de recursos" itemValue="horariosMas"/>
                         <f:selectItem itemLabel="Horarios con menor ocupación de recursos" itemValue="horariosMenos"/>
                         <f:selectItem itemLabel="Reservas recurrentes" itemValue="recurrentes"/>
+                        <f:selectItem itemLabel="Tipo de recurso más usados" itemValue="tipoMasUsados"/>
                     </p:selectOneMenu>
                 </h:panelGrid>
 
-                <h:panelGrid style="margin: auto;">
-                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 500px;" rendered="#{ReportBean.menosUsados}">
+                <h:panelGrid id="recursosMasUsados" style="margin: auto;" cellpadding="15"> 
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
+                        
+                        <f:facet name="header">
+                            Totalizado por fecha
+                        </f:facet>
+
                         <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
                             <h:outputText value="#{reserva.recurso.id}"/>
                         </p:column>
@@ -44,14 +50,41 @@
                             <h:outputText value="#{reserva.recurso.nombre}"/>
                         </p:column>
                         
-                        <p:column headerText="Ubicación Recurso" style="text-align: center;" filterBy="#{reserva.recurso.ubicacion}" sortBy="#{reserva.recurso.ubicacion}">
-                            <h:outputText value="#{reserva.recurso.ubicacion}"/>
+                        <p:column headerText="Fecha de reserva" style="text-align: center; width: 300px;" filterBy="#{reserva.fecha}" sortBy="#{reserva.fecha}">
+                            <h:outputText value="#{reserva.fecha}"/>
                         </p:column>
                         
                         <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
                             <h:outputText value="#{reserva.count}"/>
                         </p:column>
                     </p:dataTable>
+
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentesXHorario}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
+                        
+                        <f:facet name="header">
+                            Totalizado por horario
+                        </f:facet>
+
+                        <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
+                            <h:outputText value="#{reserva.recurso.id}"/>
+                        </p:column>
+        
+                        <p:column headerText="Nombre Recurso" style="text-align: center;" filterBy="#{reserva.recurso.nombre}" sortBy="#{reserva.recurso.nombre}" >
+                            <h:outputText value="#{reserva.recurso.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Fecha de reserva" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
+                            <h:outputText value="#{reserva.hora}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Veces reservado" style="text-align: center;" filterBy="#{reserva.count}" sortBy="#{reserva.count}">
+                            <h:outputText value="#{reserva.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                </h:panelGrid>
+
+                <h:panelGrid style="margin: auto;">
 
                     <p:dataTable var="reserva" value="#{ReportBean.recursosMasFrecuentes}" style="width: 500px;" rendered="#{ReportBean.masUsados}">
                         <p:column headerText="Id Recurso" style="text-align: center;" filterBy="#{reserva.recurso.id}" sortBy="#{reserva.recurso.id}" >
@@ -91,6 +124,23 @@
                         </p:column>
                     </p:dataTable>
 
+                    <p:dataTable var="tipo" value="#{ReportBean.tiposMasUsados}" style="width: 580px;" rendered="#{ReportBean.tipoMasUsados}">
+                        <p:column headerText="Id tipo recurso" style="text-align: center;" filterBy="#{tipo.recurso.tipo.id}" sortBy="#{tipo.recurso.tipo.id}">
+                            <h:outputText value="#{tipo.recurso.tipo.id}"/>
+                        </p:column>
+
+                        <p:column headerText="Tipo recurso" style="text-align: center;" filterBy="#{tipo.recurso.tipo.tipo}" sortBy="#{tipo.recurso.tipo.tipo}">
+                            <h:outputText value="#{tipo.recurso.tipo.tipo}"/>
+                        </p:column>
+
+                        <p:column headerText="Descripción tipo" style="text-align: center;" filterBy="#{tipo.recurso.tipo.descripcion}" sortBy="#{tipo.recurso.tipo.descripcion}">
+                            <h:outputText value="#{tipo.recurso.tipo.descripcion}"/>
+                        </p:column>
+    
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{tipo.count}" sortBy="#{tipo.count}">
+                            <h:outputText value="#{tipo.count}"/>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGrid>
             </h:panelGrid>   
         </h:form>

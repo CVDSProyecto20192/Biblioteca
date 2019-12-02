@@ -69,7 +69,11 @@ public class HorariosView {
 		
 	}
 
-	
+	/**
+	 * Cambia el valor de la hora
+	 * @param idHora Id de la hora que se quiere modificar
+	 * @param hora Nuevo valor de la hora
+	 */
 	public void actualizarHora(long idHora, Date hora) {
 		try {
 			this.serviciosReserva.cambiarTiempoHora(idHora, hora);
@@ -113,7 +117,10 @@ public class HorariosView {
 		return ans;
 	}
 
-	
+	/**
+	 * Adiciona una fila
+	 * @param i Número del día al que se le quiere adicionar unahora
+	 */
 	public void actionAddRow(int i) {
 		String dia=asignarDiaNumero(i);
 		try {
@@ -128,7 +135,11 @@ public class HorariosView {
 		}
 	}
 	
-	
+	/**
+	 * Elimina una fila de hora
+	 * @param i Número que indica el día al que se le quiere eliminar una hora
+	 * @param idHora Id de la hora que se quiere eliminar
+	 */
 	public void actionDeleteRow(int i, long idHora){
 		String dia=asignarDiaNumero(i);
 		try {
@@ -143,11 +154,18 @@ public class HorariosView {
 		
 	}
 	
+	/**
+	 * Establece los días de la semana
+	 */
 	private void acionSetDiasDeLaSemana(){
 		String[] d= {"domingo","lunes","martes","miércoles","jueves","viernes","sábado"};
 		this.dias=d;
 	}
 	
+	
+	/**
+	 * Iniciliza al hash total
+	 */
 	private void actionInicializarTotal() {
 		this.total=new HashMap<Integer, ArrayList<Hora>>();
 		for(int i=1;i<7;i++) {
@@ -157,6 +175,9 @@ public class HorariosView {
 	}
 	
 	
+	/**
+	 * Reasigna los valores de las listas en total
+	 */
 	private void reinicioListas() {
 		actionSetHorario();
 		actionCreateHash();
@@ -189,6 +210,11 @@ public class HorariosView {
 		}
 	}
 	
+	/**
+	 * Relaciona el día dado con un número
+	 * @param dia Cadena que inica el día
+	 * @return Número asociado al día
+	 */
 	private int asignarNumeroDia(String dia) {
 		int ans=0;
 		dia=dia.replace(" ","");
@@ -205,7 +231,11 @@ public class HorariosView {
 		
 	}
 	
-	
+	/**
+	 * Establece el día según el número dado
+	 * @param num Número de asociación con día
+	 * @return Cadena que indica el día de la semana
+	 */
 	private String asignarDiaNumero(int num) {
 		
 		return this.dias[num];
@@ -220,6 +250,22 @@ public class HorariosView {
 		this.id=baseBean.getIdRec();
 	}
 	
+	
+	/**
+	 * Establece el id del horario a la hora dada
+	 * @param h Horario 
+	 * @param hs Hora
+	 */
+	private void establecerHora(Horario h, Hora hs) {
+		long id_hora;
+		try {
+			id_hora = this.serviciosReserva.consultarIdHora(h, hs);
+			hs.setId(id_hora);
+		} 
+		catch (ServiciosReservaException e) {
+			baseBean.mensajeApp(e);
+		}
+	}
 	
 	public long getId() {
 		return this.id;
@@ -254,18 +300,6 @@ public class HorariosView {
 	}
 	
 	
-	private void establecerHora(Horario h, Hora hs) {
-		long id_hora;
-		try {
-			id_hora = this.serviciosReserva.consultarIdHora(h, hs);
-			hs.setId(id_hora);
-		} 
-		catch (ServiciosReservaException e) {
-			baseBean.mensajeApp(e);
-		}
-		
-	}
-	
 	public List<Hora> getLs1(){
 		this.ls1=this.total.get(1);
 		return this.ls1;
@@ -297,7 +331,7 @@ public class HorariosView {
 		return this.ls6;
 	}
 	
-	public BasePageBean getUsuario() {
+	public BasePageBean getBaseBean() {
 		return this.baseBean;
 	}
 	
@@ -306,10 +340,9 @@ public class HorariosView {
 	}
 	
 	
-	public void actionPrint() {
+	/*public void actionPrint() {
 		System.out.println(this.ls1);
-	}
-	
+	}*/
 	
 }
 	

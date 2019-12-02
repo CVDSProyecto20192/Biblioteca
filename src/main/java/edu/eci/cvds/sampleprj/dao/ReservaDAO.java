@@ -5,7 +5,9 @@ import java.util.List;
 
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.samples.entities.Reserva;
+
 public interface ReservaDAO {
+
 	public List<Reserva> loadAll() throws PersistenceException;
 	
 	public List<Reserva> consultarReservasRecurso(long recursoId) throws PersistenceException;
@@ -31,4 +33,8 @@ public interface ReservaDAO {
 	public List<Reserva> recursosMasFrecuentes() throws PersistenceException;
 
 	public List<Reserva> masFrecuenteXHorario() throws PersistenceException;
+
+	public List<Reserva> tiposMasUsados() throws PersistenceException;
+
+	public List<Reserva> recursosFrecuentesXHorario() throws PersistenceException;
 }

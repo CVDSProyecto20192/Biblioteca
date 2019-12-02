@@ -26,11 +26,13 @@ public class LoginBean implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
+    @ManagedProperty(value = "#{ReservaBean}")
+	private BasePageBean baseBean;
+    
     private String userName;
     private String password;
     private boolean rememberMe;
     private boolean user, admin, noLogged;
-	
 
     public void login() {
         try {
@@ -47,12 +49,16 @@ public class LoginBean implements Serializable {
         } catch (UnknownAccountException e) {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
-        } catch (IncorrectCredentialsException e) {
+            this.baseBean.mensajeApp(e);
+        } 
+        
+        catch (IncorrectCredentialsException e) {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
+            this.baseBean.mensajeApp(e);
         }
     }
-
+    
     public boolean isNoLogged() {
         return noLogged;
     }
@@ -61,7 +67,7 @@ public class LoginBean implements Serializable {
         this.noLogged = noLogged;
     }
 
-    public void logout() {
+   public void logout() {
 	   try {
 		   if(getUser().isAuthenticated()) {
 			   getUser().logout();
@@ -70,6 +76,7 @@ public class LoginBean implements Serializable {
 		   }
 	   }
 	   catch(Exception e) {
+		   this.baseBean.mensajeApp(e);
 		   e.printStackTrace();
 		   
 	   }
@@ -82,6 +89,7 @@ public class LoginBean implements Serializable {
 	                try {
 	                    FacesContext.getCurrentInstance().getExternalContext().redirect("menuAdmin.xhtml");
 	                } catch (IOException e) {
+	                	this.baseBean.mensajeApp(e);
 	                    e.printStackTrace();
 	                }
 	        }else{
@@ -89,6 +97,7 @@ public class LoginBean implements Serializable {
 	                FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
 	            
 	            } catch (IOException e) {
+	            	this.baseBean.mensajeApp(e);
 	                e.printStackTrace();
 	            }
 	        }
@@ -107,6 +116,7 @@ public class LoginBean implements Serializable {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(path);
         } catch (IOException e) {
+        	this.baseBean.mensajeApp(e);
             e.printStackTrace();
         }
     }
@@ -121,12 +131,9 @@ public class LoginBean implements Serializable {
             else if(getUser().hasRole("Comunidad")){
                 this.user = true;
             }
-            else{
-                this.noLogged = true;
-            }
         }
     }
-
+    
     public void logAsNoRegister(){
         this.userName="NoRegistrado";
         this.password="NoRegistrado";
@@ -194,6 +201,15 @@ public class LoginBean implements Serializable {
     private Subject getUser() {
     	return SecurityUtils.getSubject();
     }
-	
 
+    
+    public BasePageBean getBaseBean() {
+		return this.baseBean;
+	}
+	
+	public void setBaseBean(BasePageBean bs){
+	    this.baseBean = bs;
+	}
 }
+
+

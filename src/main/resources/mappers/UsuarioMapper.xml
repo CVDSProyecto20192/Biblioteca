@@ -70,13 +70,54 @@
 			
 			FROM BR_USUARIO as u 
     		left join BR_CARGO as c on u.id_cargo=c.id
+
+			ORDER BY u.carnet
  			
 	</select>
+	
+	<select id="consultarIdCargoUser" resultType="int">
+		SELECT 
+		u.id_cargo 
+
+		FROM BR_USUARIO as u
+
+		WHERE u.carnet=#{carnet_usuario}
+	
+	</select>
+	
+	<select id="consultarEstadoBloqueado" resultType="boolean">
+		SELECT
+		u.bloqueado
+
+		FROM BR_USUARIO as u
+		
+		WHERE u.carnet=#{carnet_usuario}
+	</select>
+	
 
 	<insert id ="insertarUsuario">
-    	insert into BR_USUARIO (carnet, documento, correo, nombres, apellidos, passwd, ultimoingreso, bloqueado, id_cargo) 
-    	VALUES (#{usuario.carnet},#{usuario.documento},#{usuario.correo},#{usuario.nombres},#{usuario.apellidos}, #{usuario.password}, #{usuario.ultimoIngreso}, #{usuario.bloquedo}, #{recurso.cargo.id})                     
+    	INSERT into BR_USUARIO (carnet, documento, correo, nombres, apellidos, passwd, bloqueado, id_cargo) 
+    	VALUES (#{usuario.carnet},#{usuario.documento},#{usuario.correo},#{usuario.nombres},#{usuario.apellidos}, #{usuario.password}, #{usuario.bloquedo}, #{usuario.cargo.id})                     
     </insert>
+	
+	<update id="actualizarUltimoIngreso">
+		UPDATE BR_USUARIO
+		SET ultimoingreso=#{usuario.ultimoIngreso}
+		WHERE carnet=#{usuario.carnet}
+	
+	</update>
+	
+	<update id="actualizarUsuarioBloqueado">
+		UPDATE BR_USUARIO
+		SET bloqueado=#{bloq}
+		WHERE carnet=#{carnet_usuario}
+	</update>
+	
+	<update id="actualizarCargoUser">
+		UPDATE BR_USUARIO
+		SET id_cargo=#{cargo.id}
+		WHERE carnet=#{usuario.carnet}
+	</update>
 	
 	<resultMap id="UsuarioResult" type="Usuario">
 			

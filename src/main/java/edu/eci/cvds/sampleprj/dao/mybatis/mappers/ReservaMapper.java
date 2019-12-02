@@ -1,8 +1,10 @@
 package edu.eci.cvds.sampleprj.dao.mybatis.mappers;
+
 import edu.eci.cvds.samples.entities.Reserva;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import java.util.Date;
+
 public interface ReservaMapper {
 	
 	/**
@@ -33,5 +35,9 @@ public interface ReservaMapper {
 	public List<Reserva> recursosMasFrecuentes();
 
 	public List<Reserva> masFrecuenteXHorario();
+
+	public List<Reserva> tiposMasUsados();
+
+	public List<Reserva> recursosFrecuentesXHorario();
 
 }

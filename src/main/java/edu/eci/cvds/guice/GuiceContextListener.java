@@ -11,7 +11,9 @@ import com.google.inject.Injector;
 import edu.eci.cvds.sampleprj.dao.*;
 import edu.eci.cvds.sampleprj.dao.mybatis.*;
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import edu.eci.cvds.samples.services.ServiciosUsuario;
 import edu.eci.cvds.samples.services.impl.ServiciosReservaImpl;
+import edu.eci.cvds.samples.services.impl.ServiciosUsuarioImpl;
 
 
 
@@ -38,6 +40,8 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(HorarioDAO.class).to(MyBatisHorarioDAO.class);
                 bind(ReservaDAO.class).to(MyBatisReservaDAO.class);
                 bind(ServiciosReserva.class).to(ServiciosReservaImpl.class);
+                bind(ServiciosUsuario.class).to(ServiciosUsuarioImpl.class);
+
             }
         });
 

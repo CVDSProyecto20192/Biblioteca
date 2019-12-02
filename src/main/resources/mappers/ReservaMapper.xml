@@ -199,21 +199,30 @@
 	<!--Consultas para generar los reportes-->
 
 	<select id="recursosFrecuentes" resultMap="ReservaResult" >
-
 		SELECT
 			r.id as id_recurso,
 			r.nombre as nombre_recurso,
-			r.ubicacion as ubi_recurso,
+			res.fecha,
 			count(r.id) as num_veces
 		FROM
 			br_reserva as res
-			left join BR_USUARIO as u on u.carnet=res.usuario
 			left join BR_RECURSO as r on r.id=res.recurso
-			left join BR_CARGO as c on u.id_cargo=c.id
-			left join BR_TIPO as t on r.id_tipo=t.id	
+		group by r.id, res.fecha
+		order by num_veces desc
+		FETCH FIRST 10 ROWS ONLY
+	</select>
 
-		GROUP BY r.id
-		order by num_veces
+	<select id="recursosFrecuentesXHorario" resultMap="ReservaResult" >
+		SELECT
+			r.id as id_recurso,
+			r.nombre as nombre_recurso,
+			res.hora as tiempo,
+			count(r.id) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_RECURSO as r on r.id=res.recurso
+		group by r.id, res.hora
+		order by num_veces desc
 		FETCH FIRST 10 ROWS ONLY
 	</select>
 
@@ -260,6 +269,19 @@
 		FETCH FIRST 10 ROWS ONLY
 	</select>
 	
+	<select id="tiposMasUsados" resultMap="ReservaResult">
+		select
+    		t.id as id_tipo,
+			t.tipo as nom_tipo,
+			t.descripcion as des_tipo,
+			count(t.tipo) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_RECURSO as r on r.id=res.recurso
+			left join BR_TIPO as t on r.id_tipo=t.id
+		group by t.tipo,t.id
+		order by num_veces desc
+	</select>
 	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>

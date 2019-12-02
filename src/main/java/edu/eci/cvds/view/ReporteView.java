@@ -22,10 +22,18 @@ public class ReporteView {
     private BasePageBean basePageBean;
 
     private String show;
-    private boolean masUsados, menosUsados, horariosMas, horariosMenos, recurrentes;
+    private boolean masUsados, menosUsados, horariosMas, horariosMenos, recurrentes, tipoMasUsados;
 
     public ReporteView() {
 
+    }
+
+    public boolean isTipoMasUsados() {
+        return tipoMasUsados;
+    }
+
+    public void setTipoMasUsados(boolean tipoMasUsados) {
+        this.tipoMasUsados = tipoMasUsados;
     }
 
     @PostConstruct
@@ -39,10 +47,19 @@ public class ReporteView {
         try {
             recursosFrecuentes = serviciosReserva.recursosFrecuentes();
         } catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return recursosFrecuentes;
+    }
+
+    public List<Reserva> getRecursosFrecuentesXHorario(){
+        List<Reserva> recursosFrecuentesXHorario = null;
+        try {
+            recursosFrecuentesXHorario = serviciosReserva.recursosFrecuentesXHorario();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return recursosFrecuentesXHorario;
     }
 
     public List<Reserva> getFrecuenteXHorario(){
@@ -50,7 +67,6 @@ public class ReporteView {
         try {
             frecuenteXHorario = serviciosReserva.frecuenteXHorario();
         } catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return frecuenteXHorario;
@@ -61,7 +77,6 @@ public class ReporteView {
         try {
             masFrecuenteXHorario = serviciosReserva.masFrecuenteXHorario();
         } catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return masFrecuenteXHorario;
@@ -72,10 +87,21 @@ public class ReporteView {
         try {
             recursosMasFrecuentes = serviciosReserva.recursosMasFrecuentes();
         } catch (ServiciosReservaException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return recursosMasFrecuentes;
+    }
+
+    public List<Reserva> getTiposMasUsados(){
+        List<Reserva> tiposMasUsados = null;
+
+        try {
+            tiposMasUsados = serviciosReserva.tiposMasUsados();
+        } catch (ServiciosReservaException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return tiposMasUsados;
     }
 
     public void showTable(){
@@ -97,6 +123,10 @@ public class ReporteView {
                 break;
             case "recurrentes":
                 this.recurrentes=true;
+                break;
+            case "tipoMasUsados":
+                this.tipoMasUsados=true;
+                break;
         }
     }
 
@@ -106,6 +136,7 @@ public class ReporteView {
         this.horariosMas=false;
         this.horariosMenos=false;
         this.recurrentes=false;
+        this.tipoMasUsados=false;
     }
 
     //Gets and Sets

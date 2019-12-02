@@ -3,6 +3,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Usuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2717686721240078867L;
+	
 	private String carnet;
 	private String documento;
 	private String correo;

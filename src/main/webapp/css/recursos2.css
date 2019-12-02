@@ -65,31 +65,18 @@ p{
 	height: 20%;
 }
 
-
-.home {
-	display: inline;
-	width:2vw;
-	height: 2vw;
-	background-color:transparent;
-	-webkit-border-radius: 20%;
-	-webkit-transition:box-shadow .4s;
+.closeDiv{
+	top:0; 
+	left:0;
 	
+	float:left;
 }
 
-.backDiv{
-	width: 100%;
+.titulos{
+	float:left;
+	width: 90%;
+	margin-left: 3%;
 }
-
-.close {
-	display: inline;
-	width:2vw;
-	height: 2vw;
-	background-color:transparent;
-	-webkit-border-radius: 10%;
-	-webkit-transition:box-shadow .4s;
-}
-
-
 
 .table{
 	clear:both;
@@ -116,3 +103,9 @@ p{
 	
 }
 
+
+.close {
+	width: 5vw;
+	height: 5vw;
+	
+}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<link rel="stylesheet" type="text/css" href="css/recursos.css" />
+		
+		<meta http-equiv="Expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		
+		<script type="text/javascript">
+		  if(history.forward(1)){
+		    location.replace( history.forward(1) );
+		  }
+		</script>
+		
+		<title>Usuarios</title>
+		
+    </h:head>
+    
+    <h:body onload="nobackbutton();">
+
+		<h1>Biblioteca</h1>
+		<h2>Usuarios</h2>
+		<br/>
+        <h:form id="usuarios_form">
+            <section>
+                <div style="text-align: center" class='table'>
+                
+                    <p:dataTable class="usuarios" value="#{UsuariosBean.usuarios}" var="usuario" style="margin: 0 auto;"
+                    rows="8" paginator="true" 
+    				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
+    				rowsPerPageTemplate="5, 10, 15">
+	
+    					<p:column headerText="Carnet" filterBy="#{usuario.carnet}">
+                        	<h:outputText value="#{usuario.carnet}"></h:outputText>
+                        </p:column>            
+						
+                        <p:column headerText="Correo" filterBy="#{usuario.correo}">
+                        	<h:outputText value="#{usuario.correo}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Nombres" filterBy="#{usuario.nombres}">
+                        	<h:outputText value="#{usuario.nombres}"></h:outputText>
+                        </p:column>       
+                        
+                        <p:column headerText="Apellidos" filterBy="#{usuario.apellidos}">
+                        	<h:outputText value="#{usuario.apellidos}"></h:outputText>
+                        </p:column>            
+				
+                        <p:column headerText="Contrase&#241;a" filterBy="#{usuario.password}">
+                        	<h:outputText value="#{usuario.password}"></h:outputText>
+                        </p:column>  
+                        
+                        <p:column headerText="último Ingreso" filterBy="#{usuario.ultimoIngreso}">
+                        	<h:outputText value="#{usuario.ultimoIngreso}"></h:outputText>
+                        </p:column>  
+                        
+                        <p:column headerText="Estado">
+                        	<p:commandButton actionListener="#{UsuariosBean.actionBloquear(usuario.carnet)}"
+                        	value="#{UsuariosBean.actionMostrarBloq(usuario.bloqueado)}" update="usuarios_form" />            
+                        </p:column>
+                        
+                        <p:column headerText="Cargo" filterBy="#{usuario.cargo.nombre}">
+                        	<h:outputText value="#{usuario.cargo.nombre}"></h:outputText>
+                        </p:column>  
+					
+                    </p:dataTable>
+                </div>  
+              
+            </section>
+			
+			<br/>
+		
+
+        </h:form>
+    </h:body>
+    
+</html>

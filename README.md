@@ -46,7 +46,7 @@ Una vez el usuario haya hecho sus reservas o consultado las mismas, podrá aband
 Cuando el que ingresa a la aplicación es un usuario administrador, el menú a desplegar será el siguiente:
 ![](Imagenes/menuAdmin.PNG)
 
-Allí el admin, oprimiendo el primer ícon de izquierda a derecha, podrá registrar un nuevo usuario a la aplicación llenando el siguiente formulario:
+Allí el admin, oprimiendo el primer ícon de izquierda a derecha, podrá hacer la gestión de los usuarios presentes en el sistema:
 ![](Imagenes/RegistrarUsuario.PNG)
 
 Oprimiendo el segundo, el administrador se encontrará con una información detallada de cada una de las reservas hechas en la aplicación:
@@ -61,11 +61,11 @@ Por otra parte, si desea ver una información detallada del usuario al cual pert
 Finalmente, si se tratase de una reserva recurrente, el administrador podrá ver la próxima fecha y la fecha final de esta oprimiento el último ícono:
 ![](Imagenes/informacionRecurrenciaReservas.PNG)
 
-Otra de las funcionalidades que ofrece este menú de administrador es la de gestionar los recursos. Para esto, el administrador deberá oprimir en el ícono verde del menú principal, allí se desplegará la siguiente pantalla, la cual le permitirá al administrador ingresar un nuevo recurso a la aplicación:
-![](Imagenes/registroDERecursos.PNG)
- 
-Allí mismo, oprimiendo el botón de "ver recursos", podrá gestionar los recursos actuales, bloqueandolos si es necesario:
+Otra de las funcionalidades que ofrece este menú de administrador es la de gestionar los recursos. Para esto, el administrador deberá oprimir en el ícono verde del menú principal, allí se desplegará la siguiente pantalla, la cual le permitirá al administrador bloquear o observar detalladamente los horarios semanales de un recurso:
 ![](Imagenes/administracionDeRecursos.PNG)
+ 
+Esta vista incluye un símbolo de "+" en la parte inferior del cuadro en el que se presentan los recursos. Si el administrador lo oprime, esto lo llevará a una nueva vista donde podrá hacer el registro de un recursos llenando un formulario con información de este:
+![](Imagenes/registroDERecursos.PNG)
 
 Por último, el administrado podrá gestionar los tipos de recurso de la aplicación. Esto oprimiendo el cuarto ícono de izquierda a derecha. Haciendo esto, se desplegará la siguiente vista, donde podrá ver los tipos existentes y agregar un nuevo tipo si lo desea:
 ![](Imagenes/manejoDeTiposDeRecurso.PNG)

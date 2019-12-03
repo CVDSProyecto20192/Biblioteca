@@ -120,23 +120,23 @@ https://proyecto-biblioteca.herokuapp.com/
 
 ## Descripción del proceso
 
-# Integrantes
+## Integrantes
 
 - Natalia Durán Vivas
 - Julián David Gutierrez Vanegas
 - Andrés Ricardo Martínez Día
 - Miguel Ángel Rivera Rojas
 
-# Descripción de la Metodología
+## Descripción de la Metodología
 
 Para desarrollar los tasks de los springs, tuvimos en cuenta lo que cada uno quería realizar en el proyecto, de modo que para que solo uno no hiciera lo mismo siempre, a medida que ibamos avanzando nos turnábamos los roles y tareas generales de diseño.
 
-# Taiga 
+### Taiga 
 
 2019-2-PROYCVDS-EQUIPO_DINAMITA
 https://tree.taiga.io/project/nduran06-1-gestion-de-recursos-biblioteca/backlog
 
-# Release-burndown chart
+### Release-burndown chart
 
 Spring 1
 
@@ -150,7 +150,7 @@ Spring 3
 
 ![](Imagenes/sp3.png)
 
-# Tareas Springs
+### Tareas Springs
 
 Spring 1
 
@@ -164,7 +164,7 @@ Spring 3
 
 ![](Imagenes/sp3.png)
 
-# Backlogs
+### Backlogs
 
 Spring 1
 
@@ -187,9 +187,21 @@ Spring 3
 ![](Imagenes/sp3_2.png)
 
 
-# Pruebas
+### Problemas
+
+- No siempre teníamos suficiente tiempo para las tareas ya que nos demorábamos averiguando sobre algunos temas.
+
+- En ocasiones realizabamos cambios descoordinadamente, así que al subirlo al repositorio se hacía con errores.
+
+### Pruebas
 
 ![](Imagenes/pruebas.png)
 
+### Análisis Estático (Codacy)
 
+![](Imagenes/cod1.png)
+
+![](Imagenes/cod2.png)
+
+(Los errores son por la escritura en el ReadMe)
 

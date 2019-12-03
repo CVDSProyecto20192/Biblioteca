@@ -31,7 +31,7 @@ CREATE TABLE public.br_tipo (
 
 
 CREATE TABLE public.br_recurso (
-	id serial NOT NULL,
+	id bigserial NOT NULL,
 	nombre varchar(200) NOT NULL,
 	ubicacion varchar(50) NOT NULL,
 	capacidad int4 NOT NULL,

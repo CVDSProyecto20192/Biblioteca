@@ -17,6 +17,7 @@ CREATE TABLE public.br_usuario (
 	ultimoingreso date NULL,
 	bloqueado bool NULL DEFAULT false,
 	id_cargo int4 NULL,
+	programa varchar NULL,
 	CONSTRAINT br_usuario_pkey PRIMARY KEY (carnet),
 	CONSTRAINT fk_usuario_cargo FOREIGN KEY (id_cargo) REFERENCES br_cargo(id)
 );
@@ -51,12 +52,21 @@ CREATE TABLE public.br_reserva (
 	recurso int8 NOT NULL,
 	activa bool NOT NULL DEFAULT true,
 	grupo int4 NULL,
-	registro date NOT NULL,
+	registro date NULL,
 	CONSTRAINT br_reserva_pkey PRIMARY KEY (codigo),
 	CONSTRAINT ck_limite CHECK (((hora + duracion) < 1901)),
 	CONSTRAINT ck_maxima CHECK (((duracion < 201) AND (duracion > 0))),
 	CONSTRAINT ck_rangohora CHECK ((hora > 699))
 );
+
+
+INSERT INTO public.br_cargo
+(id, nombre, descripcion)
+VALUES(0, 'aa', 'aa');
+
+INSERT INTO public.br_usuario
+(carnet, documento, correo, nombres, apellidos, passwd, ultimoingreso, bloqueado, id_cargo)
+VALUES('000', '000', '000', 'aaa', 'aa', 'aaa', '2019-12-12', false, 0);
 
 
 /*CREATE UNIQUE INDEX recurso_index ON br_recurso (nombre, id_tipo);*/

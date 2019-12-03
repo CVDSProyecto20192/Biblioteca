@@ -45,6 +45,7 @@ public class TipoView {
 		try {
 			this.id=this.serviciosReserva.consultarIdTipo(this.tipo);
 		} catch (ServiciosReservaException e) {
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
 		}
 	}
@@ -56,6 +57,7 @@ public class TipoView {
 			consultarIdTipo();
 			actionSetListaTipos();
 		} catch (ServiciosReservaException e) {
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
 		}
 	}
@@ -72,6 +74,7 @@ public class TipoView {
 			this.listaTipos=serviciosReserva.consultarTipos();
 		} 
 		catch (ServiciosReservaException e) {
+			this.baseBean.mensajeApp(e);
 			baseBean.mensajeApp(e);
 		}
 	}

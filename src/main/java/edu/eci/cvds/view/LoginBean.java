@@ -48,15 +48,16 @@ public class LoginBean implements Serializable {
             redirectToMenu();
 
         } catch (UnknownAccountException e) {
+        	this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
-            this.baseBean.mensajeApp(e);
         } 
         
         catch (IncorrectCredentialsException e) {
+        	this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
-            this.baseBean.mensajeApp(e);
+            
         }
     }
     
@@ -155,9 +156,11 @@ public class LoginBean implements Serializable {
             redirectTo("recursosComunidad.xhtml");
 
         } catch (UnknownAccountException e) {
+        	this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Usuario no encontrado", "Este usuario no se encuentra en nuestra base de datos"));
         } catch (IncorrectCredentialsException e) {
+        	this.baseBean.mensajeApp(e);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Contraseña incorrecta", "La contraseña ingresada no es correcta"));
         }

@@ -43,6 +43,7 @@ public class CargosView {
 		try {
 			this.id=this.serviciosUsuario.consultarIdCargo(this.cargo);
 		} catch (ServiciosUsuarioException e) {
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
 		}
 	}
@@ -54,7 +55,7 @@ public class CargosView {
 			actionMostrarId();
 			actionSetListaCargos();
 		} catch (ServiciosUsuarioException e) {
-			// TODO Auto-generated catch block
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
 		}
 	}
@@ -63,6 +64,7 @@ public class CargosView {
 		try {
 			this.cargos=this.serviciosUsuario.consultarCargos();
 		} catch (ServiciosUsuarioException e) {
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
 		}
 		

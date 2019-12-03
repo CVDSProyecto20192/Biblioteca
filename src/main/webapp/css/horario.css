@@ -28,6 +28,35 @@ h2{
 	
 }
 
+.arriba{
+	width: 100%;
+	height: 20%;
+}
+
+
+.home {
+	display: inline;
+	width:2vw;
+	height: 2vw;
+	background-color:transparent;
+	-webkit-border-radius: 20%;
+	-webkit-transition:box-shadow .4s;
+	
+}
+
+.registroDiv{
+	width: 100%;
+}
+
+.close {
+	display: inline;
+	width:2vw;
+	height: 2vw;
+	background-color:transparent;
+	-webkit-border-radius: 10%;
+	-webkit-transition:box-shadow .4s;
+}
+
 .contenedorTotal2{
 	overflow:hidden;
 	clear:both;
@@ -373,6 +402,38 @@ h2{
  ::-webkit-scrollbar-thumb:window-inactive {
    background: rgba(255,0,0,0.4) !important; 
  }
+ 
+.backDiv{
+	width:2vw;
+	height:2vw;
+	
+	background-color:transparent;
+}
+
+.registroGo {
+	width:100%;
+	height:100%;
+	
+	background-color:transparent;
+	
+	-moz-box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	
+	/*Borde del botón*/
+	border:1px solid light-gray;
+	display:inline-block;
+	
+	/*texto del botón*/
+	color:182b64;
+	font-family:sans-serif;
+	font-size:1.2vw;
+	font-weight:bold;
+	
+}
 
 
 

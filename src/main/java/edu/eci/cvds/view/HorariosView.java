@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 import edu.eci.cvds.exceptions.ServiciosReservaException;
@@ -17,7 +18,7 @@ import edu.eci.cvds.samples.services.ServiciosReserva;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "HorarioBean")
-@SessionScoped
+@RequestScoped
 public class HorariosView {
 	
 	private ServiciosReserva serviciosReserva;

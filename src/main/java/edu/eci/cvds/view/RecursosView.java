@@ -135,7 +135,6 @@ public class RecursosView {
 			b = serviciosReserva.consultarDisponibilidadRecurso(id);
 			serviciosReserva.cambiarDisponibilidadRecurso(id,!b);
 		} catch (ServiciosReservaException e) {
-
 			baseBean.mensajeApp(e);
 		}
 		
@@ -175,7 +174,6 @@ public class RecursosView {
 			activos= serviciosReserva.consultarRecursosActivos();
 		}
 		catch (ServiciosReservaException e) {
-			// TODO Auto-generated catch block
 			baseBean.mensajeApp(e);
 		}
 		return activos;

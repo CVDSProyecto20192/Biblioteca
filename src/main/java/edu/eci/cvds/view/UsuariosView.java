@@ -51,6 +51,7 @@ public class UsuariosView {
 		try {
 			this.usuarios=this.serviciosUsuario.consultarUsuarios();
 		} catch (ServiciosUsuarioException e) {
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
 		}
 	}
@@ -62,8 +63,8 @@ public class UsuariosView {
 			serviciosUsuario.actualizarUsuarioBloqueado(carnet,!b);
 			actionSetListaUsuarios();
 		} catch (ServiciosUsuarioException e) {
+			this.baseBean.mensajeApp(e);
 			e.printStackTrace();
-			baseBean.mensajeApp(e);
 		}
 		
 	}

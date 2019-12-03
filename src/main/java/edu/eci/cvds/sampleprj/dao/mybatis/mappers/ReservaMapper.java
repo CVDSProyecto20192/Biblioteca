@@ -37,6 +37,12 @@ public interface ReservaMapper {
 	public List<Reserva> frecuenteXTipo();
 
 	public List<Reserva> recursosFrecuentesXHorario();
+	
+	public void cancelarReserva(@Param("reserva")Reserva reserva);
+	
+	public void cancelarReservas(@Param("reserva")Reserva reserva);
+	
+	public void cancelarReservasHastaFecha(@Param("reserva")Reserva reserva, @Param("limite")Date f);
 
 	public List<Reserva> menosFrecuentesXFecha();
 

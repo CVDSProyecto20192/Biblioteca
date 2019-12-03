@@ -54,4 +54,10 @@ public interface ReservaDAO {
 
 	public List<Reserva> horariosMenosXTipo() throws PersistenceException;
 
+	
+	public void cancelarReserva(Reserva r) throws PersistenceException;
+	
+	public void cancelarReservas(Reserva r) throws PersistenceException;
+	
+	public void cancelarReservasHastaFecha(Reserva r, Date f) throws PersistenceException;
 }

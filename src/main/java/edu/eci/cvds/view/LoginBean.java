@@ -94,7 +94,7 @@ public class LoginBean implements Serializable {
 	                	this.baseBean.mensajeApp(e);
 	                    e.printStackTrace();
 	                }
-	        }else{
+	        }else {
 	            try {
 	                FacesContext.getCurrentInstance().getExternalContext().redirect("menuCom.xhtml");
 	            
@@ -109,8 +109,12 @@ public class LoginBean implements Serializable {
 
 	public void isLogged(){
 		Subject subject = SecurityUtils.getSubject();
-		if (subject.getSession().getAttribute("Correo") != null){
+		if ((subject.getSession().getAttribute("Correo") != null) && subject.getSession().getAttribute("Correo")!="NoRegistrado"){
             redirectToMenu();
+		}
+		else{
+			userName = null;
+			password = null;
 		}
     }
     

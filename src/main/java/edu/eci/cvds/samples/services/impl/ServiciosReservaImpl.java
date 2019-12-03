@@ -543,7 +543,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		try {
 			return reservaDAO.recursosFrecuentes();
 		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
 			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
 	}
@@ -595,6 +594,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 	}
 
+	@Override
 	public Usuario consultarUsuarioCorreo(String correo) throws ServiciosReservaException{
 		Usuario u=null;
 		try {
@@ -685,6 +685,33 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		} catch (PersistenceException e) {
 			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
+	}
+	
+	@Override
+	public void cancelarReserva(Reserva r) throws ServiciosReservaException {
+		try{
+			reservaDAO.cancelarReserva(r);
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al cancelar reserva" , e);
+		}	
+	}
+	
+	@Override
+	public void cancelarReservas(Reserva r) throws ServiciosReservaException{
+		try{
+			reservaDAO.cancelarReserva(r);
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al cancelar reserva" , e);
+		}	
+	}
+	
+	@Override
+	public void cancelarReservasHastaFecha(Reserva r, Date f) throws ServiciosReservaException{
+		try{
+			reservaDAO.cancelarReservasHastaFecha(r, f);
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al cancelar reserva" , e);
+		}	
 	}
 }
 

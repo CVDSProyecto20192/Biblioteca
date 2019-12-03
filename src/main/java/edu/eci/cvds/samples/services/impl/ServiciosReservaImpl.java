@@ -541,6 +541,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		try {
 			return reservaDAO.recursosFrecuentes();
 		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
 			throw new ServiciosReservaException("Error al consultar las reservas", e);
 		}
 	}
@@ -603,90 +604,9 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return u;
 	}
-
-	@Override
-	public List<Reserva> menosFrecuentesXFecha() throws ServiciosReservaException {
-		try {
-			return reservaDAO.menosFrecuentesXFecha();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> recursosMenosFrecuentesXHorario() throws ServiciosReservaException {
-		try {
-			return reservaDAO.recursosMenosFrecuentesXHorario();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> menosFrecuenteXTipo() throws ServiciosReservaException {
-		try {
-			return reservaDAO.menosFrecuenteXTipo();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> horariosMasXFecha() throws ServiciosReservaException {
-		try {
-			return reservaDAO.horariosMasXFecha();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> horarioMasFrecuente() throws ServiciosReservaException {
-		try {
-			return reservaDAO.horarioMasFrecuente();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> horariosMasXTipo() throws ServiciosReservaException {
-		try {
-			return reservaDAO.horariosMasXTipo();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> horarioMenosFrecuente() throws ServiciosReservaException {
-		try {
-			return reservaDAO.horarioMenosFrecuente();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> horariosMenosXFecha() throws ServiciosReservaException {
-		try {
-			return reservaDAO.horariosMenosXFecha();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
-
-	@Override
-	public List<Reserva> horariosMenosXTipo() throws ServiciosReservaException {
-		try {
-			return reservaDAO.horariosMenosXTipo();
-		} catch (PersistenceException e) {
-			throw new ServiciosReservaException("Error al consultar las reservas", e);
-		}
-	}
 	
 	@Override
-	public void cancelarReserva(Reserva r) throws ServiciosReservaException {
+	public void cancelarReserva(Reserva r) throws ServiciosReservaException{
 		try{
 			reservaDAO.cancelarReserva(r);
 		} catch (PersistenceException e) {
@@ -712,5 +632,3 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}	
 	}
 }
-
-

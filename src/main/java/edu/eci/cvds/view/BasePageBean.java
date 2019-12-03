@@ -117,14 +117,10 @@ public class BasePageBean implements Serializable {
 	}
 	
 	public String page10(){
-		return "registroUsuarios?faces-redirect=true";
-	}
-	
-	public String page11(){
 		return "tipos?faces-redirect=true";
 	}
 	
-	public String page12(){
+	public String page11(){
 		return "cargos?faces-redirect=true";
 	}
 	

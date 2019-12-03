@@ -1,32 +1,28 @@
 body {
-  background-color:#CAF992;
+  background-color: #e1cbf8;
 }
 
 h1{
   color: white;
   text-align: center;
-  font-size:2.5vw;
+  font-size: 2.5vw;
   font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 }
 
 h2{
   color: white;
   font-family: "Lato", "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
-  font-size:1.5vw;
-  text-align:center;
+  font-size: 2vw;
+  text-align: center;
   padding: -2vw;
+  
 }
 
 
 p{
   color: black;
-  font-size:1.2vw;
+  font-size: 1.2vw;
   font-family: "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
-}
-
-.contenedor{
-	width: 100%;
-	height: 90%;
 }
 
 .arriba{
@@ -53,100 +49,41 @@ p{
 	-webkit-transition:box-shadow .4s;
 }
 
-.registro{
-	float:left;
-	margin-top:0vw;
-	padding-left:15vw;
-	width:35vw;
-	text-align:justify;
-}
 
-
-
-#tabla_tipos{
-	padding-top:4vw;
-	margin-left:53%;
-	padding-rigth:4vw;
-	text-align:justify;
-}
-
-#botones{
-	margin-top:5%;	
-}
-
-
-.label {
-  color: white;
-  padding: 1vw;
-  font-family: Arial;
-  display: inline-block;
-  width: 6vw;
-}
-
-.idRec {
-	background-color: #A6C087;
-}
- 
-.nombre {
-	background-color: #DEFCD2;
-	color: black;
-} 
-
-.ubicacion {
-	background-color: #A6C087;
-}
- 
-.capacidad {
-	background-color: #DEFCD2;
-	color: black;
-} 
-
- 
-.idTipo {
-	background-color: #A6C087;
-} 
-
-.form-control{
-	font-family: Arial; 
-	font-size:1.2vw;
-	height:1.5vw;
-	width: 22vw;
-	padding: 0.7vw;
-}
-
-.tipos {
+.usuarios {
   font-size:1.2vw;
   border: 0.2vw solid rgba(255,255,255,10);
   border-collapse: collapse;
-  width: 80%;
+  width: 90%;
   
  
 }
 
-.tipos tr:nth-child(even){
+.usuarios tr:nth-child(even){
 	background-color: #f9f256;
-	color:white;
+	color: white;
 }
 
-.tipos tr:nth-child(odd){
+.usuarios tr:nth-child(odd){
 	background-color: #fcf8a5;
-	color:black;
+	color: black;
 }
 
-.tipos tr:hover {
+.usuarios tr:hover {
 	background-color: #f04c65;
 }
 
-.tipos th {
-  padding-top: 25px;
-  padding-bottom: 12px;
+.usuarios th {
+  padding-top: 1vw;
+  padding-bottom: 1vw;
   text-align: left;
   background-color:#ececec;
   color: black;
 }
 
 
-.ui-button {
+
+.cargoGo {
 	-moz-box-shadow:inset 0px 1px 0px 0px #e1dedf;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #e1dedf;
 	box-shadow:inset 0px 1px 0px 0px #e1dedf;
@@ -170,3 +107,6 @@ p{
 	text-decoration:none;
 	text-shadow:1px 1px 0px #fae9ed;	
 }
+
+
+

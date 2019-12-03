@@ -216,4 +216,3 @@ public class LoginBean implements Serializable {
 	    this.baseBean = bs;
 	}
 }
-

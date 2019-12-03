@@ -95,11 +95,23 @@ Este proyecto está basado en la comunicación a través de inyecciones; a conti
 - Servicios (ServiciosImpl es su implementación)
 - Vistas
 
+# Tecnologías utilizadas
+
+PrimeFaces: Para el diseño de las páginas web (tablas, eventos, botones).
+Guice: Para poder crear y manejar las inyecciones. 
+QuickTheories: Ayudas en internet (GitHub, StackOverFlow)
+PostgreSQL: Motor de base de datos utilizada.
+Shiro: Para la seguridad de la aplicación.
+Heroku: Para el despliegue web de la aplicación.
+Circle CI y Codacy: Para la contante revisión del estado de la aplicación (Integración).
+
+# Enlaces de Integración Continua
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/444e45577adb4614bcfa9bb1a789c155)](https://www.codacy.com/gh/CVDSProyecto20192/Biblioteca?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CVDSProyecto20192/Biblioteca&amp;utm_campaign=Badge_Grade)
 
 [![CircleCI](https://circleci.com/gh/CVDSProyecto20192/Biblioteca.svg?style=svg)](https://circleci.com/gh/CVDSProyecto20192/Biblioteca)
 
-HEROKU LINKS:
+# Enlaces de Heroku
 
 https://serviciobiblioteca.herokuapp.com/
 

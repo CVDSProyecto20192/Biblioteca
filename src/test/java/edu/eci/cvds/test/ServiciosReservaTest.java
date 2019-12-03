@@ -5,6 +5,7 @@ import javax.validation.constraints.Null;
 import com.google.inject.Inject;
 
 import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 
 import edu.eci.cvds.samples.entities.Cargo;
@@ -32,9 +33,9 @@ public class ServiciosReservaTest{
 
     @Before
     public void setUp(){
-        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReserva();        
+        serviciosReserva = ServiciosReservaFactory.getInstance().getServiciosReservaTesting();  
     }
-	/*
+	
     @Test
     public void deberiaInsertarTipo(){
 		boolean r = false;
@@ -55,37 +56,15 @@ public class ServiciosReservaTest{
     }
 	
 	@Test
-    public void noDeberiaInsertarDosTiposConElMismoId(){
-		boolean r = true;
-		Tipo t;
-        try{
-			t = new Tipo(2, "prueba", "prueba");
-            serviciosReserva.agregarTipo(t);
-        }
-        catch (ServiciosReservaException e){
-            r = false;
-        }
-		boolean f = false;
-		try{
-			t = new Tipo(2, "prueba2", "prueba2");
-            serviciosReserva.agregarTipo(t);
-        }
-        catch (ServiciosReservaException e){
-			f = true;
-        }  
-		Assert.assertTrue(f);
-		Assert.assertTrue(r);
-    }
-	
-	@Test
     public void deberiaAgregarRecurso(){
 		boolean r = false;
 		Tipo t;
 		Recurso rec;
         try{
-			t = new Tipo(3, "prueba", "prueba");
+			t = new Tipo(1, "prueba", "prueba");
 			serviciosReserva.agregarTipo(t);
-			rec = new Recurso((long) 1, "prueba", "prueba", 1, true, 5, t);
+			System.out.println(serviciosReserva.consultarRecursos());
+			rec = new Recurso((long) 2, "prueba", "prueba", 1, true, null, t);
 			serviciosReserva.agregarRecurso(rec);
 			rec = serviciosReserva.consultarRecurso(rec.getId());
 			if ( rec != null){
@@ -101,8 +80,8 @@ public class ServiciosReservaTest{
 	@Test
     public void noDeberiaAgregarUnRecursoQueNoPoseeUnTipoRegistrado(){
 		boolean r = false;
-		Tipo t = new Tipo(5, "prueba", "prueba");
-		Recurso rec = new Recurso((long) 3, "prueba", "prueba", 1, true, 5, t);
+		Tipo t = new Tipo(2000, "prueba", "prueba");
+		Recurso rec = new Recurso((long) 3, "prueba", "prueba", 1, true, null, t);
         try{
 			serviciosReserva.agregarRecurso(rec);
         }
@@ -111,12 +90,14 @@ public class ServiciosReservaTest{
         }
 		Assert.assertTrue(r);
     }
+	
+	/*
 	@Test
     public void deberiaEstarDisponibleUnRecursoRecienIngresado(){
 		boolean r = false;
 		try{
-			Tipo t = new Tipo(6, "prueba", "prueba");
-			Recurso rec = new Recurso((long) 1, "prueba", "prueba", 1, true, 5, t);
+			Tipo t = new Tipo(1, "prueba", "prueba");
+			Recurso rec = new Recurso((long) 1, "prueba", "prueba", 1, true, null, t);
 			serviciosReserva.agregarTipo(t);
 			serviciosReserva.agregarRecurso(rec);
 			r = serviciosReserva.consultarDisponibilidadRecurso((long) 1);
@@ -158,7 +139,7 @@ public class ServiciosReservaTest{
         }
 		
 		Assert.assertTrue(r);	
-	}*/
+	}
 	
 	@Test
 	public void prueba(){
@@ -167,7 +148,7 @@ public class ServiciosReservaTest{
 			Date date = formatter.parse("2019-11-14");
 			System.out.println(serviciosReserva.consultarFranja(date, 1810, 10));
 			System.out.println(serviciosReserva.consultarUsuario("0000001"));
-			System.out.println(serviciosReserva.consultarRecurso((long) 1));**/
+			System.out.println(serviciosReserva.consultarRecurso((long) 1));
 
 			//serviciosReserva.insertarReservaDias("2019-11-29", 1000, 100, "0000001", (long) 1, "2019-12-7", 3);
 			System.out.println(serviciosReserva.consultarReservasRecurso((long) 2 ));
@@ -179,9 +160,10 @@ public class ServiciosReservaTest{
         }
 		/**catch (ParseException e) {
             e.printStackTrace();
-        }**/
+        }
 	}
-
+	**/
+	/*
 	@Test
 	public void pruebaConsultarReservasUsuario(){
 		try{
@@ -194,4 +176,5 @@ public class ServiciosReservaTest{
 			System.out.println("fracaso");
         }
 	}
+	**/
 }

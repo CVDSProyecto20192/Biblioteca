@@ -5,11 +5,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 
    <typeAliases>
-        <typeAlias type="edu.eci.cvds.samples.entities.Cargo" alias="Cargo"/>
-        <typeAlias type="edu.eci.cvds.samples.entities.Recurso" alias="Recurso"/>
-        <typeAlias type="edu.eci.cvds.samples.entities.Reserva" alias="Reserva"/>
-        <typeAlias type="edu.eci.cvds.samples.entities.Usuario" alias="Usuario"/> 
-		<typeAlias type="edu.eci.cvds.samples.entities.Tipo" alias="Tipo"/> 
+        <typeAlias type='edu.eci.cvds.samples.entities.Usuario' alias='Usuario'/>
+    	<typeAlias type='edu.eci.cvds.samples.entities.Cargo' alias='Cargo'/>
+		<typeAlias type='edu.eci.cvds.samples.entities.Tipo' alias='Tipo'/>	
+    	<typeAlias type='edu.eci.cvds.samples.entities.Recurso' alias='Recurso'/>
+		<typeAlias type='edu.eci.cvds.samples.entities.Reserva' alias='Reserva'/>
+    	<typeAlias type='edu.eci.cvds.samples.entities.Horario' alias='Horario'/>
+	   	<typeAlias type='edu.eci.cvds.samples.entities.Hora' alias='Hora'/>
     </typeAliases>
 
    <environments default="test">
@@ -25,11 +27,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    </environments>
 
    <mappers>
+        <mapper resource="mappers/UsuarioMapper.xml"></mapper>
         <mapper resource="mappers/CargoMapper.xml"></mapper>
-        <mapper resource="mappers/RecursoMapper.xml"></mapper>
-        <mapper resource="mappers/ReservaMapper.xml"></mapper>        
-        <mapper resource="mappers/UsuarioMapper.xml"></mapper> 
-		<mapper resource="mappers/TipoMapper.xml"></mapper> 
+        <mapper resource="mappers/TipoMapper.xml"></mapper>
+        <mapper resource="mappers/RecursoMapper.xml"></mapper>  
+		<mapper resource="mappers/ReservaMapper.xml"></mapper> 
+		<mapper resource="mappers/HorarioMapper.xml"></mapper> 
     </mappers>  
 
 </configuration>

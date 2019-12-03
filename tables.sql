@@ -17,6 +17,7 @@ CREATE TABLE public.br_usuario (
 	ultimoingreso date NULL,
 	bloqueado bool NULL DEFAULT false,
 	id_cargo int4 NULL,
+	programa varchar NULL,
 	CONSTRAINT br_usuario_pkey PRIMARY KEY (carnet),
 	CONSTRAINT fk_usuario_cargo FOREIGN KEY (id_cargo) REFERENCES br_cargo(id)
 );

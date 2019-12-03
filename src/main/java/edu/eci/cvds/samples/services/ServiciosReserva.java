@@ -85,6 +85,8 @@ public interface ServiciosReserva {
 	public List<Reserva> consultarReservasGrupo(long grupo) throws ServiciosReservaException;
 	
 	public List<Reserva> consultarReservasUsuario(String usuario) throws ServiciosReservaException;
+
+	public List<Reserva> consultarReservasUsuarioNoActivas(String usuario) throws ServiciosReservaException;
 	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws ServiciosReservaException; 
 	
@@ -136,9 +138,14 @@ public interface ServiciosReserva {
 
 	public List<Reserva> horariosMenosXTipo() throws ServiciosReservaException;
 
+	public List<Reserva> consultarReservasCanceladas(List<Reserva> noActivas);
+
+	public List<Reserva> consultarReservasPasadas(List<Reserva> noActivas);
+
 	public List<Reserva> graficoMasUsados() throws ServiciosReservaException;
 
 	public List<Reserva> graficarMenosUsados() throws ServiciosReservaException;
+
 
 
 }

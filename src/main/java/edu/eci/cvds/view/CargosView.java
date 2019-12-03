@@ -9,9 +9,9 @@ import javax.faces.bean.SessionScoped;
 
 import edu.eci.cvds.exceptions.ServiciosUsuarioException;
 import edu.eci.cvds.samples.entities.Cargo;
-import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosUsuario;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "CargosBean")
 @SessionScoped
 public class CargosView {

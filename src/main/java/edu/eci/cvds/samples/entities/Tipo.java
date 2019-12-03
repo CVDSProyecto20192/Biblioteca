@@ -3,6 +3,10 @@ package edu.eci.cvds.samples.entities;
 import java.io.Serializable;
 
 public class Tipo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6004907024922753785L;
 	private int id;
 	private String tipo;
 	private String descripcion;

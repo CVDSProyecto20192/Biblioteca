@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.services.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -165,6 +166,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	@Override
 	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException {
 		try {
+			@SuppressWarnings("unused")
 			Recurso r = consultarRecurso(id);
 			recursoDAO.updateDispRecurso(id, b);
 		} 
@@ -482,6 +484,19 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 		}
 		return reservas;
 	}
+
+	@Override
+	public List<Reserva> consultarReservasUsuarioNoActivas(String usuario) throws ServiciosReservaException {
+		List<Reserva> reservas;
+		try {
+			reservas=reservaDAO.consultarReservasUsuarioNoActivas(usuario);
+
+		} 
+		catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar las reservas del usuario: " + usuario, e);
+		}
+		return reservas;
+	}
 	
 	@Override
 	public String calcularSiguiente(Reserva selected) throws ServiciosReservaException{
@@ -713,6 +728,30 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	}
 
 	@Override
+	public List<Reserva> consultarReservasCanceladas(List<Reserva> noActivas) {
+		List<Reserva> canceladas = new ArrayList<Reserva>();
+		Date hoy = new Date();
+		for(Reserva res : noActivas){
+			if(res.getFechaF().compareTo(hoy)>0){
+				canceladas.add(res);
+			}
+		}
+
+		return canceladas;
+	}
+
+	@Override
+	public List<Reserva> consultarReservasPasadas(List<Reserva> noActivas) {
+		List<Reserva> pasadas = new ArrayList<Reserva>();
+		Date hoy = new Date();
+		for(Reserva res : noActivas){
+			if(res.getFechaF().compareTo(hoy)<0){
+				pasadas.add(res);
+			}
+		}
+		return pasadas;
+	}
+	
 	public List<Reserva> graficoMasUsados() throws ServiciosReservaException {
 		try{
 			return reservaDAO.graficoMasUsados();

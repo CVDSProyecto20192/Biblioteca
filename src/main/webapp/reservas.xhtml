@@ -22,8 +22,21 @@
 		<h1>Biblioteca</h1>
 		<h2>Reservas</h2>
 		<br/>
+		
         <h:form id="reservas_form">
-			<p:dataView value="#{ReservasUsersBean.reservas}" var = "reserva" rows="8" paginator="true" rowsPerPageTemplate="8, 16, 24"  
+			<br/>
+			<section>
+		
+				<div style="text-align: right">
+					<p:commandButton id= "canceladas" value="Ver Canceladas" action="#{ReservasUsersBean.cambioCanceladas}"  rendered="#{ReservasUsersBean.usuario.cargo.nombre == 'Comunidad'}" update="reservas_form"></p:commandButton>
+					<p:commandButton id= "pasadas" value="Ver Pasadas" action="#{ReservasUsersBean.cambioPasadas}" rendered="#{ReservasUsersBean.usuario.cargo.nombre == 'Comunidad'}" update="reservas_form"></p:commandButton>
+					<p:commandButton id= "activ" value="Ver activas" action="#{ReservasUsersBean.cambioActivas}" rendered="#{ReservasUsersBean.usuario.cargo.nombre == 'Comunidad'}" update="reservas_form"></p:commandButton>
+				</div>
+				
+			</section>
+			<br/>
+
+			<p:dataView value="#{ReservasUsersBean.reservas}" var = "reserva" rows="8" paginator="true" rowsPerPageTemplate="8, 16, 24" 
 			paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} ">
 				
 				<p:dataViewGridItem>

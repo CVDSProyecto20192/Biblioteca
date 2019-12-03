@@ -3,6 +3,8 @@ package edu.eci.cvds.sampleprj.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.mybatis.guice.transactional.Transactional;
+
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.samples.entities.Reserva;
 public interface ReservaDAO {
@@ -13,6 +15,8 @@ public interface ReservaDAO {
 	public List<Reserva> consultarReservasGrupo(long grupo) throws PersistenceException;
 
 	public List<Reserva> consultarReservasUsuario(String usuario) throws PersistenceException;
+
+	public List<Reserva> consultarReservasUsuarioNoActivas(String usuario) throws PersistenceException;
 	
 	public Reserva consultarFranja(Date fecha, int hora, int duracion, long recurso) throws PersistenceException;
 	
@@ -54,11 +58,13 @@ public interface ReservaDAO {
 
 	public List<Reserva> horariosMenosXTipo() throws PersistenceException;
 
-	
+	@Transactional
 	public void cancelarReserva(Reserva r) throws PersistenceException;
 	
+	@Transactional
 	public void cancelarReservas(Reserva r) throws PersistenceException;
 	
+	@Transactional
 	public void cancelarReservasHastaFecha(Reserva r, Date f) throws PersistenceException;
 
 	public List<Reserva> graficoMasUsados() throws PersistenceException;

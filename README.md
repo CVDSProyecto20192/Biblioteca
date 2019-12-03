@@ -1,7 +1,21 @@
 ### Escuela Colombiana de Ingeniería
 ### Ciclos de Vida del desarrollo de Software – CVDS
 
-# ServicioBiblioteca
+## Proyecto
+
+ServicioBiblioteca
+Team2019-2-PROYCVDS-EQUIPO_DINAMITA
+CVDS 2019-2
+
+
+## Roles
+
+- Product owner: Santiago Alzate
+- Scrum Master-Team: Natalia Durán Vivas
+- Scrum Master-Team: Julián David Gutierrez Vanegas
+- Scrum Master-Team: Andrés Ricardo Martínez Día
+- Scrum Master-Team: Miguel Ángel Rivera Rojas
+
 
 ## Descripcion del producto
 
@@ -95,13 +109,113 @@ Este proyecto está basado en la comunicación a través de inyecciones; a conti
 - Servicios (ServiciosImpl es su implementación)
 - Vistas
 
+# Tecnologías utilizadas
+
+PrimeFaces: Para el diseño de las páginas web (tablas, eventos, botones).
+Guice: Para poder crear y manejar las inyecciones. 
+QuickTheories: Ayudas en internet (GitHub, StackOverFlow)
+PostgreSQL: Motor de base de datos utilizada.
+Shiro: Para la seguridad de la aplicación.
+Heroku: Para el despliegue web de la aplicación.
+Circle CI y Codacy: Para la contante revisión del estado de la aplicación (Integración).
+
+# Enlaces de Integración Continua
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/444e45577adb4614bcfa9bb1a789c155)](https://www.codacy.com/gh/CVDSProyecto20192/Biblioteca?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CVDSProyecto20192/Biblioteca&amp;utm_campaign=Badge_Grade)
 
 [![CircleCI](https://circleci.com/gh/CVDSProyecto20192/Biblioteca.svg?style=svg)](https://circleci.com/gh/CVDSProyecto20192/Biblioteca)
 
-HEROKU LINKS:
+# Enlaces de Heroku
 
 https://serviciobiblioteca.herokuapp.com/
 
 https://proyecto-biblioteca.herokuapp.com/
+
+
+### Descripción del proceso
+
+## Integrantes
+
+- Natalia Durán Vivas
+- Julián David Gutierrez Vanegas
+- Andrés Ricardo Martínez Día
+- Miguel Ángel Rivera Rojas
+
+## Descripción de la Metodología
+
+Para desarrollar los tasks de los springs, tuvimos en cuenta lo que cada uno quería realizar en el proyecto, de modo que para que solo uno no hiciera lo mismo siempre, a medida que ibamos avanzando nos turnábamos los roles y tareas generales de diseño.
+
+### Taiga 
+
+2019-2-PROYCVDS-EQUIPO_DINAMITA
+https://tree.taiga.io/project/nduran06-1-gestion-de-recursos-biblioteca/backlog
+
+### Release-burndown chart
+
+Spring 1
+
+![](Imagenes/sp1.png)
+
+Spring 2
+
+![](Imagenes/sp2.png)
+
+Spring 3
+
+![](Imagenes/sp3.png)
+
+### Tareas Springs
+
+Spring 1
+
+![](Imagenes/spt1.png)
+
+Spring 2
+
+![](Imagenes/sp2.png)
+
+Spring 3
+
+![](Imagenes/sp3.png)
+
+### Backlogs
+
+Spring 1
+
+![](Imagenes/bc1.png)
+
+Spring 2
+
+![](Imagenes/bc2_1.png)
+
+![](Imagenes/bc2_2.png)
+
+![](Imagenes/bc2_3.png)
+
+![](Imagenes/bc2_4.png)
+
+Spring 3
+
+![](Imagenes/sp3_1.png)
+
+![](Imagenes/sp3_2.png)
+
+
+### Problemas
+
+- No siempre teníamos suficiente tiempo para las tareas ya que nos demorábamos averiguando sobre algunos temas.
+
+- En ocasiones realizabamos cambios descoordinadamente, así que al subirlo al repositorio se hacía con errores.
+
+### Pruebas
+
+![](Imagenes/pruebas.png)
+
+### Análisis Estático (Codacy)
+
+![](Imagenes/cod1.png)
+
+![](Imagenes/cod2.png)
+
+(Los errores son por la escritura en el ReadMe)
 

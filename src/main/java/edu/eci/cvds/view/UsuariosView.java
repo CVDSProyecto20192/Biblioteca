@@ -8,13 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.exceptions.ServiciosUsuarioException;
-import edu.eci.cvds.samples.entities.Cargo;
 import edu.eci.cvds.samples.entities.Usuario;
-import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosUsuario;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "UsuariosBean")
 @SessionScoped
 public class UsuariosView {
@@ -47,22 +45,6 @@ public class UsuariosView {
 		actionSetListaUsuarios();
 	}
 	
-	
-	public void actionRegistrarUsuario() {
-		
-		try {
-			Cargo c = this.serviciosUsuario.consultarCargo(this.idCargo);
-			System.out.println(this.serviciosUsuario);
-			/*System.out.println(c);
-			Usuario user=new Usuario(this.carnet, this.documento, this.correo, this.nombres, 
-					this.apellidos, this.password, this.bloqueado, c);
-			System.out.println(user);
-			this.serviciosUsuario.insertarUsuario(user);*/
-		} catch (ServiciosUsuarioException e) {
-			e.printStackTrace();
-		}
-		
-	}
 
 
 	private void actionSetListaUsuarios() {

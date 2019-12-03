@@ -16,8 +16,6 @@ import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisTipoDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBatisUsuarioDAO;
 import edu.eci.cvds.samples.services.impl.ServiciosReservaImpl;
 
-import org.apache.ibatis.transaction.TransactionFactory;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.XMLMyBatisModule;
 
 import java.util.Optional;

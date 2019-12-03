@@ -1,10 +1,13 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Cargo implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1113612096417564251L;
 	private long id;
 	private String nombre;
 	private String descripcion;

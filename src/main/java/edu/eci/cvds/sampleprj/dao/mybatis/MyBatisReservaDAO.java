@@ -65,7 +65,17 @@ public class MyBatisReservaDAO implements ReservaDAO {
 			return reservaMapper.consultarReservasUsuario(usuario);
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
-			throw new PersistenceException("Error al consultar id del grupo", e);
+			throw new PersistenceException("Error al consultar carnet del usuario", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> consultarReservasUsuarioNoActivas(String usuario) throws PersistenceException {
+		try{
+			return reservaMapper.consultarReservasUsuarioNoActivas(usuario);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar carnet del usuario", e);
 		}  
 	}
 	

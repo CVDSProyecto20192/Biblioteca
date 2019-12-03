@@ -38,11 +38,48 @@ Y como último elemento en esta vista, el usuario podrá realizar sus reservas a
 Mientras que si el usuario realiza esta selección en una hora específica, ya sea que lo haga desde la vista de "disponibilidad semanal" o "disponibilidad diaría", el usuario no tendrá que digitar la hora, ya que esta tomará el valor de la franja donde realizó el click
 ![](Imagenes/reservarDesdeLaSemana.PNG)
 
-Diagrama Base de datos
+Mientras que si el usuario realiza esta selección en una hora específica, ya sea que lo haga desde la vista de "disponibilidad semanal" o "disponibilidad diaría", el usuario no tendrá que digitar la hora, ya que esta tomará el valor de la franja donde realizó el click
+![](Imagenes/reservarDesdeLaSemana.PNG)
+
+Una vez el usuario haya hecho sus reservas o consultado las mismas, podrá abandonar la aplicación volviendo al menú incial y oprimiendo el ícono rojo.
+
+Cuando el que ingresa a la aplicación es un usuario administrador, el menú a desplegar será el siguiente:
+![](Imagenes/menuAdmin.PNG)
+
+Allí el admin, oprimiendo el primer ícon de izquierda a derecha, podrá registrar un nuevo usuario a la aplicación llenando el siguiente formulario:
+![](Imagenes/RegistrarUsuario.PNG)
+
+Oprimiendo el segundo, el administrador se encontrará con una información detallada de cada una de las reservas hechas en la aplicación:
+![](Imagenes/verReservas.PNG)
+
+Si el administrador desea obtener información más detallada sobre el recurso reservado, bastará con que oprima el ícono de la lupa e inmediatamente se desplegará en un cuadro toda la información sobre dicho recurso:
+![](Imagenes/informacionRecursoReservas.PNG)
+
+Por otra parte, si desea ver una información detallada del usuario al cual pertenece la reserva, bastará con oprimir el muñeco de usuario:
+![](Imagenes/informacionUsuariosReservas.PNG)
+
+Finalmente, si se tratase de una reserva recurrente, el administrador podrá ver la próxima fecha y la fecha final de esta oprimiento el último ícono:
+![](Imagenes/informacionRecurrenciaReservas.PNG)
+
+Otra de las funcionalidades que ofrece este menú de administrador es la de gestionar los recursos. Para esto, el administrador deberá oprimir en el ícono verde del menú principal, allí se desplegará la siguiente pantalla, la cual le permitirá al administrador ingresar un nuevo recurso a la aplicación:
+![](Imagenes/registroDERecursos.PNG)
+ 
+Allí mismo, oprimiendo el botón de "ver recursos", podrá gestionar los recursos actuales, bloqueandolos si es necesario:
+![](Imagenes/administracionDeRecursos.PNG)
+
+Por último, el administrado podrá gestionar los tipos de recurso de la aplicación. Esto oprimiendo el cuarto ícono de izquierda a derecha. Haciendo esto, se desplegará la siguiente vista, donde podrá ver los tipos existentes y agregar un nuevo tipo si lo desea:
+![](Imagenes/manejoDeTiposDeRecurso.PNG)
+
+Cuando un usuario elige la opción de ingresar como invitado, se topará con la tabla de recursos disponibles vista anteriormente. Allí, de igual forma que el usuario de la comunidad, podrá elegir el recurso que desee y observar su disponibilidad, además, de obtener una pequeña información de las reservas de este. 
+La gran diferencia en esta vista, radica en que, si el usuario invitado oprime una hora o día en el calendario para realizar una reserva, aparecerá ante él el siguiente cuadro solicitandole iniciar sesión para poder realizar esta reserva:
+![](Imagenes/solicitarIniciarSesionInvitado.PNG)
+
+
+# Diagrama Base de datos
 
 ![](model2.PNG)
 
-Diagrama de Clases
+# Diagrama de Clases
 
 ![](Diagramas/DiagramaClasesPrin.png)
 

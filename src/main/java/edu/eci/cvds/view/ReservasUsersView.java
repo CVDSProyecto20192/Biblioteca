@@ -36,9 +36,17 @@ public class ReservasUsersView {
 	
 	private String ultima;
 	
-	private String carnet;
-	
 	private String correo;
+
+	private List<Reserva> canceladas;
+
+	private List<Reserva> pasadas;
+
+	private List<Reserva> noActivas;
+	
+	private List<Reserva> activas;
+	
+	private Usuario usuario;
 	
 	public ReservasUsersView() {
 	}
@@ -50,8 +58,13 @@ public class ReservasUsersView {
 		correo = String.valueOf(subject.getSession().getAttribute("Correo"));
 		try {
 			Usuario u = serviciosReserva.consultarUsuarioCorreo(correo);
+			usuario = u;
 			if (u.getCargo().getNombre().equals("Comunidad")){
 				reservas = serviciosReserva.consultarReservasUsuario(u.getCarnet());
+				activas = serviciosReserva.consultarReservasUsuario(u.getCarnet());
+				noActivas = serviciosReserva.consultarReservasUsuarioNoActivas(u.getCarnet());
+				canceladas= serviciosReserva.consultarReservasCanceladas(noActivas);
+				pasadas= serviciosReserva.consultarReservasPasadas(noActivas);
 			}
 			else{
 				reservas= serviciosReserva.consultarReservas();
@@ -60,10 +73,17 @@ public class ReservasUsersView {
 			baseBean.mensajeApp(e);
 		}
 	}
-	
-	
-	public List<Reserva> getReservas(){
+
+	public List<Reserva> getReservas() {
 		return this.reservas;
+	}
+
+	public List<Reserva> getCanceladas() {
+		return this.canceladas;
+	}
+
+	public List<Reserva> getPasadas() {
+		return this.pasadas;
 	}
 	
 	public BasePageBean getBaseBean() {
@@ -103,6 +123,23 @@ public class ReservasUsersView {
 		}
 		return this.siguiente;
 	}
+	
+	public void cambioCanceladas(){
+		this.reservas=this.canceladas;
+	}
+	
+	public void cambioPasadas(){
+		this.reservas=this.pasadas;
+	}
+	
+	public void cambioActivas(){
+		this.reservas=this.activas;
+	}
+	
+	public Usuario getUsuario(){
+		return this.usuario;
+	}
+	
 	
 }
 	

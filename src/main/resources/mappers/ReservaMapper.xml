@@ -397,6 +397,30 @@
 		SET activo = false
 		WHERE grupo=#{reserva.grupo} AND fecha > now () AND #{limite} >= fecha
 	</update>
+
+	<select id="graficoMasUsados" resultMap="ReservaResult">
+		select
+			r.nombre nombre_recurso,
+			count(r.nombre) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_RECURSO as r on r.id=res.recurso
+		group by r.nombre
+		order by num_veces desc
+		fetch first 10 rows only
+	</select>
+
+	<select id="graficarMenosUsados" resultMap="ReservaResult">
+		select
+			r.nombre nombre_recurso,
+			count(r.nombre) as num_veces
+		FROM
+			br_reserva as res
+			left join BR_RECURSO as r on r.id=res.recurso
+		group by r.nombre
+		order by num_veces asc
+		fetch first 10 rows only
+	</select>
 	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>

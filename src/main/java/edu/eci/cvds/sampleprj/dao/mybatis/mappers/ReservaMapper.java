@@ -62,4 +62,8 @@ public interface ReservaMapper {
 
 	public List<Reserva> horariosMenosXTipo();
 
+	public List<Reserva> graficoMasUsados();
+
+	public List<Reserva> graficarMenosUsados();
+
 }

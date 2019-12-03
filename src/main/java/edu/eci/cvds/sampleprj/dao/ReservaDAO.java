@@ -60,4 +60,8 @@ public interface ReservaDAO {
 	public void cancelarReservas(Reserva r) throws PersistenceException;
 	
 	public void cancelarReservasHastaFecha(Reserva r, Date f) throws PersistenceException;
+
+	public List<Reserva> graficoMasUsados() throws PersistenceException;
+
+	public List<Reserva> graficarMenosUsados() throws PersistenceException;
 }

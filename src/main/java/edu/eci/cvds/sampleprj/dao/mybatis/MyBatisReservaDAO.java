@@ -305,4 +305,22 @@ public class MyBatisReservaDAO implements ReservaDAO {
 		}  
 	}
 
+	@Override
+	public List<Reserva> graficoMasUsados() throws PersistenceException {
+		try{
+			return reservaMapper.graficoMasUsados();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		} 
+	}
+
+	@Override
+	public List<Reserva> graficarMenosUsados() throws PersistenceException {
+		try{
+			return reservaMapper.graficarMenosUsados();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		} 
+	}
+
 }

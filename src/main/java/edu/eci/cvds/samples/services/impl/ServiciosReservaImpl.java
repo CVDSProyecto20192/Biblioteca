@@ -713,6 +713,24 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			throw new ServiciosReservaException("Error al cancelar reserva" , e);
 		}	
 	}
+
+	@Override
+	public List<Reserva> graficoMasUsados() throws ServiciosReservaException {
+		try{
+			return reservaDAO.graficoMasUsados();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar reserva" , e);
+		}	
+	}
+
+	@Override
+	public List<Reserva> graficarMenosUsados() throws ServiciosReservaException {
+		try{
+			return reservaDAO.graficarMenosUsados();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar reserva" , e);
+		}	
+	}
 }
 
 

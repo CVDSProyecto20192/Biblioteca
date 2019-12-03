@@ -136,6 +136,10 @@ public interface ServiciosReserva {
 
 	public List<Reserva> horariosMenosXTipo() throws ServiciosReservaException;
 
+	public List<Reserva> graficoMasUsados() throws ServiciosReservaException;
+
+	public List<Reserva> graficarMenosUsados() throws ServiciosReservaException;
+
 
 }
 

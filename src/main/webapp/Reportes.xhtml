@@ -276,7 +276,39 @@
                         
                     </p:dataTable>
                 </h:panelGrid>
-               
+
+                <h:panelGrid style="margin: auto;">
+                    <p:commandLink oncomplete="PF('masUsados').show();" update="@form" rendered="#{ReportBean.masUsados}">
+                        Visualizar gráfico resumen
+                    </p:commandLink>
+                    <p:commandLink oncomplete="PF('menosUsados').show();" update="@form" rendered="#{ReportBean.menosUsados}">
+                        Visualizar gráfico resumen
+                    </p:commandLink>
+                    <p:commandLink oncomplete="PF('horarioMas').show();" update="@form" rendered="#{ReportBean.horariosMas}">
+                        Visualizar gráfico resumen
+                    </p:commandLink>
+                    <p:commandLink oncomplete="PF('horarioMenos').show();" update="@form" rendered="#{ReportBean.horariosMenos}">
+                        Visualizar gráfico resumen
+                    </p:commandLink>
+                </h:panelGrid>
+                
+                <p:dialog header="Más Usados" widgetVar="masUsados" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:chart type="bar" model="#{ReportBean.moreUsed}" style="height: 350px; width: 350px;"/>
+                </p:dialog>
+
+                <p:dialog header="Menos Usados" widgetVar="menosUsados" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:chart type="bar" model="#{ReportBean.lessUsed}" style="height: 350px; width: 350px;"/>
+                </p:dialog>
+
+                <p:dialog header="Mayor ocupación horarios" widgetVar="horarioMas" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:chart type="bar" model="#{ReportBean.masHorario}" style="height: 500px; width: 500px;"/>
+                </p:dialog>
+
+                <p:dialog header="Menor ocupacion horarios" widgetVar="horarioMenos" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <p:chart type="bar" model="#{ReportBean.menosHorario}" style="height: 500px; width: 500px;"/>
+                </p:dialog>
+
+
             </h:panelGrid>   
         </h:form>
     </h:body>

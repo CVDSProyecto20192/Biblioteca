@@ -74,6 +74,20 @@ Cuando un usuario elige la opción de ingresar como invitado, se topará con la 
 La gran diferencia en esta vista, radica en que, si el usuario invitado oprime una hora o día en el calendario para realizar una reserva, aparecerá ante él el siguiente cuadro solicitandole iniciar sesión para poder realizar esta reserva:
 ![](Imagenes/solicitarIniciarSesionInvitado.PNG)
 
+# Retrospectiva
+# Sprint 1
+Este fue un sprint que no tuvo un buen desarrollo a nivel grupal. Las tareas en este Sprint no fueron divididas de la mejor manera, ya que se asignaron tareas demasiado extensas que le tomaban a un integrante del grupo varios días, mientras los otros integrantes solo se quedaban esperando. 
+A pesar de esto, se lograron implementar, aunque no de la manera más optima, los casos de uso de inicio de sesión, registrar recurso y registrar recurso. En este Sprint no fue posible realizar todas las pruebas correspondientes y se presentaron algunos fallos en el incicio de sesió y el manejo de las vistas que tendrán que ser corregidos en el siguiente Sprint
+
+# Sprint 2
+En este Sprint se aprendieron de los errores del anterior sprint. En este se procuró dejar tareas más cortas y dividir el grupo en dos, un grupo (Miguel y Natalia) trabajó en el front correspondiente a la vista de la disponibilidad de las reservas a través de un calendario dinámico. Mientras que, los otros dos integrantes del equipo (Julián y Ricardo), se enfocaron en administrar toda la parte del manejo de las reservas, desde su registro en la base de datos, hasta la aparición de la información de ellas en la pantalla. 
+A pesar de este buen manejo de las tareas, no fue posible finalizar este Sprint por completo debido a su complejidad y larga lista de tareas para realizarlo. En este Sprint quedaron faltando las pruebas y la integración de la vista del calendario de la disponibilidad, con el manejo de las reservas.
+
+# Sprint 3
+Este último Sprint fue más que complicado para el grupo. En este último Sprint aparecieron muchas cosas que corregir de los anteriores, lo cual no permitió que se avanzará en todas las tareas de usuario propuestas para el mismo.
+A pesar de esto, el grupo logró presentar por completo dos historias de usuario de este Sprint quedando faltando solamente la implementación del fron de la acción de "cancelar reserva", ya que para esta, debido a los cortes de tiempo inesperados para la elaboración del Sprint, solo fue posible implementar el back. 
+El grupo entrega un trabajo elaborado, que aunque faltando algunos detallitos por pulir, se pueden ver implementadas casi por completo todas las historias de usuario dadas, e incluso algunas adicionales.
+
 ## Arquitectura y Diseño
 
 # Modelo Entidad-Relación

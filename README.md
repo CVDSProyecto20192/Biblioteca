@@ -38,7 +38,14 @@ Y como último elemento en esta vista, el usuario podrá realizar sus reservas a
 Mientras que si el usuario realiza esta selección en una hora específica, ya sea que lo haga desde la vista de "disponibilidad semanal" o "disponibilidad diaría", el usuario no tendrá que digitar la hora, ya que esta tomará el valor de la franja donde realizó el click
 ![](Imagenes/reservarDesdeLaSemana.PNG)
 
+Diagrama Base de datos
+
 ![](model2.PNG)
+
+Diagrama de Clases
+
+![](Diagramas/DiagramaClasesPrin.png)
+
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/444e45577adb4614bcfa9bb1a789c155)](https://www.codacy.com/gh/CVDSProyecto20192/Biblioteca?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CVDSProyecto20192/Biblioteca&amp;utm_campaign=Badge_Grade)
 

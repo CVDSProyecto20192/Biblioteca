@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<link rel="stylesheet" type="text/css" href="css/recursos.css" />
+		<link rel="stylesheet" type="text/css" href="css/usuarios.css" />
 		
 		<meta http-equiv="Expires" content="0" />
 		<meta http-equiv="Pragma" content="no-cache" />
@@ -25,15 +25,25 @@
     
     <h:body onload="nobackbutton();">
 
-		<h1>Biblioteca</h1>
-		<h2>Usuarios</h2>
-		<br/>
         <h:form id="usuarios_form">
+        	<div class="arriba">
+					
+				<h:commandButton image="img/home.svg" id= "home" class="home"
+				action="#{ReservaBean.page01}" update="usuarios_form"></h:commandButton>	
+				&nbsp; 
+				<h:commandButton image="img/logout.svg" id= "close" class="close"
+				actionListener="#{LoginBean.logout}" update="usuarios_form"></h:commandButton>	
+				
+				<h1>Biblioteca</h1>
+				<h2>Usuarios</h2>
+			
+			</div>
+        	
             <div>
                 <div style="text-align: center" class='table'>
                 
                     <p:dataTable class="usuarios" value="#{UsuariosBean.usuarios}" var="usuario" style="margin: 0 auto;"
-                    rows="8" paginator="true" 
+                    rows="5" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
     				rowsPerPageTemplate="5, 10, 15">
 	
@@ -53,11 +63,11 @@
                         	<h:outputText value="#{usuario.apellidos}"></h:outputText>
                         </p:column>            
 				
-                        <p:column headerText="Contrase&#241;a" filterBy="#{usuario.password}">
+                        <p:column headerText="Contrase&#241;a" >
                         	<h:outputText value="#{usuario.password}"></h:outputText>
                         </p:column>  
                         
-                        <p:column headerText="último Ingreso" filterBy="#{usuario.ultimoIngreso}">
+                        <p:column headerText="Último Ingreso" filterBy="#{usuario.ultimoIngreso}">
                         	<h:outputText value="#{usuario.ultimoIngreso}"></h:outputText>
                         </p:column>  
                         
@@ -74,9 +84,12 @@
                 </div>  
               
             </div>
-			
 			<br/>
-		
+			<div class="cargoDiv" style="text-align: center">
+				<h:commandButton id= "cargoGo"  class="cargoGo" value="Cargos"
+				action="#{ReservaBean.page12}" update="usuarios_form"></h:commandButton>
+           	</div> 
+			<br/>
 
         </h:form>
     </h:body>

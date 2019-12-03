@@ -1,0 +1,1664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="edu.eci.cvds.samples.entities.Horario" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Horario.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="295" width="260" x="176" y="1282"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="edu.eci.cvds.samples.entities.Usuario" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Usuario.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="655" width="359" x="-73" y="587"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="edu.eci.cvds.samples.entities.Cargo" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Cargo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="295" width="153" x="-73" y="1282"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="edu.eci.cvds.samples.entities.Tipo" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Tipo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="295" width="153" x="476" y="1282"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="edu.eci.cvds.samples.entities.Hora" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Hora.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="313" width="157" x="176" y="1617"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="edu.eci.cvds.samples.entities.Reserva" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Reserva.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="709" width="285" x="126" y="-162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="edu.eci.cvds.samples.entities.Recurso" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/entities/Recurso.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="493" width="328" x="326" y="587"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="edu.eci.cvds.exceptions.PersistenceException" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/exceptions/PersistenceException.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2730" y="380"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="edu.eci.cvds.exceptions.ServiciosUsuarioException" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/exceptions/ServiciosUsuarioException.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3016" y="380"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="edu.eci.cvds.exceptions.ServiciosReservaException" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/exceptions/ServiciosReservaException.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3293" y="380"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="edu.eci.cvds.guice.GuiceContextListener" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/guice/GuiceContextListener.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1180" y="120"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="edu.eci.cvds.sampleprj.dao.HorarioDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/HorarioDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="920" y="2456"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" language="java" name="edu.eci.cvds.sampleprj.dao.CargoDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/CargoDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1133" y="2393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="14" language="java" name="edu.eci.cvds.sampleprj.dao.ReservaDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/ReservaDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1385" y="2600"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="15" language="java" name="edu.eci.cvds.sampleprj.dao.TipoDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/TipoDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1625" y="2393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="16" language="java" name="edu.eci.cvds.sampleprj.dao.UsuarioDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/UsuarioDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1850" y="2438"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="17" language="java" name="edu.eci.cvds.sampleprj.dao.RecursoDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/RecursoDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2118" y="2438"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="18" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.MyBatisUsuarioDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/MyBatisUsuarioDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="259" width="246" x="3727" y="2470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.MyBatisCargoDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/MyBatisCargoDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="163" x="4013" y="2470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.MyBatisReservaDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/MyBatisReservaDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="601" width="275" x="4216" y="2470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.MyBatisTipoDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/MyBatisTipoDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="160" x="4531" y="2470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.MyBatisHorarioDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/MyBatisHorarioDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="295" width="195" x="4731" y="2470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.MyBatisRecursoDAO" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/MyBatisRecursoDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="259" width="211" x="4966" y="2470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/mappers/HorarioMapper.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="259" width="221" x="5840" y="-14"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="25" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/mappers/UsuarioMapper.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="223" width="258" x="6101" y="-14"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="26" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/mappers/CargoMapper.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="199" x="6399" y="-14"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="27" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ReservaMapper" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/mappers/ReservaMapper.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="529" width="275" x="6638" y="-14"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="28" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoMapper" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/mappers/TipoMapper.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="199" x="6953" y="-14"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="29" language="java" name="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RecursoMapper" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/sampleprj/dao/mybatis/mappers/RecursoMapper.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="223" width="243" x="7192" y="-14"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="30" language="java" name="edu.eci.cvds.samples.services.ServiciosUsuario" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/services/ServiciosUsuario.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="277" width="258" x="6691" y="1592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="31" language="java" name="edu.eci.cvds.samples.services.ServiciosReserva" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/services/ServiciosReserva.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1069" width="308" x="6941" y="1909"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="32" language="java" name="edu.eci.cvds.samples.services.ServiciosReservaFactory" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/services/ServiciosReservaFactory.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="169" width="250" x="6989" y="1592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="edu.eci.cvds.samples.services.impl.ServiciosUsuarioImpl" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/services/impl/ServiciosUsuarioImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2690" y="2096"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="edu.eci.cvds.samples.services.impl.ServiciosReservaImpl" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/samples/services/impl/ServiciosReservaImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3103" y="2270"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="edu.eci.cvds.view.BasePageBean" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/BasePageBean.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="637" width="216" x="3337" y="4292"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="edu.eci.cvds.view.ReservasUsersView" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/ReservasUsersView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="295" width="193" x="2374" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="edu.eci.cvds.view.CargosView" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/CargosView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="439" width="193" x="2607" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="edu.eci.cvds.view.HorariosView" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/HorariosView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="727" width="224" x="2840" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="edu.eci.cvds.view.LoginBean" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/LoginBean.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="601" width="193" x="3104" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="edu.eci.cvds.view.ReporteView" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/ReporteView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="799" width="294" x="3337" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="edu.eci.cvds.view.DisponibilidadView" 
+    project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/DisponibilidadView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="943" width="277" x="3671" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="edu.eci.cvds.view.RecursosView" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/RecursosView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="799" width="196" x="3988" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="edu.eci.cvds.view.TipoView" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/TipoView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="439" width="193" x="4224" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="edu.eci.cvds.view.UsuariosView" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/UsuariosView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="763" width="193" x="4457" y="3309"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="edu.eci.cvds.view.Messages" project="MyBATIS-Guice-DAO-ReservaServicesLayer" 
+    file="/MyBATIS-Guice-DAO-ReservaServicesLayer/src/main/java/edu/eci/cvds/view/Messages.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="115" width="200" x="3337" y="4969"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="46">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="31"/>  
+  </dependency>  
+  <realization id="49">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <association id="50">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="51" name="serviciosReserva">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="52" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="53">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <dependency id="54">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="56">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="57" name="tipo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="58" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="60" name="instance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="61" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="65">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="66">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="67" name="serviciosReserva">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="68" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="69">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="72">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="73" name="recursoDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="76">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="77">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="78">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="79" name="tipo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="80" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="81">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="82">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="83">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <realization id="84">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <dependency id="85">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="86">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="87">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="31"/>  
+  </dependency>  
+  <dependency id="88">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="89">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="90" name="cargos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="91" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="92">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="30"/>  
+  </realization>  
+  <association id="93">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="94" name="tiempo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="95" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="97" name="tipo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="98" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="99">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="100">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="102">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="103" name="userDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="104" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="105">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="106">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="107">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="108">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="109" name="serviciosReserva">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="110" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="111">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="34"/>  
+  </dependency>  
+  <dependency id="112">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="113">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="114">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="115" name="ls6">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="116" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="117">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <realization id="118">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <dependency id="119">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="120">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="121">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="122" name="basePageBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="123" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="124">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="125">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="126" name="ls5">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="127" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="128">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="129" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="130" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="131">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="132">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="133">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="134">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="135" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="136" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="137">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="138">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <dependency id="139">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="140">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="141">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="142">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <association id="143">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="144" name="cargoDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="145" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="146">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="147">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="148">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <realization id="149">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <association id="150">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="151" name="recurso">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="152" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="153">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="154">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <association id="155">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="156" name="cargo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="157" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="158">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="159">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="160">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="161">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="162">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="163" name="horarioDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="164" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="165">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="166">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="167" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="168" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="169">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="170" name="horas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="171" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="172">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="173">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="174" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="175" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="176">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <association id="177">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="178" name="reservaMapper">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="179" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="180">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <dependency id="181">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="182">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="183">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="184">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="185">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="186" name="serviciosReserva">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="187" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="188">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="189">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="190">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="191">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="192">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="193">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="194" name="recursoMapper">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="195" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="197" name="userDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="198" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="199">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="200">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="201" name="selected">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="202" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="203">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="204">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="205" name="reservas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="206" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="207">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="208">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="209">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="210">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="211">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="212" name="tipoMapper">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="213" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="214">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="215" name="serviciosReserva">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="216" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="217">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="218">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="219" name="ls4">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="220" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="221">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="222">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="223" name="selectedRecurso">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="224" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="225">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="226" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="227" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="228">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="229" name="ls3">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="230" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="231">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="232">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="233" name="horario">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="234" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="235">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="236">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="237">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="238" name="selected">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="239" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="240">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="241">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="242">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="243" name="reservas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="244" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="245">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="246">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="247">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="248" name="listaTipos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="249" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="250">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <association id="251">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="252" name="usuarios">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="253" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="254">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="255" name="serviciosUsuario">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="256" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="257">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <association id="258">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="259" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="260" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="261">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="262">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <dependency id="263">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="264">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="265">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="266">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="267">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="268" name="reservaDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="269" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="270">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="271" name="horarioMapper">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="272" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="273">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="34"/>  
+  </dependency>  
+  <dependency id="274">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <dependency id="275">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="276">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="277" name="ls1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="278" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="279">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="280">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="281">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="282" name="usuarioMapper">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="283" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="284">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="285" name="serviciosReserva">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="286" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="287">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="288" name="tiempo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="289" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="290">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="291">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="292" name="cargo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="293" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="294">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="295" name="ls2">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="296" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="297">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="298" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="299" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="300">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <association id="301">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="302" name="listaRecursos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="303" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="304">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="305">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="306">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="307">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="308" name="usuario">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="309" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="310">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="311">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="312">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="313">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="314">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="315">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="316">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="317">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="318">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="319">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="320">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="321">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="322" name="serviciosUsuario">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="323" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="324">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="325">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="326">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="31"/>  
+  </dependency>  
+  <association id="327">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="328" name="tipoDAO">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="329" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="330">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="331">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="332" name="cargoMapper">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="333" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="334">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="335" name="baseBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="336" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="337">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

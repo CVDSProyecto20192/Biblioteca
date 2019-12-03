@@ -17,12 +17,13 @@ public class Usuario implements Serializable{
 	private Date ultimoIngreso;
 	private boolean bloqueado;
 	private Cargo cargo;
+	private String programa;
 	
 	public Usuario(){	
 	}
 	
 	public Usuario(String carnet, String documento, String correo, String nombres, String apellidos, String password, 
-			boolean bloqueado, Cargo cargo ) {   
+			boolean bloqueado, Cargo cargo , String programa ) {   
 		this.carnet=carnet;
 		this.documento=documento;
 		this.correo=correo;
@@ -31,6 +32,7 @@ public class Usuario implements Serializable{
 		this.password=password;
 		this.bloqueado=bloqueado;
 		this.cargo=cargo;
+		this.programa=programa;
     }
 	
 	public String getCarnet(){
@@ -97,11 +99,19 @@ public class Usuario implements Serializable{
 		this.cargo=cargo;
 	}
 	
+	public String getPrograma(){
+		return this.programa;
+	}
+
+	public void setPrograma(String programa){
+		this.programa=programa;
+	}
+
 	@Override
     public String toString() {
         return "Usuario{" + "carnet=" + carnet + ", documento=" + documento + ", correo=" + correo +
         		", nombres=" + nombres + ", apellidos=" + apellidos + ", password=" + password + 
-        		", último Ingreso=" + ultimoIngreso + ", bloqueado=" + bloqueado + ", cargo=" + cargo +  '}';                                
+        		", último Ingreso=" + ultimoIngreso + ", bloqueado=" + bloqueado + ", cargo=" + cargo + ", programa=" + programa + '}';                                
     }
 
 }

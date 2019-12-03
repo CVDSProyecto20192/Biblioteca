@@ -16,7 +16,7 @@
   			u.passwd,
   			u.ultimoingreso,
   			u.bloqueado,
-    		
+    		u.programa,
     		c.id as id_cargo,
 			c.nombre as nombre_cargo,
 			c.descripcion as des_cargo
@@ -39,7 +39,7 @@
   			u.passwd,
   			u.ultimoingreso,
   			u.bloqueado,
-    		
+    		u.programa,
     		c.id as id_cargo,
 			c.nombre as nombre_cargo,
 			c.descripcion as des_cargo
@@ -81,6 +81,7 @@
   			u.passwd,
   			u.ultimoingreso,
   			u.bloqueado,
+			u.programa,
 
     		c.id as id_cargo,
 			c.nombre as nombre_cargo,
@@ -128,6 +129,7 @@
     		<result property="password" column="passwd"/>
 			<result property="ultimoIngreso" column="ultimoingreso"/>
 			<result property="bloqueado" column="bloqueado"/>
+			<result property="programa" column="programa"/>
       		<association property="cargo" javaType="Cargo" column="id_cargo" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper.CargoResult"/>   			
    
     </resultMap>

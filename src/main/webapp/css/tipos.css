@@ -1,6 +1,6 @@
  
 body {
-  background-color:#CAF992;
+  background-color:#d3d7cf;
 }
 
 h1{
@@ -83,16 +83,16 @@ p{
 }
 
 .idTipo {
-	background-color: #A6C087;
+	background-color: #b58cee;
 }
  
 .tipo {
-	background-color: #DEFCD2;
+	background-color: #cbbedd;
 	color: black;
 } 
 
 .desc {
-	background-color: #A6C087;
+	background-color: #b58cee;
 }
  
 
@@ -112,17 +112,17 @@ p{
 }
 
 .tipos tr:nth-child(even){
-	background-color: #f9f256;
+	background-color: #7b5faf;
 	color:white;
 }
 
 .tipos tr:nth-child(odd){
-	background-color: #fcf8a5;
+	background-color: #cba3f3;
 	color:black;
 }
 
 .tipos tr:hover {
-	background-color: #f04c65;
+	background-color: #643893;
 }
 
 .tipos th {

@@ -1,5 +1,5 @@
 body {
-  background-color:#CAF992;
+  background-color:#c6cfd3;
 }
 
 h1{
@@ -73,16 +73,16 @@ p{
 }
 
 .idCargo {
-	background-color: #A6C087;
+	background-color: #babdb6;
 }
  
 .nombre {
-	background-color: #DEFCD2;
+	background-color: #d3d7cf;
 	color: black;
 } 
 
 .desc {
-	background-color: #A6C087;
+	background-color: #babdb6;
 }
  
 
@@ -102,17 +102,17 @@ p{
 }
 
 .cargos tr:nth-child(even){
-	background-color: #f9f256;
+	background-color: #c0aff4;
 	color:white;
 }
 
 .cargos tr:nth-child(odd){
-	background-color: #fcf8a5;
+	background-color: #dcdce4;
 	color:black;
 }
 
 .cargos tr:hover {
-	background-color: #f04c65;
+	background-color: #4e5695;
 }
 
 .cargos th {

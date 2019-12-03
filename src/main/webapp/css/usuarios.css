@@ -1,5 +1,5 @@
 body {
-  background-color: #e1cbf8;
+  background-color: #62e8a5;
 }
 
 h1{
@@ -60,17 +60,17 @@ p{
 }
 
 .usuarios tr:nth-child(even){
-	background-color: #f9f256;
+	background-color: #bf3f6e;
 	color: white;
 }
 
 .usuarios tr:nth-child(odd){
-	background-color: #fcf8a5;
+	background-color: #edbccf;
 	color: black;
 }
 
 .usuarios tr:hover {
-	background-color: #f04c65;
+	background-color: #a24470;
 }
 
 .usuarios th {

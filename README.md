@@ -3,7 +3,7 @@
 
 # ServicioBiblioteca
 
-#Descripcion del producto
+## Descripcion del producto
 
 El producto realizado es una herramienta hecha pensada en las necesidades de la biblioteca de realizar un control y gestión de sus recursos, para así llevarles de manera sencilla y rápida sus servicios a los estudiantes de la Escuela
 
@@ -74,8 +74,9 @@ Cuando un usuario elige la opción de ingresar como invitado, se topará con la 
 La gran diferencia en esta vista, radica en que, si el usuario invitado oprime una hora o día en el calendario para realizar una reserva, aparecerá ante él el siguiente cuadro solicitandole iniciar sesión para poder realizar esta reserva:
 ![](Imagenes/solicitarIniciarSesionInvitado.PNG)
 
+## Arquitectura y Diseño
 
-# Diagrama Base de datos
+# Modelo Entidad-Relación
 
 ![](model2.PNG)
 
@@ -83,6 +84,16 @@ La gran diferencia en esta vista, radica en que, si el usuario invitado oprime u
 
 ![](Diagramas/DiagramaClasesPrin.png)
 
+# Arquitectura del proyecto
+
+Este proyecto está basado en la comunicación a través de inyecciones; a continuación se mencionarán las capas desde la más baja hasta la más alta:
+
+- Mappers (xml)
+- Entidades 
+- MyBatisMappers
+- DAOs (DAO.MyBatis es su implementación)
+- Servicios (ServiciosImpl es su implementación)
+- Vistas
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/444e45577adb4614bcfa9bb1a789c155)](https://www.codacy.com/gh/CVDSProyecto20192/Biblioteca?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CVDSProyecto20192/Biblioteca&amp;utm_campaign=Badge_Grade)
 

@@ -46,7 +46,7 @@ Una vez el usuario haya hecho sus reservas o consultado las mismas, podrá aband
 Cuando el que ingresa a la aplicación es un usuario administrador, el menú a desplegar será el siguiente:
 ![](Imagenes/menuAdmin.PNG)
 
-Allí el admin, oprimiendo el primer ícon de izquierda a derecha, podrá hacer la gestión de los usuarios presentes en el sistema:
+Allí el admin, oprimiendo el primer ícon de izquierda a derecha, podrá registrar un nuevo usuario a la aplicación llenando el siguiente formulario:
 ![](Imagenes/RegistrarUsuario.PNG)
 
 Oprimiendo el segundo, el administrador se encontrará con una información detallada de cada una de las reservas hechas en la aplicación:
@@ -61,11 +61,11 @@ Por otra parte, si desea ver una información detallada del usuario al cual pert
 Finalmente, si se tratase de una reserva recurrente, el administrador podrá ver la próxima fecha y la fecha final de esta oprimiento el último ícono:
 ![](Imagenes/informacionRecurrenciaReservas.PNG)
 
-Otra de las funcionalidades que ofrece este menú de administrador es la de gestionar los recursos. Para esto, el administrador deberá oprimir en el ícono verde del menú principal, allí se desplegará la siguiente pantalla, la cual le permitirá al administrador bloquear o observar detalladamente los horarios semanales de un recurso:
-![](Imagenes/administracionDeRecursos.PNG)
- 
-Esta vista incluye un símbolo de "+" en la parte inferior del cuadro en el que se presentan los recursos. Si el administrador lo oprime, esto lo llevará a una nueva vista donde podrá hacer el registro de un recursos llenando un formulario con información de este:
+Otra de las funcionalidades que ofrece este menú de administrador es la de gestionar los recursos. Para esto, el administrador deberá oprimir en el ícono verde del menú principal, allí se desplegará la siguiente pantalla, la cual le permitirá al administrador ingresar un nuevo recurso a la aplicación:
 ![](Imagenes/registroDERecursos.PNG)
+ 
+Allí mismo, oprimiendo el botón de "ver recursos", podrá gestionar los recursos actuales, bloqueandolos si es necesario:
+![](Imagenes/administracionDeRecursos.PNG)
 
 Por último, el administrado podrá gestionar los tipos de recurso de la aplicación. Esto oprimiendo el cuarto ícono de izquierda a derecha. Haciendo esto, se desplegará la siguiente vista, donde podrá ver los tipos existentes y agregar un nuevo tipo si lo desea:
 ![](Imagenes/manejoDeTiposDeRecurso.PNG)
@@ -73,20 +73,6 @@ Por último, el administrado podrá gestionar los tipos de recurso de la aplicac
 Cuando un usuario elige la opción de ingresar como invitado, se topará con la tabla de recursos disponibles vista anteriormente. Allí, de igual forma que el usuario de la comunidad, podrá elegir el recurso que desee y observar su disponibilidad, además, de obtener una pequeña información de las reservas de este. 
 La gran diferencia en esta vista, radica en que, si el usuario invitado oprime una hora o día en el calendario para realizar una reserva, aparecerá ante él el siguiente cuadro solicitandole iniciar sesión para poder realizar esta reserva:
 ![](Imagenes/solicitarIniciarSesionInvitado.PNG)
-
-# Retrospectiva
-# Sprint 1
-Este fue un sprint que no tuvo un buen desarrollo a nivel grupal. Las tareas en este Sprint no fueron divididas de la mejor manera, ya que se asignaron tareas demasiado extensas que le tomaban a un integrante del grupo varios días, mientras los otros integrantes solo se quedaban esperando. 
-A pesar de esto, se lograron implementar, aunque no de la manera más optima, los casos de uso de inicio de sesión, registrar recurso y registrar recurso. En este Sprint no fue posible realizar todas las pruebas correspondientes y se presentaron algunos fallos en el incicio de sesió y el manejo de las vistas que tendrán que ser corregidos en el siguiente Sprint
-
-# Sprint 2
-En este Sprint se aprendieron de los errores del anterior sprint. En este se procuró dejar tareas más cortas y dividir el grupo en dos, un grupo (Miguel y Natalia) trabajó en el front correspondiente a la vista de la disponibilidad de las reservas a través de un calendario dinámico. Mientras que, los otros dos integrantes del equipo (Julián y Ricardo), se enfocaron en administrar toda la parte del manejo de las reservas, desde su registro en la base de datos, hasta la aparición de la información de ellas en la pantalla. 
-A pesar de este buen manejo de las tareas, no fue posible finalizar este Sprint por completo debido a su complejidad y larga lista de tareas para realizarlo. En este Sprint quedaron faltando las pruebas y la integración de la vista del calendario de la disponibilidad, con el manejo de las reservas.
-
-# Sprint 3
-Este último Sprint fue más que complicado para el grupo. En este último Sprint aparecieron muchas cosas que corregir de los anteriores, lo cual no permitió que se avanzará en todas las tareas de usuario propuestas para el mismo.
-A pesar de esto, el grupo logró presentar por completo dos historias de usuario de este Sprint quedando faltando solamente la implementación del fron de la acción de "cancelar reserva", ya que para esta, debido a los cortes de tiempo inesperados para la elaboración del Sprint, solo fue posible implementar el back. 
-El grupo entrega un trabajo elaborado, que aunque faltando algunos detallitos por pulir, se pueden ver implementadas casi por completo todas las historias de usuario dadas, e incluso algunas adicionales.
 
 ## Arquitectura y Diseño
 
@@ -130,4 +116,43 @@ Circle CI y Codacy: Para la contante revisión del estado de la aplicación (Int
 https://serviciobiblioteca.herokuapp.com/
 
 https://proyecto-biblioteca.herokuapp.com/
+
+
+## Descripción del proceso
+
+# Integrantes
+
+- Natalia Durán Vivas
+- Julián David Gutierrez Vanegas
+- Andrés Ricardo Martínez Día
+- Miguel Ángel Rivera Rojas
+
+# Descripción de la Metodología
+
+Para desarrollar los tasks de los springs, tuvimos en cuenta lo que cada uno quería realizar en el proyecto, de modo que para que solo uno no hiciera lo mismo siempre, a medida que ibamos avanzando nos turnábamos los roles y tareas generales de diseño.
+
+# Taiga 
+
+2019-2-PROYCVDS-EQUIPO_DINAMITA
+https://tree.taiga.io/project/nduran06-1-gestion-de-recursos-biblioteca/backlog
+
+# Release-burndown chart
+
+Spring 1
+
+![](Imagenes/sp1.png)
+
+Spring 2
+
+![](Imagenes/sp2.png)
+
+Spring 3
+
+![](Imagenes/sp3.png)
+
+
+
+
+
+
 

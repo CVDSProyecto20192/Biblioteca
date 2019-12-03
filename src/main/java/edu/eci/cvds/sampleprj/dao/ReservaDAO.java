@@ -35,4 +35,23 @@ public interface ReservaDAO {
 	public List<Reserva> frecuenteXTipo() throws PersistenceException;
 
 	public List<Reserva> recursosFrecuentesXHorario() throws PersistenceException;
+
+	public List<Reserva> menosFrecuentesXFecha() throws PersistenceException;
+
+	public List<Reserva> recursosMenosFrecuentesXHorario() throws PersistenceException;
+
+	public List<Reserva> menosFrecuenteXTipo() throws PersistenceException;
+
+	public List<Reserva> horariosMasXFecha() throws PersistenceException;
+
+	public List<Reserva> horarioMasFrecuente() throws PersistenceException;
+
+	public List<Reserva> horariosMasXTipo() throws PersistenceException;
+
+	public List<Reserva> horarioMenosFrecuente() throws PersistenceException;
+
+	public List<Reserva> horariosMenosXFecha() throws PersistenceException;
+
+	public List<Reserva> horariosMenosXTipo() throws PersistenceException;
+
 }

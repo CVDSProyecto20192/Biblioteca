@@ -38,4 +38,22 @@ public interface ReservaMapper {
 
 	public List<Reserva> recursosFrecuentesXHorario();
 
+	public List<Reserva> menosFrecuentesXFecha();
+
+	public List<Reserva> recursosMenosFrecuentesXHorario();
+
+	public List<Reserva> menosFrecuenteXTipo();
+
+	public List<Reserva> horariosMasXFecha();
+
+	public List<Reserva> horarioMasFrecuente();
+
+	public List<Reserva> horariosMasXTipo();
+
+	public List<Reserva> horarioMenosFrecuente();
+
+	public List<Reserva> horariosMenosXFecha();
+
+	public List<Reserva> horariosMenosXTipo();
+
 }

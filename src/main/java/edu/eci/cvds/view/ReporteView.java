@@ -96,6 +96,96 @@ public class ReporteView {
         return recursosMasFrecuentes;
     }
 
+    public List<Reserva> getMenosFrecuentesXFecha(){
+        List<Reserva> menosFrecuentesXFecha =null;
+        try {
+            menosFrecuentesXFecha = serviciosReserva.menosFrecuentesXFecha();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return menosFrecuentesXFecha;
+    }
+
+    public List<Reserva> getRecursosMenosFrecuentesXHorario(){
+        List<Reserva> recursosMenosFrecuentesXHorario =null;
+        try {
+            recursosMenosFrecuentesXHorario = serviciosReserva.recursosMenosFrecuentesXHorario();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return recursosMenosFrecuentesXHorario;
+    }
+
+    public List<Reserva> getMenosFrecuenteXTipo(){
+        List<Reserva> menosFrecuenteXTipo =null;
+        try {
+            menosFrecuenteXTipo = serviciosReserva.menosFrecuenteXTipo();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return menosFrecuenteXTipo;
+    }
+
+    public List<Reserva> getHorariosMasXFecha(){
+        List<Reserva> horariosMasXFecha =null;
+        try {
+            horariosMasXFecha = serviciosReserva.horariosMasXFecha();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return horariosMasXFecha;
+    }
+
+    public List<Reserva> getHorarioMasFrecuente(){
+        List<Reserva> horarioMasFrecuente =null;
+        try {
+            horarioMasFrecuente = serviciosReserva.horarioMasFrecuente();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return horarioMasFrecuente;
+    }
+
+    public List<Reserva> getHorariosMasXTipo(){
+        List<Reserva> horariosMasXTipo =null;
+        try {
+            horariosMasXTipo = serviciosReserva.horariosMasXTipo();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return horariosMasXTipo;
+    }
+
+    public List<Reserva> getHorarioMenosFrecuente(){
+        List<Reserva> horarioMenosFrecuente =null;
+        try {
+            horarioMenosFrecuente = serviciosReserva.horarioMenosFrecuente();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return horarioMenosFrecuente;
+    }
+
+    public List<Reserva> getHorariosMenosXFecha(){
+        List<Reserva> horariosMenosXFecha =null;
+        try {
+            horariosMenosXFecha = serviciosReserva.horariosMenosXFecha();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return horariosMenosXFecha;
+    }
+
+    public List<Reserva> getHorariosMenosXTipo(){
+        List<Reserva> horariosMenosXTipo =null;
+        try {
+            horariosMenosXTipo = serviciosReserva.horariosMenosXTipo();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return horariosMenosXTipo;
+    }
+
     public void showTable(){
 
         reboot();

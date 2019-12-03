@@ -19,7 +19,7 @@
         <h1 style="text-align: center;">Reportes y estadisticas de los registros</h1>
 
         <h:form>
-            <h:panelGrid cellpadding="25" style="margin: auto;">
+            <h:panelGrid cellpadding="5" style="margin: auto;">
             
                 <h:panelGrid columns="2" cellpadding="5" style="margin: auto;">
                     <p:outputLabel value="Mostrar por: "/>
@@ -81,7 +81,7 @@
                         </p:column>
                     </p:dataTable>
 
-                    <p:dataTable var="reserva" value="#{ReportBean.frecuenteXTipo}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                    <p:dataTable var="reserva" value="#{ReportBean.menosFrecuenteXTipo}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
                         
                         <f:facet name="header">
                             Totalizado por tipo de recurso
@@ -104,9 +104,7 @@
                         </p:column>
                     </p:dataTable>
 
-                </h:panelGrid>
-<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-                <h:panelGrid id="recursosMenosUsados" style="margin: auto;">
+
 
                     <p:dataTable var="reserva" value="#{ReportBean.menosFrecuentesXFecha}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
                         
@@ -131,7 +129,7 @@
                         </p:column>
                     </p:dataTable>
 
-                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentesXHorario}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                    <p:dataTable var="reserva" value="#{ReportBean.recursosMenosFrecuentesXHorario}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
                         
                         <f:facet name="header">
                             Totalizado por horario
@@ -145,7 +143,7 @@
                             <h:outputText value="#{reserva.recurso.nombre}"/>
                         </p:column>
                         
-                        <p:column headerText="Fecha de reserva" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
+                        <p:column headerText="Horario reserva" style="text-align: center;" filterBy="#{reserva.hora}" sortBy="#{reserva.hora}">
                             <h:outputText value="#{reserva.hora}"/>
                         </p:column>
                         
@@ -154,7 +152,7 @@
                         </p:column>
                     </p:dataTable>
 
-                    <p:dataTable var="reserva" value="#{ReportBean.frecuenteXTipo}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                    <p:dataTable var="reserva" value="#{ReportBean.frecuenteXTipo}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
                         
                         <f:facet name="header">
                             Totalizado por tipo de recurso
@@ -176,9 +174,13 @@
                             <h:outputText value="#{reserva.count}"/>
                         </p:column>
                     </p:dataTable>
-                </h:panelGrid>
-<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
-                    <p:dataTable var="hora" value="#{ReportBean.frecuenteXHorario}" style="width: 280px;" rendered="#{ReportBean.horariosMenos}">
+
+
+
+                    <p:dataTable var="hora" value="#{ReportBean.horarioMasFrecuente}" style="width: 950px;" rendered="#{ReportBean.horariosMas}">
+                        <f:facet name="header">
+                            Horarios totalizados por horario
+                        </f:facet>
                         <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
                             <h:outputText value="#{hora.hora}"/>
                         </p:column>
@@ -187,17 +189,94 @@
                             <h:outputText value="#{hora.count}"/>
                         </p:column>
                     </p:dataTable>
-
-                    <p:dataTable var="hora" value="#{ReportBean.masFrecuenteXHorario}" style="width: 280px;" rendered="#{ReportBean.horariosMas}">
+                    
+                    <p:dataTable var="hora" value="#{ReportBean.horariosMasXFecha}" style="width: 950px;" rendered="#{ReportBean.horariosMas}">
+                        <f:facet name="header">
+                            Horarios totalizados por fecha
+                        </f:facet>
                         <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
                             <h:outputText value="#{hora.hora}"/>
                         </p:column>
 
-                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.coun}" sortBy="#{hora.count}">
+                        <p:column headerText="Fecha" style="text-align: center;" filterBy="#{hora.fecha}" sortBy="#{hora.fecha}" >
+                            <h:outputText value="#{hora.fecha}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.count}" sortBy="#{hora.count}" >
                             <h:outputText value="#{hora.count}"/>
                         </p:column>
                     </p:dataTable>
-                
+
+                    <p:dataTable var="hora" value="#{ReportBean.horariosMasXTipo}" style="width: 950px;" rendered="#{ReportBean.horariosMas}">
+                        <f:facet name="header">
+                            Horarios totalizados por tipo de recurso
+                        </f:facet>
+
+                        <p:column headerText="Horario" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
+                            <h:outputText value="#{hora.hora}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Tipo recurso" style="text-align: center;" filterBy="#{hora.recurso.tipo.tipo}" sortBy="#{hora.recurso.tipo.tipo}" >
+                            <h:outputText value="#{hora.recurso.tipo.tipo}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.count}" sortBy="#{hora.count}" >
+                            <h:outputText value="#{hora.count}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+
+
+                    <p:dataTable var="hora" value="#{ReportBean.horarioMenosFrecuente}" style="width: 950px;" rendered="#{ReportBean.horariosMenos}">
+                        <f:facet name="header">
+                            Horarios totalizados por horario
+                        </f:facet>
+                        <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
+                            <h:outputText value="#{hora.hora}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.coun}" sortBy="#{hora.count}" >
+                            <h:outputText value="#{hora.count}"/>
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:dataTable var="hora" value="#{ReportBean.horariosMenosXFecha}" style="width: 950px;" rendered="#{ReportBean.horariosMenos}">
+                        <f:facet name="header">
+                            Horarios totalizados por fecha
+                        </f:facet>
+                        <p:column headerText="Franja horaria" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
+                            <h:outputText value="#{hora.hora}"/>
+                        </p:column>
+
+                        <p:column headerText="Fecha" style="text-align: center;" filterBy="#{hora.fecha}" sortBy="#{hora.fecha}" >
+                            <h:outputText value="#{hora.fecha}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.count}" sortBy="#{hora.count}" >
+                            <h:outputText value="#{hora.count}"/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:dataTable var="hora" value="#{ReportBean.horariosMenosXTipo}" style="width: 950px;" rendered="#{ReportBean.horariosMenos}">
+                        <f:facet name="header">
+                            Horarios totalizados por tipo de recurso
+                        </f:facet>
+
+                        <p:column headerText="Horario" style="text-align: center;" filterBy="#{hora.hora}" sortBy="#{hora.hora}" >
+                            <h:outputText value="#{hora.hora}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Tipo recurso" style="text-align: center;" filterBy="#{hora.recurso.tipo.tipo}" sortBy="#{hora.recurso.tipo.tipo}" >
+                            <h:outputText value="#{hora.recurso.tipo.tipo}"/>
+                        </p:column>
+
+                        <p:column headerText="Recursos reservados" style="text-align: center;" filterBy="#{hora.count}" sortBy="#{hora.count}" >
+                            <h:outputText value="#{hora.count}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </h:panelGrid>
+               
             </h:panelGrid>   
         </h:form>
     </h:body>

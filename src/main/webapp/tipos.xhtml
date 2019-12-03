@@ -8,19 +8,28 @@
       xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		
-		
+		<link rel="stylesheet" type="text/css" href="css/tipos.css" />
 		
 		<title>Tipos de Recurso</title>
     </h:head>
     
     <h:body>
-
-		<h1>Biblioteca</h1>
-		<h2>Tipos de Recurso</h2>
-		<br/>
 		
         <h:form id="tipos_form">
+        
+        	<div class="arriba">
+					
+				<h:commandButton image="img/home.svg" id= "home" class="home"
+				action="#{ReservaBean.page01}" update="tipos_form"></h:commandButton>	
+				&nbsp; 
+				<h:commandButton image="img/logout.svg" id= "close" class="close"
+				actionListener="#{LoginBean.logout}" update="tipos_form"></h:commandButton>	
+				
+				<h1>Biblioteca</h1>
+				<h2>Tipos de Recurso</h2>
+			
+			</div>
+				
             <div id="contenedor">
 			
                 <div id="tabla_tipos" class='table' style="text-align: center">
@@ -28,7 +37,7 @@
                     <p:dataTable class="tipos" value="#{TiposBean.listaTipos}" var = "tipo" 
                     rows="5" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
-    				rowsPerPageTemplate="5,10,15">
+    				rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
     				
     					<p:column headerText="Id" filterBy="#{tipo.id}">
                         	<h:outputText value="#{tipo.id}"></h:outputText>
@@ -45,7 +54,7 @@
                     </p:dataTable>
                 </div> 
                 
-                <div id="registro">
+                <div id="registro" style="text-align: center">
 					<div style="text-align: center">
 						<p>
 							<span><b>Id </b></span>
@@ -72,18 +81,13 @@
 				</div>
                  
                  
-                 <div>
+                 <div style="text-align: center">
     				<p:commandButton value="Registrar" action="#{TiposBean.actionRegistrarTipo}" update="tipos_form"/>
 					<p:commandButton value="Ok" action="#{TiposBean.actionReiniciar}" update="tipos_form"/>
 						
 					<br/>
-				
 				</div>
-                 
             </div>
-            
-            
-		
         	<br/><br/>
 		</h:form>
     </h:body>

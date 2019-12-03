@@ -1,3 +1,4 @@
+ 
 body {
   background-color:#CAF992;
 }
@@ -25,7 +26,7 @@ p{
 }
 
 .contenedor{
-	width: 100%;
+	width: 90%;
 	height: 90%;
 }
 
@@ -64,10 +65,8 @@ p{
 
 
 #tabla_tipos{
-	padding-top:4vw;
-	margin-left:53%;
-	padding-rigth:4vw;
-	text-align:justify;
+	padding-top:1vw;
+	text-align:center;
 }
 
 #botones{
@@ -80,47 +79,36 @@ p{
   padding: 1vw;
   font-family: Arial;
   display: inline-block;
-  width: 6vw;
+  width: 6.5vw;
 }
 
-.idRec {
-	background-color: #A6C087;
-}
- 
-.nombre {
-	background-color: #DEFCD2;
-	color: black;
-} 
-
-.ubicacion {
-	background-color: #A6C087;
-}
- 
-.capacidad {
-	background-color: #DEFCD2;
-	color: black;
-} 
-
- 
 .idTipo {
 	background-color: #A6C087;
+}
+ 
+.tipo {
+	background-color: #DEFCD2;
+	color: black;
 } 
+
+.desc {
+	background-color: #A6C087;
+}
+ 
 
 .form-control{
 	font-family: Arial; 
 	font-size:1.2vw;
 	height:1.5vw;
-	width: 22vw;
+	width: 20vw;
 	padding: 0.7vw;
 }
 
-.tipos {
-  font-size:1.2vw;
-  border: 0.2vw solid rgba(255,255,255,10);
-  border-collapse: collapse;
-  width: 80%;
-  
- 
+.tipos{
+	font-size:1.4vw;
+  	border: 0.2vw solid rgba(255,255,255,10);
+ 	border-collapse: collapse;
+ 	width: 70%;
 }
 
 .tipos tr:nth-child(even){
@@ -138,8 +126,8 @@ p{
 }
 
 .tipos th {
-  padding-top: 25px;
-  padding-bottom: 12px;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
   text-align: left;
   background-color:#ececec;
   color: black;

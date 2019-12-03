@@ -154,7 +154,7 @@ https://proyecto-biblioteca.herokuapp.com/
 
 ## Descripción de la Metodología
 
-Para desarrollar los tasks de los springs, tuvimos en cuenta lo que cada uno quería realizar en el proyecto, de modo que para que solo uno no hiciera lo mismo siempre, a medida que ibamos avanzando nos turnábamos los roles y tareas generales de diseño.
+Para desarrollar los tasks de los sprints, tuvimos en cuenta lo que cada uno quería realizar en el proyecto, de modo que para que solo uno no hiciera lo mismo siempre, a medida que ibamos avanzando nos turnábamos los roles y tareas generales de diseño.
 
 ### Taiga 
 
@@ -163,39 +163,39 @@ https://tree.taiga.io/project/nduran06-1-gestion-de-recursos-biblioteca/backlog
 
 ### Release-burndown chart
 
-Spring 1
+Sprint 1
 
 ![](Imagenes/sp1.png)
 
-Spring 2
+Sprint 2
 
 ![](Imagenes/sp2.png)
 
-Spring 3
+Sprint 3
 
 ![](Imagenes/sp3.png)
 
-### Tareas Springs
+### Tareas Sprints
 
-Spring 1
+Sprint 1
 
 ![](Imagenes/spt1.png)
 
-Spring 2
+Sprint 2
 
 ![](Imagenes/sp2.png)
 
-Spring 3
+Sprint 3
 
 ![](Imagenes/sp3.png)
 
 ### Backlogs
 
-Spring 1
+Sprint 1
 
 ![](Imagenes/bc1.png)
 
-Spring 2
+Sprint 2
 
 ![](Imagenes/bc2_1.png)
 
@@ -205,7 +205,7 @@ Spring 2
 
 ![](Imagenes/bc2_4.png)
 
-Spring 3
+Sprint 3
 
 ![](Imagenes/sp3_1.png)
 

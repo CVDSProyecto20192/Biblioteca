@@ -190,7 +190,6 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			return horarioDAO.loadAllDia(idHorario);
 		} 
 		catch (PersistenceException e) {
-			System.out.println("consul "+idHorario);
 			throw new ServiciosReservaException("Error al consultar horarios: "+idHorario, e);
 		}
 	}
@@ -340,7 +339,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			Usuario u = consultarUsuario(usuario);
 			Recurso r = consultarRecurso(recurso);
 			Reserva res = new Reserva((long) 2, fecha, hora, duracion, u, r, (long) 0, null);
-			if ((consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null) && !(formato.format(res.getFecha()).equals("Sun")) && !(formato.format(res.getFecha()).equals("Sat") && hora + duracion > 1300 )){
+			if ((consultarFranja(res.getFecha(), res.getHora(), res.getDuracion(),recurso) == null) && !(formato.format(res.getFecha()).equals("Sun")) && !(formato.format(res.getFecha()).equals("Sat") && hora + duracion > 1300 ) && !(formato.format(res.getFecha()).equals("dom.")) && !(formato.format(res.getFecha()).equals("sáb.") && hora + duracion > 1300 )){
 				reservaDAO.insertarReserva(res);
 			}
 			else{
@@ -380,9 +379,8 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 				long grupo = consultarGrupo();
 				for(int i=0; i<fechas.size();i++){
 					Date f = fechas.get(i);
-					if (!(formato.format(f).equals("Sun")) && !(formato.format(f).equals("Sat") && hora + duracion > 1300 )){
+					if (!(formato.format(f).equals("Sun")) && !(formato.format(f).equals("Sat") && hora + duracion > 1300 ) && !(formato.format(f).equals("dom.")) && !(formato.format(f).equals("sáb.") && hora + duracion > 1300)){
 						Reserva res = new Reserva((long) 0, f, hora, duracion, u, r, grupo, null);
-						System.out.println(res);
 						reservaDAO.insertarReserva(res);
 					}
 				}

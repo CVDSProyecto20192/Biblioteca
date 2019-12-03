@@ -24,44 +24,18 @@ p{
   font-family: "Helvetica", Helvetica, sans-serif ,"Century Gothic", Century Gothic, "Times New Roman", Times;
 }
 
-.contenedor{
+#contenedor{
 	width: 100%;
 	height: 90%;
 }
 
-.arriba{
-	width: 100%;
-	height: 20%;
-}
-
-.home {
-	display: inline;
-	width:2vw;
-	height: 2vw;
-	background-color:transparent;
-	-webkit-border-radius: 20%;
-	-webkit-transition:box-shadow .4s;
-	
-}
-
-.close {
-	display: inline;
-	width:2vw;
-	height: 2vw;
-	background-color:transparent;
-	-webkit-border-radius: 10%;
-	-webkit-transition:box-shadow .4s;
-}
-
-.registro{
+#registro{
 	float:left;
 	margin-top:0vw;
 	padding-left:15vw;
 	width:35vw;
 	text-align:justify;
 }
-
-
 
 #tabla_tipos{
 	padding-top:4vw;
@@ -71,7 +45,7 @@ p{
 }
 
 #botones{
-	margin-top:5%;	
+	margin-top:10%;	
 }
 
 

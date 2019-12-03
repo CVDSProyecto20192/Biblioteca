@@ -111,7 +111,5 @@ public class MyBatisRecursoDAO implements RecursoDAO{
 		} 
 		
 	}
-
-	
 	
 }

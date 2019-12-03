@@ -113,11 +113,11 @@ public interface ServiciosReserva {
 	public List<Reserva> recursosFrecuentesXHorario() throws ServiciosReservaException;
 	
 	public void cancelarReserva(Reserva r) throws ServiciosReservaException;
-
-	public void cancelarReservas(Reserva r) throws ServiciosReservaException;
-
-	public void cancelarReservasHastaFecha(Reserva r, Date f) throws ServiciosReservaException;
 	
+	public void cancelarReservas(Reserva r) throws ServiciosReservaException;
+	
+	public void cancelarReservasHastaFecha(Reserva r, Date f) throws ServiciosReservaException;
+
 	public List<Reserva> menosFrecuentesXFecha() throws ServiciosReservaException;
 
 	public List<Reserva> recursosMenosFrecuentesXHorario() throws ServiciosReservaException;
@@ -135,8 +135,7 @@ public interface ServiciosReserva {
 	public List<Reserva> horariosMenosXFecha() throws ServiciosReservaException;
 
 	public List<Reserva> horariosMenosXTipo() throws ServiciosReservaException;
-	
-	
+
 
 }
 

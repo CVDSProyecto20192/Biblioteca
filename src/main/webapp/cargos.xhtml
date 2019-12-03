@@ -8,35 +8,27 @@
       xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<link rel="stylesheet" type="text/css" href="css/cargos.css" />
+		
+		
 		
 		<title>Cargos</title>
     </h:head>
     
     <h:body>
+
+		<h1>Biblioteca</h1>
+		<h2>Cargo del usuario</h2>
+		<br/>
 		
         <h:form id="cargos_form">
             <div id="contenedor">
-            	
-            	<div class="arriba">
-						
-					<h:commandButton image="img/home.svg" id= "home" class="home"
-					action="#{ReservaBean.page01}" update="tipos_form"></h:commandButton>	
-					&nbsp; 
-					<h:commandButton image="img/logout.svg" id= "close" class="close"
-					actionListener="#{LoginBean.logout}" update="tipos_form"></h:commandButton>	
-					
-					<h1>Biblioteca</h1>
-					<h2>Cargos de Usuario</h2>
 			
-				</div>
-			
-                <div id="tabla_cargos" class='table' style="text-align: center" >
+                <div id="tabla_cargos" class='table' style="text-align: center">
                 
                     <p:dataTable class="cargos" value="#{CargosBean.cargos}" var = "cargo" 
                     rows="5" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
-    				rowsPerPageTemplate="5,10,15" style="margin: 0 auto;">
+    				rowsPerPageTemplate="5,10,15">
     				
     					<p:column headerText="Id" filterBy="#{cargo.id}">
                         	<h:outputText value="#{cargo.id}"></h:outputText>
@@ -53,19 +45,19 @@
                     </p:dataTable>
                 </div> 
                 
-                <div id="registro" style="text-align: center">
-					<div>
+                <div id="registro">
+					<div style="text-align: center">
 						<p>
 							<span><b>Id </b></span>
-	    					<p:outputLabel id ="idCargo" value="#{CargosBean.id}" class="form-control"/>
+	    					<p:outputLabel id ="idTipo" value="#{CargosBean.id}" class="form-control"/>
 						</p>
 					</div>
             	
 					<div>
 						<div class="form-group">
     						<p>
-								<span class="label nombre"><b>Nombre </b></span>
-    							<p:inputText id ="nombre" value="#{CargosBean.nombre}" placeholder="Introduce el nombre del cargo" class="form-control"/>
+								<span class="label tipo"><b>Nombre </b></span>
+    							<p:inputText id ="tipo" value="#{CargosBean.nombre}" placeholder="Introduce el nombre del cargo" class="form-control"/>
 							</p>
 						</div>
             		
@@ -80,15 +72,19 @@
 				</div>
                  
                  
-                 <div style="text-align: center">
+                 <div>
     				<p:commandButton value="Registrar" action="#{CargosBean.actionRegistrarCargo}" update="cargos_form"/>
 					<p:commandButton value="Ok" action="#{CargosBean.actionReiniciar}" update="cargos_form"/>
-					<br/><br/>
-					<p:commandButton value="Usuarios" action="#{ReservaBean.page9}" update="cargos_form"/>
+						
 					<br/>
+				
 				</div>
+                 
             </div>
-        	<br/>
+            
+            
+		
+        	<br/><br/>
 		</h:form>
     </h:body>
 </html>

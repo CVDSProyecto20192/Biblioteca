@@ -76,7 +76,7 @@ p{
 	
 }
 
-.registroDiv{
+.backDiv{
 	width: 100%;
 }
 
@@ -89,29 +89,17 @@ p{
 	-webkit-transition:box-shadow .4s;
 }
 
+
+
 .table{
 	clear:both;
 }
 
-.registroDiv{
-	width:2vw;
-	height:2vw;
-	
-	margin-left:88%;
-	
-	background-color:transparent;
-}
-
-
-.registroGo {
-	width:100%;
-	height:100%;
-	
-	background-color:transparent;
-	
+.back {
 	-moz-box-shadow:inset 0px 1px 0px 0px #e1dedf;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #e1dedf;
 	box-shadow:inset 0px 1px 0px 0px #e1dedf;
+	background-color:white;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
 	border-radius:8px;

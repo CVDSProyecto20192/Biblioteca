@@ -21,28 +21,11 @@ package edu.eci.cvds.samples.services.client;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import com.google.inject.Inject;
-
-import edu.eci.cvds.sampleprj.dao.mybatis.mappers.CargoMapper;
-import edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper;
-import edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper;
-import edu.eci.cvds.samples.entities.Cargo;
-import edu.eci.cvds.samples.entities.Horario;
 
 
 

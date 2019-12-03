@@ -7,6 +7,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
@@ -23,15 +28,39 @@ public class ReporteView {
 
     private String show;
     private boolean masUsados, menosUsados, horariosMas, horariosMenos, recurrentes;
+    private BarChartModel moreUsed, lessUsed, menosHorario, masHorario;
 
     public ReporteView() {
 
     }
 
+    public BarChartModel getMasHorario() {
+        return masHorario;
+    }
+
+    public void setMasHorario(BarChartModel masHorario) {
+        this.masHorario = masHorario;
+    }
+
+    public BarChartModel getMenosHorario() {
+        return menosHorario;
+    }
+
+    public void setMenosHorario(BarChartModel menosHorario) {
+        this.menosHorario = menosHorario;
+    }
 
     @PostConstruct
     public void init() {
         serviciosReserva = basePageBean.getServiciosReserva();
+        moreUsed = new BarChartModel();
+        lessUsed = new BarChartModel();
+        menosHorario = new BarChartModel();
+        masHorario = new BarChartModel();
+        graficarMasUsados();
+        graficarMenosUsados();
+        graficarHorariosMayor();
+        graficarHorariosMenor();
         reboot();
     }
 
@@ -186,6 +215,102 @@ public class ReporteView {
         return horariosMenosXTipo;
     }
 
+    private List<Reserva> graficoMasUsados(){
+        List<Reserva> graficoMasUsados=null;
+        try {
+            graficoMasUsados = serviciosReserva.graficoMasUsados();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+        return graficoMasUsados;
+    } 
+
+    private void graficarMasUsados(){
+        moreUsed.clear();
+        ChartSeries chart = new ChartSeries();
+
+        List<Reserva> reservas = graficoMasUsados();
+
+        for(Reserva r:reservas){
+            chart.set(r.getRecurso().getNombre(), r.getCount());
+        }
+        this.moreUsed.addSeries(chart);
+        this.moreUsed.setTitle("Recursos mas usados en total");
+        this.moreUsed.setLegendPosition("ne");
+        Axis xAxis = this.moreUsed.getAxis(AxisType.X);
+        xAxis.setLabel("Recursos");
+        Axis yAxis = this.moreUsed.getAxis(AxisType.Y);
+        yAxis.setLabel("Cantidad reservada");
+        yAxis.setMin(0);
+        yAxis.setMax(40);
+    }
+
+    private void graficarMenosUsados() {
+        lessUsed.clear();
+        ChartSeries chart = new ChartSeries();
+
+        List<Reserva> graficarMenosUsados = null;
+
+        try {
+            graficarMenosUsados = serviciosReserva.graficarMenosUsados();
+        } catch (ServiciosReservaException e) {
+            e.printStackTrace();
+        }
+
+        for(Reserva r:graficarMenosUsados){
+            chart.set(r.getRecurso().getNombre(), r.getCount());
+        }
+        this.lessUsed.addSeries(chart);
+        this.lessUsed.setTitle("Recursos menos usados en total");
+        this.lessUsed.setLegendPosition("ne");
+        Axis xAxis = this.lessUsed.getAxis(AxisType.X);
+        xAxis.setLabel("Recursos");
+        Axis yAxis = this.lessUsed.getAxis(AxisType.Y);
+        yAxis.setLabel("Cantidad reservada");
+        yAxis.setMin(0);
+        yAxis.setMax(40);
+    }
+
+    private void graficarHorariosMayor(){
+        masHorario.clear();
+        ChartSeries chart = new ChartSeries();
+
+        List<Reserva> reservas =  getHorarioMasFrecuente();
+
+        for(Reserva r:reservas){
+            chart.set(r.getHora(), r.getCount());
+        }
+        this.masHorario.addSeries(chart);
+        this.masHorario.setTitle("Recursos totales usados por horario");
+        this.masHorario.setLegendPosition("ne");
+        Axis xAxis = this.masHorario.getAxis(AxisType.X);
+        xAxis.setLabel("Horario");
+        Axis yAxis = this.masHorario.getAxis(AxisType.Y);
+        yAxis.setLabel("Cantidad reservada");
+        yAxis.setMin(0);
+        yAxis.setMax(40);
+    }
+
+    private void graficarHorariosMenor(){
+        menosHorario.clear();
+        ChartSeries chart = new ChartSeries();
+
+        List<Reserva> reservas =  getHorarioMenosFrecuente();
+
+        for(Reserva r:reservas){
+            chart.set(r.getHora(), r.getCount());
+        }
+        this.menosHorario.addSeries(chart);
+        this.menosHorario.setTitle("Recursos totales usados por horario");
+        this.menosHorario.setLegendPosition("ne");
+        Axis xAxis = this.menosHorario.getAxis(AxisType.X);
+        xAxis.setLabel("Horario");
+        Axis yAxis = this.menosHorario.getAxis(AxisType.Y);
+        yAxis.setLabel("Cantidad reservada");
+        yAxis.setMin(0);
+        yAxis.setMax(40);
+    }
+
     public void showTable(){
 
         reboot();
@@ -281,6 +406,22 @@ public class ReporteView {
 
     public void setMasUsados(boolean masUsados) {
         this.masUsados = masUsados;
+    }
+
+    public BarChartModel getLessUsed() {
+        return lessUsed;
+    }
+
+    public void setLessUsed(BarChartModel lessUsed) {
+        this.lessUsed = lessUsed;
+    }
+
+    public BarChartModel getMoreUsed() {
+        return moreUsed;
+    }
+
+    public void setMoreUsed(BarChartModel moreUsed) {
+        this.moreUsed = moreUsed;
     }
 
 }

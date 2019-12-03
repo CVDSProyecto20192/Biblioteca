@@ -27,26 +27,24 @@
         <h:form id="recursos_form">
         	<div class="arriba">
 					
-					<h:commandButton image="img/home.svg" id= "home" class="home"
-					action="#{ReservaBean.page01}" update="recursos_form"></h:commandButton>	
-					 &nbsp; 
-					<h:commandButton image="img/logout.svg" id= "close" class="close"
-					actionListener="#{LoginBean.logout}" update="recursos_form"></h:commandButton>	
+				<h:commandButton image="img/home.svg" id= "home" class="home"
+				action="#{ReservaBean.page01}" update="recursos_form"></h:commandButton>	
+				&nbsp; 
+				<h:commandButton image="img/logout.svg" id= "close" class="close"
+				actionListener="#{LoginBean.logout}" update="recursos_form"></h:commandButton>	
 				
-					
-					<h1>Biblioteca</h1>
-					<h2>Recursos</h2>
+				<h1>Biblioteca</h1>
+				<h2>Recursos</h2>
+			
 			</div>
 		
-			<br/>
-       	 
             <div>
                 <div style="text-align: center" class='table'>
                 
                     <p:dataTable class="recursos" value="#{RecursosBean.listaRecursos}" var = "recurso" style="margin: 0 auto;"
-                    rows="8" paginator="true" 
+                    rows="6" paginator="true" 
     				paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
-    				rowsPerPageTemplate="8, 16, 24">
+    				rowsPerPageTemplate="6, 12, 18">
     				
     					<p:column headerText="Id Recurso" filterBy="#{recurso.id}">
                         	<h:outputText value="#{recurso.id}"></h:outputText>
@@ -82,18 +80,15 @@
 					
                     </p:dataTable>
                 </div>  
+                
+                <div class="registroDiv">
+					<h:commandButton id= "registroGo"  class="registroGo" image="img/plus.svg" 
+					action="#{ReservaBean.page2}" update="recursos_form"></h:commandButton>
+           		</div> 
               
             </div>
 			
 			<br/>
-
-		
-			<div class="backDiv" style="text-align: center">
-				<p:commandButton id= "back"  class="back" value="Back" 
-				action="#{ReservaBean.page2}" update="recursos_form"></p:commandButton>
-			
-           	</div> 
-
 			
 			<br/>
 

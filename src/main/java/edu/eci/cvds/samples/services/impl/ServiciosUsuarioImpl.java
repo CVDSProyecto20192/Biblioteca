@@ -5,7 +5,6 @@ import java.util.List;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.exceptions.PersistenceException;
-import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.exceptions.ServiciosUsuarioException;
 import edu.eci.cvds.sampleprj.dao.CargoDAO;
 import edu.eci.cvds.sampleprj.dao.UsuarioDAO;

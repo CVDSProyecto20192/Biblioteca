@@ -1,27 +1,19 @@
 package edu.eci.cvds.test;
 
-import javax.validation.constraints.Null;
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import com.google.inject.Inject;
 
-import org.junit.Before;
-import org.junit.After;
-import org.junit.Test;
-
-import edu.eci.cvds.samples.entities.Cargo;
+import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Recurso;
 import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.entities.Tipo;
-import edu.eci.cvds.samples.entities.Usuario;
-import edu.eci.cvds.samples.entities.Reserva;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosReservaFactory;
-import edu.eci.cvds.exceptions.ServiciosReservaException;
-import org.junit.Assert;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 public class ServiciosReservaTest{
     

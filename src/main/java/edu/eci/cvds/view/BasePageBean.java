@@ -1,22 +1,24 @@
 package edu.eci.cvds.view;
 
 import java.io.Serializable;
-import java.text.DateFormatSymbols;
-import java.util.Locale;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
+
 import com.google.inject.Injector;
 
-import edu.eci.cvds.sampleprj.dao.*;
+import edu.eci.cvds.sampleprj.dao.CargoDAO;
+import edu.eci.cvds.sampleprj.dao.RecursoDAO;
+import edu.eci.cvds.sampleprj.dao.ReservaDAO;
+import edu.eci.cvds.sampleprj.dao.TipoDAO;
+import edu.eci.cvds.sampleprj.dao.UsuarioDAO;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 import edu.eci.cvds.samples.services.ServiciosUsuario;
 
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name="ReservaBean")
 @SessionScoped
 public class BasePageBean implements Serializable {

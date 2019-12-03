@@ -142,6 +142,11 @@ public interface ServiciosReserva {
 
 	public List<Reserva> consultarReservasPasadas(List<Reserva> noActivas);
 
+	public List<Reserva> graficoMasUsados() throws ServiciosReservaException;
+
+	public List<Reserva> graficarMenosUsados() throws ServiciosReservaException;
+
+
 
 }
 

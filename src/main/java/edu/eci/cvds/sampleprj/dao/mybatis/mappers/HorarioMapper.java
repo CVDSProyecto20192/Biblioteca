@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
-import edu.eci.cvds.samples.entities.Recurso;
 
 public interface HorarioMapper {
 

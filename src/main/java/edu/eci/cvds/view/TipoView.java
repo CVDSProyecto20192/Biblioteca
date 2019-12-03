@@ -11,6 +11,7 @@ import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "TiposBean")
 @SessionScoped
 public class TipoView {

@@ -166,6 +166,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	@Override
 	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException {
 		try {
+			@SuppressWarnings("unused")
 			Recurso r = consultarRecurso(id);
 			recursoDAO.updateDispRecurso(id, b);
 		} 
@@ -749,6 +750,23 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 			}
 		}
 		return pasadas;
+	}
+	
+	public List<Reserva> graficoMasUsados() throws ServiciosReservaException {
+		try{
+			return reservaDAO.graficoMasUsados();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar reserva" , e);
+		}	
+	}
+
+	@Override
+	public List<Reserva> graficarMenosUsados() throws ServiciosReservaException {
+		try{
+			return reservaDAO.graficarMenosUsados();
+		} catch (PersistenceException e) {
+			throw new ServiciosReservaException("Error al consultar reserva" , e);
+		}	
 	}
 }
 

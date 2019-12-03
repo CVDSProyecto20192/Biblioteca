@@ -10,7 +10,6 @@ import edu.eci.cvds.sampleprj.dao.HorarioDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.HorarioMapper;
 import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
-import edu.eci.cvds.samples.entities.Recurso;
 
 public class MyBatisHorarioDAO implements HorarioDAO{
 	

@@ -194,5 +194,31 @@ public class MyBatisReservaDAO implements ReservaDAO {
 		return null;
 	}
 
+	@Override
+	public void cancelarReserva(Reserva r) throws PersistenceException{
+		try{
+			reservaMapper.cancelarReserva(r);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al cancelar Reserva", e);
+		}  
+	}
+	
+	@Override
+	public void cancelarReservas(Reserva r) throws PersistenceException{
+		try{
+			reservaMapper.cancelarReservas(r);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al cancelar las Reservas", e);
+		}  
+	}
+	
+	@Override
+	public void cancelarReservasHastaFecha(Reserva r, Date f) throws PersistenceException{
+		try{
+			reservaMapper.cancelarReservasHastaFecha(r, f);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al cancelar las Reservas", e);
+		}  
+	}
 
 }

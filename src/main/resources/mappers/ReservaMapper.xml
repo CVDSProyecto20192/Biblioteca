@@ -151,7 +151,7 @@
 			left join BR_RECURSO as r on r.id=res.recurso
 			left join BR_CARGO as c on u.id_cargo=c.id
 			left join BR_TIPO as t on r.id_tipo=t.id
-			WHERE res.usuario=#{user}
+			WHERE res.usuario=#{user} AND activa = true
 	</select>
 	
 	<select parameterType="map" id="consultarFranja" resultMap="ReservaResult">
@@ -271,7 +271,23 @@
 			FETCH FIRST 10 ROWS ONLY
 	</select>
 	
+	<update id="cancelarReserva">
+		UPDATE BR_RESERVA
+		SET activo = false
+		WHERE odigo=#{reserva.codigo} AND fecha > now ()
+	</update>
+	
+	<update id="cancelarReservas">
+		UPDATE BR_RESERVA
+		SET activo = false
+		WHERE grupo=#{reserva.grupo} AND fecha > now ()
+	</update>
 
+	<update id="cancelarReservasHastaFecha">
+		UPDATE BR_RESERVA
+		SET activo = false
+		WHERE grupo=#{reserva.grupo} AND fecha > now () AND #{limite} >= fecha
+	</update>
 	
 	<resultMap id="ReservaResult" type="Reserva">
 			<id property="codigo" column="res_codigo"/>

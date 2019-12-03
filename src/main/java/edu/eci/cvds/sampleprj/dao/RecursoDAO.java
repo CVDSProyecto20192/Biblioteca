@@ -2,7 +2,7 @@ package edu.eci.cvds.sampleprj.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+import org.mybatis.guice.transactional.Transactional;
 
 import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.samples.entities.Recurso;
@@ -21,10 +21,12 @@ public interface RecursoDAO {
 	public long loadIdRecurso(String nombre,Tipo t, String ubicacion) throws PersistenceException;
  
 	public boolean loadDispRecurso(long id) throws PersistenceException;
-
+	
+	@Transactional
 	public void updateDispRecurso(long id, boolean b) throws PersistenceException;
 
 	public long loadLastId() throws PersistenceException;
 
+	@Transactional
 	public void removeRecurso(long idRecurso) throws PersistenceException;
 }

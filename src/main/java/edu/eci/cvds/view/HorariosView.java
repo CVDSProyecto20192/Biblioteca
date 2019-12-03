@@ -1,23 +1,9 @@
 package edu.eci.cvds.view;
 
-import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -27,10 +13,9 @@ import javax.faces.bean.SessionScoped;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.Hora;
 import edu.eci.cvds.samples.entities.Horario;
-import edu.eci.cvds.samples.entities.Recurso;
-import edu.eci.cvds.samples.entities.Tipo;
 import edu.eci.cvds.samples.services.ServiciosReserva;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "HorarioBean")
 @SessionScoped
 public class HorariosView {

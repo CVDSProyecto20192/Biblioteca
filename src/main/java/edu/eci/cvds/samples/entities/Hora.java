@@ -2,7 +2,6 @@ package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.time.LocalDateTime;
 
 public class Hora implements Serializable{
 	

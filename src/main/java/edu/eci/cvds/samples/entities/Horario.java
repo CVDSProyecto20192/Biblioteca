@@ -1,15 +1,7 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
-import java.sql.Array;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.sql.Types;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import org.apache.ibatis.type.LocalDateTimeTypeHandler;
-import org.apache.ibatis.type.LocalDateTypeHandler;
 
 public class Horario implements Serializable{
 	/**

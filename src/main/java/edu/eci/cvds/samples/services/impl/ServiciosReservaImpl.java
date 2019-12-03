@@ -165,6 +165,7 @@ public class ServiciosReservaImpl implements ServiciosReserva {
 	@Override
 	public void cambiarDisponibilidadRecurso(long id, boolean b) throws ServiciosReservaException {
 		try {
+			@SuppressWarnings("unused")
 			Recurso r = consultarRecurso(id);
 			recursoDAO.updateDispRecurso(id, b);
 		} 

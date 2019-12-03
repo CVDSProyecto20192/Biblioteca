@@ -1,24 +1,21 @@
 package edu.eci.cvds.view;
 
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
-
-import edu.eci.cvds.exceptions.PersistenceException;
-import edu.eci.cvds.exceptions.ServiciosReservaException;
-import edu.eci.cvds.samples.entities.*;
-import edu.eci.cvds.samples.services.ServiciosReserva;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
+import edu.eci.cvds.exceptions.ServiciosReservaException;
+import edu.eci.cvds.samples.entities.Reserva;
+import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.services.ServiciosReserva;
+
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "ReservasUsersBean")
 @SessionScoped
 public class ReservasUsersView {
@@ -36,6 +33,7 @@ public class ReservasUsersView {
 	
 	private String ultima;
 	
+	@SuppressWarnings("unused")
 	private String carnet;
 	
 	private String correo;

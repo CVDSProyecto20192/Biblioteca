@@ -81,12 +81,14 @@ public class Reserva {
 	public void setRegistro(Date registro){
 		this.registro=registro;
 	}
+	@SuppressWarnings("deprecation")
 	public Date getFechaI(){
 		fechaI = (Date) fecha.clone();
 		fechaI.setHours(hora/100);
 		fechaI.setMinutes(hora%100);
 		return this.fechaI;
 	}
+	@SuppressWarnings("deprecation")
 	public Date getFechaF(){
 		fechaF = (Date) fecha.clone();
 		fechaF.setHours((hora+duracion)/100);

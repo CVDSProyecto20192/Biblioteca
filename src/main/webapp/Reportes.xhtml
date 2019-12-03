@@ -308,6 +308,9 @@
                         <img src="img/excel.png"/>
                         <p:dataExporter type="xls" target="horarioNoFrecuente" fileName="RecursosXHorario2" pageOnly="true"/>
                     </h:commandLink>
+                    <h:panelGrid style="margin: auto;">
+                        <p:commandButton value="Back" action="#{LoginBean.redirectToMenu}" update="@form"/>
+                    </h:panelGrid>
                 </h:panelGrid>
                 
                 <p:dialog header="Más Usados" widgetVar="masUsados" modal="true" showEffect="fade" hideEffect="fade" resizable="false">

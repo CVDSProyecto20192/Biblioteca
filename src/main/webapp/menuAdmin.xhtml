@@ -61,16 +61,20 @@
 						</div>
 				
 						<div class="contenedor" id="cinco">
-							<p:commandLink action="#{LoginBean.logout}" update="@form">
-								<img class="icon" src="img/logout.svg"/>
+							<p:commandLink action="#{LoginBean.redirectTo('Reportes.xhtml')}" update="@form">
+								<img class="icon" src="img/reporte.svg"/>
 							</p:commandLink>
 							
-							<b><p class="texto">Logout</p></b>
+							<b><p class="texto">Reportes</p></b>
 						</div>
 						
 						<div class="contenedor" id="seis">
-							<img class="icon" src="img/help.svg"/>
-							<b><p class="texto">Help</p></b>
+							<p:commandLink action="#{LoginBean.logout}" update="@form">
+								<img class="icon" src="img/logout.svg"/>
+							</p:commandLink>
+								
+							<b><p class="texto">Logout</p></b>
+
 						</div>
 					
 						<ul class="circles">

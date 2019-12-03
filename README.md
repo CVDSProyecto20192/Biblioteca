@@ -13,7 +13,7 @@ CVDS 2019-2
 - Product owner: Santiago Alzate
 - Scrum Master-Team: Natalia Durán Vivas
 - Scrum Master-Team: Julián David Gutierrez Vanegas
-- Scrum Master-Team: Andrés Ricardo Martínez Día
+- Scrum Master-Team: Andrés Ricardo Martínez Días
 - Scrum Master-Team: Miguel Ángel Rivera Rojas
 
 
@@ -81,8 +81,17 @@ Otra de las funcionalidades que ofrece este menú de administrador es la de gest
 Allí mismo, oprimiendo el botón de "ver recursos", podrá gestionar los recursos actuales, bloqueandolos si es necesario:
 ![](Imagenes/administracionDeRecursos.PNG)
 
-Por último, el administrado podrá gestionar los tipos de recurso de la aplicación. Esto oprimiendo el cuarto ícono de izquierda a derecha. Haciendo esto, se desplegará la siguiente vista, donde podrá ver los tipos existentes y agregar un nuevo tipo si lo desea:
+Por otro lado, el administrado podrá gestionar los tipos de recurso de la aplicación. Esto oprimiendo el cuarto ícono de izquierda a derecha. Haciendo esto, se desplegará la siguiente vista, donde podrá ver los tipos existentes y agregar un nuevo tipo si lo desea:
 ![](Imagenes/manejoDeTiposDeRecurso.PNG)
+
+Por último, el administrador podrá observar los reportes sobre el uso de los recursos, esto con el fin de evaluar si la cantidad de recursos disponibles es suficiente para suplir con la demanda de la comunidad, para así tomar las decisiones necesarias para gestionar de mejor manera los recursos. El administrador podrá elejir de que manera quiere visualizar los reportes, mediante un menú desplegable, según sea la elección, aparecerá la información en tablas totalizado por fecha, tipo y horario.
+![](Imagenes/ReportePrincipal.png)
+
+También tendrá la posibilidad de observar un resumen de las estadisticas en un gráfico de barras, presionando sobre un link.
+![](Imagenes/ReporteGrafico.png)
+
+Además, si el administrador desea, puede exportar estos datos a Excel, mediante un icono que se encuentra al final de la página, el cual descargará el xls correspondiente con los datos requeridos.
+![](Imagenes/ReporteExcel.png)
 
 Cuando un usuario elige la opción de ingresar como invitado, se topará con la tabla de recursos disponibles vista anteriormente. Allí, de igual forma que el usuario de la comunidad, podrá elegir el recurso que desee y observar su disponibilidad, además, de obtener una pequeña información de las reservas de este. 
 La gran diferencia en esta vista, radica en que, si el usuario invitado oprime una hora o día en el calendario para realizar una reserva, aparecerá ante él el siguiente cuadro solicitandole iniciar sesión para poder realizar esta reserva:

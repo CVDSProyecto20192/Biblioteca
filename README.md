@@ -150,9 +150,46 @@ Spring 3
 
 ![](Imagenes/sp3.png)
 
+# Tareas Springs
+
+Spring 1
+
+![](Imagenes/spt1.png)
+
+Spring 2
+
+![](Imagenes/sp2.png)
+
+Spring 3
+
+![](Imagenes/sp3.png)
+
+# Backlogs
+
+Spring 1
+
+![](Imagenes/bc1.png)
+
+Spring 2
+
+![](Imagenes/bc2_1.png)
+
+![](Imagenes/bc2_2.png)
+
+![](Imagenes/bc2_3.png)
+
+![](Imagenes/bc2_4.png)
+
+Spring 3
+
+![](Imagenes/sp3_1.png)
+
+![](Imagenes/sp3_2.png)
 
 
+# Pruebas
 
+![](Imagenes/pruebas.png)
 
 
 

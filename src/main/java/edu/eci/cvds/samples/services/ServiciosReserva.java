@@ -118,6 +118,25 @@ public interface ServiciosReserva {
 	
 	public void cancelarReservasHastaFecha(Reserva r, Date f) throws ServiciosReservaException;
 
+	public List<Reserva> menosFrecuentesXFecha() throws ServiciosReservaException;
+
+	public List<Reserva> recursosMenosFrecuentesXHorario() throws ServiciosReservaException;
+
+	public List<Reserva> menosFrecuenteXTipo() throws ServiciosReservaException;
+
+	public List<Reserva> horariosMasXFecha() throws ServiciosReservaException;
+
+	public List<Reserva> horarioMasFrecuente() throws ServiciosReservaException;
+
+	public List<Reserva> horariosMasXTipo() throws ServiciosReservaException;
+
+	public List<Reserva> horarioMenosFrecuente() throws ServiciosReservaException;
+
+	public List<Reserva> horariosMenosXFecha() throws ServiciosReservaException;
+
+	public List<Reserva> horariosMenosXTipo() throws ServiciosReservaException;
+
+
 }
 
 

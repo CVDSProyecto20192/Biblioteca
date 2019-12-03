@@ -190,8 +190,92 @@ public class MyBatisReservaDAO implements ReservaDAO {
 
 	@Override
 	public List<Reserva> recursosFrecuentesXHorario() throws PersistenceException {
-		// TODO Auto-generated method stub
-		return null;
+		try{
+			return reservaMapper.recursosFrecuentesXHorario();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> menosFrecuentesXFecha() throws PersistenceException {
+		try{
+			return reservaMapper.menosFrecuentesXFecha();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> recursosMenosFrecuentesXHorario() throws PersistenceException {
+		try{
+			return reservaMapper.recursosMenosFrecuentesXHorario();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> menosFrecuenteXTipo() throws PersistenceException {
+		try{
+			return reservaMapper.menosFrecuenteXTipo();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> horariosMasXFecha() throws PersistenceException {
+		try{
+			return reservaMapper.horariosMasXFecha();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> horarioMasFrecuente() throws PersistenceException {
+		try{
+			return reservaMapper.horarioMasFrecuente();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> horariosMasXTipo() throws PersistenceException {
+		try{
+			return reservaMapper.horariosMasXTipo();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> horarioMenosFrecuente() throws PersistenceException {
+		try{
+			return reservaMapper.horarioMenosFrecuente();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		}  
+	}
+
+	@Override
+	public List<Reserva> horariosMenosXFecha() throws PersistenceException {
+		try{
+			return reservaMapper.horariosMenosXFecha();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		} 
+	}
+
+	@Override
+	public List<Reserva> horariosMenosXTipo() throws PersistenceException {
+		try{
+			return reservaMapper.horariosMenosXTipo();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar Reservas", e);
+		} 
 	}
 
 	@Override

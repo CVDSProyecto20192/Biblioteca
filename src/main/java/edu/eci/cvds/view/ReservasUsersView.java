@@ -16,6 +16,8 @@ import edu.eci.cvds.exceptions.PersistenceException;
 import edu.eci.cvds.exceptions.ServiciosReservaException;
 import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.services.ServiciosReserva;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 
 @ManagedBean(name = "ReservasUsersBean")
 @SessionScoped
@@ -34,14 +36,26 @@ public class ReservasUsersView {
 	
 	private String ultima;
 	
+	private String carnet;
+	
+	private String correo;
+	
 	public ReservasUsersView() {
 	}
 	
 	@PostConstruct
 	public void init() {
 		serviciosReserva=baseBean.getServiciosReserva();
+		Subject subject = SecurityUtils.getSubject();
+		correo = String.valueOf(subject.getSession().getAttribute("Correo"));
 		try {
-			reservas= serviciosReserva.consultarReservas();
+			Usuario u = serviciosReserva.consultarUsuarioCorreo(correo);
+			if (u.getCargo().getNombre().equals("Comunidad")){
+				reservas = serviciosReserva.consultarReservasUsuario(u.getCarnet());
+			}
+			else{
+				reservas= serviciosReserva.consultarReservas();
+			}
 		}catch (ServiciosReservaException e) {
 			baseBean.mensajeApp(e);
 		}

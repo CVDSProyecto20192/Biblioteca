@@ -1,7 +1,21 @@
 ### Escuela Colombiana de Ingeniería
 ### Ciclos de Vida del desarrollo de Software – CVDS
 
-# ServicioBiblioteca
+## Proyecto
+
+ServicioBiblioteca
+Team2019-2-PROYCVDS-EQUIPO_DINAMITA
+CVDS 2019-2
+
+
+## Roles
+
+- Product owner: Santiago Alzate
+- Scrum Master-Team: Natalia Durán Vivas
+- Scrum Master-Team: Julián David Gutierrez Vanegas
+- Scrum Master-Team: Andrés Ricardo Martínez Día
+- Scrum Master-Team: Miguel Ángel Rivera Rojas
+
 
 ## Descripcion del producto
 

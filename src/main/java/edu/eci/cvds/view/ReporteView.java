@@ -1,5 +1,6 @@
 package edu.eci.cvds.view;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +20,12 @@ import edu.eci.cvds.samples.services.ServiciosReserva;
 @Deprecated
 @ManagedBean(name = "ReportBean")
 @SessionScoped
-public class ReporteView {
+public class ReporteView implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     private ServiciosReserva serviciosReserva;
 
@@ -34,21 +40,7 @@ public class ReporteView {
 
     }
 
-    public BarChartModel getMasHorario() {
-        return masHorario;
-    }
 
-    public void setMasHorario(BarChartModel masHorario) {
-        this.masHorario = masHorario;
-    }
-
-    public BarChartModel getMenosHorario() {
-        return menosHorario;
-    }
-
-    public void setMenosHorario(BarChartModel menosHorario) {
-        this.menosHorario = menosHorario;
-    }
 
     @PostConstruct
     public void init() {
@@ -422,6 +414,22 @@ public class ReporteView {
 
     public void setMoreUsed(BarChartModel moreUsed) {
         this.moreUsed = moreUsed;
+    }
+
+    public BarChartModel getMasHorario() {
+        return masHorario;
+    }
+
+    public void setMasHorario(BarChartModel masHorario) {
+        this.masHorario = masHorario;
+    }
+
+    public BarChartModel getMenosHorario() {
+        return menosHorario;
+    }
+
+    public void setMenosHorario(BarChartModel menosHorario) {
+        this.menosHorario = menosHorario;
     }
 
 }

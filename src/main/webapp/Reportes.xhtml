@@ -14,7 +14,7 @@
 
     </h:head>
 
-    <h:body>
+    <h:body style="background-color: rgb(130, 235, 200);">
 
         <h1 style="text-align: center;">Reportes y estadisticas de los registros</h1>
 
@@ -30,12 +30,11 @@
                         <f:selectItem itemLabel="Recursos menos usados" itemValue="menosUsados"/>
                         <f:selectItem itemLabel="Horarios con mayor ocupación de recursos" itemValue="horariosMas"/>
                         <f:selectItem itemLabel="Horarios con menor ocupación de recursos" itemValue="horariosMenos"/>
-                        <f:selectItem itemLabel="Reservas recurrentes" itemValue="recurrentes"/>
                     </p:selectOneMenu>
                 </h:panelGrid>
 
                 <h:panelGrid id="recursosMasUsados" style="margin: auto;" cellpadding="15"> 
-                    <p:dataTable var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
+                    <p:dataTable id="totalFecha" var="reserva" value="#{ReportBean.recursosFrecuentes}" style="width: 950px;" rendered="#{ReportBean.masUsados}">
                         
                         <f:facet name="header">
                             Totalizado por fecha
@@ -106,7 +105,7 @@
 
 
 
-                    <p:dataTable var="reserva" value="#{ReportBean.menosFrecuentesXFecha}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
+                    <p:dataTable id="menosXFecha" var="reserva" value="#{ReportBean.menosFrecuentesXFecha}" style="width: 950px;" rendered="#{ReportBean.menosUsados}">
                         
                         <f:facet name="header">
                             Totalizado por fecha
@@ -177,7 +176,7 @@
 
 
 
-                    <p:dataTable var="hora" value="#{ReportBean.horarioMasFrecuente}" style="width: 950px;" rendered="#{ReportBean.horariosMas}">
+                    <p:dataTable id="horarioFrecuente" var="hora" value="#{ReportBean.horarioMasFrecuente}" style="width: 950px;" rendered="#{ReportBean.horariosMas}">
                         <f:facet name="header">
                             Horarios totalizados por horario
                         </f:facet>
@@ -227,7 +226,7 @@
                     </p:dataTable>
 
 
-                    <p:dataTable var="hora" value="#{ReportBean.horarioMenosFrecuente}" style="width: 950px;" rendered="#{ReportBean.horariosMenos}">
+                    <p:dataTable id="horarioNoFrecuente" var="hora" value="#{ReportBean.horarioMenosFrecuente}" style="width: 950px;" rendered="#{ReportBean.horariosMenos}">
                         <f:facet name="header">
                             Horarios totalizados por horario
                         </f:facet>
@@ -277,7 +276,7 @@
                     </p:dataTable>
                 </h:panelGrid>
 
-                <h:panelGrid style="margin: auto;">
+                <h:panelGrid style="margin: auto;" cellpadding="20">
                     <p:commandLink oncomplete="PF('masUsados').show();" update="@form" rendered="#{ReportBean.masUsados}">
                         Visualizar gráfico resumen
                     </p:commandLink>
@@ -290,6 +289,25 @@
                     <p:commandLink oncomplete="PF('horarioMenos').show();" update="@form" rendered="#{ReportBean.horariosMenos}">
                         Visualizar gráfico resumen
                     </p:commandLink>
+                    <h:commandLink rendered="#{ReportBean.masUsados}">
+                        <img src="img/excel.png"/>
+                        <p:dataExporter type="xls" target="totalFecha" fileName="RecursosMasUsados" pageOnly="true"/>
+                    </h:commandLink>
+
+                    <h:commandLink rendered="#{ReportBean.menosUsados}">
+                        <img src="img/excel.png"/>
+                        <p:dataExporter type="xls" target="menosXFecha" fileName="RecursosMenosUsados" pageOnly="true"/>
+                    </h:commandLink>
+
+                    <h:commandLink rendered="#{ReportBean.horariosMas}">
+                        <img src="img/excel.png"/>
+                        <p:dataExporter type="xls" target="horarioFrecuente" fileName="RecursosXHorario" pageOnly="true"/>
+                    </h:commandLink>
+
+                    <h:commandLink rendered="#{ReportBean.horariosMenos}">
+                        <img src="img/excel.png"/>
+                        <p:dataExporter type="xls" target="horarioNoFrecuente" fileName="RecursosXHorario2" pageOnly="true"/>
+                    </h:commandLink>
                 </h:panelGrid>
                 
                 <p:dialog header="Más Usados" widgetVar="masUsados" modal="true" showEffect="fade" hideEffect="fade" resizable="false">

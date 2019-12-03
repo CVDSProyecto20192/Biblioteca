@@ -237,6 +237,12 @@
                         <artifactId>h2</artifactId>
                         <version>1.4.197</version>
                     </dependency>
+                
+                  <dependency>
+                    <groupId>com.a9ski.jsf</groupId>
+                    <artifactId>simple-jsf-exporter-primefaces-excel</artifactId>
+                    <version>1.0.3</version>
+                  </dependency>
                 </dependencies>
                 <configuration>
                     <driver>org.h2.Driver</driver>
